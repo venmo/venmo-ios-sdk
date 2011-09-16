@@ -16,7 +16,7 @@ describe(@"VenmoClient", ^{
     beforeEach(^{
         client = [VenmoClient clientWithAppId:@"your_app_id" secret:@"your_app_secret"
                                             localId:@"your_app_local_id"];
-        URLPath = [NSString stringWithFormat:@"/?client=iphone&app_name=VenmoApp&"
+        URLPath = [NSString stringWithFormat:@"/?client=ios&app_name=VenmoApp&"
                    "app_id=your_app_id&app_local_id=your_app_local_id&txn=pay&amount=3.45&"
                    "note=hello world&recipients=shreyanstest&device_id=%@",
                    [[UIDevice currentDevice] uniqueIdentifier]];

@@ -85,7 +85,7 @@
 #pragma mark - Sending a Transaction @private
 
 - (NSString *)URLPathWithTransaction:(VenmoTransaction *)transaction {
-    return [NSString stringWithFormat:@"/?client=iphone&"
+    return [NSString stringWithFormat:@"/?client=ios&"
             "app_name=%@&app_id=%@%@&txn=%@&amount=%@&note=%@&recipients=%@&device_id=%@",
             appName,
             appId,
