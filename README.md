@@ -92,10 +92,11 @@ Using Venmo in Your App
 * [Handle the redirect back to your app][15].
 
 
-Venmo Sample App
-----------------
+Venmo Sample Apps
+-----------------
 
-Check out [Drinks On Me][16] for a sample iPhone app that uses the Venmo.
+* [VenmoApp][16] (in this project)
+* [Drinks On Me][17]
 
 
 <a name="update">Updating the Venmo iOS SDK</a>
@@ -147,4 +148,5 @@ Then, to pull in remote updates, you can just do:
   [13]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/WelcomeViewController.m#L63-64
   [14]: https://github.com/venmo/venmo-ios-sdk/blob/master/Venmo/VenmoViewController.h
   [15]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/AppDelegate.m#L39-58
-  [16]: https://github.com/venmo/drinks-on-me
+  [16]: https://github.com/venmo/venmo-ios-sdk/tree/master/VenmoApp
+  [17]: https://github.com/venmo/drinks-on-me
