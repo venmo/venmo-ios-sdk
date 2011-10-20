@@ -16,7 +16,9 @@
 
 @implementation VenmoClient
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
 @synthesize delegate;
+#endif
 @synthesize appId;
 @synthesize appSecret;
 @synthesize appName;
