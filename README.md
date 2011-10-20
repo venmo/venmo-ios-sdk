@@ -98,8 +98,8 @@ Venmo Sample App
 Check out [Drinks On Me][16] for a sample iPhone app that uses the Venmo.
 
 
-<a id="update">Updating the Venmo iOS SDK</a>
----------------------------------------------
+<a name="update">Updating the Venmo iOS SDK</a>
+-----------------------------------------------
 
 Pull in remote updates by running these commands from your project root directory:
 
@@ -115,8 +115,8 @@ Then, to pull in remote updates, you can just do:
     git sup
 
 
-<a id="contribute">Contributing to the Venmo iOS SDK</a>
---------------------------------------------------------
+<a name="contribute">Contributing to the Venmo iOS SDK</a>
+----------------------------------------------------------
 
 * Commit your changes.
 
