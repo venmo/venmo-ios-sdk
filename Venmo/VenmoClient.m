@@ -57,7 +57,7 @@
         appName = theAppName ? theAppName : [[NSBundle mainBundle] name];
         appLocalId = [theAppLocalId copy];
     }
-    return self;    
+    return self;
 }
 
 #pragma mark - Sending a Transaction
@@ -117,7 +117,7 @@
 
     BOOL success = NO;
     NSError *error = nil;
-    
+
     if (transaction) {
         if (transaction.success) {
             success = YES;
@@ -162,18 +162,18 @@
 
 - (id)decodeSignedRequest:(NSString *)signedRequest {
     if (!signedRequest) return nil;
-    
+
     NSArray *encodedSignature_encodedDataString = [signedRequest componentsSeparatedByString:@"."];
     NSString *encodedSignature = [encodedSignature_encodedDataString objectAtIndex:0];
     NSString *encodedDataString = [encodedSignature_encodedDataString objectAtIndex:1];
-    
+
     encodedSignature = [encodedSignature stringByAppendingString:@"=="];
     encodedSignature = [encodedSignature stringByReplacingOccurrencesOfString:@"-" withString:@"+"];
     encodedSignature = [encodedSignature stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
-    
+
     NSData *signature = [encodedSignature base64DecodedData];
     NSData *expectedSignature = VenmoHMAC_SHA256(self.appSecret, encodedDataString);
-    
+
     if ([signature isEqualToData:expectedSignature]) {
         return [self JSONObjectWithData:[encodedDataString base64DecodedData]];
     }

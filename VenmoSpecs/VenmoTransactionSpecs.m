@@ -7,7 +7,7 @@ SPEC_BEGIN(VenmoTransactionSpecs)
 
 describe(@"VenmoTransaction", ^{
     __block VenmoTransaction *transaction;
-    
+
     beforeEach(^{
         transaction = [[VenmoTransaction alloc] init];
         transaction.id = 1234;
@@ -27,7 +27,7 @@ describe(@"VenmoTransaction", ^{
         specify(^{ [[transaction.note should] equal:@"hello world"]; });
         specify(^{ [[transaction.toUserHandle should] equal:@"shreyanstest"]; });
     });
-    
+
     describe(@"string property values", ^{
         specify(^{ [[[transaction typeString] should] equal:@"pay"]; });
         specify(^{ [[[transaction amountString] should] equal:@"3.45"]; });
@@ -38,7 +38,7 @@ describe(@"VenmoTransaction", ^{
             transaction = [VenmoTransaction transactionWithDictionary:nil];
             [transaction shouldBeNil];
         });
-        
+
         it(@"returns a VenmoTransaction", ^{
             transaction = [VenmoTransaction transactionWithDictionary:[NSDictionary dictionary]];
             [[transaction should] beMemberOfClass:[VenmoTransaction class]];

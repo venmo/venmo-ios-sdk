@@ -7,7 +7,7 @@ SPEC_BEGIN(NSDictionary_VenmoSpec)
 describe(@"NSDictionary+Venmo", ^{
     __block NSObject *object;
     __block NSDictionary *dictionary;
-    
+
     beforeEach(^{
         object = [[NSObject alloc] init];
         dictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -33,7 +33,7 @@ describe(@"NSDictionary+Venmo", ^{
                       @"-1.34", @"negative_decimal_string",
                       nil];
     });
-    
+
     describe(@"-objectOrNilForKey:", ^{
         it(@"returns nil for a non-existant key", ^{
             [[dictionary objectOrNilForKey:@"non-existant key"] shouldBeNil];
@@ -42,7 +42,7 @@ describe(@"NSDictionary+Venmo", ^{
         it(@"returns nil for [NSNull null]", ^{
             [[dictionary objectOrNilForKey:@"null"] shouldBeNil];
         });
-        
+
         it(@"returns objectForKey for all other objects", ^{
             [[[dictionary objectOrNilForKey:@"object"] should] beIdenticalTo:object];
         });
@@ -77,11 +77,11 @@ describe(@"NSDictionary+Venmo", ^{
         [[theValue([dictionary unsignedIntegerForKey:@"zero_number"]) should] equal:theValue(0)];
         [[theValue([dictionary unsignedIntegerForKey:@"positive_number"]) should] equal:theValue(1)];
         [[theValue([dictionary unsignedIntegerForKey:@"negative_number"]) should] equal:theValue(0)];
-        
+
         [[theValue([dictionary unsignedIntegerForKey:@"zero_decimal_number"]) should] equal:theValue(0)];
         [[theValue([dictionary unsignedIntegerForKey:@"negative_decimal_number"]) should] equal:theValue(0)];
         [[theValue([dictionary unsignedIntegerForKey:@"negative_decimal_number"]) should] equal:theValue(0)];
-        
+
         [[theValue([dictionary unsignedIntegerForKey:@"zero_string"]) should] equal:theValue(0)];
         [[theValue([dictionary unsignedIntegerForKey:@"positive_integer_string"]) should] equal:theValue(1)];
         [[theValue([dictionary unsignedIntegerForKey:@"negative_integer_string"]) should] equal:theValue(0)];

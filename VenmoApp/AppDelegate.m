@@ -49,7 +49,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
                                  transaction.toUserHandle,
                                  transaction.toUserId,
                                  transaction.amountString,
-                                 transaction.note];    
+                                 transaction.note];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message
                                                                delegate:nil cancelButtonTitle:@"OK"
                                                       otherButtonTitles:nil];

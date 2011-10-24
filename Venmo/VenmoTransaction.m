@@ -38,12 +38,12 @@
 //{
 //  "payments": [
 //                 {
-//                   "payment_id": 1234, 
-//                   "verb": "pay", 
+//                   "payment_id": 1234,
+//                   "verb": "pay",
 //                   "actor_user_id": 1,
-//                   "target_user_id": 2, 
-//                   "amount": "1.00", 
-//                   "note": "for food", 
+//                   "target_user_id": 2,
+//                   "amount": "1.00",
+//                   "note": "for food",
 //                   "success": 1
 //                 }
 //              ]

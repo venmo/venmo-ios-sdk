@@ -31,7 +31,7 @@
          UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin);
         self.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5]; // translucent black
         self.layer.cornerRadius = 10.0;
-        
+
         UIActivityIndicatorView *activityIndicator =
         [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:
          UIActivityIndicatorViewStyleWhiteLarge];
@@ -42,7 +42,7 @@
         [self addSubview:activityIndicator];
         [activityIndicator startAnimating];
         DLog(@"activityIndicator: %@", activityIndicator);
-        
+
         frame = CGRectMake(0.0f, 128.0f, 172.0f, 20.0f);
         UILabel *activityLabel = [[UILabel alloc] initWithFrame:frame];
         activityLabel.backgroundColor = [UIColor clearColor];
@@ -95,5 +95,5 @@
     self.superview.userInteractionEnabled = YES;
     [self removeFromSuperview];
 }
-         
+
 @end

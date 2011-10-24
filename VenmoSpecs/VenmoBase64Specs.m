@@ -12,17 +12,17 @@ describe(@"VenmoBase64", ^{
         __block VenmoClient *client;
         __block NSString *signedRequest1;
         __block NSString *signedRequest2;
-        
+
         beforeEach(^{
             signedRequest1 = @"FG1uGHoaGeNH2lxcfJG8AU1MBosRPTf_Wf6R5HQo-2Y.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImV4cGlyZXMiOjEyOTQ1MTY4MDAsImlzc3VlZF9hdCI6MTI5NDUxMjQ3Miwib2F1dGhfdG9rZW4iOiIxMjAwMjc3NDU0MzB8Mi5FS1NJd2FOZ21GN1c3aF9pTV9BM2Z3X18uMzYwMC4xMjk0NTE2ODAwLTUxNDQxN3xHV3dUT3FzWnI1S1pSUTBwVWFEMVB3MjhZSDgiLCJ1c2VyIjp7ImxvY2FsZSI6ImVuX1VTIiwiY291bnRyeSI6InVzIn0sInVzZXJfaWQiOiI1MTQ0MTcifQ";
             signedRequest2 = @"lufX_tvpTJ1dBUx0CRkOg_o6BZHVFuNZrcdYi3XwEds.W3sicGF5bWVudF9pZCI6IDE4MjA3NywgIm5vdGUiOiAiZm9yICN0ZXN0IiwgImFtb3VudCI6ICIwLjAxIiwgInN1Y2Nlc3MiOiAxfV0";
         });
-        
+
         it(@"verifies", ^{
             client = [VenmoClient clientWithAppId:@"your_app_id" secret:@"bad_secret"];
             [[client decodeSignedRequest:signedRequest1] shouldBeNil];
         });
-        
+
         it(@"decodes", ^{
             NSDictionary *request;
             client = [VenmoClient clientWithAppId:@"your_app_id"
@@ -30,7 +30,7 @@ describe(@"VenmoBase64", ^{
             NSString *userId = @"514417";
             request = [client decodeSignedRequest:signedRequest1];
             [[[request objectForKey:@"user_id"] should] equal:userId];
-        
+
             client = [VenmoClient clientWithAppId:@"your_app_id"
                                            secret:@"h8dsDvAGJh6DrtdFVsBFKZR6PTGr8jcc"];
 //            NSString *userId = @"514417";
@@ -39,7 +39,7 @@ describe(@"VenmoBase64", ^{
 //            [[[request objectForKey:@"user_id"] should] equal:userId];
         });
     });
-    
+
     it(@"-base64EncodedString & -base64DecodedData", ^{
         NSString *unencodedString = @"sam";
         NSString *encodedString = @"c2Ft";
@@ -67,7 +67,7 @@ describe(@"VenmoBase64", ^{
 //        [[string should] receive:@selector(base64DecodedData) andReturn:data];
 //        [[[string base64DecodedString] should] equal:@"hello world"];
 //    });
-    
+
     it(@"HMAC_SHA256", ^{
         NSString *actualDataString = [VenmoHMAC_SHA256(@"key", @"data") base64EncodedString];
         NSString *expectedDataString = @"UDH+PZicbRU3oBP6bnOdojRj/a7DtwE32Cjjas4iG9A=";

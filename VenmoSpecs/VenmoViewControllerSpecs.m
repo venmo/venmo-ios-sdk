@@ -20,19 +20,19 @@ describe(@"VenmoViewController", ^{
     describe(@"its view", ^{
         it(@"is a UIWebView", ^{
             [[viewController.view should] beMemberOfClass:[UIWebView class]];
-        });        
+        });
 
         it(@"has the applicationFrame", ^{
             [[theValue(viewController.view.frame) should] equal:
              theValue([[UIScreen mainScreen] applicationFrame])];
-        });        
+        });
 
         it(@"loads the transactionURL", ^{
             NSURLRequest *transactionURLRequest = [NSURLRequest requestWithURL:transactionURL];
             UIWebView *webView = (UIWebView *)viewController.view;
             [[webView should] receive:@selector(loadRequest:) withArguments:transactionURLRequest];
             [viewController viewDidLoad];
-        });        
+        });
     });
 });
 

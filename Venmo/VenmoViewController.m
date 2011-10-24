@@ -68,7 +68,7 @@
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    [self hideActivityViews];    
+    [self hideActivityViews];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {

@@ -58,10 +58,10 @@ describe(@"VenmoClient", ^{
 
             it(@"returns nil if canOpenURL:transactionURL", ^{
                 [[app should] receive:@selector(canOpenURL:) andReturn:theValue(YES)];
-                [[app should] receive:@selector(openURL:)];            
+                [[app should] receive:@selector(openURL:)];
                 [[client viewControllerWithTransaction:transaction forceWeb:NO] shouldBeNil];
             });
-            
+
             it(@"returns a new VenmoViewController if not canOpenURL:transactionURL", ^{
                 [[app should] receive:@selector(canOpenURL:) andReturn:theValue(NO)];
                 [[[client viewControllerWithTransaction:transaction forceWeb:NO] should]
@@ -78,9 +78,9 @@ describe(@"VenmoClient", ^{
             it(@"always returns a new VenmoViewController", ^{
                 [[[client viewControllerWithTransaction:transaction forceWeb:YES] should]
                  beKindOfClass:[VenmoViewController class]];
-            });            
+            });
         });
-        
+
         it(@"sets the returned VenmoViewController's transactionURL", ^{
             NSURL *webURL = [NSURL URLWithString:@"https://venmo.com/"];
             [[client should] receive:@selector(webURLWithPath:) andReturn:webURL];
@@ -91,17 +91,17 @@ describe(@"VenmoClient", ^{
     });
 
     describe(@"-transactionsWithOptions:", ^{
-        
+
     });
 
     describe(@"-transactionWithURL:sourceApplication:", ^{
-        
+
     });
 
 //    - (id)transactionWithOptions:(NSDictionary *)launchOptions {
 //        return nil;
 //    }
-//    
+//
 //    - (id)transactionWithURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
 //        return nil;
 //    }
