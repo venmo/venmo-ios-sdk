@@ -69,7 +69,7 @@ Using Venmo in Your App
 * Include Venmo in any files that use it:
 
         #import <Venmo/Venmo.h>
-        
+
 * To [reduce build times][8], create a precompiled header file. E.g., `AppName-Prefix.pch`:
 
         #include "AppName-Prefix.pch"
@@ -83,7 +83,7 @@ Using Venmo in Your App
         #import <Venmo/Venmo.h>
 
         #endif
-        
+
     Specify the path to this precompiled header in your test target's Build Settings under Prefix Header.
 
 * [Instantiate a `VenmoClient`][9]. Check out [`VenmoClient.h`][10].
