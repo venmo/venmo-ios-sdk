@@ -11,7 +11,7 @@ This open-source Cocoa Touch Static Library allows users of your app to pay with
 Project Setup
 -------------
 
-### Add Venmo as a [Git submodule][2]
+### Add Venmo as a [Git submodule][2] to the Libraries directory.
 
 This will help you [pull in updates][3] and [make contributions][4].
 
@@ -23,30 +23,34 @@ This will help you [pull in updates][3] and [make contributions][4].
     git commit -am 'Add Venmo as a submodule.'
 
 
-### Add Venmo to Your Xcode Project
+### Add Venmo to Your Xcode Project.
+
+#### Add the Libraries group to your Project.
 
 In Xcode, select your project at the top of the Project Navigator (⌘1), and press ⌥⌘N to create a new group. Name it, e.g., "Libraries." Then, select the Libraries group, press ⌥⌘0 to Show Utilities, click the small icon to the right just below Path, choose the Libraries directory. Drag the Libraries group to move it before the Frameworks group.
+
+#### Add Venmo.xcodeproj inside the Libraries group.
 
 With the Libraries group selected, press ⌥⌘A to add files, select `Venmo.xcodeproj` in `Libraries/Venmo`, and confirm that "Copy items into destination group's folder (if needed)" is unchecked, "Create groups for any added folders" is selected, and all targets are unchecked. Then, click Add.
 
 In Terminal, review and commit your changes:
 
     git diff -w -M --color-words HEAD
-    git commit -am 'Add Libraries/Venmo group & Venmo project.'
+    git commit -am 'Add Libraries group. Put Venmo.xcodeproj inside.'
 
 
-### Edit Your Application Target's Settings
+### Edit Your Application Project Settings.
 
-In Xcode, select your main Xcode project at the top of the Project Navigator (⌘1), and then, select the target to which you want to add Venmo.
+In Xcode, select your main Xcode project at the top of the Project Navigator (⌘1), and then, select the project (or target) to which you want to add Venmo. (To allow all your targets, e.g., your tests target (along with your application target), to import Venmo, apply these settings at the project level.)
 
-#### [Edit Build Phases][5]
+#### [Edit Build Phases][5].
 
 Select the "Build Phases" tab.
 
 * Under the "Target Dependencies" group, click the plus button, select Venmo from the menu, and click Add.
 * Under the "Link Binary With Libraries" group, click the plus button, select `libVenmo.a` from the menu, and click Add.
 
-#### [Edit Build Settings][6]
+#### [Edit Build Settings][6].
 
 Select the "Build Settings" tab. Make sure "All" is selected in the top left of the bar under the tabs.
 
@@ -104,12 +108,12 @@ Venmo Sample Apps
 
 Pull in remote updates by running these commands from your project root directory:
 
-    git submodule foreach 'git pull --rebase'
+    git submodule foreach 'git checkout master; git pull --rebase'
     git commit -am 'Update submodules to latest commit.'
 
 You can add an alias (to `~/.gitconfig`) for the first of the two commands above:
 
-    git config --global alias.sup "submodule foreach 'git pull --rebase'"
+    git config --global alias.sup "submodule foreach 'git checkout master; git pull --rebase'"
 
 Then, to pull in remote updates, you can just do:
 
@@ -127,8 +131,8 @@ Then, to pull in remote updates, you can just do:
 
 * Fork this repo on GitHub, add your fork as a remote, and push.
 
-        git remote add myuser git@github.com:myuser/venmo-ios-sdk.git
-        git push myuser master
+        git remote add myusername git@github.com:myuser/venmo-ios-sdk.git
+        git push myusername master
 
 * Send Venmo a pull request on GitHub.
 
@@ -140,7 +144,7 @@ Then, to pull in remote updates, you can just do:
   [5]: http://j.mp/pBH1KE
   [6]: http://j.mp/mR5Jco
   [7]: http://developer.apple.com/library/mac/#qa/qa1490/_index.html
-  [8]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/AppDelegate.m#L18-19
+  [8]: http://disanji.net/iOS_Doc/#documentation/DeveloperTools/Conceptual/XcodeBuildSystem/800-Reducing_Build_Times/bs_speed_up_build.html
   [9]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/AppDelegate.m#L18-19
   [10]: https://github.com/venmo/venmo-ios-sdk/blob/master/Venmo/VenmoClient.h
   [11]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/WelcomeViewController.m#L28-32
