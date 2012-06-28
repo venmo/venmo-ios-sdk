@@ -121,7 +121,7 @@
 		C9550E8013F5C48900212008 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C9550E8213F5C48900212008 /* VenmoApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VenmoApp-Prefix.pch"; sourceTree = "<group>"; };
 		C9550E8313F5C48900212008 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		C9550E8413F5C48900212008 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C9550E8413F5C48900212008 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9550E8613F5C48900212008 /* WelcomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
 		C9550E8713F5C48900212008 /* WelcomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		C9589A4713FB141800364F83 /* Venmo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venmo.h; sourceTree = "<group>"; };
@@ -139,8 +139,8 @@
 		C9BD6C6A13EEE06400F4D8F4 /* libVenmo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVenmo.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BD6C6D13EEE06400F4D8F4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C9BD6C7113EEE06400F4D8F4 /* Venmo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Venmo-Prefix.pch"; sourceTree = "<group>"; };
-		C9BD6C7213EEE06400F4D8F4 /* VenmoTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenmoTransaction.h; sourceTree = "<group>"; };
-		C9BD6C7313EEE06400F4D8F4 /* VenmoTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenmoTransaction.m; sourceTree = "<group>"; };
+		C9BD6C7213EEE06400F4D8F4 /* VenmoTransaction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = VenmoTransaction.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C9BD6C7313EEE06400F4D8F4 /* VenmoTransaction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = VenmoTransaction.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		C9BD6C7A13EEE06400F4D8F4 /* VenmoSpecs.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoSpecs.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BD6C8C13EEE06400F4D8F4 /* VenmoTransactionSpecs.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VenmoTransactionSpecs.m; sourceTree = "<group>"; };
 		C9BD6C9913EEE4C100F4D8F4 /* VenmoSpecs-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VenmoSpecs-Prefix.pch"; sourceTree = "<group>"; };

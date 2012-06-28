@@ -23,32 +23,13 @@
     return params;
 }
 
-- (id)objectOrNilForKey:(id)key {
-    id object = [self objectForKey:key];
-    return object == [NSNull null] ? nil : object;
-}
-
 - (BOOL)boolForKey:(id)key {
-    id object = [self objectOrNilForKey:key];
+    id object = [self objectForKey:key];
     if ([object respondsToSelector:@selector(boolValue)]) {
         return [object boolValue];
     } else {
-        return object != nil;
+        return object != nil && object != [NSNull null];
     }
-}
-
-- (NSUInteger)unsignedIntegerForKey:(id)aKey {
-    NSNumber *number = (NSNumber *)[self objectForKey:aKey];
-    if ([number respondsToSelector:@selector(unsignedIntegerValue)]) {
-        return [number unsignedIntegerValue];
-    } else {
-        return 0;
-    }
-}
-
-- (NSString *)stringForKey:(id)key {
-    id object = [self objectForKey:key];
-    return [object respondsToSelector:@selector(stringValue)] ? [object stringValue] : nil;
 }
 
 @end

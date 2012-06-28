@@ -10,12 +10,6 @@ describe(@"NSString+Venmo", ^{
     beforeEach(^{
         string = @"string";
     });
-
-    describe(@"-stringValue", ^{
-        it(@"returns self", ^{
-            [[[string stringValue] should] beIdenticalTo:string];
-        });
-    });
 });
 
 SPEC_END

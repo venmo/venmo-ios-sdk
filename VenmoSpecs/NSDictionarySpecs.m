@@ -34,20 +34,6 @@ describe(@"NSDictionary+Venmo", ^{
                       nil];
     });
 
-    describe(@"-objectOrNilForKey:", ^{
-        it(@"returns nil for a non-existant key", ^{
-            [[dictionary objectOrNilForKey:@"non-existant key"] shouldBeNil];
-        });
-
-        it(@"returns nil for [NSNull null]", ^{
-            [[dictionary objectOrNilForKey:@"null"] shouldBeNil];
-        });
-
-        it(@"returns objectForKey for all other objects", ^{
-            [[[dictionary objectOrNilForKey:@"object"] should] beIdenticalTo:object];
-        });
-    });
-
     describe(@"-boolForKey:", ^{
         it(@"returns NO for a non-existant key", ^{
             [[theValue([dictionary boolForKey:@"non-existant key"]) should] equal:theValue(NO)];
@@ -68,28 +54,6 @@ describe(@"NSDictionary+Venmo", ^{
         it(@"returns YES for all other objects", ^{
             [[theValue([dictionary boolForKey:@"object"]) should] equal:theValue(YES)];
         });
-    });
-
-    describe(@"-unsignedIntegerForKey:", ^{
-        [[theValue([dictionary unsignedIntegerForKey:@"non-existant key"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"object"]) should] equal:theValue(0)];
-
-        [[theValue([dictionary unsignedIntegerForKey:@"zero_number"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"positive_number"]) should] equal:theValue(1)];
-        [[theValue([dictionary unsignedIntegerForKey:@"negative_number"]) should] equal:theValue(0)];
-
-        [[theValue([dictionary unsignedIntegerForKey:@"zero_decimal_number"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"negative_decimal_number"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"negative_decimal_number"]) should] equal:theValue(0)];
-
-        [[theValue([dictionary unsignedIntegerForKey:@"zero_string"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"positive_integer_string"]) should] equal:theValue(1)];
-        [[theValue([dictionary unsignedIntegerForKey:@"negative_integer_string"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"decimal_string"]) should] equal:theValue(0)];
-        [[theValue([dictionary unsignedIntegerForKey:@"negative_decimal_string"]) should] equal:theValue(0)];
-
-        NSNumber *number = [NSNumber numberWithUnsignedInteger:1];
-        [[number should] equal:[NSNumber numberWithInteger:1]];
     });
 });
 

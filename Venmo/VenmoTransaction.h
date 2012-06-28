@@ -7,10 +7,10 @@ typedef enum {
 
 @interface VenmoTransaction : NSObject
 
-@property (nonatomic) NSUInteger id;
+@property (copy, nonatomic) NSString *transactionID;
 @property (nonatomic) VenmoTransactionType type;
-@property (nonatomic) NSUInteger fromUserId;        // set on completion
-@property (nonatomic) NSUInteger toUserId;          // set on completion
+@property (copy, nonatomic) NSString *fromUserID;        // set on completion
+@property (copy, nonatomic) NSString *toUserID;          // set on completion
 @property (nonatomic) CGFloat amount;
 @property (copy, nonatomic) NSString *note;
 @property (copy, nonatomic) NSString *toUserHandle; // cell number, email, @twitter, Venmo username

@@ -147,8 +147,9 @@
 #pragma mark - Receiving a Transaction @private
 
 - (VenmoTransaction *)transactionWithURL:(NSURL *)url {
+    // TODO: Rm this try/catch.
     @try {
-        NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
+        NSString *signedRequest = [[url queryDictionary] objectForKey:@"signed_request"];
         DLog(@"signedRequest: %@", signedRequest);
         NSArray *decodedSignedRequest = [self decodeSignedRequest:signedRequest];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);

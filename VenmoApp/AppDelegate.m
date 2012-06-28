@@ -42,12 +42,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
         if (transaction) {
             NSString *success = (transaction.success ? @"Success" : @"Failure");
             NSString *title = [@"Transaction " stringByAppendingString:success];
-            NSString *message = [@"payment_id: " stringByAppendingFormat:@"%i. %i %@ %@ (%i) $%@ %@",
-                                 transaction.id,
-                                 transaction.fromUserId,
+            NSString *message = [@"payment_id: " stringByAppendingFormat:@"%@. %@ %@ %@ (%@) $%@ %@",
+                                 transaction.transactionID,
+                                 transaction.fromUserID,
                                  transaction.typeStringPast,
                                  transaction.toUserHandle,
-                                 transaction.toUserId,
+                                 transaction.toUserID,
                                  transaction.amountString,
                                  transaction.note];
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:title message:message

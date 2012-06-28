@@ -10,7 +10,7 @@ describe(@"VenmoTransaction", ^{
 
     beforeEach(^{
         transaction = [[VenmoTransaction alloc] init];
-        transaction.id = 1234;
+        transaction.transactionID = @"1234";
         transaction.type = VenmoTransactionTypePay;
         transaction.amount = 3.45f;
         transaction.note = @"hello world";
@@ -20,7 +20,7 @@ describe(@"VenmoTransaction", ^{
     it(@"should exist", ^{ [transaction shouldNotBeNil]; });
 
     describe(@"properties", ^{
-        specify(^{ [[theValue(transaction.id) should] equal:theValue(1234)]; });
+        specify(^{ [[transaction.transactionID should] equal:@"1234"]; });
         specify(^{ [[theValue(transaction.type) should]
                              equal:theValue(VenmoTransactionTypePay)]; });
         specify(^{ [[theValue(transaction.amount) should] equal:theValue(3.45f)]; });
