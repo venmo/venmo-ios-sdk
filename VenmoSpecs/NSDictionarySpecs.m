@@ -34,6 +34,20 @@ describe(@"NSDictionary+Venmo", ^{
                       nil];
     });
 
+    describe(@"-objectOrNilForKey:", ^{
+        it(@"returns nil for a non-existant key", ^{
+            [[dictionary objectOrNilForKey:@"non-existant key"] shouldBeNil];
+        });
+
+        it(@"returns nil for [NSNull null]", ^{
+            [[dictionary objectOrNilForKey:@"null"] shouldBeNil];
+        });
+
+        it(@"returns objectForKey for all other objects", ^{
+            [[[dictionary objectOrNilForKey:@"object"] should] beIdenticalTo:object];
+        });
+    });
+
     describe(@"-boolForKey:", ^{
         it(@"returns NO for a non-existant key", ^{
             [[theValue([dictionary boolForKey:@"non-existant key"]) should] equal:theValue(NO)];

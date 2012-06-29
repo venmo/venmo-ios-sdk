@@ -51,12 +51,12 @@
     DLog(@"transaction Dictionary: %@", dictionary);
     if (!dictionary) return nil;
     VenmoTransaction *transaction = [[VenmoTransaction alloc] init];
-    transaction.transactionID = [dictionary objectForKey:@"payment_id"];
+    transaction.transactionID = [dictionary stringForKey:@"payment_id"];
     transaction.type          = [VenmoTransaction typeWithString:[dictionary objectForKey:@"verb"]];
-    transaction.fromUserID    = [dictionary objectForKey:@"actor_user_id"];
-    transaction.toUserID      = [dictionary objectForKey:@"target_user_id"];
-    transaction.amount        = [[dictionary objectForKey:@"amount"] floatValue];
-    transaction.note          = [dictionary objectForKey:@"note"];
+    transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
+    transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
+    transaction.amount        = [[dictionary objectOrNilForKey:@"amount"] floatValue];
+    transaction.note          = [dictionary stringForKey:@"note"];
     transaction.success       = [dictionary boolForKey:@"success"];
     return transaction;
 }

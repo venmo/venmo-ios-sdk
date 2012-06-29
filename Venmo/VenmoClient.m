@@ -132,7 +132,7 @@
                                           @" failed to validate the transaction."]
                       recoverySuggestion:[NSString stringWithFormat:
                                           @"Please contact %@.", self.appName]];
-        DLog(@"error_message=%@", [[url queryDictionary] objectForKey:@"error_message"]);
+        DLog(@"error_message=%@", [[url queryDictionary] stringForKey:@"error_message"]);
     }
     completion(transaction, error);
     return success;
@@ -149,7 +149,7 @@
 - (VenmoTransaction *)transactionWithURL:(NSURL *)url {
     // TODO: Rm this try/catch.
     @try {
-        NSString *signedRequest = [[url queryDictionary] objectForKey:@"signed_request"];
+        NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
         DLog(@"signedRequest: %@", signedRequest);
         NSArray *decodedSignedRequest = [self decodeSignedRequest:signedRequest];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
