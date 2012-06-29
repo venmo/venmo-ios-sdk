@@ -42,6 +42,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if ([self.webView isLoading]) {
         [activityView show];
     }

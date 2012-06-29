@@ -2,7 +2,7 @@
 
 @interface NSDictionary (Venmo)
 
-+ (NSMutableDictionary *)dictionaryWithFormEncodedString:(NSString *)encodedString;
++ (NSMutableDictionary *)dictionaryWithFormURLEncodedString:(NSString *)encodedString;
 
 - (BOOL)boolForKey:(id)key;
 

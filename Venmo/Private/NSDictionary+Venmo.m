@@ -3,22 +3,18 @@
 
 @implementation NSDictionary (Venmo)
 
-+ (NSMutableDictionary *)dictionaryWithFormEncodedString:(NSString *)encodedString {
++ (NSMutableDictionary *)dictionaryWithFormURLEncodedString:(NSString *)URLEncodedString {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
     NSCharacterSet *separators = [NSCharacterSet characterSetWithCharactersInString:@"&;"];
-    NSArray *pairs = [encodedString componentsSeparatedByCharactersInSet:separators];
+    NSArray *pairs = [URLEncodedString componentsSeparatedByCharactersInSet:separators];
 
     for (NSString *keyValueString in pairs) {
         if ([keyValueString length] == 0) continue;
         NSArray *keyValueArray = [keyValueString componentsSeparatedByString:@"="];
-        NSString *key = [[keyValueArray objectAtIndex:0] stringByUnescapingFromURLQuery];
-        NSString *value = [keyValueArray count] > 1 ?
-        [[keyValueArray objectAtIndex:1] stringByUnescapingFromURLQuery] : @"";
+        NSString *key = [[keyValueArray objectAtIndex:0] formURLDecodedString];
+        NSString *value = ([keyValueArray count] > 1 ?
+                           [[keyValueArray objectAtIndex:1] formURLDecodedString] : @"");
         [params setObject:value forKey:key];
-//        // The below is technically correct, but the line above is simpler (and like Rack).
-//        NSMutableArray *values = [params objectForKey:key];
-//        values ? [values addObject:value] :
-//        [params setObject:[NSMutableArray arrayWithObject:value] forKey:key];
     }
     return params;
 }

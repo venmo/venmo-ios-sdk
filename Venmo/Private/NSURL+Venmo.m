@@ -3,9 +3,9 @@
 
 @implementation NSURL (Venmo)
 
-// Source: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/NSURL+SSToolkitAdditions.m
+// Ref: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/NSURL+SSToolkitAdditions.m
 - (NSDictionary *)queryDictionary {
-    return [NSDictionary dictionaryWithFormEncodedString:self.query];
+    return [NSDictionary dictionaryWithFormURLEncodedString:[self query]];
 }
 
 @end

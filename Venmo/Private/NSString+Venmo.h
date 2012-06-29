@@ -2,6 +2,6 @@
 
 @interface NSString (Venmo)
 
-- (NSString *)stringByUnescapingFromURLQuery;
+- (NSString *)formURLDecodedString;
 
 @end

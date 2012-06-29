@@ -466,7 +466,7 @@
 		C9BD6C6113EEE06400F4D8F4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 			};
 			buildConfigurationList = C9BD6C6413EEE06400F4D8F4 /* Build configuration list for PBXProject "Venmo" */;
 			compatibilityVersion = "Xcode 3.2";
