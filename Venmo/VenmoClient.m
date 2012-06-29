@@ -72,12 +72,14 @@
     NSURL *transactionURL;
     if (!forceWeb) {
         transactionURL = [self venmoURLWithPath:URLPath];
+        DLog(@"transactionURL: %@", transactionURL);
         if ([[UIApplication sharedApplication] canOpenURL:transactionURL]) {
             [[UIApplication sharedApplication] openURL:transactionURL];
             return nil;
         }
     }
     transactionURL = [self webURLWithPath:URLPath];
+    DLog(@"transactionURL: %@", transactionURL);
     VenmoViewController *viewController = [[VenmoViewController alloc] init];
     viewController.transactionURL = transactionURL;
     viewController.venmoClient = self;
