@@ -27,7 +27,7 @@
 
     venmoTransaction = [[VenmoTransaction alloc] init];
     venmoTransaction.type = VenmoTransactionTypePay;
-    venmoTransaction.amount = 3.45f;
+    venmoTransaction.amount = [NSDecimalNumber decimalNumberWithString:@"3.45"];
     venmoTransaction.note = @"hello world";
     venmoTransaction.toUserHandle = @"mattdipasquale";
 

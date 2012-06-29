@@ -21,7 +21,7 @@ describe(@"VenmoClient", ^{
                    [[UIDevice currentDevice] uniqueIdentifier]];
         transaction = [[VenmoTransaction alloc] init];
         transaction.type = VenmoTransactionTypePay;
-        transaction.amount = 3.45f;
+        transaction.amount = [NSDecimalNumber decimalNumberWithString:@"3.45"];
         transaction.note = @"hello world";
         transaction.toUserHandle = @"shreyanstest";
     });

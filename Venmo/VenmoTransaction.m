@@ -4,7 +4,9 @@
 #import "VenmoTransaction.h"
 #import "VenmoTransaction_Internal.h"
 
-@implementation VenmoTransaction
+@implementation VenmoTransaction {
+    NSNumberFormatter *amountNumberFormatter;
+}
 
 @synthesize transactionID;
 @synthesize type;
@@ -29,7 +31,15 @@
 }
 
 - (NSString *)amountString {
-    return [NSString stringWithFormat:@"%.2f", amount];
+    // TODO: Consider making amountNumberFormatter a static variable and adding another static
+    // variable called transactionCount, incremented in init & decremented in dealloc.
+    // Then, in dealloc, if transactionCount == 0, set amountNumberFormatter = nil.
+    if (!amountNumberFormatter) {
+        amountNumberFormatter = [[NSNumberFormatter alloc] init];
+        [amountNumberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+        [amountNumberFormatter setMinimumFractionDigits:2];
+    }
+    return [amountNumberFormatter stringFromNumber:amount];
 }
 
 #pragma mark - Internal
@@ -55,7 +65,8 @@
     transaction.type          = [VenmoTransaction typeWithString:[dictionary objectForKey:@"verb"]];
     transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
     transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
-    transaction.amount        = [[dictionary objectOrNilForKey:@"amount"] floatValue];
+    transaction.amount        = [NSDecimalNumber decimalNumberWithString:
+                                 [dictionary stringForKey:@"amount"]];
     transaction.note          = [dictionary stringForKey:@"note"];
     transaction.success       = [dictionary boolForKey:@"success"];
     return transaction;

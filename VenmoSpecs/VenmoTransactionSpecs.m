@@ -12,7 +12,7 @@ describe(@"VenmoTransaction", ^{
         transaction = [[VenmoTransaction alloc] init];
         transaction.transactionID = @"1234";
         transaction.type = VenmoTransactionTypePay;
-        transaction.amount = 3.45f;
+        transaction.amount = [NSDecimalNumber decimalNumberWithString:@"3.45"];
         transaction.note = @"hello world";
         transaction.toUserHandle = @"shreyanstest";
     });
@@ -23,7 +23,7 @@ describe(@"VenmoTransaction", ^{
         specify(^{ [[transaction.transactionID should] equal:@"1234"]; });
         specify(^{ [[theValue(transaction.type) should]
                              equal:theValue(VenmoTransactionTypePay)]; });
-        specify(^{ [[theValue(transaction.amount) should] equal:theValue(3.45f)]; });
+        specify(^{ [[transaction.amount should] equal:[NSDecimalNumber decimalNumberWithString:@"3.45"]]; });
         specify(^{ [[transaction.note should] equal:@"hello world"]; });
         specify(^{ [[transaction.toUserHandle should] equal:@"shreyanstest"]; });
     });

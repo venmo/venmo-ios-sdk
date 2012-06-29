@@ -9,9 +9,9 @@ typedef enum {
 
 @property (copy, nonatomic) NSString *transactionID;
 @property (nonatomic) VenmoTransactionType type;
-@property (copy, nonatomic) NSString *fromUserID;        // set on completion
-@property (copy, nonatomic) NSString *toUserID;          // set on completion
-@property (nonatomic) CGFloat amount;
+@property (copy, nonatomic) NSString *fromUserID;
+@property (copy, nonatomic) NSString *toUserID;
+@property (strong, nonatomic) NSDecimalNumber *amount;
 @property (copy, nonatomic) NSString *note;
 @property (copy, nonatomic) NSString *toUserHandle; // cell number, email, @twitter, Venmo username
 @property (nonatomic) BOOL success;
