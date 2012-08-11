@@ -89,25 +89,35 @@
 #pragma mark - Sending a Transaction @private
 
 - (NSString *)URLPathWithTransaction:(VenmoTransaction *)transaction {
-    return [NSString stringWithFormat:@"/?client=ios&"
-            "app_name=%@&app_id=%@%@&txn=%@&amount=%@&note=%@&recipients=%@&device_id=%@",
+    NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
+            "app_name=%@&app_id=%@%@&device_id=%@",
             appName,
             appId,
             (appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", appLocalId] : @""),
-            transaction.typeString,
-            transaction.amountString,
-            transaction.note,
-            transaction.toUserHandle,
             [[UIDevice currentDevice] uniqueIdentifier]];
+    if (transaction.amount) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, transaction.amountString];
+    }
+    if (transaction.typeString) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&txn=%@", pathAndQuery, transaction.typeString];
+    }
+    if (transaction.toUserHandle) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&recipients=%@", pathAndQuery, transaction.toUserHandle];
+    }
+    if (transaction.note) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, transaction.note];
+    }
+    return pathAndQuery;
 }
 
 - (NSURL *)venmoURLWithPath:(NSString *)path {
-    return [[NSURL alloc] initWithScheme:@"venmosdk" host:@"venmo.com" path:path];
+    return [[NSURL alloc] initWithString: [NSString stringWithFormat:@"venmosdk://venmo.com%@", path]];
 }
 
 - (NSURL *)webURLWithPath:(NSString *)path {
     path = [@"/touch/signup_to_pay" stringByAppendingString:path];
-    return [[NSURL alloc] initWithScheme:@"https" host:@"venmo.com" path:path];
+    NSString *unEncodedURL = [NSString stringWithFormat:@"%@://%@%@", @"https", @"venmo.com", path];
+    return [[NSURL alloc] initWithString:[unEncodedURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 #pragma mark - Receiving a Transaction

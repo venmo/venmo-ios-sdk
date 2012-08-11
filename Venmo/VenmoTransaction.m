@@ -31,6 +31,9 @@
 }
 
 - (NSString *)amountString {
+    if (!amount) {
+        return @""; // we don't want to get the string "(null)"
+    }
     // TODO: Consider making amountNumberFormatter a static variable and adding another static
     // variable called transactionCount, incremented in init & decremented in dealloc.
     // Then, in dealloc, if transactionCount == 0, set amountNumberFormatter = nil.
