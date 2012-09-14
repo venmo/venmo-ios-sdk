@@ -4,8 +4,15 @@ Venmo iOS SDK
 This open-source Cocoa Touch Static Library allows users of your app to pay with Venmo.
 
 
-[Create a Venmo Application][1]
--------------------------------
+Create a Venmo Application
+--------------------------
+
+First, create a new Venmo Application by visiting https://venmo.com/ 
+
+Login and go to: Account > Developers > [New Application][1].
+
+
+![Create new application](https://dl.dropbox.com/u/800/Captured/GbalC.png)
 
 
 Project Setup
