@@ -17,6 +17,10 @@ Login and go to: Account > Developers > [New Application][1].
 Project Setup
 -------------
 
+**NB: Follow these instructions *exactly* unless you know what you're doing.**
+
+### Ensure you have the latest (released or beta) version of Xcode installed.
+
 ### Add Venmo as a [Git submodule][2] to the Libraries directory.
 
 This will help you [pull in updates][3] and [make contributions][4].
@@ -80,6 +84,14 @@ Using Venmo in Your App
 * [Handle the redirect back to your app][15].
 
 
+Troubleshooting
+---------------
+
+* `#import <Venmo/Venmo.h>` causes the compile-time error `'Venmo/Venmo.h' file not found`.
+
+   This means the Header Search Path build setting doesn't match the Git submodule path (in `.gitmodules`). Both should be `Libraries/Venmo`. The Project Navigator group structure is irrelevant because it can differ from the file system's [directory structure][18], which is what really matters.
+
+
 Venmo Sample Apps
 -----------------
 
@@ -138,3 +150,4 @@ Then, to pull in remote updates, you can just do:
   [15]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/AppDelegate.m#L39-58
   [16]: https://github.com/venmo/venmo-ios-sdk/tree/master/VenmoApp
   [17]: https://github.com/venmo/drinks-on-me
+  [18]: http://en.wikipedia.org/wiki/Directory_structure
