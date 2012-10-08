@@ -1,7 +1,7 @@
 Venmo iOS SDK
 =============
 
-This open-source Cocoa Touch Static Library allows users of your app to pay with Venmo.
+This open-source Cocoa Touch Static Library allows users of your app to pay or charge with Venmo. It switches to the Venmo app if it's installed on the device. Otherwise, it opens Venmo in a web view. When the transaction is complete, it switches back to your app.
 
 
 Create a Venmo Application
@@ -10,7 +10,6 @@ Create a Venmo Application
 First, create a new Venmo Application by visiting https://venmo.com/ 
 
 Login and go to: Account > Developers > [New Application][1].
-
 
 ![Create new application](https://dl.dropbox.com/u/800/Captured/GbalC.png)
 
@@ -27,75 +26,53 @@ This will help you [pull in updates][3] and [make contributions][4].
     # Let's make a new directory called Libraries for third-party code.
     git submodule add https://github.com/venmo/venmo-ios-sdk.git Libraries/Venmo
     git submodule update --init
-    git commit -am 'Add Venmo as a submodule.'
+    git commit -m 'Add Libraries/Venmo Git submodule.'
 
 
-### Add Venmo to Your Xcode Project.
+### Add the `Libraries` Directory to Your Xcode Project.
 
-#### Add the Libraries group to your Project.
-
-In Xcode, select your project at the top of the Project Navigator (⌘1), and press ⌥⌘N to create a new group. Name it, e.g., "Libraries." Then, select the Libraries group, press ⌥⌘0 to Show Utilities, click the small icon to the right just below Path, choose the Libraries directory. Drag the Libraries group to move it before the Frameworks group.
-
-#### Add Venmo.xcodeproj inside the Libraries group.
-
-With the Libraries group selected, press ⌥⌘A to add files, select `Venmo.xcodeproj` in `Libraries/Venmo`, and confirm that "Copy items into destination group's folder (if needed)" is unchecked, "Create groups for any added folders" is selected, and all targets are unchecked. Then, click Add.
+In Xcode, select your project (DrinksOnMe) at the top of the Project Navigator (⌘1), and press ⌥⌘A (File > Add Files to "DrinksOnMe"...). Select the `Libraries` directory (in `~/Projects/DrinksOnMe/`), and confirm that "Copy items..." is unchecked, "Create groups..." is selected, and all targets are unchecked. Then, click Add. Finally, for finess, drag & drop the Libraries group before the Frameworks group.
 
 In Terminal, review and commit your changes:
 
     git diff -w -M --color-words HEAD
-    git commit -am 'Add Libraries group. Put Venmo.xcodeproj inside.'
+    git commit -am 'Add Libraries/Venmo to Xcode project.'
 
 
-### Edit Your Application Project Settings.
+### Edit Your Target.
 
-In Xcode, select your main Xcode project at the top of the Project Navigator (⌘1), and then, select the project (or target) to which you want to add Venmo. (To allow all your targets, e.g., your tests target (along with your application target), to import Venmo, apply these settings at the project level.)
-
-#### [Edit Build Phases][5].
-
-Select the "Build Phases" tab.
-
-* Under the "Target Dependencies" group, click the plus button, select Venmo from the menu, and click Add.
-* Under the "Link Binary With Libraries" group, click the plus button, select `libVenmo.a` from the menu, and click Add.
-
-#### [Edit Build Settings][6].
-
-Select the "Build Settings" tab. Make sure "All" is selected in the top left of the bar under the tabs.
-
-* Search for "Header Search Paths," click on it, hit enter, paste `Libraries/Venmo`, and hit enter. (This leaves "Recursive" unchecked.)
-* Do the same for "Other Linker Flags," except paste [`-ObjC -force_load ${BUILT_PRODUCTS_DIR}/libVenmo.a`][7]
+In Xcode, select your project (DrinksOnMe) at the top of the Project Navigator (⌘1), and then, select the target (DrinksOnMe) to which you want to add Venmo.
 
 #### Add the Venmo URL Type
 
 Select the "Info" tab. Add a URL Type with Identifier: `Venmo`, Role: `Editor`, and URL Schemes: `venmo1234`, where `1234` is your app ID.
 
+#### [Edit Build Settings][6].
+
+Select the "Build Settings" tab. (Make sure "All" is selected in the top left.)
+
+* Search for "Header Search Paths," click on it, hit enter, paste `Libraries/Venmo`, and hit enter. (non-recursive)
+* Do the same for "Other Linker Flags," except paste [`-ObjC -force_load ${BUILT_PRODUCTS_DIR}/libVenmo.a`][7].
+
+#### [Edit Build Phases][5].
+
+Select the "Build Phases" tab.
+
+* Add Venmo to the "Target Dependencies" build phase.
+* Add `libVenmo.a` to the "Link Binary With Libraries" build phase.
+
 In Terminal, review and commit your changes:
 
     git diff -w -M --color-words HEAD
-    git commit -am 'Edit target info, phases & settings for Venmo.'
+    git commit -am 'Edit target info, settings, and phases for Venmo.'
 
 
 Using Venmo in Your App
 -----------------------
 
-* Include Venmo in any files that use it:
+* Import Venmo in any files that use it (and, to [reduce build times][8], in the precompiled header file, e.g., `DrinksOnMe-Prefix.pch`).
 
         #import <Venmo/Venmo.h>
-
-* To [reduce build times][8], create a precompiled header file. E.g., `AppName-Prefix.pch`:
-
-        #include "AppName-Prefix.pch"
-
-        #ifdef __OBJC__
-
-        // Frameworks
-        #import <Foundation/Foundation.h>
-
-        // Libraries
-        #import <Venmo/Venmo.h>
-
-        #endif
-
-    Specify the path to this precompiled header in your test target's Build Settings under Prefix Header.
 
 * [Instantiate a `VenmoClient`][9]. Check out [`VenmoClient.h`][10].
 * [Instantiate a `VenmoTransaction`][11]. Check out [`VenmoTransaction.h`][12].
@@ -116,7 +93,7 @@ Venmo Sample Apps
 Pull in remote updates by running these commands from your project root directory:
 
     git submodule foreach 'git checkout master; git pull --rebase'
-    git commit -am 'Update submodules to latest commit.'
+    git commit -am 'Update submodules to latest commits.'
 
 You can add an alias (to `~/.gitconfig`) for the first of the two commands above:
 
