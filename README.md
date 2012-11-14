@@ -1,5 +1,5 @@
-Venmo iOS SDK
-=============
+Venmo Your Friends iOS Library
+==============================
 
 This open-source Cocoa Touch Static Library allows users of your app to pay or charge with Venmo. It switches to the Venmo app if it's installed on the device. Otherwise, it opens Venmo in a web view. When the transaction is complete, it switches back to your app.
 
@@ -28,7 +28,7 @@ This will help you [pull in updates][3] and [make contributions][4].
     cd ~/Projects/DrinksOnMe/ # sample project root directory
 
     # Let's make a new directory called Libraries for third-party code.
-    git submodule add https://github.com/venmo/venmo-ios-sdk.git Libraries/Venmo
+    git submodule add https://github.com/venmo/venmo-your-friends-ios.git Libraries/Venmo
     git submodule update --init
     git commit -m 'Add Libraries/Venmo Git submodule.'
 
@@ -99,7 +99,7 @@ Venmo Sample Apps
 * [Drinks On Me][17]
 
 
-<a name="update">Updating the Venmo iOS SDK</a>
+<a name="update">Updating the Venmo Your Friends iOS Library</a>
 -----------------------------------------------
 
 Pull in remote updates by running these commands from your project root directory:
@@ -107,7 +107,7 @@ Pull in remote updates by running these commands from your project root director
     git submodule foreach 'git checkout master; git pull --rebase'
     git commit -am 'Update submodules to latest commits.'
 
-You can add an alias (to `~/.gitconfig`) for the first of the two commands above:
+Some of us find it useful to add an alias (to `~/.gitconfig`) for the first of the two commands above:
 
     git config --global alias.sup "submodule foreach 'git checkout master; git pull --rebase'"
 
@@ -116,7 +116,7 @@ Then, to pull in remote updates, you can just do:
     git sup
 
 
-<a name="contribute">Contributing to the Venmo iOS SDK</a>
+<a name="contribute">Contributing to the Venmo Your Friends iOS Library</a>
 ----------------------------------------------------------
 
 * Commit your changes.
@@ -127,7 +127,7 @@ Then, to pull in remote updates, you can just do:
 
 * Fork this repo on GitHub, add your fork as a remote, and push.
 
-        git remote add myusername git@github.com:myuser/venmo-ios-sdk.git
+        git remote add myusername git@github.com:myuser/venmo-your-friends-ios.git
         git push myusername master
 
 * Send Venmo a pull request on GitHub.
@@ -141,13 +141,13 @@ Then, to pull in remote updates, you can just do:
   [6]: http://j.mp/mR5Jco
   [7]: http://developer.apple.com/library/mac/#qa/qa1490/_index.html
   [8]: http://disanji.net/iOS_Doc/#documentation/DeveloperTools/Conceptual/XcodeBuildSystem/800-Reducing_Build_Times/bs_speed_up_build.html
-  [9]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/AppDelegate.m#L18-19
-  [10]: https://github.com/venmo/venmo-ios-sdk/blob/master/Venmo/VenmoClient.h
-  [11]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/WelcomeViewController.m#L28-32
-  [12]: https://github.com/venmo/venmo-ios-sdk/blob/master/Venmo/VenmoTransaction.h
-  [13]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/WelcomeViewController.m#L63-64
-  [14]: https://github.com/venmo/venmo-ios-sdk/blob/master/Venmo/VenmoViewController.h
-  [15]: https://github.com/venmo/venmo-ios-sdk/blob/master/VenmoApp/AppDelegate.m#L39-58
-  [16]: https://github.com/venmo/venmo-ios-sdk/tree/master/VenmoApp
+  [9]: https://github.com/venmo/venmo-your-friends-ios/blob/master/VenmoApp/AppDelegate.m#L18-19
+  [10]: https://github.com/venmo/venmo-your-friends-ios/blob/master/Venmo/VenmoClient.h
+  [11]: https://github.com/venmo/venmo-your-friends-ios/blob/master/VenmoApp/WelcomeViewController.m#L28-32
+  [12]: https://github.com/venmo/venmo-your-friends-ios/blob/master/Venmo/VenmoTransaction.h
+  [13]: https://github.com/venmo/venmo-your-friends-ios/blob/master/VenmoApp/WelcomeViewController.m#L63-64
+  [14]: https://github.com/venmo/venmo-your-friends-ios/blob/master/Venmo/VenmoViewController.h
+  [15]: https://github.com/venmo/venmo-your-friends-ios/blob/master/VenmoApp/AppDelegate.m#L39-58
+  [16]: https://github.com/venmo/venmo-your-friends-ios/tree/master/VenmoApp
   [17]: https://github.com/venmo/drinks-on-me
   [18]: http://en.wikipedia.org/wiki/Directory_structure
