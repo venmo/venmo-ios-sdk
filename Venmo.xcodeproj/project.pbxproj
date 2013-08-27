@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		75BA94BE17CCF406005944C7 /* NSString+MD5Addition.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BA94BA17CCF406005944C7 /* NSString+MD5Addition.h */; };
-		75BA94BF17CCF406005944C7 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BA94BB17CCF406005944C7 /* NSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		75BA94C017CCF406005944C7 /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 75BA94BC17CCF406005944C7 /* UIDevice+IdentifierAddition.h */; };
-		75BA94C117CCF406005944C7 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 75BA94BD17CCF406005944C7 /* UIDevice+IdentifierAddition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		75DEB9E217CD040F0050B284 /* NSString+MD5Addition.h in Headers */ = {isa = PBXBuildFile; fileRef = 75DEB9E017CD040F0050B284 /* NSString+MD5Addition.h */; };
+		75DEB9E317CD040F0050B284 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DEB9E117CD040F0050B284 /* NSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		75DEB9E817CD04190050B284 /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = 75DEB9E617CD04190050B284 /* UIDevice+IdentifierAddition.h */; };
+		75DEB9E917CD04190050B284 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DEB9E717CD04190050B284 /* UIDevice+IdentifierAddition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		C923BC8A1412A60600E8B194 /* NSBundle+Venmo.h in Headers */ = {isa = PBXBuildFile; fileRef = C923BC881412A60600E8B194 /* NSBundle+Venmo.h */; settings = {ATTRIBUTES = (); }; };
 		C923BC8B1412A60600E8B194 /* NSBundle+Venmo.m in Sources */ = {isa = PBXBuildFile; fileRef = C923BC891412A60600E8B194 /* NSBundle+Venmo.m */; };
 		C93E83551423F995001FD5CE /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = C93E83541423F995001FD5CE /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -114,6 +116,10 @@
 		75BA94BB17CCF406005944C7 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5Addition.m"; path = "UniqueIdentifier/Classes/NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		75BA94BC17CCF406005944C7 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+IdentifierAddition.h"; path = "UniqueIdentifier/Classes/UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		75BA94BD17CCF406005944C7 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "UniqueIdentifier/Classes/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		75DEB9E017CD040F0050B284 /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
+		75DEB9E117CD040F0050B284 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
+		75DEB9E617CD04190050B284 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
+		75DEB9E717CD04190050B284 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		C923BC881412A60600E8B194 /* NSBundle+Venmo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Venmo.h"; sourceTree = "<group>"; };
 		C923BC891412A60600E8B194 /* NSBundle+Venmo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Venmo.m"; sourceTree = "<group>"; };
 		C93E83531423F995001FD5CE /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -376,10 +382,14 @@
 				C96ED75013FC83C30033EF3D /* NSDictionary+Venmo.m */,
 				C9C04BE8141E40DA0033DDFF /* NSError+Venmo.h */,
 				C9C04BE9141E40DA0033DDFF /* NSError+Venmo.m */,
+				75DEB9E017CD040F0050B284 /* NSString+MD5Addition.h */,
+				75DEB9E117CD040F0050B284 /* NSString+MD5Addition.m */,
 				C96ED74B13FC83A20033EF3D /* NSString+Venmo.h */,
 				C96ED74C13FC83A20033EF3D /* NSString+Venmo.m */,
 				C9842F12140EE7A5000A5924 /* NSURL+Venmo.h */,
 				C9842F13140EE7A5000A5924 /* NSURL+Venmo.m */,
+				75DEB9E617CD04190050B284 /* UIDevice+IdentifierAddition.h */,
+				75DEB9E717CD04190050B284 /* UIDevice+IdentifierAddition.m */,
 				C94D4A9013FDD5CB00CE8EC0 /* VenmoActivityView_Internal.h */,
 				C94D4A9113FDD5CB00CE8EC0 /* VenmoActivityView.m */,
 				C9CCEF4813F9720500654E24 /* VenmoBase64_Internal.h */,
@@ -401,6 +411,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75DEB9E217CD040F0050B284 /* NSString+MD5Addition.h in Headers */,
 				C9589A4813FB141800364F83 /* Venmo.h in Headers */,
 				C9DB58F613F0941200EB4C16 /* VenmoClient.h in Headers */,
 				C9C04BEE141EE9D50033DDFF /* VenmoErrors.h in Headers */,
@@ -415,6 +426,7 @@
 				C9842F14140EE7A6000A5924 /* NSURL+Venmo.h in Headers */,
 				C94D4A9213FDD5CB00CE8EC0 /* VenmoActivityView_Internal.h in Headers */,
 				C9CCEF4A13F9720500654E24 /* VenmoBase64_Internal.h in Headers */,
+				75DEB9E817CD04190050B284 /* UIDevice+IdentifierAddition.h in Headers */,
 				C9DB58EE13F0846000EB4C16 /* VenmoClient_Private.h in Headers */,
 				C9C04C0E142067D20033DDFF /* VenmoClient_Internal.h in Headers */,
 				C9A23603141D41ED00C9A8FF /* VenmoHMAC_SHA256_Internal.h in Headers */,
@@ -588,19 +600,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75DEB9E917CD04190050B284 /* UIDevice+IdentifierAddition.m in Sources */,
 				C923BC8B1412A60600E8B194 /* NSBundle+Venmo.m in Sources */,
+				75DEB9E317CD040F0050B284 /* NSString+MD5Addition.m in Sources */,
 				C96ED75213FC83C30033EF3D /* NSDictionary+Venmo.m in Sources */,
 				C9C04BEB141E40DB0033DDFF /* NSError+Venmo.m in Sources */,
 				C96ED74E13FC83A20033EF3D /* NSString+Venmo.m in Sources */,
 				C9842F15140EE7A6000A5924 /* NSURL+Venmo.m in Sources */,
 				C94D4A9313FDD5CB00CE8EC0 /* VenmoActivityView.m in Sources */,
 				C9CCEF4B13F9720500654E24 /* VenmoBase64.m in Sources */,
-				75BA94BF17CCF406005944C7 /* NSString+MD5Addition.m in Sources */,
 				C9A23605141D425F00C9A8FF /* VenmoHMAC_SHA256.m in Sources */,
 				C9DB58F713F0941200EB4C16 /* VenmoClient.m in Sources */,
 				C9C04BEF141EE9D50033DDFF /* VenmoErrors.m in Sources */,
 				C9BD6C7413EEE06400F4D8F4 /* VenmoTransaction.m in Sources */,
-				75BA94C117CCF406005944C7 /* UIDevice+IdentifierAddition.m in Sources */,
 				C9DB590A13F18BD000EB4C16 /* VenmoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
