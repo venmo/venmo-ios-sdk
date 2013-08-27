@@ -4,3 +4,6 @@
 [submodule "Libraries/JSONKit"]
 	path = Libraries/JSONKit
 	url = https://github.com/johnezang/JSONKit.git
+[submodule "Libraries/UniqueIdentifier"]
+	path = Libraries/UniqueIdentifier
+	url = https://github.com/gekitz/UIDevice-with-UniqueIdentifier-for-iOS-5.git

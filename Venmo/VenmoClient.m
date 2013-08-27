@@ -14,6 +14,10 @@
 #import "VenmoViewController_Internal.h"
 #import "VenmoViewController.h"
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
+#import "UIDevice+IdentifierAddition.h"
+#endif
+
 @implementation VenmoClient
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
@@ -89,12 +93,24 @@
 #pragma mark - Sending a Transaction @private
 
 - (NSString *)URLPathWithTransaction:(VenmoTransaction *)transaction {
+    
+    NSString *identifier = nil;
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
+        identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    } else {
+        identifier = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    }
+#else
+    identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+#endif
+    
     NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
             "app_name=%@&app_id=%@%@&device_id=%@",
             appName,
             appId,
             (appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", appLocalId] : @""),
-            [[UIDevice currentDevice] uniqueIdentifier]];
+            identifier];
     if (transaction.amount) {
         pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, transaction.amountString];
     }
