@@ -147,7 +147,7 @@ Then, to pull in remote updates, you can just do:
   [12]: https://github.com/venmo/app-switch-ios/blob/master/Venmo/VenmoTransaction.h
   [13]: https://github.com/venmo/app-switch-ios/blob/master/VenmoApp/WelcomeViewController.m#L63-64
   [14]: https://github.com/venmo/app-switch-ios/blob/master/Venmo/VenmoViewController.h
-  [15]: https://github.com/venmo/app-switch-iosblob/master/VenmoApp/AppDelegate.m#L39-58
+  [15]: https://github.com/venmo/app-switch-ios/blob/master/VenmoApp/AppDelegate.m#L39-58
   [16]: https://github.com/venmo/app-switch-ios/tree/master/VenmoApp
   [17]: https://github.com/venmo/drinks-on-me
   [18]: http://en.wikipedia.org/wiki/Directory_structure
