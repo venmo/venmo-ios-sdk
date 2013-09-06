@@ -1,4 +1,4 @@
-Venmo App Switch iOS SDKfr Library
+Venmo App Switch iOS SDK Library
 ==============================
 
 This open-source Cocoa Touch Static Library allows users of your app to pay or charge with Venmo. It switches to the Venmo app if it's installed on the device. Otherwise, it opens Venmo in a web view. When the transaction is complete, it switches back to your app.
