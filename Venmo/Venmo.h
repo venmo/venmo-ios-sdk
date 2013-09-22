@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Venmo : NSObject
-
-@end
+#import "VenmoClient.h"
+#import "VenmoErrors.h"
+#import "VenmoTransaction.h"
+#import "VenmoViewController.h"

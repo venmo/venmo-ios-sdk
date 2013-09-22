@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Framework.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Venmo.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>2D5EF55117EF41B100DDD15A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2D5EF5B617EF46ED00DDD15A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
