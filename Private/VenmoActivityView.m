@@ -51,7 +51,7 @@
         activityLabel.shadowColor = [UIColor darkGrayColor];
         activityLabel.shadowOffset = CGSizeMake(0, 2);
         activityLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-        activityLabel.textAlignment = UITextAlignmentCenter;
+        activityLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:activityLabel];
     }
     return self;

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FFFBB6A2-52AC-43DB-8C87-709BD0AC63FB</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Venmo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>E59A00CB-59AF-4ABF-92EE-CAA3572BEE77</key>
+		<string>ssh://github.braintreeps.com/diogeneshamilton/app-switch-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Venmo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>E59A00CB-59AF-4ABF-92EE-CAA3572BEE77</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.braintreeps.com/diogeneshamilton/app-switch-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>E59A00CB-59AF-4ABF-92EE-CAA3572BEE77</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>E59A00CB-59AF-4ABF-92EE-CAA3572BEE77</string>
+			<key>IDESourceControlWCCName</key>
+			<string>app-switch-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

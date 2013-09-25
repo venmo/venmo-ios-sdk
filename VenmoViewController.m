@@ -136,7 +136,7 @@
     if (self.navigationController.topViewController == self) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
-        [self dismissModalViewControllerAnimated:YES];
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
