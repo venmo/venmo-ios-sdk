@@ -17,7 +17,7 @@
                BlueprintIdentifier = "2D5EF5B617EF46ED00DDD15A"
                BuildableName = "Framework"
                BlueprintName = "Framework"
-               ReferencedContainer = "container:Venmo.xcodeproj">
+               ReferencedContainer = "container:VenmoAppSwitch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

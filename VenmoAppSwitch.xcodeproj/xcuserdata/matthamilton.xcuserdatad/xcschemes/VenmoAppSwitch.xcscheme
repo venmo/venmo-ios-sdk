@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D5EF54117EF41B100DDD15A"
                BuildableName = "libVenmo.a"
-               BlueprintName = "Venmo"
-               ReferencedContainer = "container:Venmo.xcodeproj">
+               BlueprintName = "VenmoAppSwitch"
+               ReferencedContainer = "container:VenmoAppSwitch.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D5EF55117EF41B100DDD15A"
                BuildableName = "VenmoTests.xctest"
-               BlueprintName = "VenmoTests"
-               ReferencedContainer = "container:Venmo.xcodeproj">
+               BlueprintName = "VenmoAppSwitchTests"
+               ReferencedContainer = "container:VenmoAppSwitch.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>

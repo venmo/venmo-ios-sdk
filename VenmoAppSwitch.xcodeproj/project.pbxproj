@@ -27,7 +27,7 @@
 		2D5EF55417EF41B100DDD15A /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF55317EF41B100DDD15A /* XCTest.framework */; };
 		2D5EF55517EF41B100DDD15A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
 		2D5EF55717EF41B100DDD15A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF55617EF41B100DDD15A /* UIKit.framework */; };
-		2D5EF55A17EF41B100DDD15A /* libVenmo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54217EF41B100DDD15A /* libVenmo.a */; };
+		2D5EF55A17EF41B100DDD15A /* libVenmoAppSwitch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54217EF41B100DDD15A /* libVenmoAppSwitch.a */; };
 		2D5EF56017EF41B100DDD15A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EF55E17EF41B100DDD15A /* InfoPlist.strings */; };
 		2D5EF56217EF41B100DDD15A /* VenmoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5EF56117EF41B100DDD15A /* VenmoTests.m */; };
 		2D5EF56D17EF42C600DDD15A /* Venmo.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D5EF54A17EF41B100DDD15A /* Venmo.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -99,11 +99,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2D5EF54217EF41B100DDD15A /* libVenmo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVenmo.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5EF54217EF41B100DDD15A /* libVenmoAppSwitch.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libVenmoAppSwitch.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5EF54517EF41B100DDD15A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		2D5EF54917EF41B100DDD15A /* Venmo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Venmo-Prefix.pch"; sourceTree = "<group>"; };
+		2D5EF54917EF41B100DDD15A /* VenmoAppSwitch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VenmoAppSwitch-Prefix.pch"; sourceTree = "<group>"; };
 		2D5EF54A17EF41B100DDD15A /* Venmo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Venmo.h; sourceTree = "<group>"; };
-		2D5EF55217EF41B100DDD15A /* VenmoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D5EF55217EF41B100DDD15A /* VenmoAppSwitchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoAppSwitchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5EF55317EF41B100DDD15A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		2D5EF55617EF41B100DDD15A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		2D5EF55D17EF41B100DDD15A /* VenmoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoTests-Info.plist"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D5EF55417EF41B100DDD15A /* XCTest.framework in Frameworks */,
-				2D5EF55A17EF41B100DDD15A /* libVenmo.a in Frameworks */,
+				2D5EF55A17EF41B100DDD15A /* libVenmoAppSwitch.a in Frameworks */,
 				2D5EF55717EF41B100DDD15A /* UIKit.framework in Frameworks */,
 				2D5EF55517EF41B100DDD15A /* Foundation.framework in Frameworks */,
 			);
@@ -172,7 +172,7 @@
 		2D5EF53917EF41B100DDD15A = {
 			isa = PBXGroup;
 			children = (
-				2D5EF54717EF41B100DDD15A /* Venmo */,
+				2D5EF54717EF41B100DDD15A /* VenmoAppSwitch */,
 				2D5EF55B17EF41B100DDD15A /* VenmoTests */,
 				2D5EF54417EF41B100DDD15A /* Frameworks */,
 				2D5EF54317EF41B100DDD15A /* Products */,
@@ -182,8 +182,8 @@
 		2D5EF54317EF41B100DDD15A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D5EF54217EF41B100DDD15A /* libVenmo.a */,
-				2D5EF55217EF41B100DDD15A /* VenmoTests.xctest */,
+				2D5EF54217EF41B100DDD15A /* libVenmoAppSwitch.a */,
+				2D5EF55217EF41B100DDD15A /* VenmoAppSwitchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -199,7 +199,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		2D5EF54717EF41B100DDD15A /* Venmo */ = {
+		2D5EF54717EF41B100DDD15A /* VenmoAppSwitch */ = {
 			isa = PBXGroup;
 			children = (
 				2D5EF54A17EF41B100DDD15A /* Venmo.h */,
@@ -214,13 +214,14 @@
 				2D5EF56F17EF443500DDD15A /* Private */,
 				2D5EF54817EF41B100DDD15A /* Supporting Files */,
 			);
+			name = VenmoAppSwitch;
 			path = Venmo;
 			sourceTree = "<group>";
 		};
 		2D5EF54817EF41B100DDD15A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2D5EF54917EF41B100DDD15A /* Venmo-Prefix.pch */,
+				2D5EF54917EF41B100DDD15A /* VenmoAppSwitch-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -309,9 +310,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2D5EF54117EF41B100DDD15A /* Venmo */ = {
+		2D5EF54117EF41B100DDD15A /* VenmoAppSwitch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D5EF56517EF41B100DDD15A /* Build configuration list for PBXNativeTarget "Venmo" */;
+			buildConfigurationList = 2D5EF56517EF41B100DDD15A /* Build configuration list for PBXNativeTarget "VenmoAppSwitch" */;
 			buildPhases = (
 				2D5EF53E17EF41B100DDD15A /* Sources */,
 				2D5EF53F17EF41B100DDD15A /* Frameworks */,
@@ -323,14 +324,14 @@
 			);
 			dependencies = (
 			);
-			name = Venmo;
+			name = VenmoAppSwitch;
 			productName = Venmo;
-			productReference = 2D5EF54217EF41B100DDD15A /* libVenmo.a */;
+			productReference = 2D5EF54217EF41B100DDD15A /* libVenmoAppSwitch.a */;
 			productType = "com.apple.product-type.library.static";
 		};
-		2D5EF55117EF41B100DDD15A /* VenmoTests */ = {
+		2D5EF55117EF41B100DDD15A /* VenmoAppSwitchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D5EF56817EF41B100DDD15A /* Build configuration list for PBXNativeTarget "VenmoTests" */;
+			buildConfigurationList = 2D5EF56817EF41B100DDD15A /* Build configuration list for PBXNativeTarget "VenmoAppSwitchTests" */;
 			buildPhases = (
 				2D5EF54E17EF41B100DDD15A /* Sources */,
 				2D5EF54F17EF41B100DDD15A /* Frameworks */,
@@ -341,9 +342,9 @@
 			dependencies = (
 				2D5EF55917EF41B100DDD15A /* PBXTargetDependency */,
 			);
-			name = VenmoTests;
+			name = VenmoAppSwitchTests;
 			productName = VenmoTests;
-			productReference = 2D5EF55217EF41B100DDD15A /* VenmoTests.xctest */;
+			productReference = 2D5EF55217EF41B100DDD15A /* VenmoAppSwitchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -355,7 +356,7 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Matt Hamilton";
 			};
-			buildConfigurationList = 2D5EF53D17EF41B100DDD15A /* Build configuration list for PBXProject "Venmo" */;
+			buildConfigurationList = 2D5EF53D17EF41B100DDD15A /* Build configuration list for PBXProject "VenmoAppSwitch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -367,8 +368,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2D5EF54117EF41B100DDD15A /* Venmo */,
-				2D5EF55117EF41B100DDD15A /* VenmoTests */,
+				2D5EF54117EF41B100DDD15A /* VenmoAppSwitch */,
+				2D5EF55117EF41B100DDD15A /* VenmoAppSwitchTests */,
 				2D5EF5B617EF46ED00DDD15A /* Framework */,
 			);
 		};
@@ -449,12 +450,12 @@
 /* Begin PBXTargetDependency section */
 		2D5EF55917EF41B100DDD15A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D5EF54117EF41B100DDD15A /* Venmo */;
+			target = 2D5EF54117EF41B100DDD15A /* VenmoAppSwitch */;
 			targetProxy = 2D5EF55817EF41B100DDD15A /* PBXContainerItemProxy */;
 		};
 		2D5EF5BB17EF46F700DDD15A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D5EF54117EF41B100DDD15A /* Venmo */;
+			target = 2D5EF54117EF41B100DDD15A /* VenmoAppSwitch */;
 			targetProxy = 2D5EF5BA17EF46F700DDD15A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -552,9 +553,9 @@
 			buildSettings = {
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Venmo/Venmo-Prefix.pch";
+				GCC_PREFIX_HEADER = "Venmo/VenmoAppSwitch-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = VenmoAppSwitch;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -564,9 +565,9 @@
 			buildSettings = {
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Venmo/Venmo-Prefix.pch";
+				GCC_PREFIX_HEADER = "Venmo/VenmoAppSwitch-Prefix.pch";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = VenmoAppSwitch;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -587,7 +588,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "VenmoTests/VenmoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = VenmoAppSwitchTests;
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -604,7 +605,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Venmo/Venmo-Prefix.pch";
 				INFOPLIST_FILE = "VenmoTests/VenmoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = VenmoAppSwitchTests;
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
@@ -626,7 +627,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D5EF53D17EF41B100DDD15A /* Build configuration list for PBXProject "Venmo" */ = {
+		2D5EF53D17EF41B100DDD15A /* Build configuration list for PBXProject "VenmoAppSwitch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D5EF56317EF41B100DDD15A /* Debug */,
@@ -635,21 +636,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D5EF56517EF41B100DDD15A /* Build configuration list for PBXNativeTarget "Venmo" */ = {
+		2D5EF56517EF41B100DDD15A /* Build configuration list for PBXNativeTarget "VenmoAppSwitch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D5EF56617EF41B100DDD15A /* Debug */,
 				2D5EF56717EF41B100DDD15A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		2D5EF56817EF41B100DDD15A /* Build configuration list for PBXNativeTarget "VenmoTests" */ = {
+		2D5EF56817EF41B100DDD15A /* Build configuration list for PBXNativeTarget "VenmoAppSwitchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D5EF56917EF41B100DDD15A /* Debug */,
 				2D5EF56A17EF41B100DDD15A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D5EF5B717EF46ED00DDD15A /* Build configuration list for PBXAggregateTarget "Framework" */ = {
 			isa = XCConfigurationList;
@@ -658,6 +661,7 @@
 				2D5EF5B917EF46ED00DDD15A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,4 +1,4 @@
-#import <Venmo/VenmoViewController.h>
+#import <VenmoAppSwitch/VenmoViewController.h>
 
 @class VenmoActivityView;
 @class VenmoClient;

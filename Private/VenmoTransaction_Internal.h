@@ -1,4 +1,4 @@
-#import <Venmo/VenmoTransaction.h>
+#import <VenmoAppSwitch/VenmoTransaction.h>
 
 @interface VenmoTransaction ()
 

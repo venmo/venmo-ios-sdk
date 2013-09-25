@@ -1,5 +1,5 @@
 #import <Foundation/Foundation.h>
-#import <Venmo/VenmoClient.h>
+#import <VenmoAppSwitch/VenmoClient.h>
 
 @interface VenmoClient ()
 
