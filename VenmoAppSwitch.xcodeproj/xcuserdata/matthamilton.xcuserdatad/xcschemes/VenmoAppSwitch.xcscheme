@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D5EF54117EF41B100DDD15A"
-               BuildableName = "libVenmo.a"
+               BuildableName = "libVenmoAppSwitch.a"
                BlueprintName = "VenmoAppSwitch"
                ReferencedContainer = "container:VenmoAppSwitch.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D5EF55117EF41B100DDD15A"
-               BuildableName = "VenmoTests.xctest"
+               BuildableName = "VenmoAppSwitchTests.xctest"
                BlueprintName = "VenmoAppSwitchTests"
                ReferencedContainer = "container:VenmoAppSwitch.xcodeproj">
             </BuildableReference>
