@@ -4,14 +4,10 @@
 #import "NSError+Venmo.h"
 #import "NSURL+Venmo.h"
 #import "VenmoBase64_Internal.h"
-#import "VenmoClient_Private.h"
-#import "VenmoClient_Internal.h"
 #import "VenmoClient.h"
 #import "VenmoErrors.h"
 #import "VenmoHMAC_SHA256_Internal.h"
-#import "VenmoTransaction_Internal.h"
 #import "VenmoTransaction.h"
-#import "VenmoViewController_Internal.h"
 #import "VenmoViewController.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
@@ -88,6 +84,19 @@
     viewController.transactionURL = transactionURL;
     viewController.venmoClient = self;
     return viewController;
+}
+
+- (BOOL)hasVenmoApp {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
+}
+
+- (void)connectWithController:(UIViewController *)controller scope:(NSArray *)scope {
+    if ([self hasVenmoApp]) {
+        NSString *scopeURLEncoded = [scope componentsJoinedByString:@"%20"];
+        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"venmo://oauth/authorize?client_id=%@&scope=%@", appId, scopeURLEncoded]];
+        [[UIApplication sharedApplication] openURL:authURL];
+    }
+    
 }
 
 #pragma mark - Sending a Transaction @private

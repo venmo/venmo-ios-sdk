@@ -1,7 +1,6 @@
 #import <Kiwi/Kiwi.h>
 
 #import "VenmoViewController.h"
-#import "VenmoViewController_Internal.h"
 
 SPEC_BEGIN(VenmoViewControllerSpecs)
 

@@ -17,8 +17,10 @@ typedef enum {
 @property (nonatomic) BOOL success;
 
 + (VenmoTransactionType)typeWithString:(NSString *)string;
++ (id)transactionWithDictionary:(NSDictionary *)dictionary;
 - (NSString *)typeString;
 - (NSString *)typeStringPast;
 - (NSString *)amountString;
+
 
 @end

@@ -3,7 +3,7 @@
 @implementation NSBundle (Venmo)
 
 - (NSString *)name {
-    return [[[NSBundle mainBundle] infoDictionary] objectForKey:(NSString *)kCFBundleNameKey];
+    return [self objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey];
 }
 
 @end

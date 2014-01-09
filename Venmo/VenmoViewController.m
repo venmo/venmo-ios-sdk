@@ -1,8 +1,7 @@
 #import "VenmoDefines_Internal.h"
 #import "VenmoViewController.h"
-#import "VenmoViewController_Internal.h"
-#import "VenmoActivityView_Internal.h"
-#import "VenmoClient_Internal.h"
+#import "VenmoActivityView.h"
+#import "VenmoClient.h"
 
 @interface VenmoViewController ()
 - (UIWebView *)webView;

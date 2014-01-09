@@ -33,6 +33,10 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
 + (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
                  name:(NSString *)theAppName localId:(NSString *)theAppLocalId;
 
+#pragma mark - Connecting with OAuth
+
+- (void)connectWithController:(UIViewController *)controller scope:(NSArray *)scope;
+
 #pragma mark - Sending a Transaction
 
 /**
@@ -59,6 +63,7 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
  * The transaction will be nil on error, and the error will be NULL on success.
  */
 - (BOOL)openURL:(NSURL *)url completionHandler:(VenmoTransactionCompletionHandler)completion;
+- (NSString *)scheme;
 
 @end
 
