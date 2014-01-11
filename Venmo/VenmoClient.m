@@ -66,6 +66,28 @@
     return [self viewControllerWithTransaction:transaction forceWeb:NO];
 }
 
+- (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
+    NSString            *host               = [url host];
+    NSString            *path               = [url path];
+    NSDictionary *queryDictionary    = [url queryDictionary];
+    NSString *base = [NSString stringWithFormat:@"venmo%@", appId];
+    
+    if ([host isEqualToString:base]) {
+        if ([path isEqualToString:@"oauth"]) {
+            NSString *code = [queryDictionary valueForKey:@"code"];
+            NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", appId, appSecret,code];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/oauth/access_token"]];
+            [request setHTTPMethod:@"POST"];
+            [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+            [NSURLConnection sendAsynchronousRequest:request queue:nil completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
+                NSLog(@"got the post back, json is %@", responseData);
+            }];
+        }
+    }
+    return YES;
+}
+
+
 - (VenmoViewController *)viewControllerWithTransaction:(VenmoTransaction *)transaction
                                               forceWeb:(BOOL)forceWeb {
     NSString *URLPath = [self URLPathWithTransaction:transaction];
@@ -150,6 +172,7 @@
 
 - (BOOL)openURL:(NSURL *)url completionHandler:(VenmoTransactionCompletionHandler)completion {
     if (![[url scheme] isEqualToString:[self scheme]]) return NO;
+    
     VenmoTransaction *transaction = [self transactionWithURL:url];
     DLog(@"transaction.note: %@", transaction.note);
 

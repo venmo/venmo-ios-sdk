@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68176838187F833A006E75F3 /* VenmoAppSwitchSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687203A0187F4FD800562041 /* VenmoAppSwitchSDK.framework */; };
 		68204619187F586B0048D382 /* VenmoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB58F513F0941200EB4C16 /* VenmoClient.m */; };
 		6820461A187F586B0048D382 /* VenmoErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C04BED141EE9D40033DDFF /* VenmoErrors.m */; };
 		6820461B187F586B0048D382 /* VenmoTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6C7313EEE06400F4D8F4 /* VenmoTransaction.m */; };
@@ -124,6 +125,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		68176835187F832B006E75F3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C9BD6C6113EEE06400F4D8F4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6872039F187F4FD800562041;
+			remoteInfo = VenmoAppSwitchSDK;
+		};
 		687203B5187F4FD800562041 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C9BD6C6113EEE06400F4D8F4 /* Project object */;
@@ -290,6 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68176838187F833A006E75F3 /* VenmoAppSwitchSDK.framework in Frameworks */,
 				C9BD6C6E13EEE06400F4D8F4 /* Foundation.framework in Frameworks */,
 				C9DB590C13F18CA000EB4C16 /* UIKit.framework in Frameworks */,
 			);
@@ -668,6 +677,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				68176836187F832B006E75F3 /* PBXTargetDependency */,
 			);
 			name = Venmo;
 			productName = Venmo;
@@ -936,6 +946,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		68176836187F832B006E75F3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6872039F187F4FD800562041 /* VenmoAppSwitchSDK */;
+			targetProxy = 68176835187F832B006E75F3 /* PBXContainerItemProxy */;
+		};
 		687203B6187F4FD800562041 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6872039F187F4FD800562041 /* VenmoAppSwitchSDK */;

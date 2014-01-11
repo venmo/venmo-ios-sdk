@@ -63,6 +63,7 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
  * The transaction will be nil on error, and the error will be NULL on success.
  */
 - (BOOL)openURL:(NSURL *)url completionHandler:(VenmoTransactionCompletionHandler)completion;
+- (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication;
 - (NSString *)scheme;
 
 @end
