@@ -14,48 +14,62 @@
 #import "UIDevice+IdentifierAddition.h"
 #endif
 
+@interface VenmoClient : NSObject
+@property (copy, nonatomic) NSString *appId;
+@property (copy, nonatomic) NSString *appSecret;
+@end
+
 @implementation VenmoClient
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
 @synthesize delegate;
 #endif
-@synthesize appId;
-@synthesize appSecret;
-@synthesize appName;
-@synthesize appLocalId;
 
 #pragma mark - Initializers
 
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret {
++ (id)clientWithAppId:(NSString *)theAppId
+               secret:(NSString *)theAppSecret {
     return [self clientWithAppId:theAppId secret:theAppSecret name:nil];
 }
 
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
++ (id)clientWithAppId:(NSString *)theAppId
+               secret:(NSString *)theAppSecret
                  name:(NSString *)theAppName {
     return [self clientWithAppId:theAppId secret:theAppSecret name:theAppName localId:nil];
 }
 
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
++ (id)clientWithAppId:(NSString *)theAppId
+               secret:(NSString *)theAppSecret
               localId:(NSString *)theAppLocalId {
     return [self clientWithAppId:theAppId secret:theAppSecret name:nil localId:theAppLocalId];
 }
 
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
-                 name:(NSString *)theAppName localId:(NSString *)theAppLocalId {
-    return [[self alloc] initWithAppId:theAppId secret:theAppSecret name:theAppName
-                               localId:theAppLocalId];
++ (id)clientWithAppId:(NSString *)theAppId
+               secret:(NSString *)theAppSecret
+                 name:(NSString *)theAppName
+              localId:(NSString *)theAppLocalId {
+    return [self initWithAppId:theAppId secret:theAppSecret name:theAppName localId:theAppLocalId];
+}
+
++ (id)sharedClient {
+    static VenmoClient *sharedVenmoClient = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedVenmoClient = [[self alloc] init];
+    });
+    return sharedVenmoClient;
 }
 
 #pragma mark - Initializers @private
 
 - (id)initWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
                name:(NSString *)theAppName localId:(NSString *)theAppLocalId {
-    self = [super init];
+    self = [VenmoClient sharedClient];
     if (self) {
-        appId = [theAppId copy];
-        appSecret = [theAppSecret copy];
-        appName = theAppName ? theAppName : [[NSBundle mainBundle] name];
-        appLocalId = [theAppLocalId copy];
+        self.appId = [theAppId copy];
+        self.appSecret = [theAppSecret copy];
+        self.appName = theAppName ?: [[NSBundle mainBundle] name];
+        self.appLocalId = [theAppLocalId copy];
     }
     return self;
 }
@@ -138,9 +152,9 @@
     
     NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
             "app_name=%@&app_id=%@%@&device_id=%@",
-            appName,
-            appId,
-            (appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", appLocalId] : @""),
+            self.appName,
+            self.appId,
+            (self.appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", self.appLocalId] : @""),
             identifier];
     if (transaction.amount) {
         pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, transaction.amountString];
@@ -202,7 +216,7 @@
 #pragma mark - Receiving a Transaction @internal
 
 - (NSString *)scheme {
-    return [NSString stringWithFormat:@"venmo%@%@", appId, (appLocalId ? appLocalId : @"")];
+    return [NSString stringWithFormat:@"venmo%@%@", self.appId, (self.appLocalId ?: @"")];
 }
 
 #pragma mark - Receiving a Transaction @private

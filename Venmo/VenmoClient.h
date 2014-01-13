@@ -15,6 +15,7 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
 @property (assign, nonatomic) id<VenmoClientDelegate> delegate;
 #endif
+
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic) NSString *appName;
@@ -25,6 +26,7 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
  * The Venmo iPhone app displays "via [appName]" as a subtitle of the pay/charge view.
  * Use appLocalId to distinguish between free & paid versions of your app.
  */
++ (id)sharedClient;
 + (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret;
 + (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
                  name:(NSString *)theAppName;
