@@ -1,7 +1,7 @@
 #import <QuartzCore/CALayer.h>
 
 #import "VenmoDefines_Internal.h"
-#import "VenmoActivityView_Internal.h"
+#import "VenmoActivityView.h"
 
 @interface VenmoActivityView (Venmo)
 - (id)initWithTitle:(NSString *)title;

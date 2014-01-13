@@ -1,9 +1,7 @@
 #import <Kiwi/Kiwi.h>
 #import "VenmoClient.h"
 #import "VenmoTransaction.h"
-#import "VenmoClient_Private.h"
 #import "VenmoViewController.h"
-#import "VenmoViewController_Internal.h"
 
 SPEC_BEGIN(VenmoClientSpecs)
 

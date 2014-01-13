@@ -2,7 +2,6 @@
 #import "VenmoDefines_Internal.h"
 #import "NSDictionary+Venmo.h"
 #import "VenmoTransaction.h"
-#import "VenmoTransaction_Internal.h"
 
 @implementation VenmoTransaction {
     NSNumberFormatter *amountNumberFormatter;

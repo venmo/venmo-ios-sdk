@@ -1,6 +1,5 @@
 #import <Kiwi/Kiwi.h>
 
-#import "VenmoClient_Private.h"
 #import "VenmoClient.h"
 #import "VenmoBase64_Internal.h"
 #import "VenmoHMAC_SHA256_Internal.h"

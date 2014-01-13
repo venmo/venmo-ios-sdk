@@ -4,14 +4,10 @@
 #import "NSError+Venmo.h"
 #import "NSURL+Venmo.h"
 #import "VenmoBase64_Internal.h"
-#import "VenmoClient_Private.h"
-#import "VenmoClient_Internal.h"
 #import "VenmoClient.h"
 #import "VenmoErrors.h"
 #import "VenmoHMAC_SHA256_Internal.h"
-#import "VenmoTransaction_Internal.h"
 #import "VenmoTransaction.h"
-#import "VenmoViewController_Internal.h"
 #import "VenmoViewController.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
@@ -70,6 +66,28 @@
     return [self viewControllerWithTransaction:transaction forceWeb:NO];
 }
 
+- (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
+    NSString            *host               = [url host];
+    NSString            *path               = [url path];
+    NSDictionary *queryDictionary    = [url queryDictionary];
+    NSString *base = [NSString stringWithFormat:@"venmo%@", appId];
+    
+    if ([host isEqualToString:base]) {
+        if ([path isEqualToString:@"oauth"]) {
+            NSString *code = [queryDictionary valueForKey:@"code"];
+            NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", appId, appSecret,code];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/oauth/access_token"]];
+            [request setHTTPMethod:@"POST"];
+            [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+            [NSURLConnection sendAsynchronousRequest:request queue:nil completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
+                NSLog(@"got the post back, json is %@", responseData);
+            }];
+        }
+    }
+    return YES;
+}
+
+
 - (VenmoViewController *)viewControllerWithTransaction:(VenmoTransaction *)transaction
                                               forceWeb:(BOOL)forceWeb {
     NSString *URLPath = [self URLPathWithTransaction:transaction];
@@ -88,6 +106,19 @@
     viewController.transactionURL = transactionURL;
     viewController.venmoClient = self;
     return viewController;
+}
+
+- (BOOL)hasVenmoApp {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
+}
+
+- (void)connectWithController:(UIViewController *)controller scope:(NSArray *)scope {
+    if ([self hasVenmoApp]) {
+        NSString *scopeURLEncoded = [scope componentsJoinedByString:@"%20"];
+        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"venmo://oauth/authorize?client_id=%@&scope=%@", appId, scopeURLEncoded]];
+        [[UIApplication sharedApplication] openURL:authURL];
+    }
+    
 }
 
 #pragma mark - Sending a Transaction @private
@@ -141,6 +172,7 @@
 
 - (BOOL)openURL:(NSURL *)url completionHandler:(VenmoTransactionCompletionHandler)completion {
     if (![[url scheme] isEqualToString:[self scheme]]) return NO;
+    
     VenmoTransaction *transaction = [self transactionWithURL:url];
     DLog(@"transaction.note: %@", transaction.note);
 
