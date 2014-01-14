@@ -2,6 +2,8 @@
 #import <UIKit/UIKit.h>
 
 @class VenmoTransaction;
+@class VenmoUser;
+@class VenmoSession;
 @class VenmoViewController;
 
 typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction, NSError *error);
@@ -20,6 +22,8 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic) NSString *appName;
 @property (copy, nonatomic) NSString *appLocalId;
+@property (nonatomic) VenmoUser *currentUser;
+@property (nonatomic) VenmoSession *currentSession;
 
 /**
  * appName defaults to the value of "Bundle name" in the third-party app's Info.plist file.
@@ -27,13 +31,13 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
  * Use appLocalId to distinguish between free & paid versions of your app.
  */
 + (id)sharedClient;
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret;
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
-                 name:(NSString *)theAppName;
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
-              localId:(NSString *)theAppLocalId;
-+ (id)clientWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
-                 name:(NSString *)theAppName localId:(NSString *)theAppLocalId;
++ (id)clientWithAppId:(NSString *)appId secret:(NSString *)appSecret;
++ (id)clientWithAppId:(NSString *)appId secret:(NSString *)appSecret
+                 name:(NSString *)appName;
++ (id)clientWithAppId:(NSString *)appId secret:(NSString *)appSecret
+              localId:(NSString *)appLocalId;
++ (id)clientWithAppId:(NSString *)appId secret:(NSString *)appSecret
+                 name:(NSString *)appName localId:(NSString *)appLocalId;
 
 #pragma mark - Connecting with OAuth
 

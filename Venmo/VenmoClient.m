@@ -9,17 +9,22 @@
 #import "VenmoHMAC_SHA256_Internal.h"
 #import "VenmoTransaction.h"
 #import "VenmoViewController.h"
+#import "VenmoSession.h"
+#import "VenmoUser.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
 #endif
 
-@interface VenmoClient : NSObject
+@interface VenmoClient (Private)
 @property (copy, nonatomic) NSString *appId;
 @property (copy, nonatomic) NSString *appSecret;
+@property (copy, nonatomic) NSString *accessToken;
+@property (copy, nonatomic) NSString *refreshToken;
 @end
 
 @implementation VenmoClient
+
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_5_0
 @synthesize delegate;
@@ -27,28 +32,28 @@
 
 #pragma mark - Initializers
 
-+ (id)clientWithAppId:(NSString *)theAppId
-               secret:(NSString *)theAppSecret {
-    return [self clientWithAppId:theAppId secret:theAppSecret name:nil];
++ (id)clientWithAppId:(NSString *)appId
+               secret:(NSString *)appSecret {
+    return [self clientWithAppId:appId secret:appSecret name:nil];
 }
 
-+ (id)clientWithAppId:(NSString *)theAppId
-               secret:(NSString *)theAppSecret
-                 name:(NSString *)theAppName {
-    return [self clientWithAppId:theAppId secret:theAppSecret name:theAppName localId:nil];
++ (id)clientWithAppId:(NSString *)appId
+               secret:(NSString *)appSecret
+                 name:(NSString *)appName {
+    return [self clientWithAppId:appId secret:appSecret name:appName localId:nil];
 }
 
-+ (id)clientWithAppId:(NSString *)theAppId
-               secret:(NSString *)theAppSecret
-              localId:(NSString *)theAppLocalId {
-    return [self clientWithAppId:theAppId secret:theAppSecret name:nil localId:theAppLocalId];
++ (id)clientWithAppId:(NSString *)appId
+               secret:(NSString *)appSecret
+              localId:(NSString *)appLocalId {
+    return [self clientWithAppId:appId secret:appSecret name:nil localId:appLocalId];
 }
 
-+ (id)clientWithAppId:(NSString *)theAppId
-               secret:(NSString *)theAppSecret
-                 name:(NSString *)theAppName
-              localId:(NSString *)theAppLocalId {
-    return [self initWithAppId:theAppId secret:theAppSecret name:theAppName localId:theAppLocalId];
++ (id)clientWithAppId:(NSString *)appId
+               secret:(NSString *)appSecret
+                 name:(NSString *)appName
+              localId:(NSString *)appLocalId {
+    return [[VenmoClient sharedClient] initWithAppId:appId secret:appSecret name:appName localId:appLocalId];
 }
 
 + (id)sharedClient {
@@ -62,15 +67,15 @@
 
 #pragma mark - Initializers @private
 
-- (id)initWithAppId:(NSString *)theAppId secret:(NSString *)theAppSecret
-               name:(NSString *)theAppName localId:(NSString *)theAppLocalId {
-    self = [VenmoClient sharedClient];
-    if (self) {
-        self.appId = [theAppId copy];
-        self.appSecret = [theAppSecret copy];
-        self.appName = theAppName ?: [[NSBundle mainBundle] name];
-        self.appLocalId = [theAppLocalId copy];
-    }
+- (id)initWithAppId:(NSString *)appId
+             secret:(NSString *)appSecret
+               name:(NSString *)appName
+            localId:(NSString *)appLocalId {
+    //TODO: check for self
+    _appId = [appId copy];
+    _appSecret = [appSecret copy];
+    self.appName = appName ?: [[NSBundle mainBundle] name];
+    self.appLocalId = [appLocalId copy];
     return self;
 }
 
@@ -82,21 +87,32 @@
 
 - (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
     NSString            *host               = [url host];
-    NSString            *path               = [url path];
     NSDictionary *queryDictionary    = [url queryDictionary];
-    NSString *base = [NSString stringWithFormat:@"venmo%@", appId];
-    
-    if ([host isEqualToString:base]) {
-        if ([path isEqualToString:@"oauth"]) {
-            NSString *code = [queryDictionary valueForKey:@"code"];
-            NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", appId, appSecret,code];
-            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/oauth/access_token"]];
-            [request setHTTPMethod:@"POST"];
-            [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-            [NSURLConnection sendAsynchronousRequest:request queue:nil completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
-                NSLog(@"got the post back, json is %@", responseData);
-            }];
-        }
+
+    if ([host isEqualToString:@"oauth"]) {
+        NSString *code = [queryDictionary valueForKey:@"code"];
+        NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", self.appId, self.appSecret, code];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/v1/oauth/access_token"]];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+        [NSURLConnection sendAsynchronousRequest:request
+                                           queue:[NSOperationQueue mainQueue]
+                               completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
+                                   if (error) {
+                                       NSLog(@"Couldn't get the access token, %@", error);
+                                   }
+                                   NSError *jsonError;
+                                   id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
+                                   VenmoUser *currentUser = [[VenmoUser alloc] initWithJSON:json[@"user"]];
+                                   VenmoSession *currentSession = [[VenmoSession alloc] initWithAccessToken:json[@"access_token"]
+                                                                                               refreshToken:json[@"refresh_token"]
+                                                                                                  expiresIn:[json[@"expires_in"] integerValue]];
+                                   VenmoClient *client = [VenmoClient sharedClient];
+                                   client.currentUser = currentUser;
+                                   client.currentSession = currentSession;
+        }];
+    } else {
+        return NO;
     }
     return YES;
 }
@@ -129,7 +145,7 @@
 - (void)connectWithController:(UIViewController *)controller scope:(NSArray *)scope {
     if ([self hasVenmoApp]) {
         NSString *scopeURLEncoded = [scope componentsJoinedByString:@"%20"];
-        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"venmo://oauth/authorize?client_id=%@&scope=%@", appId, scopeURLEncoded]];
+        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"venmo://oauth/authorize?client_id=%@&scope=%@", self.appId, scopeURLEncoded]];
         [[UIApplication sharedApplication] openURL:authURL];
     }
     
