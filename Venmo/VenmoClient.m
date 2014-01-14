@@ -85,39 +85,6 @@
     return [self viewControllerWithTransaction:transaction forceWeb:NO];
 }
 
-- (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
-    NSString            *host               = [url host];
-    NSDictionary *queryDictionary    = [url queryDictionary];
-
-    if ([host isEqualToString:@"oauth"]) {
-        NSString *code = [queryDictionary valueForKey:@"code"];
-        NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", self.appId, self.appSecret, code];
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/v1/oauth/access_token"]];
-        [request setHTTPMethod:@"POST"];
-        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-        [NSURLConnection sendAsynchronousRequest:request
-                                           queue:[NSOperationQueue mainQueue]
-                               completionHandler:^(NSURLResponse *response, NSData *responseData, NSError *error) {
-                                   if (error) {
-                                       NSLog(@"Couldn't get the access token, %@", error);
-                                   }
-                                   NSError *jsonError;
-                                   id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
-                                   VenmoUser *currentUser = [[VenmoUser alloc] initWithJSON:json[@"user"]];
-                                   VenmoSession *currentSession = [[VenmoSession alloc] initWithAccessToken:json[@"access_token"]
-                                                                                               refreshToken:json[@"refresh_token"]
-                                                                                                  expiresIn:[json[@"expires_in"] integerValue]];
-                                   VenmoClient *client = [VenmoClient sharedClient];
-                                   client.currentUser = currentUser;
-                                   client.currentSession = currentSession;
-        }];
-    } else {
-        return NO;
-    }
-    return YES;
-}
-
-
 - (VenmoViewController *)viewControllerWithTransaction:(VenmoTransaction *)transaction
                                               forceWeb:(BOOL)forceWeb {
     NSString *URLPath = [self URLPathWithTransaction:transaction];
@@ -196,6 +163,44 @@
     path = [@"/touch/signup_to_pay" stringByAppendingString:path];
     NSString *unEncodedURL = [NSString stringWithFormat:@"%@://%@%@", @"https", @"venmo.com", path];
     return [[NSURL alloc] initWithString:[unEncodedURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
+
+- (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
+    NSString            *host               = [url host];
+    NSDictionary *queryDictionary    = [url queryDictionary];
+    
+    if ([host isEqualToString:@"oauth"]) {
+        NSString *code = [queryDictionary valueForKey:@"code"];
+        NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", self.appId, self.appSecret, code];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/v1/oauth/access_token"]];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+        NSError *error;
+        NSURLResponse *response;
+        NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+        if (error) {
+           NSLog(@"Couldn't get the access token, %@", error);
+        }
+        NSError *jsonError;
+        id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
+        VenmoUser *currentUser = [[VenmoUser alloc] initWithJSON:json[@"user"]];
+        VenmoSession *currentSession = [[VenmoSession alloc] initWithAccessToken:json[@"access_token"]
+                                                                   refreshToken:json[@"refresh_token"]
+                                                                      expiresIn:[json[@"expires_in"] integerValue]];
+        VenmoClient *client = [VenmoClient sharedClient];
+        [client setCurrentUser:currentUser];
+        [client setCurrentSession:currentSession];
+    } else {
+        return NO;
+    }
+    return YES;
+}
+
+- (BOOL) isConnected {
+    if (!self.currentSession) {
+        return NO;
+    }
+    return YES;
 }
 
 #pragma mark - Receiving a Transaction

@@ -43,6 +43,11 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
 
 - (void)connectWithController:(UIViewController *)controller scope:(NSArray *)scope;
 
+/**
+ *  Returns true if the user has signed in
+ **/
+- (BOOL) isConnected;
+
 #pragma mark - Sending a Transaction
 
 /**
