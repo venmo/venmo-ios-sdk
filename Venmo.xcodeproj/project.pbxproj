@@ -8,6 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		68176838187F833A006E75F3 /* VenmoAppSwitchSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 687203A0187F4FD800562041 /* VenmoAppSwitchSDK.framework */; };
+		681768621884A499006E75F3 /* VenmoUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 681768601884A499006E75F3 /* VenmoUser.h */; };
+		681768631884A499006E75F3 /* VenmoUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 681768611884A499006E75F3 /* VenmoUser.m */; };
+		681768661884A531006E75F3 /* VenmoSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 681768641884A531006E75F3 /* VenmoSession.h */; };
+		681768671884A531006E75F3 /* VenmoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 681768651884A531006E75F3 /* VenmoSession.m */; };
+		681768681884C2FC006E75F3 /* VenmoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 681768651884A531006E75F3 /* VenmoSession.m */; };
+		681768691884C2FC006E75F3 /* VenmoUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 681768611884A499006E75F3 /* VenmoUser.m */; };
+		6817686A1884C313006E75F3 /* VenmoSession.h in Headers */ = {isa = PBXBuildFile; fileRef = 681768641884A531006E75F3 /* VenmoSession.h */; };
+		6817686B1884C313006E75F3 /* VenmoSession.m in Headers */ = {isa = PBXBuildFile; fileRef = 681768651884A531006E75F3 /* VenmoSession.m */; };
+		6817686C1884C313006E75F3 /* VenmoUser.h in Headers */ = {isa = PBXBuildFile; fileRef = 681768601884A499006E75F3 /* VenmoUser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6817686D1884C313006E75F3 /* VenmoUser.m in Headers */ = {isa = PBXBuildFile; fileRef = 681768611884A499006E75F3 /* VenmoUser.m */; };
 		68204619187F586B0048D382 /* VenmoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = C9DB58F513F0941200EB4C16 /* VenmoClient.m */; };
 		6820461A187F586B0048D382 /* VenmoErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C04BED141EE9D40033DDFF /* VenmoErrors.m */; };
 		6820461B187F586B0048D382 /* VenmoTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = C9BD6C7313EEE06400F4D8F4 /* VenmoTransaction.m */; };
@@ -191,6 +201,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		681768601884A499006E75F3 /* VenmoUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoUser.h; sourceTree = "<group>"; };
+		681768611884A499006E75F3 /* VenmoUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoUser.m; sourceTree = "<group>"; };
+		681768641884A531006E75F3 /* VenmoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoSession.h; sourceTree = "<group>"; };
+		681768651884A531006E75F3 /* VenmoSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoSession.m; sourceTree = "<group>"; };
 		687203A0187F4FD800562041 /* VenmoAppSwitchSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework.static; includeInIndex = 0; path = VenmoAppSwitchSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		687203A4187F4FD800562041 /* VenmoAppSwitchSDK-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoAppSwitchSDK-Info.plist"; sourceTree = "<group>"; };
 		687203A6187F4FD800562041 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -474,6 +488,10 @@
 				C9DB58F513F0941200EB4C16 /* VenmoClient.m */,
 				C9C04BEC141EE9D30033DDFF /* VenmoErrors.h */,
 				C9C04BED141EE9D40033DDFF /* VenmoErrors.m */,
+				681768641884A531006E75F3 /* VenmoSession.h */,
+				681768651884A531006E75F3 /* VenmoSession.m */,
+				681768601884A499006E75F3 /* VenmoUser.h */,
+				681768611884A499006E75F3 /* VenmoUser.m */,
 				C9BD6C7213EEE06400F4D8F4 /* VenmoTransaction.h */,
 				C9BD6C7313EEE06400F4D8F4 /* VenmoTransaction.m */,
 				C9DB590713F18BD000EB4C16 /* VenmoViewController.h */,
@@ -546,6 +564,9 @@
 				687203D5187F505700562041 /* VenmoErrors.h in Headers */,
 				687203D6187F505700562041 /* VenmoTransaction.h in Headers */,
 				687203D7187F505700562041 /* VenmoViewController.h in Headers */,
+				6817686C1884C313006E75F3 /* VenmoUser.h in Headers */,
+				6817686B1884C313006E75F3 /* VenmoSession.m in Headers */,
+				6817686D1884C313006E75F3 /* VenmoUser.m in Headers */,
 				68B9BDD5187F50930067292E /* VenmoDefines_Internal.h in Headers */,
 				68B9BDD6187F50930067292E /* NSBundle+Venmo.h in Headers */,
 				68B9BDD7187F50930067292E /* NSBundle+Venmo.m in Headers */,
@@ -570,6 +591,7 @@
 				687203D8187F506800562041 /* VenmoClient.m in Headers */,
 				687203D9187F506800562041 /* VenmoErrors.m in Headers */,
 				687203DA187F506800562041 /* VenmoTransaction.m in Headers */,
+				6817686A1884C313006E75F3 /* VenmoSession.h in Headers */,
 				687203DB187F506800562041 /* VenmoViewController.m in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -589,7 +611,9 @@
 				C9589A4813FB141800364F83 /* Venmo.h in Headers */,
 				C9DB58F613F0941200EB4C16 /* VenmoClient.h in Headers */,
 				C9C04BEE141EE9D50033DDFF /* VenmoErrors.h in Headers */,
+				681768621884A499006E75F3 /* VenmoUser.h in Headers */,
 				C9CCEF4F13F9EC3100654E24 /* VenmoTransaction.h in Headers */,
+				681768661884A531006E75F3 /* VenmoSession.h in Headers */,
 				C9DB590913F18BD000EB4C16 /* VenmoViewController.h in Headers */,
 				C9EF43CF1417BDF600F7514A /* VenmoDefines_Internal.h in Headers */,
 				C923BC8A1412A60600E8B194 /* NSBundle+Venmo.h in Headers */,
@@ -870,6 +894,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				681768681884C2FC006E75F3 /* VenmoSession.m in Sources */,
+				681768691884C2FC006E75F3 /* VenmoUser.m in Sources */,
 				6820461D187F588D0048D382 /* NSBundle+Venmo.m in Sources */,
 				6820461E187F588D0048D382 /* NSDictionary+Venmo.m in Sources */,
 				6820461F187F588D0048D382 /* NSError+Venmo.m in Sources */,
@@ -913,6 +939,7 @@
 			files = (
 				75DEB9E917CD04190050B284 /* UIDevice+IdentifierAddition.m in Sources */,
 				C923BC8B1412A60600E8B194 /* NSBundle+Venmo.m in Sources */,
+				681768671884A531006E75F3 /* VenmoSession.m in Sources */,
 				75DEB9E317CD040F0050B284 /* NSString+MD5Addition.m in Sources */,
 				C96ED75213FC83C30033EF3D /* NSDictionary+Venmo.m in Sources */,
 				C9C04BEB141E40DB0033DDFF /* NSError+Venmo.m in Sources */,
@@ -922,6 +949,7 @@
 				C9CCEF4B13F9720500654E24 /* VenmoBase64.m in Sources */,
 				C9A23605141D425F00C9A8FF /* VenmoHMAC_SHA256.m in Sources */,
 				C9DB58F713F0941200EB4C16 /* VenmoClient.m in Sources */,
+				681768631884A499006E75F3 /* VenmoUser.m in Sources */,
 				C9C04BEF141EE9D50033DDFF /* VenmoErrors.m in Sources */,
 				C9BD6C7413EEE06400F4D8F4 /* VenmoTransaction.m in Sources */,
 				C9DB590A13F18BD000EB4C16 /* VenmoViewController.m in Sources */,

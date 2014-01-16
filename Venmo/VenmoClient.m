@@ -110,12 +110,15 @@
 }
 
 - (void)connectWithController:(UIViewController *)controller scope:(NSArray *)scope {
+    NSString *scopeURLEncoded = [scope componentsJoinedByString:@"%20"];
+    NSString *baseURL;
     if ([self hasVenmoApp]) {
-        NSString *scopeURLEncoded = [scope componentsJoinedByString:@"%20"];
-        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"venmo://oauth/authorize?client_id=%@&scope=%@", self.appId, scopeURLEncoded]];
-        [[UIApplication sharedApplication] openURL:authURL];
+        baseURL = @"venmo://";
+    } else {
+        baseURL = @"http://api.devvenmo.com/v1/";
     }
-    
+    NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
+    [[UIApplication sharedApplication] openURL:authURL];
 }
 
 #pragma mark - Sending a Transaction @private
@@ -170,6 +173,11 @@
     NSDictionary *queryDictionary    = [url queryDictionary];
     
     if ([host isEqualToString:@"oauth"]) {
+        NSString *oauthErrorMessage = [queryDictionary valueForKey:@"error"];
+        if (oauthErrorMessage) {
+            NSLog(@"uh oh, %@", oauthErrorMessage);
+            return YES;
+        }
         NSString *code = [queryDictionary valueForKey:@"code"];
         NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", self.appId, self.appSecret, code];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/v1/oauth/access_token"]];
