@@ -2,8 +2,8 @@
 
 @interface VDKSession ()
 
-@property (nonatomic, strong, readwrite) NSString *accessToken;
-@property (nonatomic, strong, readwrite) NSString *refreshToken;
+@property (strong, nonatomic, readwrite) NSString *accessToken;
+@property (strong, nonatomic, readwrite) NSString *refreshToken;
 @end
 
 @implementation VDKSession

@@ -22,8 +22,8 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic) NSString *appName;
 @property (copy, nonatomic) NSString *appLocalId;
-@property (nonatomic) VDKUser *currentUser;
-@property (nonatomic) VDKSession *currentSession;
+@property (strong, nonatomic) VDKUser *currentUser;
+@property (strong, nonatomic) VDKSession *currentSession;
 
 /**
  * appName defaults to the value of "Bundle name" in the third-party app's Info.plist file.

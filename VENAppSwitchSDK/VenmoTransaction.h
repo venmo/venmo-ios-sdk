@@ -8,13 +8,13 @@ typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
 @interface VenmoTransaction : NSObject
 
 @property (copy, nonatomic) NSString *transactionID;
-@property (nonatomic) VenmoTransactionType type;
+@property (assign, nonatomic) VenmoTransactionType type;
 @property (copy, nonatomic) NSString *fromUserID;
 @property (copy, nonatomic) NSString *toUserID;
 @property (strong, nonatomic) NSDecimalNumber *amount;
 @property (copy, nonatomic) NSString *note;
 @property (copy, nonatomic) NSString *toUserHandle; // cell number, email, @twitter, Venmo username
-@property (nonatomic) BOOL success;
+@property (assign, nonatomic) BOOL success;
 
 + (VenmoTransactionType)typeWithString:(NSString *)string;
 + (id)transactionWithDictionary:(NSDictionary *)dictionary;
