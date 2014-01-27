@@ -1,8 +1,0 @@
-// Put header files here for code that rarely changes. http://j.mp/mmGElg
-#ifdef __OBJC__
-
-// Frameworks
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-
-#endif

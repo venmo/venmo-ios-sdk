@@ -1,6 +1,0 @@
-[submodule "Libraries/Kiwi"]
-	path = Libraries/Kiwi
-	url = https://github.com/allending/Kiwi.git
-[submodule "Libraries/JSONKit"]
-	path = Libraries/JSONKit
-	url = https://github.com/johnezang/JSONKit.git
