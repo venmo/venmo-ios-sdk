@@ -15,12 +15,6 @@
 
 @implementation VDKTransactionViewController
 
-@synthesize activityView;
-@synthesize transactionURL;
-
-@synthesize completionHandler;
-@synthesize venmoClient;
-
 #pragma mark - UIViewController
 
 - (void)loadView {
@@ -43,7 +37,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if ([self.webView isLoading]) {
-        [activityView show];
+        [self.activityView show];
     }
 }
 
@@ -55,7 +49,7 @@
     if ([request.URL.scheme isEqualToString:@"cancel"]) {
         [self cancel];
         return NO;
-    } else if ([request.URL.scheme isEqualToString:[venmoClient scheme]]) {
+    } else if ([request.URL.scheme isEqualToString:[self.venmoClient scheme]]) {
         [self complete];
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;
@@ -105,12 +99,12 @@
 #pragma mark - Setup @private
 
 - (void)loadInitialRequest {
-    [self.webView loadRequest:[NSURLRequest requestWithURL:transactionURL]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.transactionURL]];
 }
 
 - (void)hideActivityViews {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
-    [activityView hide];
+    [self.activityView hide];
 }
 
 #pragma mark - Teardown @private
@@ -124,8 +118,8 @@
 }
 
 - (void)completeCancelled:(BOOL)cancelled {
-    if (completionHandler) {
-        completionHandler(self, cancelled);
+    if (self.completionHandler) {
+        self.completionHandler(self, cancelled);
     } else {
         [self dismiss];
     }

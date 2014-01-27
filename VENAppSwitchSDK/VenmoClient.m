@@ -86,7 +86,7 @@
 }
 
 - (VDKTransactionViewController *)viewControllerWithTransaction:(VenmoTransaction *)transaction
-                                              forceWeb:(BOOL)forceWeb {
+                                                       forceWeb:(BOOL)forceWeb {
     NSString *URLPath = [self URLPathWithTransaction:transaction];
     NSURL *transactionURL;
     if (!forceWeb) {
@@ -124,7 +124,7 @@
 #pragma mark - Sending a Transaction @private
 
 - (NSString *)URLPathWithTransaction:(VenmoTransaction *)transaction {
-    
+
     NSString *identifier = nil;
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
     if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
@@ -135,13 +135,13 @@
 #else
     identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 #endif
-    
+
     NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
-            "app_name=%@&app_id=%@%@&device_id=%@",
-            self.appName,
-            self.appId,
-            (self.appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", self.appLocalId] : @""),
-            identifier];
+                              "app_name=%@&app_id=%@%@&device_id=%@",
+                              self.appName,
+                              self.appId,
+                              (self.appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", self.appLocalId] : @""),
+                              identifier];
     if (transaction.amount) {
         pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, transaction.amountString];
     }
@@ -169,9 +169,9 @@
 }
 
 - (BOOL)handleURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication {
-    NSString            *host               = [url host];
+    NSString *host = [url host];
     NSDictionary *queryDictionary    = [url queryDictionary];
-    
+
     if ([host isEqualToString:@"oauth"]) {
         NSString *oauthErrorMessage = [queryDictionary valueForKey:@"error"];
         if (oauthErrorMessage) {
@@ -187,14 +187,14 @@
         NSURLResponse *response;
         NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
         if (error) {
-           NSLog(@"Couldn't get the access token, %@", error);
+            NSLog(@"Couldn't get the access token, %@", error);
         }
         NSError *jsonError;
         id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
         VDKUser *currentUser = [[VDKUser alloc] initWithJSON:json[@"user"]];
         VDKSession *currentSession = [[VDKSession alloc] initWithAccessToken:json[@"access_token"]
-                                                                   refreshToken:json[@"refresh_token"]
-                                                                      expiresIn:[json[@"expires_in"] integerValue]];
+                                                                refreshToken:json[@"refresh_token"]
+                                                                   expiresIn:[json[@"expires_in"] integerValue]];
         VenmoClient *client = [VenmoClient sharedClient];
         [client setCurrentUser:currentUser];
         [client setCurrentSession:currentSession];
@@ -215,7 +215,7 @@
 
 - (BOOL)openURL:(NSURL *)url completionHandler:(VenmoTransactionCompletionHandler)completion {
     if (![[url scheme] isEqualToString:[self scheme]]) return NO;
-    
+
     VenmoTransaction *transaction = [self transactionWithURL:url];
     DLog(@"transaction.note: %@", transaction.note);
 
