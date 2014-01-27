@@ -1,9 +1,9 @@
 #import <UIKit/UIKit.h>
 
-typedef enum {
+typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
     VenmoTransactionTypePay,
     VenmoTransactionTypeCharge
-} VenmoTransactionType;
+};
 
 @interface VenmoTransaction : NSObject
 

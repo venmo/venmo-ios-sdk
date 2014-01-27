@@ -46,7 +46,7 @@ typedef void (^VenmoTransactionCompletionHandler)(VenmoTransaction *transaction,
 /**
  *  Returns true if the user has signed in
  **/
-- (BOOL) isConnected;
+- (BOOL)isConnected;
 
 #pragma mark - Sending a Transaction
 

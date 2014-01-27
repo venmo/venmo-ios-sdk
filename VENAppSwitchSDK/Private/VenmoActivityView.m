@@ -51,7 +51,7 @@
         activityLabel.shadowColor = [UIColor darkGrayColor];
         activityLabel.shadowOffset = CGSizeMake(0, 2);
         activityLabel.font = [UIFont boldSystemFontOfSize:16.0f];
-        activityLabel.textAlignment = UITextAlignmentCenter;
+        activityLabel.textAlignment = NSTextAlignmentCenter;
         [self addSubview:activityLabel];
     }
     return self;
@@ -88,7 +88,7 @@
 
 - (UIView *)defaultSuperview {
     UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-    return [[keyWindow subviews] objectAtIndex:0];
+    return [keyWindow subviews][0];
 }
 
 - (void)remove {

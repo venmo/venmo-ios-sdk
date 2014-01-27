@@ -11,16 +11,16 @@
     for (NSString *keyValueString in pairs) {
         if ([keyValueString length] == 0) continue;
         NSArray *keyValueArray = [keyValueString componentsSeparatedByString:@"="];
-        NSString *key = [[keyValueArray objectAtIndex:0] formURLDecodedString];
+        NSString *key = [keyValueArray[0] formURLDecodedString];
         NSString *value = ([keyValueArray count] > 1 ?
-                           [[keyValueArray objectAtIndex:1] formURLDecodedString] : @"");
-        [params setObject:value forKey:key];
+                           [keyValueArray[1] formURLDecodedString] : @"");
+        params[key] = value;
     }
     return params;
 }
 
 - (id)objectOrNilForKey:(id)key {
-    id object = [self objectForKey:key];
+    id object = self[key];
     return object == [NSNull null] ? nil : object;
 }
 

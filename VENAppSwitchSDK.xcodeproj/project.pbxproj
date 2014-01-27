@@ -546,6 +546,7 @@
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VENAppSwitchSDK/Supporting Files/VENAppSwitchSDK-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = VENAppSwitchSDK;
@@ -560,6 +561,7 @@
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VENAppSwitchSDK/Supporting Files/VENAppSwitchSDK-Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = VENAppSwitchSDK;
 				SKIP_INSTALL = YES;

@@ -7,30 +7,21 @@
     NSNumberFormatter *amountNumberFormatter;
 }
 
-@synthesize transactionID;
-@synthesize type;
-@synthesize fromUserID;
-@synthesize toUserID;
-@synthesize toUserHandle;
-@synthesize amount;
-@synthesize note;
-@synthesize success;
-
 + (VenmoTransactionType)typeWithString:(NSString *)string {
     return [[string lowercaseString] isEqualToString:@"charge"] ?
     VenmoTransactionTypeCharge : VenmoTransactionTypePay;
 }
 
 - (NSString *)typeString {
-    return type == VenmoTransactionTypeCharge ? @"charge" : @"pay";
+    return self.type == VenmoTransactionTypeCharge ? @"charge" : @"pay";
 }
 
 - (NSString *)typeStringPast {
-    return type == VenmoTransactionTypeCharge ? @"charged" : @"paid";
+    return self.type == VenmoTransactionTypeCharge ? @"charged" : @"paid";
 }
 
 - (NSString *)amountString {
-    if (!amount) {
+    if (!self.amount) {
         return @""; // we don't want to get the string "(null)"
     }
     // TODO: Consider making amountNumberFormatter a static variable and adding another static
@@ -41,7 +32,7 @@
         [amountNumberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
         [amountNumberFormatter setMinimumFractionDigits:2];
     }
-    return [amountNumberFormatter stringFromNumber:amount];
+    return [amountNumberFormatter stringFromNumber:self.amount];
 }
 
 #pragma mark - Internal
@@ -64,7 +55,7 @@
     if (!dictionary) return nil;
     VenmoTransaction *transaction = [[VenmoTransaction alloc] init];
     transaction.transactionID = [dictionary stringForKey:@"payment_id"];
-    transaction.type          = [VenmoTransaction typeWithString:[dictionary objectForKey:@"verb"]];
+    transaction.type          = [VenmoTransaction typeWithString:dictionary[@"verb"]];
     transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
     transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
     transaction.amount        = [NSDecimalNumber decimalNumberWithString:

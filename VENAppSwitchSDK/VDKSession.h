@@ -6,7 +6,7 @@
 @property (nonatomic, strong, readonly) NSString *refreshToken;
 @property (nonatomic) NSInteger expiresIn;
 
-- (id) initWithAccessToken:(NSString *)accessToken
+- (id)initWithAccessToken:(NSString *)accessToken
              refreshToken:(NSString *)refreshToken
                 expiresIn:(NSInteger)expiresIn;
 

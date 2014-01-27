@@ -257,7 +257,7 @@
         DLog(@"signedRequest: %@", signedRequest);
         NSArray *decodedSignedRequest = [self decodeSignedRequest:signedRequest];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
-        return [VenmoTransaction transactionWithDictionary:[decodedSignedRequest objectAtIndex:0]];
+        return [VenmoTransaction transactionWithDictionary:decodedSignedRequest[0]];
     }
     @catch (NSException *exception) {
         DLog(@"Exception! %@: %@. %@", exception.name, exception.reason, exception.userInfo);
@@ -269,8 +269,8 @@
     if (!signedRequest) return nil;
 
     NSArray *encodedSignature_encodedDataString = [signedRequest componentsSeparatedByString:@"."];
-    NSString *encodedSignature = [encodedSignature_encodedDataString objectAtIndex:0];
-    NSString *encodedDataString = [encodedSignature_encodedDataString objectAtIndex:1];
+    NSString *encodedSignature = encodedSignature_encodedDataString[0];
+    NSString *encodedDataString = encodedSignature_encodedDataString[1];
 
     encodedSignature = [encodedSignature stringByAppendingString:@"=="];
     encodedSignature = [encodedSignature stringByReplacingOccurrencesOfString:@"-" withString:@"+"];
