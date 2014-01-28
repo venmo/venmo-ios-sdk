@@ -62,8 +62,10 @@
         client.currentSession = currentSession;
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            BOOL success = (error == nil);
-            [VenmoSDK sharedClient].currentOAuthCompletionHandler(success, error);
+            if ([VenmoSDK sharedClient].currentOAuthCompletionHandler) {
+                BOOL success = (error == nil);
+                [VenmoSDK sharedClient].currentOAuthCompletionHandler(success, error);
+            }
         });
     }
     else {

@@ -32,6 +32,18 @@
     [super viewDidLoad];
     [self loadInitialRequest];
     self.activityView = [VenmoActivityView activityView];
+
+    UIBarButtonItem *logInBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login"
+                                                                           style:UIBarButtonItemStylePlain
+                                                                          target:self
+                                                                          action:@selector(loginToWebView)];
+
+    UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                            style:UIBarButtonItemStylePlain
+                                                                           target:self
+                                                                           action:@selector(cancel)];
+    [self.navigationItem setRightBarButtonItem:logInBarButtonItem];
+    [self.navigationItem setLeftBarButtonItem:cancelBarButtonItem];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -94,6 +106,11 @@
 }
 
 
+- (void)loginToWebView {
+    [self.webView stringByEvaluatingJavaScriptFromString:@"venmo.showLoginForm();"];
+}
+
+
 #pragma mark - Accessor @private
 
 - (UIWebView *)webView {
@@ -132,11 +149,7 @@
 }
 
 - (void)dismiss {
-    if (self.navigationController.topViewController == self) {
-        [self.navigationController popViewControllerAnimated:YES];
-    } else {
-        [self dismissViewControllerAnimated:YES completion:nil];
-    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

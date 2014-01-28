@@ -39,14 +39,13 @@ static VenmoSDK *sharedVenmoClient = nil;
 #pragma mark - Initializers
 
 + (BOOL)startWithAppId:(NSString *)appId
-               secret:(NSString *)appSecret
-                 name:(NSString *)appName
-              localId:(NSString *)appLocalId {
+                secret:(NSString *)appSecret
+                  name:(NSString *)appName
+               localId:(NSString *)appLocalId {
     if (sharedVenmoClient) {
         return NO;
     }
     static dispatch_once_t onceToken;
-    static VenmoSDK *sharedVenmoClient = nil;
     dispatch_once(&onceToken, ^{
         sharedVenmoClient = [[self alloc] initWithAppId:appId secret:appSecret name:appName localId:appLocalId];
     });
@@ -80,9 +79,11 @@ static VenmoSDK *sharedVenmoClient = nil;
         [[UIApplication sharedApplication] openURL:transactionURL];
     } else {
         VDKTransactionViewController *viewController = [[VDKTransactionViewController alloc] init];
-        viewController.transactionURL = transactionURL;
+        viewController.transactionURL = [self webURLWithPath:URLPath];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
         UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        [keyWindow.rootViewController presentViewController:viewController animated:YES completion:nil];
+        [keyWindow.rootViewController presentViewController:navController animated:YES completion:nil];
     }
 }
 
@@ -130,12 +131,22 @@ static VenmoSDK *sharedVenmoClient = nil;
     if (transaction.note) {
         pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, transaction.note];
     }
+    pathAndQuery = [NSString stringWithFormat:@"%@&app_version=%@", pathAndQuery, VDK_CURRENT_SDK_VERSION];
+
     return pathAndQuery;
 }
+
 
 - (NSURL *)venmoURLWithPath:(NSString *)path {
     NSString *newPath = [NSString stringWithFormat:@"venmosdk://venmo.com%@", path];
     return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+}
+
+
+- (NSURL *)webURLWithPath:(NSString *)path {
+    path = [@"/touch/signup_to_pay" stringByAppendingString:path];
+    NSString *unEncodedURL = [NSString stringWithFormat:@"%@://%@%@", @"https", @"venmo.com", path];
+    return [[NSURL alloc] initWithString:[unEncodedURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 

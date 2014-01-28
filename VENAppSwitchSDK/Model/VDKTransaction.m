@@ -11,6 +11,18 @@
 
 @implementation VDKTransaction
 
++ (instancetype)transactionWithType:(VDKTransactionType)type
+                             amount:(NSUInteger)amount
+                               note:(NSString *)note
+                          recipient:(NSString *)recipient {
+    VDKTransaction *transaction = [[VDKTransaction alloc] init];
+    transaction.type = type;
+    transaction.amount = amount;
+    transaction.note = note;
+    transaction.toUserHandle = recipient;
+    return transaction;
+}
+
 + (instancetype)transactionWithURL:(NSURL *)url {
     @try {
         NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
@@ -26,24 +38,26 @@
     }
 }
 
-+ (VenmoTransactionType)typeWithString:(NSString *)string {
++ (VDKTransactionType)typeWithString:(NSString *)string {
     return [[string lowercaseString] isEqualToString:@"charge"] ?
-    VenmoTransactionTypeCharge : VenmoTransactionTypePay;
+    VDKTransactionTypeCharge : VDKTransactionTypePay;
 }
 
 - (NSString *)typeString {
-    return self.type == VenmoTransactionTypeCharge ? @"charge" : @"pay";
+    return self.type == VDKTransactionTypeCharge ? @"charge" : @"pay";
 }
 
 - (NSString *)typeStringPast {
-    return self.type == VenmoTransactionTypeCharge ? @"charged" : @"paid";
+    return self.type == VDKTransactionTypeCharge ? @"charged" : @"paid";
 }
 
 - (NSString *)amountString {
-    if (!self.amount) {
+    if (self.amount < 1) {
         return @"";
     }
-    return [self.amountNumberFormatter stringFromNumber:self.amount];
+    float amount = self.amount / 100;
+    NSString *amountStr = [NSString stringWithFormat:@"%.2f", amount];
+    return amountStr;
 }
 
 
@@ -75,18 +89,6 @@
     transaction.note          = [dictionary stringForKey:@"note"];
     transaction.success       = [dictionary boolForKey:@"success"];
     return transaction;
-}
-
-
-#pragma mark - Properties
-
-- (NSNumberFormatter *)amountNumberFormatter {
-    if (!_amountNumberFormatter) {
-        _amountNumberFormatter = [[NSNumberFormatter alloc] init];
-        [_amountNumberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-        [_amountNumberFormatter setMinimumFractionDigits:2];
-    }
-    return _amountNumberFormatter;
 }
 
 @end

@@ -1,0 +1,14 @@
+PODS:
+  - VENAppSwitchSDK (1.0.0)
+
+DEPENDENCIES:
+  - VENAppSwitchSDK (from `../VENAppSwitchSDK/VENAppSwitchSDK.podspec`)
+
+EXTERNAL SOURCES:
+  VENAppSwitchSDK:
+    :path: ../VENAppSwitchSDK/VENAppSwitchSDK.podspec
+
+SPEC CHECKSUMS:
+  VENAppSwitchSDK: dc37ffad974425187dcdf5e2b8e8df9ad0dd9eff
+
+COCOAPODS: 0.29.0

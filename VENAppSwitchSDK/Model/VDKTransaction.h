@@ -1,20 +1,26 @@
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
-    VenmoTransactionTypePay,
-    VenmoTransactionTypeCharge
+typedef NS_ENUM(NSUInteger, VDKTransactionType) {
+    VDKTransactionTypePay,
+    VDKTransactionTypeCharge
 };
 
 @interface VDKTransaction : NSObject
 
-@property (copy, nonatomic) NSString *transactionID;
-@property (assign, nonatomic) VenmoTransactionType type;
-@property (copy, nonatomic) NSString *fromUserID;
-@property (copy, nonatomic) NSString *toUserID;
-@property (strong, nonatomic) NSDecimalNumber *amount;
+@property (assign, nonatomic) VDKTransactionType type;
+@property (assign, nonatomic) NSUInteger amount;
 @property (copy, nonatomic) NSString *note;
 @property (copy, nonatomic) NSString *toUserHandle; // cell number, email, @twitter, Venmo username
+@property (copy, nonatomic) NSString *toUserID;
+
+@property (copy, nonatomic) NSString *transactionID;
 @property (assign, nonatomic) BOOL success;
+@property (copy, nonatomic) NSString *fromUserID;
+
++ (instancetype)transactionWithType:(VDKTransactionType)type
+                             amount:(NSUInteger)amount
+                               note:(NSString *)note
+                          recipient:(NSString *)recipient;
 
 + (instancetype)transactionWithURL:(NSURL *)url;
 
