@@ -31,8 +31,8 @@
     NSDictionary *queryDictionary   = [self.request.URL queryDictionary];
 
     if ([host isEqualToString:@"oauth"]) {
-
         NSString *oauthErrorMessage = [queryDictionary valueForKey:@"error"];
+
         if (oauthErrorMessage) {
             NSLog(@"Could not complete oAuth Request, %@", oauthErrorMessage);
             return;
@@ -60,30 +60,28 @@
         client.currentSession = currentSession;
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            // Call oAuthComplete completion handler
+            BOOL success = (error == nil);
+            [VenmoSDK sharedClient].currentOAuthCompletionHandler(success, error);
         });
-
     }
     else {
-
         VDKTransaction *transaction = [VDKTransaction transactionWithURL:[self.request URL]];
-
         dispatch_async(dispatch_get_main_queue(), ^{
 
             if (transaction && [transaction success] && [VenmoSDK sharedClient].currentTransactionCompletionHandler) {
                 [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, nil);
             }
             else if (transaction && [VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-                NSError *err = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionFailedError
+                NSError *error = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionFailedError
                                             description:@"Venmo failed to complete the transaction."
                                      recoverySuggestion:@"Please try again."];
-                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, err);
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, error);
             }
             else if ([VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-                NSError *err  = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionValidationError
+                NSError *error  = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionValidationError
                                              description:@"Failed to validate the transaction."
                                       recoverySuggestion:@"Please contact us."];
-                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, err);
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, error);
             }
         });
     }
