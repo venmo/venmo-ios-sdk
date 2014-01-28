@@ -1,11 +1,3 @@
-//
-//  VDKURLProtocol.m
-//  VENAppSwitchSDK
-//
-//  Created by Ayaka Nonaka on 1/27/14.
-//  Copyright (c) 2014 Venmo. All rights reserved.
-//
-
 #import "VDKURLProtocol.h"
 #import "VenmoSDK.h"
 #import "VenmoErrors.h"

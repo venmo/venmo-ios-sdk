@@ -2,6 +2,7 @@
 #import <UIKit/UIKit.h>
 
 @interface VDKUser : NSObject
+
 @property (copy, nonatomic, readonly) NSString *username;
 @property (copy, nonatomic, readonly) NSString *firstName;
 @property (copy, nonatomic, readonly) NSString *lastName;
@@ -14,4 +15,5 @@
 @property (assign, nonatomic, readonly) NSInteger friendsCount;
 
 - (id)initWithJSON:(NSData *)json;
+
 @end

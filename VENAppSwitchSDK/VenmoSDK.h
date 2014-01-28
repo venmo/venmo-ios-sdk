@@ -17,8 +17,9 @@ typedef void (^VDKTransactionCompletionHandler)(VDKTransaction *transaction, NSE
 
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;
-@property (copy, nonatomic) NSString *appName;
-@property (copy, nonatomic) NSString *appLocalId;
+@property (copy, nonatomic, readonly) NSString *appName;
+@property (copy, nonatomic, readonly) NSString *appLocalId;
+
 @property (strong, nonatomic) VDKUser *currentUser;
 @property (strong, nonatomic) VDKSession *currentSession;
 @property (copy, nonatomic) VDKTransactionCompletionHandler currentCompletionHandler;

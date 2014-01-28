@@ -41,6 +41,7 @@
     }
 }
 
+
 #pragma mark - UIWebViewDelegate
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request
@@ -77,6 +78,7 @@
     [alert show];
 }
 
+
 #pragma mark - UIAlertViewDelegate
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -91,11 +93,13 @@
     }
 }
 
+
 #pragma mark - Accessor @private
 
 - (UIWebView *)webView {
     return (UIWebView *)self.view;
 }
+
 
 #pragma mark - Setup @private
 
@@ -107,6 +111,7 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self.activityView hide];
 }
+
 
 #pragma mark - Teardown @private
 

@@ -21,6 +21,7 @@
     return [[self alloc] initWithTitle:title];
 }
 
+
 #pragma mark - Initializers @private
 
 - (id)initWithTitle:(NSString *)title {
@@ -57,6 +58,7 @@
     return self;
 }
 
+
 #pragma mark - Show & Hide
 
 - (void)show {
@@ -83,6 +85,7 @@
         [self remove];
     }
 }
+
 
 #pragma mark - Show & Hide @private
 

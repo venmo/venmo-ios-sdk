@@ -21,10 +21,14 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 @interface VenmoSDK ()
 
-@property (copy, nonatomic) NSString *appId;
-@property (copy, nonatomic) NSString *appSecret;
+@property (copy, nonatomic, readwrite) NSString *appId;
+@property (copy, nonatomic, readwrite) NSString *appSecret;
+@property (copy, nonatomic, readwrite) NSString *appName;
+@property (copy, nonatomic, readwrite) NSString *appLocalId;
+
 @property (copy, nonatomic) NSString *accessToken;
 @property (copy, nonatomic) NSString *refreshToken;
+
 @end
 
 @implementation VenmoSDK
@@ -50,6 +54,7 @@ static VenmoSDK *sharedVenmoClient = nil;
     return sharedVenmoClient;
 }
 
+
 #pragma mark - Initializers @private
 
 - (instancetype)initWithAppId:(NSString *)appId
@@ -67,6 +72,7 @@ static VenmoSDK *sharedVenmoClient = nil;
     }
     return self;
 }
+
 
 #pragma mark - Sending a Transaction
 
@@ -113,20 +119,12 @@ static VenmoSDK *sharedVenmoClient = nil;
     [[UIApplication sharedApplication] openURL:authURL];
 }
 
+
 #pragma mark - Sending a Transaction @private
 
 - (NSString *)URLPathWithTransaction:(VDKTransaction *)transaction {
 
-    NSString *identifier = nil;
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
-    if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
-        identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-    } else {
-        identifier = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-    }
-#else
-    identifier = [[[UIDevice currentDevice] identifierForVendor] UUIDString];
-#endif
+    NSString *identifier = [self currentDeviceIdentifier];
 
     NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
                               "app_name=%@&app_id=%@%@&device_id=%@",
@@ -165,6 +163,21 @@ static VenmoSDK *sharedVenmoClient = nil;
         return NO;
     }
     return YES;
+}
+
+
+#pragma mark - Helpers
+
+- (NSString *)currentDeviceIdentifier {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
+    if ([[UIDevice currentDevice] respondsToSelector:@selector(identifierForVendor)]) {
+        return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+    } else {
+        return [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    }
+#else
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+#endif
 }
 
 @end

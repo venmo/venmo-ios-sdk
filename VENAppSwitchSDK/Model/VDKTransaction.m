@@ -5,10 +5,11 @@
 #import "NSURL+Venmo.h"
 #import "VDKRequestDecoder.h"
 
-@implementation VDKTransaction {
-    NSNumberFormatter *amountNumberFormatter;
-}
+@interface VDKTransaction ()
+@property (strong, nonatomic) NSNumberFormatter *amountNumberFormatter;
+@end
 
+@implementation VDKTransaction
 
 + (VenmoTransactionType)typeWithString:(NSString *)string {
     return [[string lowercaseString] isEqualToString:@"charge"] ?
@@ -28,17 +29,9 @@
 
 - (NSString *)amountString {
     if (!self.amount) {
-        return @""; // we don't want to get the string "(null)"
+        return @"";
     }
-    // TODO: Consider making amountNumberFormatter a static variable and adding another static
-    // variable called transactionCount, incremented in init & decremented in dealloc.
-    // Then, in dealloc, if transactionCount == 0, set amountNumberFormatter = nil.
-    if (!amountNumberFormatter) {
-        amountNumberFormatter = [[NSNumberFormatter alloc] init];
-        [amountNumberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
-        [amountNumberFormatter setMinimumFractionDigits:2];
-    }
-    return [amountNumberFormatter stringFromNumber:self.amount];
+    return [self.amountNumberFormatter stringFromNumber:self.amount];
 }
 
 
@@ -84,6 +77,18 @@
     transaction.note          = [dictionary stringForKey:@"note"];
     transaction.success       = [dictionary boolForKey:@"success"];
     return transaction;
+}
+
+
+#pragma mark - Properties
+
+- (NSNumberFormatter *)amountNumberFormatter {
+    if (!_amountNumberFormatter) {
+        _amountNumberFormatter = [[NSNumberFormatter alloc] init];
+        [_amountNumberFormatter setLocale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]];
+        [_amountNumberFormatter setMinimumFractionDigits:2];
+    }
+    return _amountNumberFormatter;
 }
 
 @end

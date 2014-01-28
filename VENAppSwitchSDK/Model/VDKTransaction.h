@@ -24,5 +24,4 @@ typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
 - (NSString *)typeStringPast;
 - (NSString *)amountString;
 
-
 @end

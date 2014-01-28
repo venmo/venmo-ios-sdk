@@ -1,7 +1,6 @@
 #import "VDKSession.h"
 
 @interface VDKSession ()
-
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
 @end
@@ -19,4 +18,5 @@
     }
     return self;
 }
+
 @end
