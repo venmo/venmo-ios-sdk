@@ -70,24 +70,23 @@
 
         dispatch_async(dispatch_get_main_queue(), ^{
 
-            if (transaction && [transaction success] && [VenmoSDK sharedClient].currentCompletionHandler) {
-                [VenmoSDK sharedClient].currentCompletionHandler(transaction, nil);
+            if (transaction && [transaction success] && [VenmoSDK sharedClient].currentTransactionCompletionHandler) {
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, nil);
             }
-            else if (transaction && [VenmoSDK sharedClient].currentCompletionHandler) {
+            else if (transaction && [VenmoSDK sharedClient].currentTransactionCompletionHandler) {
                 NSError *err = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionFailedError
                                             description:@"Venmo failed to complete the transaction."
                                      recoverySuggestion:@"Please try again."];
-                [VenmoSDK sharedClient].currentCompletionHandler(transaction, err);
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, err);
             }
-            else if ([VenmoSDK sharedClient].currentCompletionHandler) {
+            else if ([VenmoSDK sharedClient].currentTransactionCompletionHandler) {
                 NSError *err  = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionValidationError
                                              description:@"Failed to validate the transaction."
                                       recoverySuggestion:@"Please contact us."];
-                [VenmoSDK sharedClient].currentCompletionHandler(transaction, err);
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, err);
             }
         });
     }
 }
 
 @end
-

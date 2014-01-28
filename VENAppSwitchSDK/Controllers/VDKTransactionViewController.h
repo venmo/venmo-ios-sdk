@@ -17,7 +17,5 @@ typedef void (^VenmoViewControllerCompletionHandler)(VDKTransactionViewControlle
 
 @property (strong, nonatomic) VenmoActivityView *activityView;
 @property (strong, nonatomic) NSURL *transactionURL;
-@property (strong, nonatomic) VenmoSDK *venmoClient;
-
 
 @end

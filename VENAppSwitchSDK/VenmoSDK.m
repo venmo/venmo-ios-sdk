@@ -26,6 +26,9 @@ static VenmoSDK *sharedVenmoClient = nil;
 @property (copy, nonatomic, readwrite) NSString *appName;
 @property (copy, nonatomic, readwrite) NSString *appLocalId;
 
+@property (copy, nonatomic, readwrite) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
+@property (copy, nonatomic, readwrite) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
+
 @property (copy, nonatomic) NSString *accessToken;
 @property (copy, nonatomic) NSString *refreshToken;
 
@@ -54,59 +57,42 @@ static VenmoSDK *sharedVenmoClient = nil;
     return sharedVenmoClient;
 }
 
-
-#pragma mark - Initializers @private
-
-- (instancetype)initWithAppId:(NSString *)appId
-                       secret:(NSString *)appSecret
-                         name:(NSString *)appName
-                      localId:(NSString *)appLocalId {
-    self = [super init];
-    if (self) {
-        self.appId = appId;
-        self.appSecret = appSecret;
-        self.appName = appName ?: [[NSBundle mainBundle] name];
-        self.appLocalId = appLocalId;
-
-        [NSURLProtocol registerClass:[VDKURLProtocol class]];
+- (BOOL)isConnected {
+    if (!self.currentSession) {
+        return NO;
     }
-    return self;
+    return YES;
 }
 
 
 #pragma mark - Sending a Transaction
 
-- (VDKTransactionViewController *)viewControllerWithTransaction:(VDKTransaction *)transaction {
-    return [self viewControllerWithTransaction:transaction forceWeb:NO];
-}
+- (void)sendTransaction:(VDKTransaction *)transaction
+  withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler {
 
-- (VDKTransactionViewController *)viewControllerWithTransaction:(VDKTransaction *)transaction
-                                                       forceWeb:(BOOL)forceWeb {
+    self.currentTransactionCompletionHandler = completionHandler;
     NSString *URLPath = [self URLPathWithTransaction:transaction];
     NSURL *transactionURL;
-    if (!forceWeb) {
-        transactionURL = [self venmoURLWithPath:URLPath];
-        DLog(@"transactionURL: %@", transactionURL);
-        if ([[UIApplication sharedApplication] canOpenURL:transactionURL]) {
-            [[UIApplication sharedApplication] openURL:transactionURL];
-            return nil;
-        }
-    }
-    transactionURL = [self webURLWithPath:URLPath];
+    transactionURL = [self venmoURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
-    VDKTransactionViewController *viewController = [[VDKTransactionViewController alloc] init];
-    viewController.transactionURL = transactionURL;
-    viewController.venmoClient = self;
-    return viewController;
+
+    if ([self hasVenmoApp]) {
+        [[UIApplication sharedApplication] openURL:transactionURL];
+    } else {
+        VDKTransactionViewController *viewController = [[VDKTransactionViewController alloc] init];
+        viewController.transactionURL = transactionURL;
+        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
+        [keyWindow.rootViewController presentViewController:viewController animated:YES completion:nil];
+    }
 }
 
-- (BOOL)hasVenmoApp {
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
-}
 
-- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler {
+#pragma mark - OAuth
+
+- (void)requestPermissions:(NSArray *)permissions
+     withCompletionHandler:(VDKOAuthCompletionHandler)completionHandler {
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
-    self.currentCompletionHandler = completionHandler;
+    self.currentOAuthCompletionHandler = completionHandler;
 
     NSString *baseURL;
     if ([self hasVenmoApp]) {
@@ -152,21 +138,30 @@ static VenmoSDK *sharedVenmoClient = nil;
     return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
-- (NSURL *)webURLWithPath:(NSString *)path {
-    path = [@"/touch/signup_to_pay" stringByAppendingString:path];
-    NSString *unEncodedURL = [NSString stringWithFormat:@"%@://%@%@", @"https", @"venmo.com", path];
-    return [[NSURL alloc] initWithString:[unEncodedURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-}
 
-- (BOOL)isConnected {
-    if (!self.currentSession) {
-        return NO;
+
+
+#pragma mark - Private
+
+- (instancetype)initWithAppId:(NSString *)appId
+                       secret:(NSString *)appSecret
+                         name:(NSString *)appName
+                      localId:(NSString *)appLocalId {
+    self = [super init];
+    if (self) {
+        self.appId = appId;
+        self.appSecret = appSecret;
+        self.appName = appName ?: [[NSBundle mainBundle] name];
+        self.appLocalId = appLocalId;
+
+        [NSURLProtocol registerClass:[VDKURLProtocol class]];
     }
-    return YES;
+    return self;
 }
 
-
-#pragma mark - Helpers
+- (BOOL)hasVenmoApp {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
+}
 
 - (NSString *)currentDeviceIdentifier {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
