@@ -139,8 +139,6 @@ static VenmoSDK *sharedVenmoClient = nil;
 }
 
 
-
-
 #pragma mark - Private
 
 - (instancetype)initWithAppId:(NSString *)appId

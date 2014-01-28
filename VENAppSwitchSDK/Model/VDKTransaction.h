@@ -16,8 +16,6 @@ typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
 @property (copy, nonatomic) NSString *toUserHandle; // cell number, email, @twitter, Venmo username
 @property (assign, nonatomic) BOOL success;
 
-+ (VenmoTransactionType)typeWithString:(NSString *)string;
-+ (instancetype)transactionWithDictionary:(NSDictionary *)dictionary;
 + (instancetype)transactionWithURL:(NSURL *)url;
 
 - (NSString *)typeString;

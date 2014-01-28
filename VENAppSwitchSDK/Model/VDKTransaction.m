@@ -11,30 +11,6 @@
 
 @implementation VDKTransaction
 
-+ (VenmoTransactionType)typeWithString:(NSString *)string {
-    return [[string lowercaseString] isEqualToString:@"charge"] ?
-    VenmoTransactionTypeCharge : VenmoTransactionTypePay;
-}
-
-
-- (NSString *)typeString {
-    return self.type == VenmoTransactionTypeCharge ? @"charge" : @"pay";
-}
-
-
-- (NSString *)typeStringPast {
-    return self.type == VenmoTransactionTypeCharge ? @"charged" : @"paid";
-}
-
-
-- (NSString *)amountString {
-    if (!self.amount) {
-        return @"";
-    }
-    return [self.amountNumberFormatter stringFromNumber:self.amount];
-}
-
-
 + (instancetype)transactionWithURL:(NSURL *)url {
     @try {
         NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
@@ -50,6 +26,28 @@
     }
 }
 
++ (VenmoTransactionType)typeWithString:(NSString *)string {
+    return [[string lowercaseString] isEqualToString:@"charge"] ?
+    VenmoTransactionTypeCharge : VenmoTransactionTypePay;
+}
+
+- (NSString *)typeString {
+    return self.type == VenmoTransactionTypeCharge ? @"charge" : @"pay";
+}
+
+- (NSString *)typeStringPast {
+    return self.type == VenmoTransactionTypeCharge ? @"charged" : @"paid";
+}
+
+- (NSString *)amountString {
+    if (!self.amount) {
+        return @"";
+    }
+    return [self.amountNumberFormatter stringFromNumber:self.amount];
+}
+
+
+#pragma mark - Private
 
 // {
 //     "payments": [

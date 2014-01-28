@@ -3,6 +3,7 @@
 @interface VDKSession ()
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
+@property (assign, nonatomic, readwrite) NSInteger expiresIn;
 @end
 
 @implementation VDKSession

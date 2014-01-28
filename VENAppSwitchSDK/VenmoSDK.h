@@ -42,8 +42,18 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 
 - (BOOL)isConnected;
 
+/**
+ * Initiates Venmo OAuth request.
+ * @param permissions List of permissions.
+ * @param completionHandler Completion handler to call upon returning from OAuth session.
+ */
 - (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VDKOAuthCompletionHandler)completionHandler;
-- (void)sendTransaction:(VDKTransaction *)transaction
-  withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler;
+
+/**
+ * Sends Venmo transaction.
+ * @param transaction The transaction to send.
+ * @param completionHandler Completion handler to call after sending transaction.
+ */
+- (void)sendTransaction:(VDKTransaction *)transaction withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler;
 
 @end
