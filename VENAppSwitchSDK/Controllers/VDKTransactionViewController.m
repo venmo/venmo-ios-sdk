@@ -1,7 +1,7 @@
 #import "VenmoDefines_Internal.h"
 #import "VDKTransactionViewController.h"
 #import "VenmoActivityView.h"
-#import "VenmoClient.h"
+#import "VenmoSDK.h"
 
 @interface VDKTransactionViewController ()
 - (UIWebView *)webView;
@@ -49,7 +49,8 @@
     if ([request.URL.scheme isEqualToString:@"cancel"]) {
         [self cancel];
         return NO;
-    } else if ([request.URL.scheme isEqualToString:[self.venmoClient scheme]]) {
+    }
+    else if ([request.URL.scheme isEqualToString:[NSString stringWithFormat:@"venmo%@", [VenmoSDK sharedClient].appId]]) {
         [self complete];
         [[UIApplication sharedApplication] openURL:request.URL];
         return NO;

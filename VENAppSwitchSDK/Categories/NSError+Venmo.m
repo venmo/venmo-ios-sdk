@@ -5,8 +5,9 @@
 + (id)errorWithDomain:(NSString *)domain code:(NSInteger)code
           description:(NSString *)description recoverySuggestion:(NSString *)recoverySuggestion {
     NSDictionary *errorUserInfo =
-    @{NSLocalizedDescriptionKey: NSLocalizedString(description, nil),
-     NSLocalizedRecoverySuggestionErrorKey: NSLocalizedString(recoverySuggestion, nil)};
+    [NSDictionary dictionaryWithObjectsAndKeys:
+     NSLocalizedString(description, nil), NSLocalizedDescriptionKey,
+     NSLocalizedString(recoverySuggestion, nil), NSLocalizedRecoverySuggestionErrorKey, nil];
 
     return [NSError errorWithDomain:domain code:code userInfo:errorUserInfo];
 }

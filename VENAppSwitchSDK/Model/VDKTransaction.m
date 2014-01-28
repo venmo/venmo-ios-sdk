@@ -1,24 +1,30 @@
 #import <Foundation/Foundation.h>
 #import "VenmoDefines_Internal.h"
 #import "NSDictionary+Venmo.h"
-#import "VenmoTransaction.h"
+#import "VenmoSDK.h"
+#import "NSURL+Venmo.h"
+#import "VDKRequestDecoder.h"
 
-@implementation VenmoTransaction {
+@implementation VDKTransaction {
     NSNumberFormatter *amountNumberFormatter;
 }
+
 
 + (VenmoTransactionType)typeWithString:(NSString *)string {
     return [[string lowercaseString] isEqualToString:@"charge"] ?
     VenmoTransactionTypeCharge : VenmoTransactionTypePay;
 }
 
+
 - (NSString *)typeString {
     return self.type == VenmoTransactionTypeCharge ? @"charge" : @"pay";
 }
 
+
 - (NSString *)typeStringPast {
     return self.type == VenmoTransactionTypeCharge ? @"charged" : @"paid";
 }
+
 
 - (NSString *)amountString {
     if (!self.amount) {
@@ -35,7 +41,22 @@
     return [amountNumberFormatter stringFromNumber:self.amount];
 }
 
-#pragma mark - Internal
+
++ (instancetype)transactionWithURL:(NSURL *)url {
+    @try {
+        NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
+        DLog(@"signedRequest: %@", signedRequest);
+
+        NSArray *decodedSignedRequest = [VDKRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[VenmoSDK sharedClient] appSecret]];
+        DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
+        return [VDKTransaction transactionWithDictionary:decodedSignedRequest[0]];
+    }
+    @catch (NSException *exception) {
+        DLog(@"Exception! %@: %@. %@", exception.name, exception.reason, exception.userInfo);
+        return nil;
+    }
+}
+
 
 // {
 //     "payments": [
@@ -50,12 +71,12 @@
 //         }
 //     ]
 // }
-+ (id)transactionWithDictionary:(NSDictionary *)dictionary {
++ (instancetype)transactionWithDictionary:(NSDictionary *)dictionary {
     DLog(@"transaction Dictionary: %@", dictionary);
     if (!dictionary) return nil;
-    VenmoTransaction *transaction = [[VenmoTransaction alloc] init];
+    VDKTransaction *transaction = [[VDKTransaction alloc] init];
     transaction.transactionID = [dictionary stringForKey:@"payment_id"];
-    transaction.type          = [VenmoTransaction typeWithString:dictionary[@"verb"]];
+    transaction.type          = [VDKTransaction typeWithString:dictionary[@"verb"]];
     transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
     transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
     transaction.amount        = [NSDecimalNumber decimalNumberWithString:

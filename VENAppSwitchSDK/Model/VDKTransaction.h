@@ -5,7 +5,7 @@ typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
     VenmoTransactionTypeCharge
 };
 
-@interface VenmoTransaction : NSObject
+@interface VDKTransaction : NSObject
 
 @property (copy, nonatomic) NSString *transactionID;
 @property (assign, nonatomic) VenmoTransactionType type;
@@ -17,7 +17,8 @@ typedef NS_ENUM(NSUInteger, VenmoTransactionType) {
 @property (assign, nonatomic) BOOL success;
 
 + (VenmoTransactionType)typeWithString:(NSString *)string;
-+ (id)transactionWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)transactionWithDictionary:(NSDictionary *)dictionary;
++ (instancetype)transactionWithURL:(NSURL *)url;
 
 - (NSString *)typeString;
 - (NSString *)typeStringPast;
