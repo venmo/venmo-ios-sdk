@@ -27,8 +27,8 @@
 
 
 - (void)handleRequest {
-    NSString *host                  = [self.request.URL host];
-    NSDictionary *queryDictionary   = [self.request.URL queryDictionary];
+    NSString *host = [self.request.URL host];
+    NSDictionary *queryDictionary = [self.request.URL queryDictionary];
 
     if ([host isEqualToString:@"oauth"]) {
         NSString *oauthErrorMessage = [queryDictionary valueForKey:@"error"];
@@ -40,9 +40,11 @@
 
         NSString *code = [queryDictionary valueForKey:@"code"];
         NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", [VenmoSDK sharedClient].appId, [VenmoSDK sharedClient].appSecret, code];
+
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/v1/oauth/access_token"]];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+
         NSError *error;
         NSURLResponse *response;
         NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
@@ -67,21 +69,23 @@
     else {
         VDKTransaction *transaction = [VDKTransaction transactionWithURL:[self.request URL]];
         dispatch_async(dispatch_get_main_queue(), ^{
+            VDKTransactionCompletionHandler completionHandler = [VenmoSDK sharedClient].currentTransactionCompletionHandler;
 
-            if (transaction && [transaction success] && [VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, nil);
+            NSError *error;
+            if (transaction && ![transaction success]) {
+                error = [NSError errorWithDomain:VenmoErrorDomain
+                                            code:VenmoTransactionFailedError
+                                     description:@"Venmo failed to complete the transaction."
+                              recoverySuggestion:@"Please try again."];
+            } else {
+                error  = [NSError errorWithDomain:VenmoErrorDomain
+                                             code:VenmoTransactionValidationError
+                                      description:@"Failed to validate the transaction."
+                               recoverySuggestion:@"Please contact us."];
             }
-            else if (transaction && [VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-                NSError *error = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionFailedError
-                                            description:@"Venmo failed to complete the transaction."
-                                     recoverySuggestion:@"Please try again."];
-                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, error);
-            }
-            else if ([VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-                NSError *error  = [NSError errorWithDomain:VenmoErrorDomain code:VenmoTransactionValidationError
-                                             description:@"Failed to validate the transaction."
-                                      recoverySuggestion:@"Please contact us."];
-                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, error);
+
+            if (completionHandler) {
+                completionHandler(transaction, error);
             }
         });
     }
