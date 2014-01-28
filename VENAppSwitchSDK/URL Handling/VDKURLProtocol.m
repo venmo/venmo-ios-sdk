@@ -69,8 +69,6 @@
     else {
         VDKTransaction *transaction = [VDKTransaction transactionWithURL:[self.request URL]];
         dispatch_async(dispatch_get_main_queue(), ^{
-            VDKTransactionCompletionHandler completionHandler = [VenmoSDK sharedClient].currentTransactionCompletionHandler;
-
             NSError *error;
             if (transaction && ![transaction success]) {
                 error = [NSError errorWithDomain:VenmoErrorDomain
@@ -84,8 +82,8 @@
                                recoverySuggestion:@"Please contact us."];
             }
 
-            if (completionHandler) {
-                completionHandler(transaction, error);
+            if ([VenmoSDK sharedClient].currentTransactionCompletionHandler) {
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, error);
             }
         });
     }
