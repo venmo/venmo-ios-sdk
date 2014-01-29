@@ -35,11 +35,11 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param appId Your app ID
  * @param appSecret Your app secret
  * @param appName Your app name (used in Venmo app to show "via [appName]")
- * @param appLocalId Local id to distinguish between free & paid versions of your app
  * @return YES if a new session started, NO if a session is already running.
  */
-+ (BOOL)startWithAppId:(NSString *)appId secret:(NSString *)appSecret
-                  name:(NSString *)appName localId:(NSString *)appLocalId;
++ (BOOL)startWithAppId:(NSString *)appId
+                secret:(NSString *)appSecret
+                  name:(NSString *)appName;
 
 + (instancetype)sharedClient;
 

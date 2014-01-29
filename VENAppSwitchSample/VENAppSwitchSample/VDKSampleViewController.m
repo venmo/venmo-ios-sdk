@@ -4,8 +4,8 @@
 @implementation VDKSampleViewController
 
 - (void)viewDidLoad {
-    // [VenmoSDK startWithAppId:@"1336" secret:@"r8YH6sz3ySSNLtkPQG4kV9u9nvnvksPY" name:@"API Test" localId:@""];
-    [VenmoSDK startWithAppId:@"1000" secret:@"3fAL7FB7ufTGDHVvGyv3nmFfnCbbMzNQ" name:@"API Test" localId:@""];
+    // [VenmoSDK startWithAppId:@"1336" secret:@"r8YH6sz3ySSNLtkPQG4kV9u9nvnvksPY" name:@"API Test"];
+    [VenmoSDK startWithAppId:@"1000" secret:@"3fAL7FB7ufTGDHVvGyv3nmFfnCbbMzNQ" name:@"API Test"];
 }
 
 - (IBAction)userDidTapOAuth:(id)sender {
