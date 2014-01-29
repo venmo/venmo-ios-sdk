@@ -38,11 +38,14 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
  * @return YES if a new session started, NO if a session is already running.
  */
 + (BOOL)startWithAppId:(NSString *)appId secret:(NSString *)appSecret
-                name:(NSString *)appName localId:(NSString *)appLocalId;
+                  name:(NSString *)appName localId:(NSString *)appLocalId;
 
 + (instancetype)sharedClient;
 
 - (BOOL)isConnected;
+
+
+- (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
  * Initiates Venmo OAuth request.

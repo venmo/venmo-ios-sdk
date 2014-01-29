@@ -13,20 +13,17 @@
 }
 
 
-- (instancetype)initWithRequest:(NSURLRequest *)request cachedResponse:(NSCachedURLResponse *)cachedResponse client:(id<NSURLProtocolClient>)client {
-    self = [super initWithRequest:request cachedResponse:cachedResponse client:client];
-
-    if (self) {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-            [self handleRequest];
-        });
-
-    }
-    return self;
++ (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
+    return request;
 }
 
 
-- (void)handleRequest {
++ (BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b {
+    return [[[a URL] resourceSpecifier] isEqualToString:[[b URL] resourceSpecifier]];
+}
+
+
+- (void)startLoading {
     NSString *host = [self.request.URL host];
     NSDictionary *queryDictionary = [self.request.URL queryDictionary];
 
@@ -72,12 +69,12 @@
         VDKTransaction *transaction = [VDKTransaction transactionWithURL:[self.request URL]];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
-            if (transaction && ![transaction success]) {
+            if (transaction && !transaction.success) {
                 error = [NSError errorWithDomain:VenmoErrorDomain
                                             code:VenmoTransactionFailedError
                                      description:@"Venmo failed to complete the transaction."
                               recoverySuggestion:@"Please try again."];
-            } else {
+            } else if (!transaction.success) {
                 error  = [NSError errorWithDomain:VenmoErrorDomain
                                              code:VenmoTransactionValidationError
                                       description:@"Failed to validate the transaction."
@@ -89,6 +86,14 @@
             }
         });
     }
+
+    [self.client URLProtocolDidFinishLoading:self];
 }
+
+
+- (void)stopLoading {
+
+}
+
 
 @end

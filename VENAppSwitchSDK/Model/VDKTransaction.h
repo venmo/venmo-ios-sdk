@@ -10,7 +10,7 @@ typedef NS_ENUM(NSUInteger, VDKTransactionType) {
 @property (assign, nonatomic) VDKTransactionType type;
 @property (assign, nonatomic) NSUInteger amount;
 @property (copy, nonatomic) NSString *note;
-@property (copy, nonatomic) NSString *toUserHandle; // cell number, email, @twitter, Venmo username
+@property (copy, nonatomic) NSString *toUserHandle; // cell number, email, Venmo username
 @property (copy, nonatomic) NSString *toUserID;
 
 @property (copy, nonatomic) NSString *transactionID;

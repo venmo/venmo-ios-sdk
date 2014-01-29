@@ -55,7 +55,7 @@
     if (self.amount < 1) {
         return @"";
     }
-    float amount = self.amount / 100;
+    float amount = (float)self.amount / (float)100;
     NSString *amountStr = [NSString stringWithFormat:@"%.2f", amount];
     return amountStr;
 }
@@ -84,8 +84,7 @@
     transaction.type          = [VDKTransaction typeWithString:dictionary[@"verb"]];
     transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
     transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
-    transaction.amount        = [NSDecimalNumber decimalNumberWithString:
-                                 [dictionary stringForKey:@"amount"]];
+    transaction.amount        = [[dictionary stringForKey:@"amount"] floatValue] * 100;
     transaction.note          = [dictionary stringForKey:@"note"];
     transaction.success       = [dictionary boolForKey:@"success"];
     return transaction;

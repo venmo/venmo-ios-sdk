@@ -21,6 +21,7 @@
 		B62D59F4189855E5001E46A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D6189855E5001E46A4 /* UIKit.framework */; };
 		B62D59FC189855E5001E46A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B62D59FA189855E5001E46A4 /* InfoPlist.strings */; };
 		B62D59FE189855E5001E46A4 /* VENAppSwitchSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */; };
+		B62D5A17189886EA001E46A4 /* VDKTotallyUselessURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D5A16189886EA001E46A4 /* VDKTotallyUselessURLProtocol.m */; };
 		F8B2635F832B45DD9E7692B4 /* libPods-VENAppSwitchSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D11390EAFC14A6ABB989FA6 /* libPods-VENAppSwitchSample.a */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,8 @@
 		B62D59F9189855E5001E46A4 /* VENAppSwitchSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VENAppSwitchSampleTests-Info.plist"; sourceTree = "<group>"; };
 		B62D59FB189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VENAppSwitchSampleTests.m; sourceTree = "<group>"; };
+		B62D5A15189886EA001E46A4 /* VDKTotallyUselessURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKTotallyUselessURLProtocol.h; sourceTree = "<group>"; };
+		B62D5A16189886EA001E46A4 /* VDKTotallyUselessURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKTotallyUselessURLProtocol.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				B62D59E8189855E5001E46A4 /* VDKSampleViewController.m */,
 				B62D59EA189855E5001E46A4 /* Images.xcassets */,
 				B62D59D9189855E5001E46A4 /* Supporting Files */,
+				B62D5A15189886EA001E46A4 /* VDKTotallyUselessURLProtocol.h */,
+				B62D5A16189886EA001E46A4 /* VDKTotallyUselessURLProtocol.m */,
 			);
 			path = VENAppSwitchSample;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B62D5A17189886EA001E46A4 /* VDKTotallyUselessURLProtocol.m in Sources */,
 				B62D59E9189855E5001E46A4 /* VDKSampleViewController.m in Sources */,
 				B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */,
 				B62D59DF189855E5001E46A4 /* main.m in Sources */,

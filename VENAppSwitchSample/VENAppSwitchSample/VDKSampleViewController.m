@@ -4,11 +4,11 @@
 @implementation VDKSampleViewController
 
 - (void)viewDidLoad {
-    [VenmoSDK startWithAppId:@"1234" secret:@"foobar" name:@"Sample app" localId:@"blah"];
+    [VenmoSDK startWithAppId:@"1336" secret:@"r8YH6sz3ySSNLtkPQG4kV9u9nvnvksPY" name:@"API Test" localId:@""];
 }
 
 - (IBAction)userDidTapOAuth:(id)sender {
-    [[VenmoSDK sharedClient] requestPermissions:@[@"login"] withCompletionHandler:^(BOOL success, NSError *error) {
+    [[VenmoSDK sharedClient] requestPermissions:@[@"make_payments"] withCompletionHandler:^(BOOL success, NSError *error) {
         if (success) {
             NSLog(@"oauth yay");
         } else {
@@ -19,7 +19,7 @@
 
 - (IBAction)userDidTapTransaction:(id)sender {
     NSString *note = [NSString stringWithFormat:@"hello world (%@)", [NSDate date]];
-    VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay amount:100 note:note recipient:@"kortina"];
+    VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay amount:1 note:note recipient:@"ayaka"];
     [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, NSError *error) {
         if (error) {
             NSLog(@"errrrr: %@", [error localizedDescription]);

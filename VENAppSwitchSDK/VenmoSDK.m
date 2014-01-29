@@ -64,6 +64,16 @@ static VenmoSDK *sharedVenmoClient = nil;
 }
 
 
+- (BOOL)handleOpenURL:(NSURL *)url {
+    if ([VDKURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
+
+        VDKURLProtocol *urlProtocol = [[VDKURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
+        [urlProtocol startLoading];
+        return YES;
+    }
+    return NO;
+}
+
 #pragma mark - Sending a Transaction
 
 - (void)sendTransaction:(VDKTransaction *)transaction
@@ -162,8 +172,6 @@ static VenmoSDK *sharedVenmoClient = nil;
         self.appSecret = appSecret;
         self.appName = appName ?: [[NSBundle mainBundle] name];
         self.appLocalId = appLocalId;
-
-        [NSURLProtocol registerClass:[VDKURLProtocol class]];
     }
     return self;
 }
