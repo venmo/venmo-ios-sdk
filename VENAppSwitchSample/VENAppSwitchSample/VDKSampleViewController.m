@@ -4,15 +4,16 @@
 @implementation VDKSampleViewController
 
 - (void)viewDidLoad {
-    [VenmoSDK startWithAppId:@"1336" secret:@"r8YH6sz3ySSNLtkPQG4kV9u9nvnvksPY" name:@"API Test" localId:@""];
+    // [VenmoSDK startWithAppId:@"1336" secret:@"r8YH6sz3ySSNLtkPQG4kV9u9nvnvksPY" name:@"API Test" localId:@""];
+    [VenmoSDK startWithAppId:@"1000" secret:@"3fAL7FB7ufTGDHVvGyv3nmFfnCbbMzNQ" name:@"API Test" localId:@""];
 }
 
 - (IBAction)userDidTapOAuth:(id)sender {
     [[VenmoSDK sharedClient] requestPermissions:@[@"make_payments"] withCompletionHandler:^(BOOL success, NSError *error) {
         if (success) {
-            NSLog(@"oauth yay");
+            NSLog(@"Authenticated successfully with access token: %@", [VenmoSDK sharedClient].currentSession.accessToken);
         } else {
-            NSLog(@"%@", [error localizedDescription]);
+            NSLog(@"Authentication failed with error: %@", [error localizedDescription]);
         }
     }];
 }
@@ -22,9 +23,9 @@
     VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay amount:1 note:note recipient:@"ayaka"];
     [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, NSError *error) {
         if (error) {
-            NSLog(@"errrrr: %@", [error localizedDescription]);
+            NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
         } else {
-            NSLog(@"transaction yay");
+            NSLog(@"Transaction succeeded!");
         }
     }];
 }

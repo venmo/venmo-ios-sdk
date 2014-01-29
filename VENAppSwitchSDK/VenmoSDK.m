@@ -29,9 +29,6 @@ static VenmoSDK *sharedVenmoClient = nil;
 @property (copy, nonatomic, readwrite) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
 @property (copy, nonatomic, readwrite) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
 
-@property (copy, nonatomic) NSString *accessToken;
-@property (copy, nonatomic) NSString *refreshToken;
-
 @end
 
 @implementation VenmoSDK

@@ -26,10 +26,10 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>venmo1336</string>
+			<string>venmo1000</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>venmo1336</string>
+				<string>venmo1000</string>
 			</array>
 		</dict>
 	</array>
