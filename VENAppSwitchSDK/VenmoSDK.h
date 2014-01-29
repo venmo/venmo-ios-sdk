@@ -21,7 +21,8 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic, readonly) NSString *appName; // Defaults to "Bundle name" in Info.plist
-@property (copy, nonatomic, readonly) NSString *appLocalId;
+
+@property (copy, nonatomic, readwrite) NSString *appLocalId;
 
 @property (strong, nonatomic) VDKUser *currentUser;
 @property (strong, nonatomic) VDKSession *currentSession;

@@ -24,7 +24,6 @@ static VenmoSDK *sharedVenmoClient = nil;
 @property (copy, nonatomic, readwrite) NSString *appId;
 @property (copy, nonatomic, readwrite) NSString *appSecret;
 @property (copy, nonatomic, readwrite) NSString *appName;
-@property (copy, nonatomic, readwrite) NSString *appLocalId;
 
 @property (copy, nonatomic, readwrite) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
 @property (copy, nonatomic, readwrite) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
@@ -37,14 +36,13 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
-                  name:(NSString *)appName
-               localId:(NSString *)appLocalId {
+                  name:(NSString *)appName {
     if (sharedVenmoClient) {
         return NO;
     }
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedVenmoClient = [[self alloc] initWithAppId:appId secret:appSecret name:appName localId:appLocalId];
+        sharedVenmoClient = [[self alloc] initWithAppId:appId secret:appSecret name:appName];
     });
     return YES;
 }
@@ -161,14 +159,12 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 - (instancetype)initWithAppId:(NSString *)appId
                        secret:(NSString *)appSecret
-                         name:(NSString *)appName
-                      localId:(NSString *)appLocalId {
+                         name:(NSString *)appName {
     self = [super init];
     if (self) {
         self.appId = appId;
         self.appSecret = appSecret;
         self.appName = appName ?: [[NSBundle mainBundle] name];
-        self.appLocalId = appLocalId;
     }
     return self;
 }
