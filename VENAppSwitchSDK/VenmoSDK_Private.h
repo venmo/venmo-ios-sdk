@@ -1,14 +1,12 @@
-//
-//  VenmoSDK_Private.h
-//  VENAppSwitchSDK
-//
-//  Created by Ayaka Nonaka on 2/3/14.
-//  Copyright (c) 2014 Venmo. All rights reserved.
-//
+#import <Foundation/Foundation.h>
 
-#ifndef VENAppSwitchSDK_VenmoSDK_Private_h
-#define VENAppSwitchSDK_VenmoSDK_Private_h
+@interface VenmoSDK (Private)
 
+@property (assign, nonatomic) BOOL internalDevelopment;
 
+- (NSString *)baseURLPath;
+- (instancetype)initWithAppId:(NSString *)appId
+                       secret:(NSString *)appSecret
+                         name:(NSString *)appName;
 
-#endif
+@end

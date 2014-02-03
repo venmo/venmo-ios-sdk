@@ -106,11 +106,7 @@ static VenmoSDK *sharedVenmoClient = nil;
     if ([self hasVenmoApp]) {
         baseURL = @"venmo://";
     } else {
-#if DEBUG
-        baseURL = @"http://api.devvenmo.com/v1/";
-#else
-        baseURL = @"http://api.venmo.com/v1/";
-#endif
+        baseURL = [self baseURLPath];
     }
     NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
 
@@ -172,6 +168,13 @@ static VenmoSDK *sharedVenmoClient = nil;
         self.appName = appName ?: [[NSBundle mainBundle] name];
     }
     return self;
+}
+
+- (NSString *)baseURLPath {
+    if (self.internalDevelopment) {
+        return @"http://api.devvenmo.com/v1/";
+    }
+    return @"http://api.venmo.com/v1/";
 }
 
 - (BOOL)hasVenmoApp {
