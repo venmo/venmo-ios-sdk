@@ -17,6 +17,14 @@ typedef NS_ENUM(NSUInteger, VDKTransactionType) {
 @property (assign, nonatomic) BOOL success;
 @property (copy, nonatomic) NSString *fromUserID;
 
+/**
+ Creates a new transaction.
+ @param type The type of transaction (pay or charge)
+ @param amount The amount in pennies.
+ @param note The payment note.
+ @param recipient Recepient UUID (cell number, email, Venmo username)
+ @return The initialized transaction
+ */
 + (instancetype)transactionWithType:(VDKTransactionType)type
                              amount:(NSUInteger)amount
                                note:(NSString *)note
