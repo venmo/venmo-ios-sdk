@@ -58,7 +58,6 @@ static VenmoSDK *sharedVenmoClient = nil;
     return YES;
 }
 
-
 - (BOOL)handleOpenURL:(NSURL *)url {
     if ([VDKURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
 
@@ -68,6 +67,7 @@ static VenmoSDK *sharedVenmoClient = nil;
     }
     return NO;
 }
+
 
 #pragma mark - Sending a Transaction
 
@@ -119,10 +119,9 @@ static VenmoSDK *sharedVenmoClient = nil;
     NSString *identifier = [self currentDeviceIdentifier];
 
     NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
-                              "app_name=%@&app_id=%@%@&device_id=%@",
+                              "app_name=%@&app_id=%@&device_id=%@",
                               self.appName,
                               self.appId,
-                              (self.appLocalId ? [NSString stringWithFormat:@"&app_local_id=%@", self.appLocalId] : @""),
                               identifier];
     if (transaction.amount) {
         pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, transaction.amountString];

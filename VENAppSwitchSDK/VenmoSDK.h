@@ -23,13 +23,16 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic, readonly) NSString *appName; // Defaults to "Bundle name" in Info.plist
 
-@property (copy, nonatomic, readwrite) NSString *appLocalId;
-
 @property (strong, nonatomic) VDKUser *currentUser;
 @property (strong, nonatomic) VDKSession *currentSession;
 
 @property (copy, nonatomic, readonly) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
 @property (copy, nonatomic, readonly) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
+
++ (instancetype)sharedClient;
+
+- (BOOL)isConnected;
+- (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
  * Starts a Venmo SDK session.
@@ -41,13 +44,6 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
                   name:(NSString *)appName;
-
-+ (instancetype)sharedClient;
-
-- (BOOL)isConnected;
-
-
-- (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
  * Initiates Venmo OAuth request.
