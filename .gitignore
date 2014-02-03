@@ -5,3 +5,4 @@ VENAppSwitchSample/Pods/*
 build/
 xcuserdata
 *.pbxuser
+Pods/
