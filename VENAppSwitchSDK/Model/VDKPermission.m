@@ -25,7 +25,7 @@
         case VDKPermissionTypeMakePayments:
             return @"make_payments";
         default:
-            return @""; // TODO: Figure out this edge case.
+            return @"invalid_scope";
     }
 }
 
@@ -44,7 +44,7 @@
         case VDKPermissionTypeMakePayments:
             return NSLocalizedString(@"make payments and charges", nil);
         default:
-            return @""; // TODO: Figure out this edge case.
+            return @"";
     }
 }
 
