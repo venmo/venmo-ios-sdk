@@ -1,21 +1,33 @@
 #import "VDKUser.h"
 
+@interface VDKUser ()
+@property (copy, nonatomic, readwrite) NSString *username;
+@property (copy, nonatomic, readwrite) NSString *firstName;
+@property (copy, nonatomic, readwrite) NSString *lastName;
+@property (copy, nonatomic, readwrite) NSString *about;
+@property (copy, nonatomic, readwrite) NSString *displayName;
+@property (strong, nonatomic, readwrite) NSDate *dateJoined;
+@property (strong, nonatomic, readwrite) UIImage *profilePicture;
+@property (copy, nonatomic, readwrite) NSString *phone;
+@property (copy, nonatomic, readwrite) NSString *email;
+@property (assign, nonatomic, readwrite) NSInteger friendsCount;
+@end
+
 @implementation VDKUser
 
 - (id)initWithJSON:(id)json {
-    /** init a user from a venmo user resource **/
     self = [super init];
     if (self) {
-        _firstName = json[@"first_name"];
-        _lastName = json[@"last_name"];
-        _username = json[@"username"];
-        _displayName = json[@"display_name"];
-        _profilePicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"profile_picture_url"]]]];
-        _email = json[@"email"];
-        _phone = json[@"phone"];
-        _friendsCount = [json[@"friends_count"] integerValue];
-        _about = json[@"about"];
-        _dateJoined = json[@"date_joined"];
+        self.username = json[@"username"];
+        self.firstName = json[@"first_name"];
+        self.lastName = json[@"last_name"];
+        self.about = json[@"about"];
+        self.displayName = json[@"display_name"];
+        self.dateJoined = json[@"date_joined"];
+        self.profilePicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"profile_picture_url"]]]];
+        self.phone = json[@"phone"];
+        self.email = json[@"email"];
+        self.friendsCount = [json[@"friends_count"] integerValue];
     }
     return self;
 }

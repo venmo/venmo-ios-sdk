@@ -5,6 +5,7 @@
 #import "VDKTransaction.h"
 #import "VDKTransactionViewController.h"
 #import "VDKSession.h"
+#import "VDKPermissionConstants.h"
 
 @class VDKTransaction;
 @class VDKUser;

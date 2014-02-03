@@ -1,20 +1,20 @@
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, VDKPermissionType) {
-    VDKPermissionTypeUnknown,
-    VDKPermissionTypeAccessFriends,
-    VDKPermissionTypeAccessEmail,
-    VDKPermissionTypeAccessPhone,
-    VDKPermissionTypeAccessProfile,
-    VDKPermissionTypeAccessBalance,
-    VDKPermissionTypeMakePayments
+typedef NS_ENUM(NSUInteger, VDKInternalPermissionType) {
+    VDKInternalPermissionTypeUnknown,
+    VDKInternalPermissionTypeAccessFriends,
+    VDKInternalPermissionTypeAccessEmail,
+    VDKInternalPermissionTypeAccessPhone,
+    VDKInternalPermissionTypeAccessProfile,
+    VDKInternalPermissionTypeAccessBalance,
+    VDKInternalPermissionTypeMakePayments
 };
 
 @interface VDKPermission : NSObject
 
-@property (assign, nonatomic) VDKPermissionType type;
+@property (assign, nonatomic) VDKInternalPermissionType type;
 
-- (instancetype)initWithType:(VDKPermissionType)permissionType;
+- (instancetype)initWithType:(VDKInternalPermissionType)permissionType;
 
 - (NSString *)name;
 - (NSString *)displayText;

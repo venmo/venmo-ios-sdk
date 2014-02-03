@@ -2,7 +2,7 @@
 
 @implementation VDKPermission
 
-- (instancetype)initWithType:(VDKPermissionType)permissionType {
+- (instancetype)initWithType:(VDKInternalPermissionType)permissionType {
     self = [super init];
     if (self) {
         self.type = permissionType;
@@ -12,17 +12,17 @@
 
 - (NSString *)name {
     switch (self.type) {
-        case VDKPermissionTypeAccessFriends:
+        case VDKInternalPermissionTypeAccessFriends:
             return @"access_friends";
-        case VDKPermissionTypeAccessEmail:
+        case VDKInternalPermissionTypeAccessEmail:
             return @"access_email";
-        case VDKPermissionTypeAccessPhone:
+        case VDKInternalPermissionTypeAccessPhone:
             return @"access_phone";
-        case VDKPermissionTypeAccessProfile:
+        case VDKInternalPermissionTypeAccessProfile:
             return @"access_profile";
-        case VDKPermissionTypeAccessBalance:
+        case VDKInternalPermissionTypeAccessBalance:
             return @"access_balance";
-        case VDKPermissionTypeMakePayments:
+        case VDKInternalPermissionTypeMakePayments:
             return @"make_payments";
         default:
             return @"invalid_scope";
@@ -31,17 +31,17 @@
 
 - (NSString *)displayText {
     switch (self.type) {
-        case VDKPermissionTypeAccessFriends:
+        case VDKInternalPermissionTypeAccessFriends:
             return NSLocalizedString(@"access friends", nil);
-        case VDKPermissionTypeAccessEmail:
+        case VDKInternalPermissionTypeAccessEmail:
             return NSLocalizedString(@"access email", nil);
-        case VDKPermissionTypeAccessPhone:
+        case VDKInternalPermissionTypeAccessPhone:
             return NSLocalizedString(@"access phone", nil);
-        case VDKPermissionTypeAccessProfile:
+        case VDKInternalPermissionTypeAccessProfile:
             return NSLocalizedString(@"access profile", nil);
-        case VDKPermissionTypeAccessBalance:
+        case VDKInternalPermissionTypeAccessBalance:
             return NSLocalizedString(@"access balance", nil);
-        case VDKPermissionTypeMakePayments:
+        case VDKInternalPermissionTypeMakePayments:
             return NSLocalizedString(@"make payments and charges", nil);
         default:
             return @"";
