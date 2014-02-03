@@ -28,6 +28,8 @@ static VenmoSDK *sharedVenmoClient = nil;
 @property (copy, nonatomic, readwrite) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
 @property (copy, nonatomic, readwrite) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
 
+@property (nonatomic) BOOL internalDevelopment;
+
 @end
 
 @implementation VenmoSDK
@@ -104,7 +106,11 @@ static VenmoSDK *sharedVenmoClient = nil;
     if ([self hasVenmoApp]) {
         baseURL = @"venmo://";
     } else {
+#if DEBUG
         baseURL = @"http://api.devvenmo.com/v1/";
+#else
+        baseURL = @"http://api.venmo.com/v1/";
+#endif
     }
     NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
 
