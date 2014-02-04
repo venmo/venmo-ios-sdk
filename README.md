@@ -47,7 +47,8 @@ First, start the Venmo client in your app delegate's ```application:didFinishLau
 * ```appSecret```: ***Secret*** from your registered app on the Venmo developer site
 * ```appName```: The app name that will show up in the Venmo app (like "sent via My App Name")
 
-In your app delegate's ```application:openURL:sourceApplication:annotation:``` (add the method if it doesn't already exist)
+Next, add ```[[VenmoSDK sharedClient] handleOpenURL:url]``` to your app delegate's ```application:openURL:sourceApplication:annotation:``` method (add the method too if it doesn't already exist).
+
 ```obj-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([[VenmoSDK sharedClient] handleOpenURL:url]) {
@@ -76,6 +77,8 @@ VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransaction
     }
 }];
 ```
+
+Make sure to ```#import <VENAppSwitchSDK/VenmoSDK.h>``` wherever you do this!
 
 Version
 ----
