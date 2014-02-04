@@ -60,7 +60,7 @@ Next, add ```[[VenmoSDK sharedClient] handleOpenURL:url]``` to your app delegate
 
 ### 3. Send a payment
 
-Wherever you want to send a payment:
+To send a payment:
 
 ```obj-c
 VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay // or VDKTransactionTypeCharge
