@@ -56,7 +56,10 @@ In your app delegate's ```application:openURL:sourceApplication:annotation:``` (
 Wherever you want to send a payment:
 
 ```obj-c
-VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay amount:100 note:@"This is my payment note." recipient:@"username_or_email_or_phone"];
+VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay // or VDKTransactionTypeCharge
+                                                           amount:100 // in pennies
+                                                             note:@"This is my payment note."
+                                                        recipient:@"username_or_email_or_phone"];
 [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, BOOL success, NSError *error) {
     if (success) {
         // Handle success case here.
