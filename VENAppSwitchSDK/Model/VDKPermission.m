@@ -48,4 +48,28 @@
     }
 }
 
++ (VDKInternalPermissionType)typeForName:(NSString *)name {
+    if ([name isEqualToString:@"access_friends"]) {
+        return VDKInternalPermissionTypeAccessFriends;
+    }
+    else if ([name isEqualToString:@"access_email"]) {
+        return VDKInternalPermissionTypeAccessEmail;
+    }
+    else if ([name isEqualToString:@"access_phone"]) {
+        return VDKInternalPermissionTypeAccessPhone;
+    }
+    else if ([name isEqualToString:@"access_profile"]) {
+        return VDKInternalPermissionTypeAccessProfile;
+    }
+    else if ([name isEqualToString:@"access_balance"]) {
+        return VDKInternalPermissionTypeAccessBalance;
+    }
+    else if ([name isEqualToString:@"make_payments"]) {
+        return VDKInternalPermissionTypeMakePayments;
+    }
+    else {
+        return VDKInternalPermissionTypeUnknown;
+    }
+}
+
 @end

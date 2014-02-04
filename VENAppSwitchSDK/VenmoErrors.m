@@ -1,3 +1,3 @@
 #import "VenmoErrors.h"
 
-NSString *const VenmoErrorDomain = @"com.venmo.VenmoSDK.ErrorDomain";
+NSString *const VDKErrorDomain = @"com.venmo.VenmoSDK.ErrorDomain";

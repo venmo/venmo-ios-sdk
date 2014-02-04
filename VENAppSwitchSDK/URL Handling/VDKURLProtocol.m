@@ -70,13 +70,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
             if (transaction && !transaction.success) {
-                error = [NSError errorWithDomain:VenmoErrorDomain
-                                            code:VenmoTransactionFailedError
+                error = [NSError errorWithDomain:VDKErrorDomain
+                                            code:VDKTransactionFailedError
                                      description:@"Venmo failed to complete the transaction."
                               recoverySuggestion:@"Please try again."];
             } else if (!transaction.success) {
-                error  = [NSError errorWithDomain:VenmoErrorDomain
-                                             code:VenmoTransactionValidationError
+                error  = [NSError errorWithDomain:VDKErrorDomain
+                                             code:VDKTransactionValidationError
                                       description:@"Failed to validate the transaction."
                                recoverySuggestion:@"Please contact us."];
             }

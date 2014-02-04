@@ -19,4 +19,6 @@ typedef NS_ENUM(NSUInteger, VDKInternalPermissionType) {
 - (NSString *)name;
 - (NSString *)displayText;
 
++ (VDKInternalPermissionType)typeForName:(NSString *)name;
+
 @end

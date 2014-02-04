@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
 
-extern NSString *const VenmoErrorDomain;
+extern NSString *const VDKErrorDomain;
 
 enum {
-    VenmoTransactionValidationError = 1, // error validating signed transaction
-    VenmoTransactionFailedError          // Venmo server failed to complete transaction
+    VDKTransactionValidationError = 1, // error validating signed transaction
+    VDKTransactionFailedError          // Venmo server failed to complete transaction
 };
