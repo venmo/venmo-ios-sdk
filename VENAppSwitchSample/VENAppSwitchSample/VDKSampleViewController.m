@@ -1,11 +1,13 @@
 #import "VDKSampleViewController.h"
 #import <VENAppSwitchSDK/VenmoSDK.h>
+#import <VENAppSwitchSDK/VenmoSDK_Private.h>
 
 @implementation VDKSampleViewController
 
 - (void)viewDidLoad {
     // [VenmoSDK startWithAppId:@"1336" secret:@"r8YH6sz3ySSNLtkPQG4kV9u9nvnvksPY" name:@"API Test"];
-    [VenmoSDK startWithAppId:@"1000" secret:@"3fAL7FB7ufTGDHVvGyv3nmFfnCbbMzNQ" name:@"API Test"];
+    [VenmoSDK startWithAppId:@"1000" secret:@"P36jwsTGc5yuZUyCgTtxQspVLm9tWP3Z" name:@"API Test"];
+    [VenmoSDK sharedClient].internalDevelopment = YES;
 }
 
 - (IBAction)userDidTapOAuth:(id)sender {

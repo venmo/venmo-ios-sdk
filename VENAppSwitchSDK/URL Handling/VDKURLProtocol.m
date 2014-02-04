@@ -3,6 +3,7 @@
 #import "VenmoErrors.h"
 #import "NSError+Venmo.h"
 #import "NSURL+Venmo.h"
+#import "VenmoSDK_Private.h"
 
 @implementation VDKURLProtocol
 
@@ -38,7 +39,9 @@
         NSString *code = [queryDictionary valueForKey:@"code"];
         NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", [VenmoSDK sharedClient].appId, [VenmoSDK sharedClient].appSecret, code];
 
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://api.devvenmo.com/v1/oauth/access_token"]];
+        NSString *accessTokenURLString = [NSString stringWithFormat:@"%@oauth/access_token", [[VenmoSDK sharedClient] baseURLPath]];
+        NSURL *accessTokenURL = [NSURL URLWithString:accessTokenURLString];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:accessTokenURL];
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
 
