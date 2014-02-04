@@ -43,8 +43,8 @@ First, start the Venmo client in your app delegate's ```application:didFinishLau
 }
 ```
 
-* ```appId```: ***ID*** from your registered app on the Venmo developer site
-* ```appSecret```: ***Secret*** from your registered app on the Venmo developer site
+* ```appId```: ***ID*** from your registered app on the [Venmo developer site](https://venmo.com/account/settings/developers)
+* ```appSecret```: ***Secret*** from your registered app on the [Venmo developer site](https://venmo.com/account/settings/developers)
 * ```appName```: The app name that will show up in the Venmo app (like "sent via My App Name")
 
 Next, add ```[[VenmoSDK sharedClient] handleOpenURL:url]``` to your app delegate's ```application:openURL:sourceApplication:annotation:``` method (add the method too if it doesn't already exist).
