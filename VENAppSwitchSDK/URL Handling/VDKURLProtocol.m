@@ -82,7 +82,7 @@
             }
 
             if ([VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, error);
+                [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, transaction.success, error);
             }
         });
     }

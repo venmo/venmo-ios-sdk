@@ -9,7 +9,7 @@
 }
 
 - (IBAction)userDidTapOAuth:(id)sender {
-    [[VenmoSDK sharedClient] requestPermissions:@[@"make_payments"] withCompletionHandler:^(BOOL success, NSError *error) {
+    [[VenmoSDK sharedClient] requestPermissions:@[VDKPermissionMakePayments] withCompletionHandler:^(BOOL success, NSError *error) {
         if (success) {
             NSLog(@"Authenticated successfully with access token: %@", [VenmoSDK sharedClient].currentSession.accessToken);
         } else {
@@ -21,11 +21,11 @@
 - (IBAction)userDidTapTransaction:(id)sender {
     NSString *note = [NSString stringWithFormat:@"hello world (%@)", [NSDate date]];
     VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay amount:1 note:note recipient:@"ayaka"];
-    [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, NSError *error) {
-        if (error) {
-            NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
-        } else {
+    [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, BOOL success, NSError *error) {
+        if (success) {
             NSLog(@"Transaction succeeded!");
+        } else {
+            NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
         }
     }];
 }

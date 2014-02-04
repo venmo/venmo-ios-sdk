@@ -12,7 +12,7 @@
 @class VDKSession;
 @class VDKTransactionViewController;
 
-typedef void (^VDKTransactionCompletionHandler)(VDKTransaction *transaction, NSError *error);
+typedef void (^VDKTransactionCompletionHandler)(VDKTransaction *transaction, BOOL success, NSError *error);
 typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 
 #define VDK_CURRENT_SDK_VERSION @"1.0.0"
