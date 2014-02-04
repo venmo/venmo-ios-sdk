@@ -2,8 +2,7 @@
 #import <Expecta/Expecta.h>
 #import <Specta/Specta.h>
 
-#import "VenmoSDK.h"
-#import "VenmoSDK_Private.h"
+#import "VDKUser.h"
 
 SpecBegin(VDKUser)
 

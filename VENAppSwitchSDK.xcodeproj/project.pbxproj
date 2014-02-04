@@ -73,6 +73,7 @@
 		B6588AF318A0387700A0C73B /* VDKPermissionConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B6588AF218A0383500A0C73B /* VDKPermissionConstants.h */; };
 		B6588AFA18A0554200A0C73B /* VenmoSDKSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AF918A0554200A0C73B /* VenmoSDKSpecs.m */; };
 		B66E10CA18A1663200455C93 /* VDKUserSepcs.m in Sources */ = {isa = PBXBuildFile; fileRef = B66E10C918A1663200455C93 /* VDKUserSepcs.m */; };
+		B6888FE918A172BB00C9D1BC /* VDKTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6888FE818A172BB00C9D1BC /* VDKTransaction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,7 @@
 		B6588AF818A0523600A0C73B /* VenmoSDK_Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VenmoSDK_Private.h; sourceTree = "<group>"; };
 		B6588AF918A0554200A0C73B /* VenmoSDKSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoSDKSpecs.m; sourceTree = "<group>"; };
 		B66E10C918A1663200455C93 /* VDKUserSepcs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKUserSepcs.m; sourceTree = "<group>"; };
+		B6888FE818A172BB00C9D1BC /* VDKTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKTransaction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +253,7 @@
 				B6588AEF18A02D8400A0C73B /* VDKPermissionSpecs.m */,
 				B6588AF918A0554200A0C73B /* VenmoSDKSpecs.m */,
 				B66E10C918A1663200455C93 /* VDKUserSepcs.m */,
+				B6888FE818A172BB00C9D1BC /* VDKTransaction.m */,
 				2D5EF55C17EF41B100DDD15A /* Supporting Files */,
 			);
 			path = "VENAppSwitchSDK Tests";
@@ -548,6 +551,7 @@
 			files = (
 				B6588AF118A02E1000A0C73B /* VDKPermissionSpecs.m in Sources */,
 				B66E10CA18A1663200455C93 /* VDKUserSepcs.m in Sources */,
+				B6888FE918A172BB00C9D1BC /* VDKTransaction.m in Sources */,
 				B6588AFA18A0554200A0C73B /* VenmoSDKSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
