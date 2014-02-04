@@ -33,7 +33,7 @@ Make sure to
 ```obj-c
 #import <VENAppSwitchSDK/VenmoSDK.h>
 ```
-In your app delegate's application:didFinishLaunchingWithOptions: (or wherever you want to start the Venmo client)
+In your app delegate's ```application:didFinishLaunchingWithOptions:``` (or wherever you want to start the Venmo client)
 ```obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [VenmoSDK startWithAppId:@"your venmo app id" secret:@"your venmo app secret" name:@"the name of your app"];
@@ -41,7 +41,7 @@ In your app delegate's application:didFinishLaunchingWithOptions: (or wherever y
 }
 ```
 
-In your app delegate's application:openURL:sourceApplication:annotation: (add the method if it doesn't already exist)
+In your app delegate's ```application:openURL:sourceApplication:annotation:``` (add the method if it doesn't already exist)
 ```obj-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     if ([[VenmoSDK sharedClient] handleOpenURL:url]) {
