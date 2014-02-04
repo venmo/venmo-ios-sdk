@@ -122,6 +122,7 @@
 		B611893418A188A50041AF50 /* VenmoErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = VenmoErrors.m; path = "Supporting Files/VenmoErrors.m"; sourceTree = "<group>"; };
 		B611893518A188A50041AF50 /* VenmoSDK_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VenmoSDK_Private.h; path = "Supporting Files/VenmoSDK_Private.h"; sourceTree = "<group>"; };
 		B611893918A188AE0041AF50 /* VDKPermissionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VDKPermissionConstants.h; path = "Supporting Files/VDKPermissionConstants.h"; sourceTree = "<group>"; };
+		B611893B18A189800041AF50 /* VDKSessionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKSessionSpecs.m; sourceTree = "<group>"; };
 		B62D59BA18973D71001E46A4 /* VDKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKURLProtocol.h; sourceTree = "<group>"; };
 		B62D59BB18973D71001E46A4 /* VDKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKURLProtocol.m; sourceTree = "<group>"; };
 		B62D59BE18973F2C001E46A4 /* VDKRequestDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKRequestDecoder.h; sourceTree = "<group>"; };
@@ -253,6 +254,7 @@
 		2D5EF55B17EF41B100DDD15A /* VENAppSwitchSDK Tests */ = {
 			isa = PBXGroup;
 			children = (
+				B611893B18A189800041AF50 /* VDKSessionSpecs.m */,
 				B6B810A918A1842B00FD8955 /* VDKTransactionSpecs.m */,
 				B6B810AB18A1844800FD8955 /* VDKUserSpecs.m */,
 				B6588AEF18A02D8400A0C73B /* VDKPermissionSpecs.m */,
