@@ -14,6 +14,6 @@
 @property (copy, nonatomic, readonly) NSString *email;
 @property (assign, nonatomic, readonly) NSInteger friendsCount;
 
-- (id)initWithJSON:(NSData *)json;
+- (id)initWithJSON:(id)json;
 
 @end
