@@ -4,7 +4,7 @@
 
 @property (strong, nonatomic, readonly) NSString *accessToken;
 @property (strong, nonatomic, readonly) NSString *refreshToken;
-@property (assign, nonatomic, readonly) NSInteger expiresIn;
+@property (assign, nonatomic, readonly) NSUInteger expiresIn;
 
 /**
  Creates a VDKSession instance with access token, refresh token, and time til expiration.
@@ -15,6 +15,6 @@
  */
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                        refreshToken:(NSString *)refreshToken
-                          expiresIn:(NSInteger)expiresIn;
+                          expiresIn:(NSUInteger)expiresIn;
 
 @end

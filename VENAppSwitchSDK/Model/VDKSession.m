@@ -3,14 +3,14 @@
 @interface VDKSession ()
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
-@property (assign, nonatomic, readwrite) NSInteger expiresIn;
+@property (assign, nonatomic, readwrite) NSUInteger expiresIn;
 @end
 
 @implementation VDKSession
 
 - (id)initWithAccessToken:(NSString *)accessToken
              refreshToken:(NSString *)refreshToken
-                expiresIn:(NSInteger)expiresIn {
+                expiresIn:(NSUInteger)expiresIn {
     self = [super init];
     if (self) {
         self.accessToken = accessToken;
