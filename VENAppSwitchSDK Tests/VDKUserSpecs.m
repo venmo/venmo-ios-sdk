@@ -35,7 +35,7 @@ describe(@"Initialization", ^{
         dict[@"email"] = email;
         dict[@"friends_count"] = friendsCount;
 
-        VDKUser *user = [[VDKUser alloc] initWithJSON:dict];
+        VDKUser *user = [[VDKUser alloc] initWithDictionary:dict];
 
         expect(user.username).to.equal(username);
         expect(user.firstName).to.equal(firstName);

@@ -53,7 +53,7 @@
         }
         NSError *jsonError;
         id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
-        VDKUser *currentUser = [[VDKUser alloc] initWithJSON:json[@"user"]];
+        VDKUser *currentUser = [[VDKUser alloc] initWithDictionary:json[@"user"]];
         VDKSession *currentSession = [[VDKSession alloc] initWithAccessToken:json[@"access_token"]
                                                                 refreshToken:json[@"refresh_token"]
                                                                    expiresIn:[json[@"expires_in"] integerValue]];

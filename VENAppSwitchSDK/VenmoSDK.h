@@ -36,6 +36,10 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
 @property (copy, nonatomic, readonly) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
 
+/**
+ * Returns the current shared Venmo client.
+ * @return The current Venmo client
+ */
 + (instancetype)sharedClient;
 
 - (BOOL)isConnected;
@@ -61,8 +65,8 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends Venmo transaction.
- * @param transaction The transaction to send.
- * @param completionHandler Completion handler to call after sending transaction.
+ * @param transaction The transaction to send
+ * @param completionHandler Completion handler to call after sending transaction
  */
 - (void)sendTransaction:(VDKTransaction *)transaction withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler;
 

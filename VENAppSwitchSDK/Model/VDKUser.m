@@ -15,19 +15,19 @@
 
 @implementation VDKUser
 
-- (instancetype)initWithJSON:(NSDictionary *)json {
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
     if (self) {
-        self.username = json[@"username"];
-        self.firstName = json[@"first_name"];
-        self.lastName = json[@"last_name"];
-        self.about = json[@"about"];
-        self.displayName = json[@"display_name"];
-        self.dateJoined = json[@"date_joined"];
-        self.profilePicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:json[@"profile_picture_url"]]]];
-        self.phone = json[@"phone"];
-        self.email = json[@"email"];
-        self.friendsCount = [json[@"friends_count"] integerValue];
+        self.username = dictionary[@"username"];
+        self.firstName = dictionary[@"first_name"];
+        self.lastName = dictionary[@"last_name"];
+        self.about = dictionary[@"about"];
+        self.displayName = dictionary[@"display_name"];
+        self.dateJoined = dictionary[@"date_joined"];
+        self.profilePicture = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:dictionary[@"profile_picture_url"]]]];
+        self.phone = dictionary[@"phone"];
+        self.email = dictionary[@"email"];
+        self.friendsCount = [dictionary[@"friends_count"] integerValue];
     }
     return self;
 }

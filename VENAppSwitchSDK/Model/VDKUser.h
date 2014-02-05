@@ -14,6 +14,11 @@
 @property (copy, nonatomic, readonly) NSString *email;
 @property (assign, nonatomic, readonly) NSInteger friendsCount;
 
-- (instancetype)initWithJSON:(NSDictionary *)json;
+/**
+ * Creates a new user from a dictionary.
+ * @param dictionary The dictionary representation of the user
+ * @return The initialized user
+ */
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end

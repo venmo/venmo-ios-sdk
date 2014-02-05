@@ -20,8 +20,8 @@ typedef NS_ENUM(NSUInteger, VDKTransactionType) {
 /**
  Creates a new transaction.
  @param type The type of transaction (pay or charge)
- @param amount The amount in pennies.
- @param note The payment note.
+ @param amount The amount in pennies
+ @param note The payment note
  @param recipient Recepient UUID (cell number, email, Venmo username)
  @return The initialized transaction
  */
