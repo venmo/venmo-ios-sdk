@@ -151,7 +151,12 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 - (NSURL *)webURLWithPath:(NSString *)path {
     path = [@"/touch/signup_to_pay" stringByAppendingString:path];
-    NSString *unEncodedURL = [NSString stringWithFormat:@"%@://%@%@", @"https", @"venmo.com", path];
+    NSString *unEncodedURL;
+    if (![VenmoSDK sharedClient].internalDevelopment) {
+        unEncodedURL = [NSString stringWithFormat:@"https://venmo.com%@", path];
+    } else {
+        unEncodedURL = [NSString stringWithFormat:@"http://devvenmo.com%@", path];
+    }
     return [[NSURL alloc] initWithString:[unEncodedURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
