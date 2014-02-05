@@ -15,7 +15,7 @@
 
 @implementation VDKUser
 
-- (id)initWithJSON:(id)json {
+- (instancetype)initWithJSON:(NSDictionary *)json {
     self = [super init];
     if (self) {
         self.username = json[@"username"];
