@@ -20,7 +20,7 @@ pod 'VENAppSwitchSDK'
 
 Sample Usage
 ----
-Using the Venmo iOS SDK is an easy as Venmo'ing a friend.
+Using the Venmo iOS SDK is as easy as Venmoing a friend.
 
 ### 1. Register your app on Venmo
 1. Go to the [Venmo developer site](https://venmo.com/account/settings/developers).
