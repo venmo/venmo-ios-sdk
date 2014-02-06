@@ -29,10 +29,18 @@
     NSDictionary *queryDictionary = [self.request.URL queryDictionary];
 
     if ([host isEqualToString:@"oauth"]) {
-        NSString *oauthErrorMessage = [queryDictionary valueForKey:@"error"];
+        NSString *oAuthErrorCode = [queryDictionary valueForKey:@"error"];
 
-        if (oauthErrorMessage) {
-            NSLog(@"Could not complete oAuth Request, %@", oauthErrorMessage);
+        if (oAuthErrorCode) {
+            NSString *oAuthErrorMessage = queryDictionary[@"message"];
+            NSError *oAuthError = [NSError errorWithDomain:VDKErrorDomain
+                                                      code:VDKTransactionFailedError
+                                               description:oAuthErrorMessage
+                                        recoverySuggestion:@"Please try again."];
+            if ([VenmoSDK sharedClient].currentOAuthCompletionHandler) {
+                [VenmoSDK sharedClient].currentOAuthCompletionHandler(NO, oAuthError);
+            }
+
             return;
         }
 
