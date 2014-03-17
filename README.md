@@ -27,7 +27,17 @@ Using the Venmo iOS SDK is as easy as Venmoing a friend.
 2. Click 'new' to add a new application.
 3. Fill out the form to register your app. You should now be able to see your app under 'view'. Keep this tab open; you'll reference it again soon.
 
-### 2. Set up your app delegate
+### 2. Set URL Types
+
+In your app target's ```Info``` section, scroll down to ```URL Types```.
+
+1. Add a new URL Type by clicking the ```+``` button.
+2. Set ```Identifier``` and ```URL Schemes``` to ```venmo``` + your Venmo app ID. For example, if your app ID is ```1234```, put ```venmo1234```. You can find your app ID on the [Venmo developer site](https://venmo.com/account/settings/developers).
+
+![Set URL Types](http://i.imgur.com/8rUXlFB.png)
+
+
+### 3. Set up your app delegate
 
 Make sure to
 ```obj-c
@@ -58,7 +68,7 @@ Next, add ```[[VenmoSDK sharedClient] handleOpenURL:url]``` to your app delegate
 }
 ```
 
-### 3. Send a payment
+### 4. Send a payment
 
 To send a payment:
 
