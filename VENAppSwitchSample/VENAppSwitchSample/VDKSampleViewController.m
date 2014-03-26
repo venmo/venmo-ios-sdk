@@ -11,7 +11,7 @@
 @implementation VDKSampleViewController
 
 - (void)viewDidLoad {
-    // TODO: Fill these with your app info! Make sure to set our URL Type in your target info as well.
+    // TODO: Fill these with your app info! Make sure to set your URL Types in Target Info as well.
     [VenmoSDK startWithAppId:@"app id" secret:@"app secret" name:@"My App Name"];
 }
 
