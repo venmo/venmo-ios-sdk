@@ -23,18 +23,7 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic, readonly) NSString *appName; // Defaults to "Bundle name" in Info.plist
 
-/**
- * The user who is currently authenticated.
- */
-@property (strong, nonatomic) VDKUser *currentUser;
-
-/**
- * The current session. It contains access token, refresh token, and expiration information.
- */
-@property (strong, nonatomic) VDKSession *currentSession;
-
 @property (copy, nonatomic, readonly) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
-@property (copy, nonatomic, readonly) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
 
 /**
  * Returns the current shared Venmo client.
@@ -42,7 +31,6 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
  */
 + (instancetype)sharedClient;
 
-- (BOOL)isConnected;
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
@@ -55,13 +43,6 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
                   name:(NSString *)appName;
-
-/**
- * Initiates Venmo OAuth request.
- * @param permissions List of permissions.
- * @param completionHandler Completion handler to call upon returning from OAuth session.
- */
-- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VDKOAuthCompletionHandler)completionHandler;
 
 /**
  * Sends Venmo transaction.
