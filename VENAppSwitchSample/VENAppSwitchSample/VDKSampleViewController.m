@@ -12,7 +12,7 @@
 
 - (void)viewDidLoad {
     // TODO: Fill these with your app info! Make sure to set your URL Types in Target Info as well.
-    [VenmoSDK startWithAppId:@"app id" secret:@"app secret" name:@"My App Name"];
+    [VenmoSDK startWithAppId:@"1570" secret:@"Nka2tCtmdwXHenBAK4RNpCuSrDkf2KqY" name:@"My App Name"];
 }
 
 - (IBAction)userDidTapTransaction:(id)sender {

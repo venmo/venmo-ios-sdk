@@ -2,5 +2,5 @@ platform :ios, '5.0'
 inhibit_all_warnings!
 
 target 'VENAppSwitchSample', :exclusive => true do
-  pod 'VENAppSwitchSDK', :path => '../VENAppSwitchSDK/VENAppSwitchSDK.podspec'
+  pod 'VENAppSwitchSDK', :path => '../VENAppSwitchSDK.podspec'
 end
