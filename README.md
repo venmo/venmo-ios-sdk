@@ -100,10 +100,7 @@ VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransaction
 ```
 
 ### Contributing
-We welcome bugfixes and features in the AppSwitch SDK from the community. Feel free to make feature requests in the form of `Issues` or 
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+We'd love to see your ideas for improving this library! The best way to contribute is by submitting a pull request. We'll do our best to respond to your patch as soon as possible. You can also submit a [new Github issue](https://github.com/venmo/VENAppSwitchSDK/issues/new) if you find bugs or have questions. :octocat:
+
+Please make sure to follow our general coding style and add test coverage for new features!
