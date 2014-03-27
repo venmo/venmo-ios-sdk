@@ -1,62 +1,63 @@
-Venmo iOS SDK
-=========
+## Venmo iOS SDK
 
-The Venmo iOS SDK allows your users to log in and pay with Venmo right from your app.
+The Venmo AppSwitch SDK allows you to send Venmo payments & charges to any email, phone number or Venmo username from within your iOS App.
 
-Venmo SDK Apps
-----
+<img src="http://f.cl.ly/items/002c2V1v0b1A3S3Y1V0P/VenmoAPIDemo.png" width="100%" />
 
-* [Drinks On Me](https://github.com/venmo/drinks-on-me)
-* [Splitwise](http://splitwise.com/)
-
-Installation
-----
+### Installation
 
 The easiest way to get started is to use [CocoaPods](http://cocoapods.org/). Just add the following line to your Podfile:
 
 ```ruby
-pod 'VENAppSwitchSDK'
+pod 'VENAppSwitchSDK', '~> 1.0.0'
 ```
 
-Sample Usage
-----
-Using the Venmo iOS SDK is as easy as Venmoing a friend.
+### Usage
 
-### 1. Register your app on Venmo
-1. Go to the [Venmo developer site](https://venmo.com/account/settings/developers).
-2. Click 'new' to add a new application.
-3. Fill out the form to register your app. You should now be able to see your app under 'view'. Keep this tab open; you'll reference it again soon.
+Using the Venmo iOS SDK is as easy as `Venmo`ing a friend.
 
-### 2. Set URL Types
+#### 1. Create your app on Venmo
+1. Create a new application on the [Venmo developer site](https://venmo.com/account/settings/developers).
+2. Make a note of your Venmo developer ```app id``` and ```app secret```.
 
-1. In your app target's ```Info``` section, scroll down to ```URL Types```.
-2. Add a new URL Type by clicking the ```+``` button.
-3. Set ```Identifier``` to ```venmo``` and ```URL Schemes``` to ```your_venmo_app_id```. For example, if your app ID is ```1234```, put ```venmo1234```. You can find your app ID on the [Venmo developer site](https://venmo.com/account/settings/developers).
+#### 2. Set up your Application URL Types
+
+1. In your App target's ```Info``` section, scroll down to ```URL Types```.
+2. Add a new URL Type with the following properties:
+
+	```Identifier``` ==> ```venmo<<YOUR_APP_ID>>```
+ 
+	```URL Schemes``` ==> ```venmo<<YOUR_APP_ID>>```
+
+For example, if your app ID is ```1234```, put ```venmo1234```. Incase you lost it, you can find your app ID on the [Venmo developer site](https://venmo.com/account/settings/developers).
 
 ![Set URL Types](http://i.imgur.com/8rUXlFB.png)
 
 
-### 3. Set up your app delegate
+#### 3. Initialize the Venmo AppSwitch SDK
 
-Make sure to
+Import the Venmo AppSwitch SDK main header in your ```AppDelegate```.
+
 ```obj-c
 #import <VENAppSwitchSDK/VenmoSDK.h>
 ```
 
-First, start the Venmo client in your app delegate's ```application:didFinishLaunchingWithOptions:``` method (or wherever you want to start the Venmo client).
+In your ```AppDelegate```, add the following code to initialize the SDK to the ```application:didFinishLaunchingWithOptions:``` method.
 
 ```obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [VenmoSDK startWithAppId:@"your venmo app id" secret:@"your venmo app secret" name:@"the name of your app"];
+- 
+    [VenmoSDK startWithAppId:@"VENMO_APP_ID" secret:@"VENMO_APP_SECRET" name:@"VENMO_APP_NAME"];
+    
     return YES;
 }
 ```
 
-* ```appId```: ***ID*** from your registered app on the [Venmo developer site](https://venmo.com/account/settings/developers)
-* ```appSecret```: ***Secret*** from your registered app on the [Venmo developer site](https://venmo.com/account/settings/developers)
-* ```appName```: The app name that will show up in the Venmo app (like "sent via My App Name")
+* ```VENMO_APP_ID```: ***ID*** from your registered app on the [Venmo developer site](https://venmo.com/account/settings/developers)
+* ```VENMO_APP_SECRET```: ***Secret*** from your registered app on the [Venmo developer site](https://venmo.com/account/settings/developers)
+* ```VENMO_APP_NAME```: The app name that will show up in the Venmo app (e.g. "sent via My Supercool App")
 
-Next, add ```[[VenmoSDK sharedClient] handleOpenURL:url]``` to your app delegate's ```application:openURL:sourceApplication:annotation:``` method (add the method too if it doesn't already exist).
+Next, tell the Venmo AppSwitch SDK when the App receives a url by adding the line ```[[VenmoSDK sharedClient] handleOpenURL:url];``` to the ```application:openURL:sourceApplication:annotation:``` method in your ```AppDelegate``` (if this method doesn't exist, create it).
 
 ```obj-c
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
@@ -67,10 +68,20 @@ Next, add ```[[VenmoSDK sharedClient] handleOpenURL:url]``` to your app delegate
 }
 ```
 
-### 4. Send a payment
+Note: If you are using the old ```application:handleOpenURL:``` method, that's fine, but now may be a good time to migrate to ```application:openURL:sourceApplication:annotation:``` as it has now been deprecated.
 
-To send a payment:
+#### 4. Send a payment
 
+Sending a payment is achieved by constructing a ```VDKTransaction``` object with some basic properties. There is an initializer which will construct a valid, sendable payment: ```transactionWithType:amount:note:recipient:```.
+
+This is then posted by calling the ```sendTransaction:withCompletionHandler:``` on the shared instance of ```VenmoSDK```. 
+
+If the user has the Venmo app installed, they will be switched across to the Venmo app to complete the experience natively, otherwise a web experience will be shown.
+
+ ```objc
+ #import <VENAppSwitchSDK/VenmoSDK.h>
+ ```
+ 
 ```obj-c
 VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay // or VDKTransactionTypeCharge
                                                            amount:100 // in pennies
@@ -87,14 +98,11 @@ VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransaction
 }];
 ```
 
-Make sure to ```#import <VENAppSwitchSDK/VenmoSDK.h>``` wherever you do this!
+### Contributing
+We welcome bugfixes and features in the AppSwitch SDK from the community. Feel free to make feature requests in the form of `Issues` or 
 
-Version
-----
-
-1.0.0
-
-License
-----
-
-MIT
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Added some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
