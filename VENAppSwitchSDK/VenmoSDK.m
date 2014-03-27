@@ -77,6 +77,12 @@ static VenmoSDK *sharedVenmoClient = nil;
 
     if ([self hasVenmoApp]) {
         [[UIApplication sharedApplication] openURL:transactionURL];
+    } else if (completionHandler) {
+        NSError *error = [NSError errorWithDomain:VDKErrorDomain
+                                             code:VDKTransactionFailedError
+                                      description:@"Could not find Venmo app."
+                               recoverySuggestion:@"Please install Venmo."];
+        completionHandler(transaction, NO, error);
     }
 }
 
