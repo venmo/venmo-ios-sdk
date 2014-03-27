@@ -72,11 +72,11 @@ Note: If you are using the old ```application:handleOpenURL:``` method, that's f
 
 #### 4. Send a payment
 
-Sending a payment is achieved by constructing a ```VDKTransaction``` object with some basic properties. There is an initializer which will construct a valid, sendable payment: ```transactionWithType:amount:note:recipient:```.
+Sending a payment is achieved by constructing a ```VDKTransaction``` object with some basic properties. There is a factory method which will construct a valid, sendable payment: ```transactionWithType:amount:note:recipient:```. You can also modify each of the properties individually.
 
-This is then posted by calling the ```sendTransaction:withCompletionHandler:``` on the shared instance of ```VenmoSDK```. 
+This is then posted by calling the ```sendTransaction:withCompletionHandler:``` method on the shared instance of ```VenmoSDK```. 
 
-If the user has the Venmo app installed, they will be switched across to the Venmo app to complete the experience natively, otherwise a web experience will be shown.
+If the user has the Venmo app installed, they will be switched across to the Venmo app to complete the payment natively, otherwise a web view will be shown within your App.
 
  ```objc
  #import <VENAppSwitchSDK/VenmoSDK.h>
