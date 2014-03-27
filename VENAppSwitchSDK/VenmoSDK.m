@@ -77,13 +77,6 @@ static VenmoSDK *sharedVenmoClient = nil;
 
     if ([self hasVenmoApp]) {
         [[UIApplication sharedApplication] openURL:transactionURL];
-    } else {
-        VDKTransactionViewController *viewController = [[VDKTransactionViewController alloc] init];
-        viewController.transactionURL = [self webURLWithPath:URLPath];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
-
-        UIWindow *keyWindow = [UIApplication sharedApplication].keyWindow;
-        [keyWindow.rootViewController presentViewController:navController animated:YES completion:nil];
     }
 }
 
