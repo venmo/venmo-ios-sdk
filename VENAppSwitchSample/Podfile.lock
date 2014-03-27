@@ -1,7 +1,9 @@
 PODS:
+  - SVProgressHUD (1.0)
   - VENAppSwitchSDK (1.0.0)
 
 DEPENDENCIES:
+  - SVProgressHUD (~> 1.0)
   - VENAppSwitchSDK (from `../VENAppSwitchSDK.podspec`)
 
 EXTERNAL SOURCES:
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :path: ../VENAppSwitchSDK.podspec
 
 SPEC CHECKSUMS:
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
   VENAppSwitchSDK: 16af1202d8cf1b6d1cc423a3750a04b67007898b
 
 COCOAPODS: 0.29.0

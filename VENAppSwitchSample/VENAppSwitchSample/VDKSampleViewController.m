@@ -1,4 +1,5 @@
 #import "VDKSampleViewController.h"
+#import <SVProgressHUD/SVProgressHUD.h>
 #import <VENAppSwitchSDK/VenmoSDK.h>
 #import <VENAppSwitchSDK/VenmoSDK_Private.h>
 
@@ -23,8 +24,11 @@
     [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, BOOL success, NSError *error) {
         if (success) {
             NSLog(@"Transaction succeeded!");
+            [SVProgressHUD showSuccessWithStatus:@"Transaction succeeded!"];
         } else {
-            NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
+            NSString *errorMessage = [NSString stringWithFormat:@"Transaction failed with error: %@", [error localizedDescription]];
+            NSLog(@"%@", errorMessage);
+            [SVProgressHUD showErrorWithStatus:errorMessage];
         }
     }];
 }

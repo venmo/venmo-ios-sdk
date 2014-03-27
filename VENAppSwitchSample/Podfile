@@ -3,4 +3,5 @@ inhibit_all_warnings!
 
 target 'VENAppSwitchSample', :exclusive => true do
   pod 'VENAppSwitchSDK', :path => '../VENAppSwitchSDK.podspec'
+  pod 'SVProgressHUD', '~>1.0'
 end
