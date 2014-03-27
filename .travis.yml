@@ -1,0 +1,7 @@
+nguage: objective-c
+before_install:
+- gem i cocoapods --no-ri --no-rdoc
+- brew uninstall xctool; brew install xctool --HEAD;
+xcode_workspace: VENAppSwitchSDK.xcworkspace
+xcode_scheme: VENAppSwitchSDK
+xcode_sdk: iphonesimulator
