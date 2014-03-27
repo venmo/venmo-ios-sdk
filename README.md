@@ -87,12 +87,13 @@ VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransaction
                                                            amount:100 // in pennies
                                                              note:@"This is my payment note."
                                                         recipient:@"username_or_email_or_phone"];
-[[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, BOOL success, NSError *error) {
+                                                        
+[[VenmoSDK sharedClient] sendTransaction:transaction
+		   withCompletionHandler:^(VDKTransaction *transaction, BOOL success, NSError *error) {
     if (success) {
-        // Handle success case here.
         NSLog(@"Transaction succeeded!");
-    } else {
-        // Handle error case here.
+    }
+    else {
         NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
     }
 }];
