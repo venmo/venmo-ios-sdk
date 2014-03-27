@@ -46,7 +46,7 @@ In your ```AppDelegate```, add the following code to initialize the SDK to the `
 
 ```obj-c
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-- 
+ 
     [VenmoSDK startWithAppId:@"VENMO_APP_ID" secret:@"VENMO_APP_SECRET" name:@"VENMO_APP_NAME"];
     
     return YES;
