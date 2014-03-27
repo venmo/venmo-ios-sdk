@@ -72,7 +72,7 @@ Note: If you are using the old ```application:handleOpenURL:``` method, that's f
 
 #### 4. Send a payment
 
-Sending a payment is achieved by constructing a ```VDKTransaction``` object with some basic properties. There is a factory method which will construct a valid, sendable payment: ```transactionWithType:amount:note:recipient:```. You can also modify each of the properties individually.
+You can send a payment by constructing a ```VDKTransaction``` object with some basic properties. There is a factory method which will construct a valid, sendable payment: ```transactionWithType:amount:note:recipient:```. You can also modify each of the properties individually.
 
 This is then posted by calling the ```sendTransaction:withCompletionHandler:``` method on the shared instance of ```VenmoSDK```. 
 
