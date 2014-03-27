@@ -55,7 +55,7 @@
     if (self.amount < 1) {
         return @"";
     }
-    float amount = (float)self.amount / (float)100;
+    CGFloat amount = self.amount / 100.0f;
     NSString *amountStr = [NSString stringWithFormat:@"%.2f", amount];
     return amountStr;
 }
