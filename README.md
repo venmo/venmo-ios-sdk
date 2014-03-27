@@ -1,7 +1,7 @@
 Venmo iOS SDK
 =========
 
-The Venmo iOS SDK allows your users to login and pay with Venmo right from your app.
+The Venmo iOS SDK allows your users to log in and pay with Venmo right from your app.
 
 Venmo SDK Apps
 ----
@@ -31,7 +31,7 @@ Using the Venmo iOS SDK is as easy as Venmoing a friend.
 
 1. In your app target's ```Info``` section, scroll down to ```URL Types```.
 2. Add a new URL Type by clicking the ```+``` button.
-3. Set ```Identifier``` and ```URL Schemes``` to ```venmo``` + ```your_venmo_app_id```. For example, if your app ID is ```1234```, put ```venmo1234```. You can find your app ID on the [Venmo developer site](https://venmo.com/account/settings/developers).
+3. Set ```Identifier``` to ```venmo``` and ```URL Schemes``` to ```your_venmo_app_id```. For example, if your app ID is ```1234```, put ```venmo1234```. You can find your app ID on the [Venmo developer site](https://venmo.com/account/settings/developers).
 
 ![Set URL Types](http://i.imgur.com/8rUXlFB.png)
 
