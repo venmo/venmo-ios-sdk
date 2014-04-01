@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.version      = "1.0.0"
   s.summary      = "App switch SDK for Venmo."
   s.description  = <<-DESC
-                   App switch SDK for Venmo.
+                   Send Venmo payments & charges to any email, phone number or Venmo username from within your iOS app.
                    DESC
 
   s.homepage     = "https://github.com/venmo/VENAppSwitchSDK"
