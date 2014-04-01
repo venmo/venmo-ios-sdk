@@ -1,6 +1,6 @@
 ## Venmo App Switch SDK for iOS
 
-[![Build Status](https://travis-ci.org/ayanonagon/VENAppSwitchSDK.svg?branch=master)](https://travis-ci.org/venmo/VENAppSwitchSDK)
+[![Build Status](https://travis-ci.org/venmo/VENAppSwitchSDK.svg?branch=master)](https://travis-ci.org/venmo/VENAppSwitchSDK)
 
 The Venmo AppSwitch SDK allows you to send Venmo payments & charges to any email, phone number or Venmo username from within your iOS app.
 
