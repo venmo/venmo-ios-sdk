@@ -9,8 +9,10 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/venmo/VENAppSwitchSDK"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Venmo" => "developers@venmo.com" }
-  s.platform     = :ios, '5.0'
+  s.platform     = :ios, '6.0'
   s.source       =  { :git => "https://github.com/venmo/VENAppSwitchSDK.git", :tag => "v#{s.version}" }
   s.source_files = 'VENAppSwitchSDK/**/*.{h,m}'
   s.requires_arc = true
+  s.social_media_url = 'https://twitter.com/venmo'
+  s.screenshot  = "http://i.imgur.com/tN7mYVy.gif"
 end
