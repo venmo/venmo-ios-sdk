@@ -1,7 +1,7 @@
 #import <UIKit/UIKit.h>
 
 @class VDKTransactionViewController;
-@class VenmoActivityView;
+@class VDKActivityView;
 @class VenmoSDK;
 
 typedef void (^VenmoViewControllerCompletionHandler)(VDKTransactionViewController *viewController, BOOL cancelled);
@@ -15,7 +15,7 @@ typedef void (^VenmoViewControllerCompletionHandler)(VDKTransactionViewControlle
  */
 @property (strong, nonatomic) VenmoViewControllerCompletionHandler completionHandler;
 
-@property (strong, nonatomic) VenmoActivityView *activityView;
+@property (strong, nonatomic) VDKActivityView *activityView;
 @property (strong, nonatomic) NSURL *transactionURL;
 
 @end

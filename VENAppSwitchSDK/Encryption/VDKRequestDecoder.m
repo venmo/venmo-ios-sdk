@@ -1,7 +1,7 @@
 #import "VDKRequestDecoder.h"
-#import "VenmoBase64_Internal.h"
+#import "VDKBase64_Internal.h"
 #import "VenmoSDK.h"
-#import "VenmoHMAC_SHA256_Internal.h"
+#import "VDKHMAC_SHA256_Internal.h"
 
 @implementation VDKRequestDecoder
 
@@ -21,7 +21,7 @@
         encodedSignature = [encodedSignature stringByReplacingOccurrencesOfString:@"_" withString:@"/"];
 
         NSData *signature = [encodedSignature base64DecodedData];
-        NSData *expectedSignature = VenmoHMAC_SHA256(secretKey, encodedDataString);
+        NSData *expectedSignature = VDKHMAC_SHA256(secretKey, encodedDataString);
 
         if ([signature isEqualToData:expectedSignature]) {
             return [NSJSONSerialization JSONObjectWithData:[encodedDataString base64DecodedData] options:0 error:NULL];

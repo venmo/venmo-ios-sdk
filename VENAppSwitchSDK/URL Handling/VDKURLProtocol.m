@@ -1,8 +1,8 @@
 #import "VDKURLProtocol.h"
 #import "VenmoSDK.h"
-#import "VenmoErrors.h"
-#import "NSError+Venmo.h"
-#import "NSURL+Venmo.h"
+#import "VDKErrors.h"
+#import "NSError+VenmoSDK.h"
+#import "NSURL+VenmoSDK.h"
 #import "VenmoSDK_Private.h"
 
 @implementation VDKURLProtocol

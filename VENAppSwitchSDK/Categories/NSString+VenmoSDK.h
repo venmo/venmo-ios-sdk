@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface NSString (Venmo)
+@interface NSString (VenmoSDK)
 
 - (NSString *)formURLDecodedString;
 

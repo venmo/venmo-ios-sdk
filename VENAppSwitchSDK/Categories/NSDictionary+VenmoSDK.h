@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (Venmo)
+@interface NSDictionary (VenmoSDK)
 
 + (NSMutableDictionary *)dictionaryWithFormURLEncodedString:(NSString *)encodedString;
 

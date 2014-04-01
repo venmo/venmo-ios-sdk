@@ -1,7 +1,7 @@
-#import "NSDictionary+Venmo.h"
-#import "NSURL+Venmo.h"
+#import "NSDictionary+VenmoSDK.h"
+#import "NSURL+VenmoSDK.h"
 
-@implementation NSURL (Venmo)
+@implementation NSURL (VenmoSDK)
 
 // Ref: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/NSURL+SSToolkitAdditions.m
 - (NSDictionary *)queryDictionary {

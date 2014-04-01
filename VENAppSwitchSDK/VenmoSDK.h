@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "VDKUser.h"
-#import "VenmoErrors.h"
+#import "VDKErrors.h"
 #import "VDKTransaction.h"
 #import "VDKTransactionViewController.h"
 #import "VDKSession.h"

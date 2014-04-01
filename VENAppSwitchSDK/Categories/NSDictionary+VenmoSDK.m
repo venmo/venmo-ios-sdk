@@ -1,7 +1,7 @@
-#import "NSDictionary+Venmo.h"
-#import "NSString+Venmo.h"
+#import "NSDictionary+VenmoSDK.h"
+#import "NSString+VenmoSDK.h"
 
-@implementation NSDictionary (Venmo)
+@implementation NSDictionary (VenmoSDK)
 
 + (NSMutableDictionary *)dictionaryWithFormURLEncodedString:(NSString *)URLEncodedString {
     NSMutableDictionary *params = [NSMutableDictionary dictionary];

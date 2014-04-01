@@ -1,6 +1,6 @@
-#import "NSBundle+Venmo.h"
+#import "NSBundle+VenmoSDK.h"
 
-@implementation NSBundle (Venmo)
+@implementation NSBundle (VenmoSDK)
 
 - (NSString *)name {
     return [self objectForInfoDictionaryKey:(NSString *)kCFBundleNameKey];

@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 // Adapted from SSToolkit
-@interface NSData (VenmoBase64)
+@interface NSData (VDKBase64)
 
 - (NSString *)base64EncodedString;
 

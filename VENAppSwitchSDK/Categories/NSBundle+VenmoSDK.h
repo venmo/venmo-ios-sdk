@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface NSBundle (Venmo)
+@interface NSBundle (VenmoSDK)
 
 - (NSString *)name;
 

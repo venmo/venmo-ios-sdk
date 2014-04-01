@@ -1,6 +1,6 @@
-#import "VenmoDefines_Internal.h"
+#import "VDKDefines_Internal.h"
 #import "VDKTransactionViewController.h"
-#import "VenmoActivityView.h"
+#import "VDKActivityView.h"
 #import "VenmoSDK.h"
 
 @interface VDKTransactionViewController ()
@@ -31,7 +31,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadInitialRequest];
-    self.activityView = [VenmoActivityView activityView];
+    self.activityView = [VDKActivityView activityView];
 
     UIBarButtonItem *logInBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Login"
                                                                            style:UIBarButtonItemStylePlain

@@ -1,6 +1,6 @@
-#import "NSString+Venmo.h"
+#import "NSString+VenmoSDK.h"
 
-@implementation NSString (Venmo)
+@implementation NSString (VenmoSDK)
 
 - (NSString *)formURLDecodedString {
     NSString *deplussed = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];

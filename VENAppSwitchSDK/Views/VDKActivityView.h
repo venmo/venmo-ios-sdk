@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface VenmoActivityView : UIView
+@interface VDKActivityView : UIView
 
 + (id)activityView; // default title: Loading...
 + (id)activityViewWithTitle:(NSString *)title;

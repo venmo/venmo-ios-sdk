@@ -1,6 +1,6 @@
-#import "NSError+Venmo.h"
+#import "NSError+VenmoSDK.h"
 
-@implementation NSError (Venmo)
+@implementation NSError (VenmoSDK)
 
 + (id)errorWithDomain:(NSString *)domain code:(NSInteger)code
           description:(NSString *)description recoverySuggestion:(NSString *)recoverySuggestion {

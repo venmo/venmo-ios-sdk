@@ -1,4 +1,4 @@
-#import "VenmoBase64_Internal.h"
+#import "VDKBase64_Internal.h"
 
 static const char _base64EncodingTable[64] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 "0123456789+/";
@@ -21,7 +21,7 @@ static const short _base64DecodingTable[256] = {
     -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2, -2
 };
 
-@implementation NSData (VenmoBase64)
+@implementation NSData (VDKBase64)
 
 - (NSString *)base64EncodedString {
     const uint8_t *input = self.bytes;

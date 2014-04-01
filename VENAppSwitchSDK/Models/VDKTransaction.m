@@ -1,8 +1,8 @@
 #import <Foundation/Foundation.h>
-#import "VenmoDefines_Internal.h"
-#import "NSDictionary+Venmo.h"
+#import "VDKDefines_Internal.h"
+#import "NSDictionary+VenmoSDk.h"
 #import "VenmoSDK.h"
-#import "NSURL+Venmo.h"
+#import "NSURL+VenmoSDK.h"
 #import "VDKRequestDecoder.h"
 
 @interface VDKTransaction ()

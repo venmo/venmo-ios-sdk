@@ -1,15 +1,15 @@
 #import <QuartzCore/CALayer.h>
 
-#import "VenmoDefines_Internal.h"
-#import "VenmoActivityView.h"
+#import "VDKDefines_Internal.h"
+#import "VDKActivityView.h"
 
-@interface VenmoActivityView (Venmo)
+@interface VDKActivityView (Venmo)
 - (id)initWithTitle:(NSString *)title;
 - (UIView *)defaultSuperview;
 - (void)remove;
 @end
 
-@implementation VenmoActivityView
+@implementation VDKActivityView
 
 #pragma mark - Initializers
 
