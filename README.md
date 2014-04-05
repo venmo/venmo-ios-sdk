@@ -13,6 +13,10 @@ The Venmo AppSwitch SDK allows you to send Venmo payments & charges to any email
 
 Or come find us by the Venmo booth next to the entrance. We're happy to help with anything, Venmo related or not. :)
 
+If you've never used Cocoapods before, definitely come talk to us too. We'll help you set up.
+
+Also, we're looking for *2 more interns* in Venmo SF this summer for iOS and/or Android, so come talk to us!
+
 ### Installation
 
 The easiest way to get started is to use [CocoaPods](http://cocoapods.org/). Just add the following line to your Podfile:
