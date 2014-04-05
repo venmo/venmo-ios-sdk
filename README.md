@@ -8,7 +8,10 @@ The Venmo AppSwitch SDK allows you to send Venmo payments & charges to any email
 
 ### @ The Big Hack and need help?
 
-Email ayaka@venmo.com or tweet [@ayanonagon](http://twitter.com/ayanonagon).
+* *iOS*: Email ayaka@venmo.com or tweet [@ayanonagon](http://twitter.com/ayanonagon)
+* *Ruby + full-stack*: Email tom.wilson@getbraintree.com
+
+Or come find us by the Venmo booth next to the entrance. We're happy to help with anything, Venmo related or not. :)
 
 ### Installation
 
