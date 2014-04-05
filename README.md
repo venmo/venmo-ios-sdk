@@ -78,7 +78,7 @@ You can send a payment by constructing a ```VDKTransaction``` object with some b
 
 This is then posted by calling the ```sendTransaction:withCompletionHandler:``` method on the shared instance of ```VenmoSDK```. 
 
-If the user has the Venmo app installed, they will be switched across to the Venmo app to complete the payment natively, otherwise a web view will be shown within your App.
+If the user has the Venmo app installed, they will be switched across to the Venmo app to complete the payment natively.
 
  ```objc
  #import <VENAppSwitchSDK/VenmoSDK.h>
