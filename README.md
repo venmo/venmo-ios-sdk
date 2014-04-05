@@ -6,6 +6,10 @@ The Venmo AppSwitch SDK allows you to send Venmo payments & charges to any email
 
 ![alt text](http://i.imgur.com/tN7mYVy.gif "VENAppSwitchSDK demo")
 
+### @ The Big Hack and need help?
+
+Email **ayaka@venmo.com** or tweet [@ayanonagon](http://twitter.com/ayanonagon).
+
 ### Installation
 
 The easiest way to get started is to use [CocoaPods](http://cocoapods.org/). Just add the following line to your Podfile:
