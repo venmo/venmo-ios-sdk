@@ -1,7 +1,7 @@
 #include <CommonCrypto/CommonHMAC.h>
-#import "VDKHMAC_SHA256_Internal.h"
+#import "VENHMAC_SHA256_Internal.h"
 
-NSData *VDKHMAC_SHA256(NSString *key, NSString *data) {
+NSData *VENHMAC_SHA256(NSString *key, NSString *data) {
     const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
     const char *cData = [data cStringUsingEncoding:NSASCIIStringEncoding];
     unsigned char cHMAC[CC_SHA256_DIGEST_LENGTH];

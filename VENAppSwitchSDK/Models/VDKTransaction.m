@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
-#import "VDKDefines_Internal.h"
+#import "VENDefines_Internal.h"
 #import "NSDictionary+VenmoSDk.h"
 #import "VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
-#import "VDKRequestDecoder.h"
+#import "VENRequestDecoder.h"
 
 @interface VDKTransaction ()
 @property (strong, nonatomic) NSNumberFormatter *amountNumberFormatter;
@@ -28,7 +28,7 @@
         NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
         DLog(@"signedRequest: %@", signedRequest);
 
-        NSArray *decodedSignedRequest = [VDKRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[VenmoSDK sharedClient] appSecret]];
+        NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[VenmoSDK sharedClient] appSecret]];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
         return [VDKTransaction transactionWithDictionary:decodedSignedRequest[0]];
     }
