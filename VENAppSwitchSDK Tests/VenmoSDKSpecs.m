@@ -3,7 +3,17 @@
 #import <Specta/Specta.h>
 
 #import "VenmoSDK.h"
-#import "VenmoSDK_Private.h"
+
+@interface VenmoSDK (Private)
+
+@property (assign, nonatomic) BOOL internalDevelopment;
+
+- (NSString *)baseURLPath;
+- (instancetype)initWithAppId:(NSString *)appId
+                       secret:(NSString *)appSecret
+                         name:(NSString *)appName;
+
+@end
 
 SpecBegin(VenmoSDK)
 
