@@ -3,7 +3,7 @@
 #import "NSDictionary+VenmoSDK.h"
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
-#import "VDKBase64_Internal.h"
+#import "VENBase64_Internal.h"
 #import "VenmoSDK.h"
 #import "VDKErrors.h"
 #import "VDKHMAC_SHA256_Internal.h"

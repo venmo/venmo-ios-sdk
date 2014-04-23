@@ -1,5 +1,5 @@
 #import "VDKRequestDecoder.h"
-#import "VDKBase64_Internal.h"
+#import "VENBase64_Internal.h"
 #import "VenmoSDK.h"
 #import "VDKHMAC_SHA256_Internal.h"
 

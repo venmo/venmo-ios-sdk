@@ -33,8 +33,8 @@
 		B62D59BD18973D71001E46A4 /* VDKURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59BB18973D71001E46A4 /* VDKURLProtocol.m */; };
 		B62D59C018973F2C001E46A4 /* VDKRequestDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B62D59BE18973F2C001E46A4 /* VDKRequestDecoder.h */; };
 		B62D59C118973F2C001E46A4 /* VDKRequestDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59BF18973F2C001E46A4 /* VDKRequestDecoder.m */; };
-		B63E18F318EB2AB30006BD3E /* VDKBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B63E18F218EB2AB30006BD3E /* VDKBase64.m */; };
-		B63E18F518EB2B090006BD3E /* VDKBase64_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B63E18F418EB2B090006BD3E /* VDKBase64_Internal.h */; };
+		B63E18F318EB2AB30006BD3E /* VENBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = B63E18F218EB2AB30006BD3E /* VENBase64.m */; };
+		B63E18F518EB2B090006BD3E /* VENBase64_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B63E18F418EB2B090006BD3E /* VENBase64_Internal.h */; };
 		B63E18F718EB2B200006BD3E /* VDKDefines_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B63E18F618EB2B200006BD3E /* VDKDefines_Internal.h */; };
 		B63E18F918EB2B890006BD3E /* VDKHMAC_SHA256_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = B63E18F818EB2B890006BD3E /* VDKHMAC_SHA256_Internal.h */; };
 		B63E18FB18EB2B900006BD3E /* VDKHMAC_SHA256.m in Sources */ = {isa = PBXBuildFile; fileRef = B63E18FA18EB2B900006BD3E /* VDKHMAC_SHA256.m */; };
@@ -114,8 +114,8 @@
 		B62D59BB18973D71001E46A4 /* VDKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKURLProtocol.m; sourceTree = "<group>"; };
 		B62D59BE18973F2C001E46A4 /* VDKRequestDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKRequestDecoder.h; sourceTree = "<group>"; };
 		B62D59BF18973F2C001E46A4 /* VDKRequestDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKRequestDecoder.m; sourceTree = "<group>"; };
-		B63E18F218EB2AB30006BD3E /* VDKBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKBase64.m; sourceTree = "<group>"; };
-		B63E18F418EB2B090006BD3E /* VDKBase64_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKBase64_Internal.h; sourceTree = "<group>"; };
+		B63E18F218EB2AB30006BD3E /* VENBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENBase64.m; sourceTree = "<group>"; };
+		B63E18F418EB2B090006BD3E /* VENBase64_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENBase64_Internal.h; sourceTree = "<group>"; };
 		B63E18F618EB2B200006BD3E /* VDKDefines_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKDefines_Internal.h; sourceTree = "<group>"; };
 		B63E18F818EB2B890006BD3E /* VDKHMAC_SHA256_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKHMAC_SHA256_Internal.h; sourceTree = "<group>"; };
 		B63E18FA18EB2B900006BD3E /* VDKHMAC_SHA256.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKHMAC_SHA256.m; sourceTree = "<group>"; };
@@ -286,8 +286,8 @@
 		B657433F1897394E00AFB89D /* Encryption */ = {
 			isa = PBXGroup;
 			children = (
-				B63E18F218EB2AB30006BD3E /* VDKBase64.m */,
-				B63E18F418EB2B090006BD3E /* VDKBase64_Internal.h */,
+				B63E18F218EB2AB30006BD3E /* VENBase64.m */,
+				B63E18F418EB2B090006BD3E /* VENBase64_Internal.h */,
 				B63E18F618EB2B200006BD3E /* VDKDefines_Internal.h */,
 				B63E18FA18EB2B900006BD3E /* VDKHMAC_SHA256.m */,
 				B63E18F818EB2B890006BD3E /* VDKHMAC_SHA256_Internal.h */,
@@ -325,7 +325,7 @@
 				B63E191018EB2C6E0006BD3E /* NSString+VenmoSDK.h in Headers */,
 				B63E18F918EB2B890006BD3E /* VDKHMAC_SHA256_Internal.h in Headers */,
 				B63E18F718EB2B200006BD3E /* VDKDefines_Internal.h in Headers */,
-				B63E18F518EB2B090006BD3E /* VDKBase64_Internal.h in Headers */,
+				B63E18F518EB2B090006BD3E /* VENBase64_Internal.h in Headers */,
 				B62D59C018973F2C001E46A4 /* VDKRequestDecoder.h in Headers */,
 				B63E190618EB2C610006BD3E /* NSBundle+VenmoSDK.h in Headers */,
 				B62D59BC18973D71001E46A4 /* VDKURLProtocol.h in Headers */,
@@ -484,7 +484,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B63E18F318EB2AB30006BD3E /* VDKBase64.m in Sources */,
+				B63E18F318EB2AB30006BD3E /* VENBase64.m in Sources */,
 				B63E18FB18EB2B900006BD3E /* VDKHMAC_SHA256.m in Sources */,
 				B62D59C118973F2C001E46A4 /* VDKRequestDecoder.m in Sources */,
 				B63E190B18EB2C610006BD3E /* NSError+VenmoSDK.m in Sources */,
