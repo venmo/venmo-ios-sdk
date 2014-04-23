@@ -2,9 +2,9 @@
 #import <Expecta/Expecta.h>
 #import <Specta/Specta.h>
 
-#import "VDKUser.h"
+#import "VENUser.h"
 
-SpecBegin(VDKUser)
+SpecBegin(VENUser)
 
 describe(@"Initialization", ^{
 
@@ -35,7 +35,7 @@ describe(@"Initialization", ^{
         dict[@"email"] = email;
         dict[@"friends_count"] = friendsCount;
 
-        VDKUser *user = [[VDKUser alloc] initWithDictionary:dict];
+        VENUser *user = [[VENUser alloc] initWithDictionary:dict];
 
         expect(user.username).to.equal(username);
         expect(user.firstName).to.equal(firstName);

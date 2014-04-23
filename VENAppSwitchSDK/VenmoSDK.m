@@ -5,12 +5,12 @@
 #import "NSURL+VenmoSDK.h"
 #import "VENBase64_Internal.h"
 #import "VenmoSDK.h"
-#import "VDKErrors.h"
+#import "VENErrors.h"
 #import "VENHMAC_SHA256_Internal.h"
-#import "VDKTransaction.h"
-#import "VDKURLProtocol.h"
+#import "VENTransaction.h"
+#import "VENURLProtocol.h"
 #import "VENSession.h"
-#import "VDKUser.h"
+#import "VENUser.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
@@ -24,8 +24,8 @@ static VenmoSDK *sharedVenmoClient = nil;
 @property (copy, nonatomic, readwrite) NSString *appSecret;
 @property (copy, nonatomic, readwrite) NSString *appName;
 
-@property (copy, nonatomic, readwrite) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
-@property (copy, nonatomic, readwrite) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
+@property (copy, nonatomic, readwrite) VENTransactionCompletionHandler currentTransactionCompletionHandler;
+@property (copy, nonatomic, readwrite) VENOAuthCompletionHandler currentOAuthCompletionHandler;
 
 @property (nonatomic) BOOL internalDevelopment;
 
@@ -53,9 +53,9 @@ static VenmoSDK *sharedVenmoClient = nil;
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url {
-    if ([VDKURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
+    if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
 
-        VDKURLProtocol *urlProtocol = [[VDKURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
+        VENURLProtocol *urlProtocol = [[VENURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
         [urlProtocol startLoading];
         return YES;
     }
@@ -65,8 +65,8 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 #pragma mark - Sending a Transaction
 
-- (void)sendTransaction:(VDKTransaction *)transaction
-  withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler {
+- (void)sendTransaction:(VENTransaction *)transaction
+  withCompletionHandler:(VENTransactionCompletionHandler)completionHandler {
 
     self.currentTransactionCompletionHandler = completionHandler;
     NSString *URLPath = [self URLPathWithTransaction:transaction];
@@ -77,8 +77,8 @@ static VenmoSDK *sharedVenmoClient = nil;
     if ([self hasVenmoApp]) {
         [[UIApplication sharedApplication] openURL:transactionURL];
     } else if (completionHandler) {
-        NSError *error = [NSError errorWithDomain:VDKErrorDomain
-                                             code:VDKTransactionFailedError
+        NSError *error = [NSError errorWithDomain:VENErrorDomain
+                                             code:VENTransactionFailedError
                                       description:@"Could not find Venmo app."
                                recoverySuggestion:@"Please install Venmo."];
         completionHandler(transaction, NO, error);
@@ -89,7 +89,7 @@ static VenmoSDK *sharedVenmoClient = nil;
 #pragma mark - OAuth
 
 - (void)requestPermissions:(NSArray *)permissions
-     withCompletionHandler:(VDKOAuthCompletionHandler)completionHandler {
+     withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
     self.currentOAuthCompletionHandler = completionHandler;
 
@@ -107,7 +107,7 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 #pragma mark - Sending a Transaction @private
 
-- (NSString *)URLPathWithTransaction:(VDKTransaction *)transaction {
+- (NSString *)URLPathWithTransaction:(VENTransaction *)transaction {
 
     NSString *identifier = [self currentDeviceIdentifier];
 
@@ -128,7 +128,7 @@ static VenmoSDK *sharedVenmoClient = nil;
     if (transaction.note) {
         pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, transaction.note];
     }
-    pathAndQuery = [NSString stringWithFormat:@"%@&app_version=%@", pathAndQuery, VDK_CURRENT_SDK_VERSION];
+    pathAndQuery = [NSString stringWithFormat:@"%@&app_version=%@", pathAndQuery, VEN_CURRENT_SDK_VERSION];
 
     return pathAndQuery;
 }

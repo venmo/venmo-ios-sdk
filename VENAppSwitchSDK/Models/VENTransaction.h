@@ -1,13 +1,13 @@
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, VDKTransactionType) {
-    VDKTransactionTypePay,
-    VDKTransactionTypeCharge
+typedef NS_ENUM(NSUInteger, VENTransactionType) {
+    VENTransactionTypePay,
+    VENTransactionTypeCharge
 };
 
-@interface VDKTransaction : NSObject
+@interface VENTransaction : NSObject
 
-@property (assign, nonatomic) VDKTransactionType type;
+@property (assign, nonatomic) VENTransactionType type;
 @property (assign, nonatomic) NSUInteger amount;
 @property (copy, nonatomic) NSString *note;
 @property (copy, nonatomic) NSString *toUserHandle; // cell number, email, Venmo username
@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, VDKTransactionType) {
  @param recipient Recepient UUID (cell number, email, Venmo username)
  @return The initialized transaction
  */
-+ (instancetype)transactionWithType:(VDKTransactionType)type
++ (instancetype)transactionWithType:(VENTransactionType)type
                              amount:(NSUInteger)amount
                                note:(NSString *)note
                           recipient:(NSString *)recipient;

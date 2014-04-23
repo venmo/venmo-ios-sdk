@@ -1,10 +1,10 @@
-#import "VDKURLProtocol.h"
+#import "VENURLProtocol.h"
 #import "VenmoSDK.h"
-#import "VDKErrors.h"
+#import "VENErrors.h"
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
 
-@implementation VDKURLProtocol
+@implementation VENURLProtocol
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     NSString *requestScheme = [[request URL] scheme];
@@ -24,17 +24,17 @@
 
 
 - (void)startLoading {
-    VDKTransaction *transaction = [VDKTransaction transactionWithURL:[self.request URL]];
+    VENTransaction *transaction = [VENTransaction transactionWithURL:[self.request URL]];
     dispatch_async(dispatch_get_main_queue(), ^{
         NSError *error;
         if (transaction && !transaction.success) {
-            error = [NSError errorWithDomain:VDKErrorDomain
-                                        code:VDKTransactionFailedError
+            error = [NSError errorWithDomain:VENErrorDomain
+                                        code:VENTransactionFailedError
                                  description:@"Venmo failed to complete the transaction."
                           recoverySuggestion:@"Please try again."];
         } else if (!transaction.success) {
-            error  = [NSError errorWithDomain:VDKErrorDomain
-                                         code:VDKTransactionValidationError
+            error  = [NSError errorWithDomain:VENErrorDomain
+                                         code:VENTransactionValidationError
                                   description:@"Failed to validate the transaction."
                            recoverySuggestion:@"Please contact us."];
         }

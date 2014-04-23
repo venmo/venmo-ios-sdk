@@ -5,17 +5,17 @@
 #import "NSURL+VenmoSDK.h"
 #import "VENRequestDecoder.h"
 
-@interface VDKTransaction ()
+@interface VENTransaction ()
 @property (strong, nonatomic) NSNumberFormatter *amountNumberFormatter;
 @end
 
-@implementation VDKTransaction
+@implementation VENTransaction
 
-+ (instancetype)transactionWithType:(VDKTransactionType)type
++ (instancetype)transactionWithType:(VENTransactionType)type
                              amount:(NSUInteger)amount
                                note:(NSString *)note
                           recipient:(NSString *)recipient {
-    VDKTransaction *transaction = [[VDKTransaction alloc] init];
+    VENTransaction *transaction = [[VENTransaction alloc] init];
     transaction.type = type;
     transaction.amount = amount;
     transaction.note = note;
@@ -30,7 +30,7 @@
 
         NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[VenmoSDK sharedClient] appSecret]];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
-        return [VDKTransaction transactionWithDictionary:decodedSignedRequest[0]];
+        return [VENTransaction transactionWithDictionary:decodedSignedRequest[0]];
     }
     @catch (NSException *exception) {
         DLog(@"Exception! %@: %@. %@", exception.name, exception.reason, exception.userInfo);
@@ -38,17 +38,17 @@
     }
 }
 
-+ (VDKTransactionType)typeWithString:(NSString *)string {
++ (VENTransactionType)typeWithString:(NSString *)string {
     return [[string lowercaseString] isEqualToString:@"charge"] ?
-    VDKTransactionTypeCharge : VDKTransactionTypePay;
+    VENTransactionTypeCharge : VENTransactionTypePay;
 }
 
 - (NSString *)typeString {
-    return self.type == VDKTransactionTypeCharge ? @"charge" : @"pay";
+    return self.type == VENTransactionTypeCharge ? @"charge" : @"pay";
 }
 
 - (NSString *)typeStringPast {
-    return self.type == VDKTransactionTypeCharge ? @"charged" : @"paid";
+    return self.type == VENTransactionTypeCharge ? @"charged" : @"paid";
 }
 
 - (NSString *)amountString {
@@ -79,9 +79,9 @@
 + (instancetype)transactionWithDictionary:(NSDictionary *)dictionary {
     DLog(@"transaction Dictionary: %@", dictionary);
     if (!dictionary) return nil;
-    VDKTransaction *transaction = [[VDKTransaction alloc] init];
+    VENTransaction *transaction = [[VENTransaction alloc] init];
     transaction.transactionID = [dictionary stringForKey:@"payment_id"];
-    transaction.type          = [VDKTransaction typeWithString:dictionary[@"verb"]];
+    transaction.type          = [VENTransaction typeWithString:dictionary[@"verb"]];
     transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
     transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
     transaction.amount        = [[dictionary stringForKey:@"amount"] floatValue] * 100;
