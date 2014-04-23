@@ -50,7 +50,7 @@
 		B63E191118EB2C6E0006BD3E /* NSString+VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = B63E190D18EB2C6E0006BD3E /* NSString+VenmoSDK.m */; };
 		B63E191218EB2C6E0006BD3E /* NSURL+VenmoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B63E190E18EB2C6E0006BD3E /* NSURL+VenmoSDK.h */; };
 		B63E191318EB2C6E0006BD3E /* NSURL+VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = B63E190F18EB2C6E0006BD3E /* NSURL+VenmoSDK.m */; };
-		B64A63D218ABFDA00091A465 /* VDKSessionSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B611893B18A189800041AF50 /* VDKSessionSpecs.m */; };
+		B64A63D218ABFDA00091A465 /* VENSessionSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B611893B18A189800041AF50 /* VENSessionSpecs.m */; };
 		B6570AB3189711FD00351EDF /* VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = B6570AB1189711FD00351EDF /* VenmoSDK.m */; };
 		B6570AD11897181E00351EDF /* VenmoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = B6570AB0189711FD00351EDF /* VenmoSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6570B0E1897194200351EDF /* VENAppSwitchSDK-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B6570B0D1897194200351EDF /* VENAppSwitchSDK-Prefix.pch */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -58,12 +58,12 @@
 		B65743351897390200AFB89D /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = B65743271897390200AFB89D /* NSString+MD5Addition.m */; };
 		B657433A1897390200AFB89D /* UIDevice+IdentifierAddition.h in Headers */ = {isa = PBXBuildFile; fileRef = B657432C1897390200AFB89D /* UIDevice+IdentifierAddition.h */; };
 		B657433B1897390200AFB89D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B657432D1897390200AFB89D /* UIDevice+IdentifierAddition.m */; };
-		B6588AF118A02E1000A0C73B /* VDKPermissionSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AEF18A02D8400A0C73B /* VDKPermissionSpecs.m */; };
+		B6588AF118A02E1000A0C73B /* VENPermissionSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AEF18A02D8400A0C73B /* VENPermissionSpecs.m */; };
 		B6588AFA18A0554200A0C73B /* VenmoSDKSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AF918A0554200A0C73B /* VenmoSDKSpecs.m */; };
 		B6B810AF18A1851C00FD8955 /* VDKTransactionSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810A918A1842B00FD8955 /* VDKTransactionSpecs.m */; };
 		B6B810B118A1852500FD8955 /* VDKUserSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810AB18A1844800FD8955 /* VDKUserSpecs.m */; };
-		B6F5046618E38C2600BDACF7 /* VDKPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5045F18E38C2600BDACF7 /* VDKPermission.m */; };
-		B6F5046718E38C2600BDACF7 /* VDKSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VDKSession.m */; };
+		B6F5046618E38C2600BDACF7 /* VENPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5045F18E38C2600BDACF7 /* VENPermission.m */; };
+		B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VENSession.m */; };
 		B6F5046818E38C2600BDACF7 /* VDKTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046318E38C2600BDACF7 /* VDKTransaction.m */; };
 		B6F5046918E38C2600BDACF7 /* VDKUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046518E38C2600BDACF7 /* VDKUser.m */; };
 /* End PBXBuildFile section */
@@ -109,7 +109,7 @@
 		2D5EF5B417EF450E00DDD15A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5C90C0FDC88E4813AB01E195 /* Pods-VENAppSwitchSDKTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENAppSwitchSDKTests.xcconfig"; path = "Pods/Pods-VENAppSwitchSDKTests.xcconfig"; sourceTree = "<group>"; };
 		B611893918A188AE0041AF50 /* VDKPermissionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = VDKPermissionConstants.h; path = "Supporting Files/VDKPermissionConstants.h"; sourceTree = "<group>"; };
-		B611893B18A189800041AF50 /* VDKSessionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKSessionSpecs.m; sourceTree = "<group>"; };
+		B611893B18A189800041AF50 /* VENSessionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENSessionSpecs.m; sourceTree = "<group>"; };
 		B62D59BA18973D71001E46A4 /* VDKURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKURLProtocol.h; sourceTree = "<group>"; };
 		B62D59BB18973D71001E46A4 /* VDKURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKURLProtocol.m; sourceTree = "<group>"; };
 		B62D59BE18973F2C001E46A4 /* VENRequestDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENRequestDecoder.h; sourceTree = "<group>"; };
@@ -138,14 +138,14 @@
 		B65743271897390200AFB89D /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		B657432C1897390200AFB89D /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		B657432D1897390200AFB89D /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
-		B6588AEF18A02D8400A0C73B /* VDKPermissionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKPermissionSpecs.m; sourceTree = "<group>"; };
+		B6588AEF18A02D8400A0C73B /* VENPermissionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENPermissionSpecs.m; sourceTree = "<group>"; };
 		B6588AF918A0554200A0C73B /* VenmoSDKSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoSDKSpecs.m; sourceTree = "<group>"; };
 		B6B810A918A1842B00FD8955 /* VDKTransactionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKTransactionSpecs.m; sourceTree = "<group>"; };
 		B6B810AB18A1844800FD8955 /* VDKUserSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKUserSpecs.m; sourceTree = "<group>"; };
-		B6F5045E18E38C2600BDACF7 /* VDKPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKPermission.h; sourceTree = "<group>"; };
-		B6F5045F18E38C2600BDACF7 /* VDKPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKPermission.m; sourceTree = "<group>"; };
-		B6F5046018E38C2600BDACF7 /* VDKSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKSession.h; sourceTree = "<group>"; };
-		B6F5046118E38C2600BDACF7 /* VDKSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKSession.m; sourceTree = "<group>"; };
+		B6F5045E18E38C2600BDACF7 /* VENPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENPermission.h; sourceTree = "<group>"; };
+		B6F5045F18E38C2600BDACF7 /* VENPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENPermission.m; sourceTree = "<group>"; };
+		B6F5046018E38C2600BDACF7 /* VENSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENSession.h; sourceTree = "<group>"; };
+		B6F5046118E38C2600BDACF7 /* VENSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENSession.m; sourceTree = "<group>"; };
 		B6F5046218E38C2600BDACF7 /* VDKTransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKTransaction.h; sourceTree = "<group>"; };
 		B6F5046318E38C2600BDACF7 /* VDKTransaction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKTransaction.m; sourceTree = "<group>"; };
 		B6F5046418E38C2600BDACF7 /* VDKUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKUser.h; sourceTree = "<group>"; };
@@ -234,10 +234,10 @@
 		2D5EF55B17EF41B100DDD15A /* VENAppSwitchSDK Tests */ = {
 			isa = PBXGroup;
 			children = (
-				B611893B18A189800041AF50 /* VDKSessionSpecs.m */,
+				B611893B18A189800041AF50 /* VENSessionSpecs.m */,
 				B6B810A918A1842B00FD8955 /* VDKTransactionSpecs.m */,
 				B6B810AB18A1844800FD8955 /* VDKUserSpecs.m */,
-				B6588AEF18A02D8400A0C73B /* VDKPermissionSpecs.m */,
+				B6588AEF18A02D8400A0C73B /* VENPermissionSpecs.m */,
 				B6588AF918A0554200A0C73B /* VenmoSDKSpecs.m */,
 				2D5EF55C17EF41B100DDD15A /* Supporting Files */,
 			);
@@ -300,10 +300,10 @@
 		B6F5045D18E38C2600BDACF7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B6F5045E18E38C2600BDACF7 /* VDKPermission.h */,
-				B6F5045F18E38C2600BDACF7 /* VDKPermission.m */,
-				B6F5046018E38C2600BDACF7 /* VDKSession.h */,
-				B6F5046118E38C2600BDACF7 /* VDKSession.m */,
+				B6F5045E18E38C2600BDACF7 /* VENPermission.h */,
+				B6F5045F18E38C2600BDACF7 /* VENPermission.m */,
+				B6F5046018E38C2600BDACF7 /* VENSession.h */,
+				B6F5046118E38C2600BDACF7 /* VENSession.m */,
 				B6F5046218E38C2600BDACF7 /* VDKTransaction.h */,
 				B6F5046318E38C2600BDACF7 /* VDKTransaction.m */,
 				B6F5046418E38C2600BDACF7 /* VDKUser.h */,
@@ -505,11 +505,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6F5046918E38C2600BDACF7 /* VDKUser.m in Sources */,
-				B6F5046718E38C2600BDACF7 /* VDKSession.m in Sources */,
-				B6F5046618E38C2600BDACF7 /* VDKPermission.m in Sources */,
+				B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */,
+				B6F5046618E38C2600BDACF7 /* VENPermission.m in Sources */,
 				B6B810B118A1852500FD8955 /* VDKUserSpecs.m in Sources */,
-				B64A63D218ABFDA00091A465 /* VDKSessionSpecs.m in Sources */,
-				B6588AF118A02E1000A0C73B /* VDKPermissionSpecs.m in Sources */,
+				B64A63D218ABFDA00091A465 /* VENSessionSpecs.m in Sources */,
+				B6588AF118A02E1000A0C73B /* VENPermissionSpecs.m in Sources */,
 				B6B810AF18A1851C00FD8955 /* VDKTransactionSpecs.m in Sources */,
 				B6F5046818E38C2600BDACF7 /* VDKTransaction.m in Sources */,
 				B6588AFA18A0554200A0C73B /* VenmoSDKSpecs.m in Sources */,

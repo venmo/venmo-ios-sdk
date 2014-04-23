@@ -1,12 +1,12 @@
-#import "VDKSession.h"
+#import "VENSession.h"
 
-@interface VDKSession ()
+@interface VENSession ()
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
 @property (assign, nonatomic, readwrite) NSUInteger expiresIn;
 @end
 
-@implementation VDKSession
+@implementation VENSession
 
 - (id)initWithAccessToken:(NSString *)accessToken
              refreshToken:(NSString *)refreshToken

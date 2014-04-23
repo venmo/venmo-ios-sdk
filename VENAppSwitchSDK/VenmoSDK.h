@@ -3,12 +3,12 @@
 #import "VDKUser.h"
 #import "VDKErrors.h"
 #import "VDKTransaction.h"
-#import "VDKSession.h"
+#import "VENSession.h"
 #import "VDKPermissionConstants.h"
 
 @class VDKTransaction;
 @class VDKUser;
-@class VDKSession;
+@class VENSession;
 @class VDKTransactionViewController;
 
 typedef void (^VDKTransactionCompletionHandler)(VDKTransaction *transaction, BOOL success, NSError *error);

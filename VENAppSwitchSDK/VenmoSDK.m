@@ -9,7 +9,7 @@
 #import "VENHMAC_SHA256_Internal.h"
 #import "VDKTransaction.h"
 #import "VDKURLProtocol.h"
-#import "VDKSession.h"
+#import "VENSession.h"
 #import "VDKUser.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0

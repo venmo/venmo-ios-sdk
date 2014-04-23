@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-@interface VDKSession : NSObject
+@interface VENSession : NSObject
 
 @property (strong, nonatomic, readonly) NSString *accessToken;
 @property (strong, nonatomic, readonly) NSString *refreshToken;

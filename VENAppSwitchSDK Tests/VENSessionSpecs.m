@@ -2,9 +2,9 @@
 #import <Expecta/Expecta.h>
 #import <Specta/Specta.h>
 
-#import "VDKSession.h"
+#import "VENSession.h"
 
-SpecBegin(VDKSession)
+SpecBegin(VENSession)
 
 describe(@"Initialization", ^{
 
@@ -12,7 +12,7 @@ describe(@"Initialization", ^{
         NSString *accessToken = @"octocat1234foobar";
         NSString *refreshToken = @"new1234octocatplz";
         NSUInteger expiresIn = 1234;
-        VDKSession *session = [[VDKSession alloc] initWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
 
         expect(session.accessToken).to.equal(accessToken);
         expect(session.refreshToken).to.equal(refreshToken);
