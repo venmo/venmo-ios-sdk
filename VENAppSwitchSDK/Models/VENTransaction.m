@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import "VENDefines_Internal.h"
 #import "NSDictionary+VenmoSDk.h"
-#import "VenmoSDK.h"
+#import "Venmo.h"
 #import "NSURL+VenmoSDK.h"
 #import "VENRequestDecoder.h"
 
@@ -28,7 +28,7 @@
         NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
         DLog(@"signedRequest: %@", signedRequest);
 
-        NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[VenmoSDK sharedClient] appSecret]];
+        NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[Venmo sharedClient] appSecret]];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
         return [VENTransaction transactionWithDictionary:decodedSignedRequest[0]];
     }

@@ -4,7 +4,7 @@
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
 #import "VENBase64_Internal.h"
-#import "VenmoSDK.h"
+#import "Venmo.h"
 #import "VENErrors.h"
 #import "VENHMAC_SHA256_Internal.h"
 #import "VENTransaction.h"
@@ -16,9 +16,9 @@
 #import "UIDevice+IdentifierAddition.h"
 #endif
 
-static VenmoSDK *sharedVenmoClient = nil;
+static Venmo *sharedVenmoClient = nil;
 
-@interface VenmoSDK ()
+@interface Venmo ()
 
 @property (copy, nonatomic, readwrite) NSString *appId;
 @property (copy, nonatomic, readwrite) NSString *appSecret;
@@ -31,7 +31,7 @@ static VenmoSDK *sharedVenmoClient = nil;
 
 @end
 
-@implementation VenmoSDK
+@implementation Venmo
 
 #pragma mark - Initializers
 

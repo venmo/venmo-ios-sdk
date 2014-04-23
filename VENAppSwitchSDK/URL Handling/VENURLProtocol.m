@@ -1,5 +1,5 @@
 #import "VENURLProtocol.h"
-#import "VenmoSDK.h"
+#import "Venmo.h"
 #import "VENErrors.h"
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
@@ -8,7 +8,7 @@
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     NSString *requestScheme = [[request URL] scheme];
-    NSString *currentAppScheme = [NSString stringWithFormat:@"venmo%@", [[VenmoSDK sharedClient] appId]];
+    NSString *currentAppScheme = [NSString stringWithFormat:@"venmo%@", [[Venmo sharedClient] appId]];
     return [requestScheme isEqualToString:currentAppScheme];
 }
 
@@ -39,8 +39,8 @@
                            recoverySuggestion:@"Please contact us."];
         }
 
-        if ([VenmoSDK sharedClient].currentTransactionCompletionHandler) {
-            [VenmoSDK sharedClient].currentTransactionCompletionHandler(transaction, transaction.success, error);
+        if ([Venmo sharedClient].currentTransactionCompletionHandler) {
+            [Venmo sharedClient].currentTransactionCompletionHandler(transaction, transaction.success, error);
         }
     });
 

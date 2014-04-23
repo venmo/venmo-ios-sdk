@@ -15,7 +15,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 #define VEN_CURRENT_SDK_VERSION @"1.0.0"
 
-@interface VenmoSDK : NSObject
+@interface Venmo : NSObject
 
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;

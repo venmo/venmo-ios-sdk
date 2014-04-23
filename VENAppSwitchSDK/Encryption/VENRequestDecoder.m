@@ -1,6 +1,6 @@
 #import "VENRequestDecoder.h"
 #import "VENBase64_Internal.h"
-#import "VenmoSDK.h"
+#import "Venmo.h"
 #import "VENHMAC_SHA256_Internal.h"
 
 @implementation VENRequestDecoder
