@@ -13,7 +13,7 @@
 
 - (void)viewDidLoad {
     // TODO: Fill these with your app info! Make sure to set your URL Types in Target Info as well.
-    [VenmoSDK startWithAppId:@"VENMO_APP_ID" secret:@"VENMO_APP_SECRET" name:@"My App Name"];
+    [VenmoSDK startWithAppId:@"1405" secret:@"H537ZNzLZufvwApCbgQEpqhBYjBjbmtD" name:@"VenmoATM"];
 }
 
 - (IBAction)userDidTapTransaction:(id)sender {
@@ -21,6 +21,7 @@
     NSUInteger amount = [self.amountTextField.text floatValue] * 100;
     NSString *note = self.noteTextField.text;
     VDKTransaction *transaction = [VDKTransaction transactionWithType:VDKTransactionTypePay amount:amount note:note recipient:recipient];
+
     [[VenmoSDK sharedClient] sendTransaction:transaction withCompletionHandler:^(VDKTransaction *transaction, BOOL success, NSError *error) {
         if (success) {
             NSLog(@"Transaction succeeded!");
@@ -30,6 +31,12 @@
             NSLog(@"%@", errorMessage);
             [SVProgressHUD showErrorWithStatus:errorMessage];
         }
+    }];
+}
+
+- (IBAction)userDidTapAuthorize:(id)sender {
+    [[VenmoSDK sharedClient] requestPermissions:@[VDKPermissionAccessProfile] withCompletionHandler:^(BOOL success, NSError *error) {
+        [SVProgressHUD showSuccessWithStatus:@"oauth succeeded!"];
     }];
 }
 
