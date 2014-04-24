@@ -1,11 +1,11 @@
 #import "VDKAppDelegate.h"
-#import <VENAppSwitchSDK/VenmoSDK.h>
+#import <VenmoSDK/Venmo.h>
 
 @implementation VDKAppDelegate
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
 
-    if ([[VenmoSDK sharedClient] handleOpenURL:url]) {
+    if ([[Venmo sharedClient] handleOpenURL:url]) {
         return YES;
     }
 
