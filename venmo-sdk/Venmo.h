@@ -34,10 +34,10 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) VENOAuthCompletionHandler currentOAuthCompletionHandler;
 
 /**
- * Returns the current shared Venmo client.
- * @return The current Venmo client
+ * Returns the current shared Venmo instance.
+ * @return The current Venmo instance
  */
-+ (instancetype)sharedClient;
++ (instancetype)sharedInstance;
 
 - (BOOL)isConnected;
 - (BOOL)handleOpenURL:(NSURL *)url;
@@ -60,7 +60,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
                 secret:(NSString *)appSecret
                   name:(NSString *)appName;
 
-#warning TODO: rewrite sendTransaction -> sendAppSwitchTransactionWithType:etc.
 /**
  * Sends Venmo transaction.
  * @param transaction The transaction to send

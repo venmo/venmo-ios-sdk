@@ -32,7 +32,7 @@
         NSString *signedRequest = [[url queryDictionary] stringForKey:@"signed_request"];
         DLog(@"signedRequest: %@", signedRequest);
 
-        NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[Venmo sharedClient] appSecret]];
+        NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[Venmo sharedInstance] appSecret]];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
         return [VENTransaction transactionWithSignedRequestDictionary:decodedSignedRequest[0]];
     }

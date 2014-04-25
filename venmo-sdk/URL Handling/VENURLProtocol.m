@@ -8,7 +8,7 @@
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     NSString *requestScheme = [[request URL] scheme];
-    NSString *currentAppScheme = [NSString stringWithFormat:@"venmo%@", [[Venmo sharedClient] appId]];
+    NSString *currentAppScheme = [NSString stringWithFormat:@"venmo%@", [[Venmo sharedInstance] appId]];
     return [requestScheme isEqualToString:currentAppScheme];
 }
 
@@ -45,7 +45,7 @@
         NSString *code = [queryDictionary valueForKey:@"code"];
         NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", [Venmo sharedClient].appId, [Venmo sharedClient].appSecret, code];
 
-        NSString *accessTokenURLString = [NSString stringWithFormat:@"%@oauth/access_token", [[Venmo sharedClient] baseURLPath]];
+        NSString *accessTokenURLString = [NSString stringWithFormat:@"%@oauth/access_token", [[Venmo sharedInstance] baseURLPath]];
         NSURL *accessTokenURL = [NSURL URLWithString:accessTokenURLString];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:accessTokenURL];
         [request setHTTPMethod:@"POST"];
@@ -63,7 +63,7 @@
         VENSession *currentSession = [[VENSession alloc] initWithAccessToken:json[@"access_token"]
                                                                 refreshToken:json[@"refresh_token"]
                                                                    expiresIn:[json[@"expires_in"] integerValue]];
-        Venmo *client = [Venmo sharedClient];
+        Venmo *client = [Venmo sharedInstance];
         client.currentUser = currentUser;
         client.currentSession = currentSession;
 

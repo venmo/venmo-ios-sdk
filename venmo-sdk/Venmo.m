@@ -47,7 +47,7 @@ static Venmo *sharedVenmoClient = nil;
     return YES;
 }
 
-+ (instancetype)sharedClient {
++ (instancetype)sharedInstance {
     return sharedVenmoClient;
 }
 
