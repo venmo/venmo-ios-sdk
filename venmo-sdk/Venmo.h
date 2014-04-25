@@ -60,6 +60,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
                 secret:(NSString *)appSecret
                   name:(NSString *)appName;
 
+#warning TODO: rewrite sendTransaction -> sendAppSwitchTransactionWithType:etc.
 /**
  * Sends Venmo transaction.
  * @param transaction The transaction to send

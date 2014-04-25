@@ -100,7 +100,7 @@
 
     NSString *actorUserID = cleanDictionary[@"actor_user_id"];
     VENUser *actor = [[VENUser alloc] init];
-    //TODO: is this an internal ID or an external ID?
+#warning TODO: is this an internal ID or an external ID?
     actor.externalId = actorUserID;
     transaction.actor = actor;
 
@@ -112,7 +112,7 @@
 
     BOOL success = [cleanDictionary[@"success"] boolValue];
     if (success) {
-    // TODO: the signed request should return the transaction status.
+#warning TODO: the signed request should return the transaction status.
         transaction.status = VENTransactionStatusSettled;
     }
     else {
