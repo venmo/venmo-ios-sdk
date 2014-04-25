@@ -75,15 +75,15 @@
         });
     }
     else {
-        VENTransactionSDK *transaction = [VENTransactionSDK transactionWithURL:[self.request URL]];
+        VENTransaction *transaction = [VENTransaction transactionWithURL:[self.request URL]];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
-            if (transaction && !transaction.success) {
+            if (transaction && transaction.status == VENTransactionStatusFailed) {
                 error = [NSError errorWithDomain:VENErrorDomain
                                             code:VENTransactionFailedError
                                      description:@"Venmo failed to complete the transaction."
                               recoverySuggestion:@"Please try again."];
-            } else if (!transaction.success) {
+            } else if (transaction.status == VENTransactionStatusFailed) {
                 error  = [NSError errorWithDomain:VENErrorDomain
                                              code:VENTransactionValidationError
                                       description:@"Failed to validate the transaction."
@@ -91,7 +91,7 @@
             }
 
             if ([Venmo sharedClient].currentTransactionCompletionHandler) {
-                [Venmo sharedClient].currentTransactionCompletionHandler(transaction, transaction.success, error);
+                [Venmo sharedClient].currentTransactionCompletionHandler(transaction, transaction.status, error);
             }
         });
     }

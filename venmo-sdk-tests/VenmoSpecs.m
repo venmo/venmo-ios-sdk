@@ -1,7 +1,3 @@
-#define EXP_SHORTHAND
-#import <Expecta/Expecta.h>
-#import <Specta/Specta.h>
-
 #import "Venmo.h"
 
 @interface Venmo (Private)

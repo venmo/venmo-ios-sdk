@@ -1,16 +1,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "VENTransaction+VenmoSDK.h"
 #import "VENUserSDK.h"
 #import "VENErrors.h"
-#import "VENTransactionSDK.h"
 #import "VENSession.h"
 #import "VENPermissionConstants.h"
 
-@class VENTransactionSDK;
 @class VENUserSDK;
 @class VENSession;
 
-typedef void (^VENTransactionCompletionHandler)(VENTransactionSDK *transaction, BOOL success, NSError *error);
+typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
 typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 #define VEN_CURRENT_SDK_VERSION @"1.0.0"
@@ -66,6 +65,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param transaction The transaction to send
  * @param completionHandler Completion handler to call after sending transaction
  */
-- (void)sendTransaction:(VENTransactionSDK *)transaction withCompletionHandler:(VENTransactionCompletionHandler)completionHandler;
+- (void)sendTransaction:(VENTransaction *)transaction withCompletionHandler:(VENTransactionCompletionHandler)completionHandler;
 
 @end

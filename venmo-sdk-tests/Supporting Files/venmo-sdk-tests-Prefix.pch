@@ -1,0 +1,10 @@
+@import Foundation;
+@import XCTest;
+
+#define SPT_SHORTHAND
+#import <Specta/Specta.h>
+
+#define EXP_SHORTHAND
+#import <Expecta/Expecta.h>
+
+#import <OCMock/OCMock.h>
