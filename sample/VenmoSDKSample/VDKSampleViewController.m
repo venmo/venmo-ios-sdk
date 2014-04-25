@@ -32,4 +32,10 @@
     }];
 }
 
+- (IBAction)userDidTapAuthorize:(id)sender {
+    [[VenmoSDK sharedClient] requestPermissions:@[VDKPermissionAccessProfile] withCompletionHandler:^(BOOL success, NSError *error) {
+        [SVProgressHUD showSuccessWithStatus:@"oauth succeeded!"];
+    }];
+}
+
 @end
