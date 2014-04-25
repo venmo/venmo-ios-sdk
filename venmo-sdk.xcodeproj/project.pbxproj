@@ -6,21 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		2D5EF5B617EF46ED00DDD15A /* Framework */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 2D5EF5B717EF46ED00DDD15A /* Build configuration list for PBXAggregateTarget "Framework" */;
-			buildPhases = (
-				2D5EF5BC17EF475E00DDD15A /* ShellScript */,
-			);
-			dependencies = (
-				2D5EF5BB17EF46F700DDD15A /* PBXTargetDependency */,
-			);
-			name = Framework;
-			productName = Framework;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		2D5EF54617EF41B100DDD15A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
 		2D5EF55517EF41B100DDD15A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
@@ -61,25 +46,16 @@
 		B657433B1897390200AFB89D /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B657432D1897390200AFB89D /* UIDevice+IdentifierAddition.m */; };
 		B6588AF118A02E1000A0C73B /* VENPermissionSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AEF18A02D8400A0C73B /* VENPermissionSpecs.m */; };
 		B6588AFA18A0554200A0C73B /* VenmoSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AF918A0554200A0C73B /* VenmoSpecs.m */; };
-		B6B810B118A1852500FD8955 /* VENUserSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810AB18A1844800FD8955 /* VENUserSpecs.m */; };
 		B6F5046618E38C2600BDACF7 /* VENPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5045F18E38C2600BDACF7 /* VENPermission.m */; };
 		B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VENSession.m */; };
-		B6F5046918E38C2600BDACF7 /* VENUserSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046518E38C2600BDACF7 /* VENUserSDK.m */; };
+		EB3499BA190AF8D400C74EAA /* VENTransaction+VenmoSDKSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpecs.m */; };
 		EB8D9AEE190AAF78005051C4 /* Venmo_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */; };
 		EBEAB6A6190ACA4700BA6322 /* VENTransaction+VenmoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = EBEAB6A4190ACA4700BA6322 /* VENTransaction+VenmoSDK.h */; };
 		EBEAB6A7190ACA4700BA6322 /* VENTransaction+VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEAB6A5190ACA4700BA6322 /* VENTransaction+VenmoSDK.m */; };
-		EBEAB6A8190ADDED00BA6322 /* VENTransaction+VenmoSDKSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpecs.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		2D5EF55817EF41B100DDD15A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D5EF53A17EF41B100DDD15A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2D5EF54117EF41B100DDD15A;
-			remoteInfo = Venmo;
-		};
-		2D5EF5BA17EF46F700DDD15A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D5EF53A17EF41B100DDD15A /* Project object */;
 			proxyType = 1;
@@ -145,14 +121,12 @@
 		B6588AEF18A02D8400A0C73B /* VENPermissionSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENPermissionSpecs.m; sourceTree = "<group>"; };
 		B6588AF918A0554200A0C73B /* VenmoSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoSpecs.m; sourceTree = "<group>"; };
 		B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VENTransaction+VenmoSDKSpecs.m"; sourceTree = "<group>"; };
-		B6B810AB18A1844800FD8955 /* VENUserSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENUserSpecs.m; sourceTree = "<group>"; };
 		B6F5045E18E38C2600BDACF7 /* VENPermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENPermission.h; sourceTree = "<group>"; };
 		B6F5045F18E38C2600BDACF7 /* VENPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENPermission.m; sourceTree = "<group>"; };
 		B6F5046018E38C2600BDACF7 /* VENSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENSession.h; sourceTree = "<group>"; };
 		B6F5046118E38C2600BDACF7 /* VENSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENSession.m; sourceTree = "<group>"; };
-		B6F5046418E38C2600BDACF7 /* VENUserSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENUserSDK.h; sourceTree = "<group>"; };
-		B6F5046518E38C2600BDACF7 /* VENUserSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENUserSDK.m; sourceTree = "<group>"; };
 		C33235A92FC244DBAA105D7C /* libPods-venmo-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB3499BB190AF91500C74EAA /* venmo-sdk-tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "venmo-sdk-tests-Prefix.pch"; path = "Supporting Files/venmo-sdk-tests-Prefix.pch"; sourceTree = "<group>"; };
 		EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venmo_Internal.h; path = "venmo-sdk/Venmo_Internal.h"; sourceTree = "<group>"; };
 		EBEAB6A4190ACA4700BA6322 /* VENTransaction+VenmoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENTransaction+VenmoSDK.h"; sourceTree = "<group>"; };
 		EBEAB6A5190ACA4700BA6322 /* VENTransaction+VenmoSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VENTransaction+VenmoSDK.m"; sourceTree = "<group>"; };
@@ -246,7 +220,6 @@
 			children = (
 				B611893B18A189800041AF50 /* VENSessionSpecs.m */,
 				B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpecs.m */,
-				B6B810AB18A1844800FD8955 /* VENUserSpecs.m */,
 				B6588AEF18A02D8400A0C73B /* VENPermissionSpecs.m */,
 				B6588AF918A0554200A0C73B /* VenmoSpecs.m */,
 				2D5EF55C17EF41B100DDD15A /* Supporting Files */,
@@ -257,6 +230,7 @@
 		2D5EF55C17EF41B100DDD15A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EB3499BB190AF91500C74EAA /* venmo-sdk-tests-Prefix.pch */,
 				2D5EF55D17EF41B100DDD15A /* VenmoAppSwitchTests-Info.plist */,
 				2D5EF55E17EF41B100DDD15A /* InfoPlist.strings */,
 			);
@@ -316,8 +290,6 @@
 				B6F5045F18E38C2600BDACF7 /* VENPermission.m */,
 				B6F5046018E38C2600BDACF7 /* VENSession.h */,
 				B6F5046118E38C2600BDACF7 /* VENSession.m */,
-				B6F5046418E38C2600BDACF7 /* VENUserSDK.h */,
-				B6F5046518E38C2600BDACF7 /* VENUserSDK.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -418,7 +390,6 @@
 			targets = (
 				2D5EF54117EF41B100DDD15A /* venmo-sdk */,
 				2D5EF55117EF41B100DDD15A /* venmo-sdk-tests */,
-				2D5EF5B617EF46ED00DDD15A /* Framework */,
 			);
 		};
 /* End PBXProject section */
@@ -478,19 +449,6 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
 		};
-		2D5EF5BC17EF475E00DDD15A /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "set -e\nset +u\n# Avoid recursively calling this script.\nif [[ $SF_MASTER_SCRIPT_RUNNING ]]\nthen\nexit 0\nfi\nset -u\nexport SF_MASTER_SCRIPT_RUNNING=1\n\nSF_TARGET_NAME=${PROJECT_NAME}\nSF_EXECUTABLE_PATH=\"lib${SF_TARGET_NAME}.a\"\nSF_WRAPPER_NAME=\"${SF_TARGET_NAME}.framework\"\n\n# The following conditionals come from\n# https://github.com/kstenerud/iOS-Universal-Framework\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\nSF_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\necho \"Could not find platform name from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\nSF_SDK_VERSION=${BASH_REMATCH[1]}\nelse\necho \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\nexit 1\nfi\n\nif [[ \"$SF_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\nSF_OTHER_PLATFORM=iphonesimulator\nelse\nSF_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$SF_SDK_PLATFORM$ ]]\nthen\nSF_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${SF_OTHER_PLATFORM}\"\nelse\necho \"Could not find platform name from build products directory: $BUILT_PRODUCTS_DIR\"\nexit 1\nfi\n\n# Build the other platform.\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${SF_OTHER_PLATFORM}${SF_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" OBJROOT=\"${OBJROOT}\" BUILD_ROOT=\"${BUILD_ROOT}\" SYMROOT=\"${SYMROOT}\" $ACTION\n\n# Smash the two static libraries into one fat binary and store it in the .framework\nlipo -create \"${BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_EXECUTABLE_PATH}\" -output \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n\n# Copy the binary to the other architecture folder to have a complete framework in both.\ncp -a \"${BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\" \"${SF_OTHER_BUILT_PRODUCTS_DIR}/${SF_WRAPPER_NAME}/Versions/A/${SF_TARGET_NAME}\"\n";
-		};
 		7A82EA011A484C00981291B6 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -538,7 +496,6 @@
 				B63E191118EB2C6E0006BD3E /* NSString+VenmoSDK.m in Sources */,
 				B63E18FF18EB2BB80006BD3E /* VENErrors.m in Sources */,
 				EBEAB6A7190ACA4700BA6322 /* VENTransaction+VenmoSDK.m in Sources */,
-				EBEAB6A8190ADDED00BA6322 /* VENTransaction+VenmoSDKSpecs.m in Sources */,
 				B6570AB3189711FD00351EDF /* Venmo.m in Sources */,
 				B657433B1897390200AFB89D /* UIDevice+IdentifierAddition.m in Sources */,
 				B63E190718EB2C610006BD3E /* NSBundle+VenmoSDK.m in Sources */,
@@ -550,12 +507,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6F5046918E38C2600BDACF7 /* VENUserSDK.m in Sources */,
 				B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */,
 				B6F5046618E38C2600BDACF7 /* VENPermission.m in Sources */,
-				B6B810B118A1852500FD8955 /* VENUserSpecs.m in Sources */,
 				B64A63D218ABFDA00091A465 /* VENSessionSpecs.m in Sources */,
 				B6588AF118A02E1000A0C73B /* VENPermissionSpecs.m in Sources */,
+				EB3499BA190AF8D400C74EAA /* VENTransaction+VenmoSDKSpecs.m in Sources */,
 				B6588AFA18A0554200A0C73B /* VenmoSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,11 +523,6 @@
 			isa = PBXTargetDependency;
 			target = 2D5EF54117EF41B100DDD15A /* venmo-sdk */;
 			targetProxy = 2D5EF55817EF41B100DDD15A /* PBXContainerItemProxy */;
-		};
-		2D5EF5BB17EF46F700DDD15A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2D5EF54117EF41B100DDD15A /* venmo-sdk */;
-			targetProxy = 2D5EF5BA17EF46F700DDD15A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -668,7 +619,7 @@
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "venmo-sdk/Supporting Files/venmo-sdk-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -687,7 +638,7 @@
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "venmo-sdk/Supporting Files/venmo-sdk-Prefix.pch";
-				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+				GCC_TREAT_WARNINGS_AS_ERRORS = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -709,7 +660,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "venmo-sdk/Supporting Files/venmo-sdk-Prefix.pch";
+				GCC_PREFIX_HEADER = "venmo-sdk-tests/Supporting Files/venmo-sdk-tests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -730,27 +681,10 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "venmo-sdk/Supporting Files/venmo-sdk-Prefix.pch";
+				GCC_PREFIX_HEADER = "venmo-sdk-tests/Supporting Files/venmo-sdk-tests-Prefix.pch";
 				INFOPLIST_FILE = "venmo-sdk-tests/Supporting Files/VenmoAppSwitchTests-Info.plist";
 				PRODUCT_NAME = "venmo-sdk-tests";
 				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
-		2D5EF5B817EF46ED00DDD15A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
-			};
-			name = Debug;
-		};
-		2D5EF5B917EF46ED00DDD15A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				VALID_ARCHS = "arm64 armv7 armv7s i386";
 			};
 			name = Release;
 		};
@@ -780,15 +714,6 @@
 			buildConfigurations = (
 				2D5EF56917EF41B100DDD15A /* Debug */,
 				2D5EF56A17EF41B100DDD15A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2D5EF5B717EF46ED00DDD15A /* Build configuration list for PBXAggregateTarget "Framework" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2D5EF5B817EF46ED00DDD15A /* Debug */,
-				2D5EF5B917EF46ED00DDD15A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
