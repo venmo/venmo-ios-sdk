@@ -1,13 +1,12 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VENUser.h"
+#import <VENCore/VENCore.h>
+#import "VENTransaction+VenmoSDK.h"
 #import "VENErrors.h"
-#import "VENTransaction.h"
 #import "VENSession.h"
 #import "VENPermissionConstants.h"
 
-@class VENTransaction;
-@class VENUser;
+@class VENUserSDK;
 @class VENSession;
 
 typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);

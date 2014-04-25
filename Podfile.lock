@@ -1,13 +1,40 @@
 PODS:
+  - AFNetworking (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.3)
+  - AFNetworking/Security (2.2.3)
+  - AFNetworking/Serialization (2.2.3)
+  - AFNetworking/UIKit (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - Expecta (0.2.4)
+  - OCMock (2.2.4)
   - Specta (0.2.1)
+  - VENCore (1.0.0):
+    - AFNetworking
 
 DEPENDENCIES:
-  - Expecta (~> 0.2.2)
-  - Specta (~> 0.2.1)
+  - Expecta
+  - OCMock
+  - Specta
+  - VENCore
 
 SPEC CHECKSUMS:
+  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
   Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
+  OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  VENCore: 0547812ee8af7555b8621c2c6cc3bc8f4d69d413
 
 COCOAPODS: 0.32.1

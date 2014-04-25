@@ -1,6 +1,28 @@
 PODS:
+  - AFNetworking (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+    - AFNetworking/UIKit
+  - AFNetworking/NSURLConnection (2.2.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.2.3):
+    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (2.2.3)
+  - AFNetworking/Security (2.2.3)
+  - AFNetworking/Serialization (2.2.3)
+  - AFNetworking/UIKit (2.2.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
   - SVProgressHUD (1.0)
-  - Venmo-iOS-SDK (1.0.0)
+  - VENCore (1.0.0):
+    - AFNetworking
+  - Venmo-iOS-SDK (1.0.0):
+    - VENCore
 
 DEPENDENCIES:
   - SVProgressHUD (~> 1.0)
@@ -11,7 +33,9 @@ EXTERNAL SOURCES:
     :path: ../Venmo-iOS-SDK.podspec
 
 SPEC CHECKSUMS:
+  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  Venmo-iOS-SDK: 972e58613259ecf33d7c65cda5f8661e4c464b1e
+  VENCore: 0547812ee8af7555b8621c2c6cc3bc8f4d69d413
+  Venmo-iOS-SDK: 97d252cc3927bc045f006c2975e2c7aec03482a8
 
 COCOAPODS: 0.32.1

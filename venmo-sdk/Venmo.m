@@ -7,7 +7,6 @@
 #import "Venmo.h"
 #import "VENErrors.h"
 #import "VENHMAC_SHA256_Internal.h"
-#import "VENTransaction.h"
 #import "VENURLProtocol.h"
 #import "VENSession.h"
 #import "VENUser.h"
@@ -123,14 +122,14 @@ static Venmo *sharedVenmoClient = nil;
                               self.appName,
                               self.appId,
                               identifier];
-    if (transaction.amount) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, transaction.amountString];
+    if (transaction.target.amount) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, [transaction amountString]];
     }
-    if (transaction.typeString) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&txn=%@", pathAndQuery, transaction.typeString];
+    if ([transaction typeString]) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&txn=%@", pathAndQuery, [transaction typeString]];
     }
-    if (transaction.toUserHandle) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&recipients=%@", pathAndQuery, transaction.toUserHandle];
+    if (transaction.target.handle) {
+        pathAndQuery = [NSString stringWithFormat:@"%@&recipients=%@", pathAndQuery, transaction.target.handle];
     }
     if (transaction.note) {
         pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, transaction.note];

@@ -59,6 +59,7 @@
         }
         NSError *jsonError;
         id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
+        // TODO: returned user should have the new API shape
         VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
         VENSession *currentSession = [[VENSession alloc] initWithAccessToken:json[@"access_token"]
                                                                 refreshToken:json[@"refresh_token"]
@@ -78,12 +79,12 @@
         VENTransaction *transaction = [VENTransaction transactionWithURL:[self.request URL]];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
-            if (transaction && !transaction.success) {
+            if (transaction && transaction.status == VENTransactionStatusFailed) {
                 error = [NSError errorWithDomain:VENErrorDomain
                                             code:VENTransactionFailedError
                                      description:@"Venmo failed to complete the transaction."
                               recoverySuggestion:@"Please try again."];
-            } else if (!transaction.success) {
+            } else if (transaction.status == VENTransactionStatusFailed) {
                 error  = [NSError errorWithDomain:VENErrorDomain
                                              code:VENTransactionValidationError
                                       description:@"Failed to validate the transaction."
@@ -91,7 +92,7 @@
             }
 
             if ([Venmo sharedClient].currentTransactionCompletionHandler) {
-                [Venmo sharedClient].currentTransactionCompletionHandler(transaction, transaction.success, error);
+                [Venmo sharedClient].currentTransactionCompletionHandler(transaction, transaction.status, error);
             }
         });
     }
