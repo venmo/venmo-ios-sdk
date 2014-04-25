@@ -59,7 +59,8 @@
         }
         NSError *jsonError;
         id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
-        VENUserSDK *currentUser = [[VENUserSDK alloc] initWithDictionary:json[@"user"]];
+        // TODO: returned user should have the new API shape
+        VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
         VENSession *currentSession = [[VENSession alloc] initWithAccessToken:json[@"access_token"]
                                                                 refreshToken:json[@"refresh_token"]
                                                                    expiresIn:[json[@"expires_in"] integerValue]];

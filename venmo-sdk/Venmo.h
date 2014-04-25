@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <VENCore/VENCore.h>
 #import "VENTransaction+VenmoSDK.h"
-#import "VENUserSDK.h"
 #import "VENErrors.h"
 #import "VENSession.h"
 #import "VENPermissionConstants.h"
@@ -23,7 +23,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * The user who is currently authenticated.
  */
-@property (strong, nonatomic) VENUserSDK *currentUser;
+@property (strong, nonatomic) VENUser *currentUser;
 
 /**
  * The current session. It contains access token, refresh token, and expiration information.

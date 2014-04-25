@@ -9,7 +9,7 @@
 #import "VENHMAC_SHA256_Internal.h"
 #import "VENURLProtocol.h"
 #import "VENSession.h"
-#import "VENUserSDK.h"
+#import "VENUser.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
