@@ -3,7 +3,6 @@
 #import "VDKUser.h"
 #import "VDKErrors.h"
 #import "VDKTransaction.h"
-#import "VDKTransactionViewController.h"
 #import "VDKSession.h"
 #import "VDKPermissionConstants.h"
 

@@ -3,7 +3,6 @@
 #import "VDKErrors.h"
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
-#import "VenmoSDK_Private.h"
 
 @implementation VDKURLProtocol
 

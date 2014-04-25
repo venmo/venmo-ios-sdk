@@ -8,7 +8,6 @@
 #import "VDKErrors.h"
 #import "VDKHMAC_SHA256_Internal.h"
 #import "VDKTransaction.h"
-#import "VDKTransactionViewController.h"
 #import "VDKURLProtocol.h"
 #import "VDKSession.h"
 #import "VDKUser.h"
@@ -145,18 +144,6 @@ static VenmoSDK *sharedVenmoClient = nil;
 - (NSURL *)venmoURLWithPath:(NSString *)path {
     NSString *newPath = [NSString stringWithFormat:@"venmosdk://venmo.com%@", path];
     return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-}
-
-
-- (NSURL *)webURLWithPath:(NSString *)path {
-    path = [@"/touch/signup_to_pay" stringByAppendingString:path];
-    NSString *unEncodedURL;
-    if (![VenmoSDK sharedClient].internalDevelopment) {
-        unEncodedURL = [NSString stringWithFormat:@"https://venmo.com%@", path];
-    } else {
-        unEncodedURL = [NSString stringWithFormat:@"http://devvenmo.com%@", path];
-    }
-    return [[NSURL alloc] initWithString:[unEncodedURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 
