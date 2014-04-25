@@ -1,22 +1,21 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VDKUser.h"
-#import "VDKErrors.h"
-#import "VDKTransaction.h"
-#import "VDKSession.h"
-#import "VDKPermissionConstants.h"
+#import "VENUser.h"
+#import "VENErrors.h"
+#import "VENTransaction.h"
+#import "VENSession.h"
+#import "VENPermissionConstants.h"
 
-@class VDKTransaction;
-@class VDKUser;
-@class VDKSession;
-@class VDKTransactionViewController;
+@class VENTransaction;
+@class VENUser;
+@class VENSession;
 
-typedef void (^VDKTransactionCompletionHandler)(VDKTransaction *transaction, BOOL success, NSError *error);
-typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
+typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
+typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
-#define VDK_CURRENT_SDK_VERSION @"1.0.0"
+#define VEN_CURRENT_SDK_VERSION @"1.0.0"
 
-@interface VenmoSDK : NSObject
+@interface Venmo : NSObject
 
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;
@@ -67,6 +66,6 @@ typedef void (^VDKOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param transaction The transaction to send
  * @param completionHandler Completion handler to call after sending transaction
  */
-- (void)sendTransaction:(VDKTransaction *)transaction withCompletionHandler:(VDKTransactionCompletionHandler)completionHandler;
+- (void)sendTransaction:(VENTransaction *)transaction withCompletionHandler:(VENTransactionCompletionHandler)completionHandler;
 
 @end

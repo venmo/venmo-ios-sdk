@@ -1,14 +1,14 @@
-#import "VDKURLProtocol.h"
-#import "VenmoSDK.h"
-#import "VDKErrors.h"
+#import "VENURLProtocol.h"
+#import "Venmo.h"
+#import "VENErrors.h"
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
 
-@implementation VDKURLProtocol
+@implementation VENURLProtocol
 
 + (BOOL)canInitWithRequest:(NSURLRequest *)request {
     NSString *requestScheme = [[request URL] scheme];
-    NSString *currentAppScheme = [NSString stringWithFormat:@"venmo%@", [[VenmoSDK sharedClient] appId]];
+    NSString *currentAppScheme = [NSString stringWithFormat:@"venmo%@", [[Venmo sharedClient] appId]];
     return [requestScheme isEqualToString:currentAppScheme];
 }
 
@@ -95,7 +95,6 @@
             }
         });
     }
-    
     [self.client URLProtocolDidFinishLoading:self];
 }
 

@@ -1,13 +1,13 @@
 #import <Foundation/Foundation.h>
 
 // Adapted from SSToolkit
-@interface NSData (VDKBase64)
+@interface NSData (VENBase64)
 
 - (NSString *)base64EncodedString;
 
 @end
 
-@interface NSString (VenmoBase64)
+@interface NSString (VENBase64)
 
 - (NSData *)base64DecodedData;
 - (NSString *)base64DecodedString;

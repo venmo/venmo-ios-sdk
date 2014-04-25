@@ -1,8 +1,8 @@
-#import "VDKPermission.h"
+#import "VENPermission.h"
 
-@implementation VDKPermission
+@implementation VENPermission
 
-- (instancetype)initWithType:(VDKInternalPermissionType)permissionType {
+- (instancetype)initWithType:(VENPermissionType)permissionType {
     self = [super init];
     if (self) {
         self.type = permissionType;
@@ -12,17 +12,17 @@
 
 - (NSString *)name {
     switch (self.type) {
-        case VDKInternalPermissionTypeAccessFriends:
+        case VENPermissionTypeAccessFriends:
             return @"access_friends";
-        case VDKInternalPermissionTypeAccessEmail:
+        case VENPermissionTypeAccessEmail:
             return @"access_email";
-        case VDKInternalPermissionTypeAccessPhone:
+        case VENPermissionTypeAccessPhone:
             return @"access_phone";
-        case VDKInternalPermissionTypeAccessProfile:
+        case VENPermissionTypeAccessProfile:
             return @"access_profile";
-        case VDKInternalPermissionTypeAccessBalance:
+        case VENPermissionTypeAccessBalance:
             return @"access_balance";
-        case VDKInternalPermissionTypeMakePayments:
+        case VENPermissionTypeMakePayments:
             return @"make_payments";
         default:
             return @"invalid_scope";
@@ -31,44 +31,44 @@
 
 - (NSString *)displayText {
     switch (self.type) {
-        case VDKInternalPermissionTypeAccessFriends:
+        case VENPermissionTypeAccessFriends:
             return NSLocalizedString(@"access friends", nil);
-        case VDKInternalPermissionTypeAccessEmail:
+        case VENPermissionTypeAccessEmail:
             return NSLocalizedString(@"access email", nil);
-        case VDKInternalPermissionTypeAccessPhone:
+        case VENPermissionTypeAccessPhone:
             return NSLocalizedString(@"access phone", nil);
-        case VDKInternalPermissionTypeAccessProfile:
+        case VENPermissionTypeAccessProfile:
             return NSLocalizedString(@"access profile", nil);
-        case VDKInternalPermissionTypeAccessBalance:
+        case VENPermissionTypeAccessBalance:
             return NSLocalizedString(@"access balance", nil);
-        case VDKInternalPermissionTypeMakePayments:
+        case VENPermissionTypeMakePayments:
             return NSLocalizedString(@"make payments and charges", nil);
         default:
             return @"";
     }
 }
 
-+ (VDKInternalPermissionType)typeForName:(NSString *)name {
++ (VENPermissionType)typeForName:(NSString *)name {
     if ([name isEqualToString:@"access_friends"]) {
-        return VDKInternalPermissionTypeAccessFriends;
+        return VENPermissionTypeAccessFriends;
     }
     else if ([name isEqualToString:@"access_email"]) {
-        return VDKInternalPermissionTypeAccessEmail;
+        return VENPermissionTypeAccessEmail;
     }
     else if ([name isEqualToString:@"access_phone"]) {
-        return VDKInternalPermissionTypeAccessPhone;
+        return VENPermissionTypeAccessPhone;
     }
     else if ([name isEqualToString:@"access_profile"]) {
-        return VDKInternalPermissionTypeAccessProfile;
+        return VENPermissionTypeAccessProfile;
     }
     else if ([name isEqualToString:@"access_balance"]) {
-        return VDKInternalPermissionTypeAccessBalance;
+        return VENPermissionTypeAccessBalance;
     }
     else if ([name isEqualToString:@"make_payments"]) {
-        return VDKInternalPermissionTypeMakePayments;
+        return VENPermissionTypeMakePayments;
     }
     else {
-        return VDKInternalPermissionTypeUnknown;
+        return VENPermissionTypeUnknown;
     }
 }
 
