@@ -52,6 +52,13 @@ static Venmo *sharedVenmoClient = nil;
     return sharedVenmoClient;
 }
 
+- (BOOL)isConnected {
+    if (!self.currentSession) {
+        return NO;
+    }
+    return YES;
+}
+
 - (BOOL)handleOpenURL:(NSURL *)url {
     if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
 
