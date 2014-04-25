@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		651B7992CC2E43C6B080EF8A /* libPods-VenmoSDKSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0534BDE1E36941E4B5330689 /* libPods-VenmoSDKSample.a */; };
 		B62D59D3189855E5001E46A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D2189855E5001E46A4 /* Foundation.framework */; };
 		B62D59D5189855E5001E46A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D4189855E5001E46A4 /* CoreGraphics.framework */; };
 		B62D59D7189855E5001E46A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D6189855E5001E46A4 /* UIKit.framework */; };
@@ -21,7 +22,6 @@
 		B62D59F4189855E5001E46A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D6189855E5001E46A4 /* UIKit.framework */; };
 		B62D59FC189855E5001E46A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B62D59FA189855E5001E46A4 /* InfoPlist.strings */; };
 		B62D59FE189855E5001E46A4 /* VENAppSwitchSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */; };
-		F8B2635F832B45DD9E7692B4 /* libPods-VENAppSwitchSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D11390EAFC14A6ABB989FA6 /* libPods-VENAppSwitchSample.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,25 +35,25 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		566D8C0B3550416584B813B2 /* Pods-VENAppSwitchSample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VENAppSwitchSample.xcconfig"; path = "Pods/Pods-VENAppSwitchSample.xcconfig"; sourceTree = "<group>"; };
-		6D11390EAFC14A6ABB989FA6 /* libPods-VENAppSwitchSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VENAppSwitchSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		B62D59CF189855E5001E46A4 /* VENAppSwitchSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VENAppSwitchSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0534BDE1E36941E4B5330689 /* libPods-VenmoSDKSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VenmoSDKSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenmoSDKSample.xcconfig"; path = "Pods/Pods-VenmoSDKSample.xcconfig"; sourceTree = "<group>"; };
+		B62D59CF189855E5001E46A4 /* VenmoSDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenmoSDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59D2189855E5001E46A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B62D59D4189855E5001E46A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B62D59D6189855E5001E46A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B62D59DA189855E5001E46A4 /* VENAppSwitchSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VENAppSwitchSample-Info.plist"; sourceTree = "<group>"; };
+		B62D59DA189855E5001E46A4 /* VenmoSDKSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoSDKSample-Info.plist"; sourceTree = "<group>"; };
 		B62D59DC189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B62D59DE189855E5001E46A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B62D59E0189855E5001E46A4 /* VENAppSwitchSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VENAppSwitchSample-Prefix.pch"; sourceTree = "<group>"; };
+		B62D59E0189855E5001E46A4 /* VenmoSDKSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VenmoSDKSample-Prefix.pch"; sourceTree = "<group>"; };
 		B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKAppDelegate.h; sourceTree = "<group>"; };
 		B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKAppDelegate.m; sourceTree = "<group>"; };
 		B62D59E5189855E5001E46A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B62D59E7189855E5001E46A4 /* VDKSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKSampleViewController.h; sourceTree = "<group>"; };
 		B62D59E8189855E5001E46A4 /* VDKSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKSampleViewController.m; sourceTree = "<group>"; };
 		B62D59EA189855E5001E46A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B62D59F0189855E5001E46A4 /* VENAppSwitchSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VENAppSwitchSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoSDKSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59F1189855E5001E46A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B62D59F9189855E5001E46A4 /* VENAppSwitchSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VENAppSwitchSampleTests-Info.plist"; sourceTree = "<group>"; };
+		B62D59F9189855E5001E46A4 /* VenmoSDKSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoSDKSampleTests-Info.plist"; sourceTree = "<group>"; };
 		B62D59FB189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VENAppSwitchSampleTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -66,7 +66,7 @@
 				B62D59D5189855E5001E46A4 /* CoreGraphics.framework in Frameworks */,
 				B62D59D7189855E5001E46A4 /* UIKit.framework in Frameworks */,
 				B62D59D3189855E5001E46A4 /* Foundation.framework in Frameworks */,
-				F8B2635F832B45DD9E7692B4 /* libPods-VENAppSwitchSample.a in Frameworks */,
+				651B7992CC2E43C6B080EF8A /* libPods-VenmoSDKSample.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,19 +86,19 @@
 		B62D59C6189855E5001E46A4 = {
 			isa = PBXGroup;
 			children = (
-				B62D59D8189855E5001E46A4 /* VENAppSwitchSample */,
-				B62D59F7189855E5001E46A4 /* VENAppSwitchSampleTests */,
+				B62D59D8189855E5001E46A4 /* VenmoSDKSample */,
+				B62D59F7189855E5001E46A4 /* VenmoSDKSampleTests */,
 				B62D59D1189855E5001E46A4 /* Frameworks */,
 				B62D59D0189855E5001E46A4 /* Products */,
-				566D8C0B3550416584B813B2 /* Pods-VENAppSwitchSample.xcconfig */,
+				9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		B62D59D0189855E5001E46A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59CF189855E5001E46A4 /* VENAppSwitchSample.app */,
-				B62D59F0189855E5001E46A4 /* VENAppSwitchSampleTests.xctest */,
+				B62D59CF189855E5001E46A4 /* VenmoSDKSample.app */,
+				B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,12 +110,12 @@
 				B62D59D4189855E5001E46A4 /* CoreGraphics.framework */,
 				B62D59D6189855E5001E46A4 /* UIKit.framework */,
 				B62D59F1189855E5001E46A4 /* XCTest.framework */,
-				6D11390EAFC14A6ABB989FA6 /* libPods-VENAppSwitchSample.a */,
+				0534BDE1E36941E4B5330689 /* libPods-VenmoSDKSample.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B62D59D8189855E5001E46A4 /* VENAppSwitchSample */ = {
+		B62D59D8189855E5001E46A4 /* VenmoSDKSample */ = {
 			isa = PBXGroup;
 			children = (
 				B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */,
@@ -126,33 +126,33 @@
 				B62D59EA189855E5001E46A4 /* Images.xcassets */,
 				B62D59D9189855E5001E46A4 /* Supporting Files */,
 			);
-			path = VENAppSwitchSample;
+			path = VenmoSDKSample;
 			sourceTree = "<group>";
 		};
 		B62D59D9189855E5001E46A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59DA189855E5001E46A4 /* VENAppSwitchSample-Info.plist */,
+				B62D59DA189855E5001E46A4 /* VenmoSDKSample-Info.plist */,
 				B62D59DB189855E5001E46A4 /* InfoPlist.strings */,
 				B62D59DE189855E5001E46A4 /* main.m */,
-				B62D59E0189855E5001E46A4 /* VENAppSwitchSample-Prefix.pch */,
+				B62D59E0189855E5001E46A4 /* VenmoSDKSample-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B62D59F7189855E5001E46A4 /* VENAppSwitchSampleTests */ = {
+		B62D59F7189855E5001E46A4 /* VenmoSDKSampleTests */ = {
 			isa = PBXGroup;
 			children = (
 				B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */,
 				B62D59F8189855E5001E46A4 /* Supporting Files */,
 			);
-			path = VENAppSwitchSampleTests;
+			path = VenmoSDKSampleTests;
 			sourceTree = "<group>";
 		};
 		B62D59F8189855E5001E46A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59F9189855E5001E46A4 /* VENAppSwitchSampleTests-Info.plist */,
+				B62D59F9189855E5001E46A4 /* VenmoSDKSampleTests-Info.plist */,
 				B62D59FA189855E5001E46A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -161,9 +161,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B62D59CE189855E5001E46A4 /* VENAppSwitchSample */ = {
+		B62D59CE189855E5001E46A4 /* VenmoSDKSample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VENAppSwitchSample" */;
+			buildConfigurationList = B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSample" */;
 			buildPhases = (
 				27F4CF55F8364F6BBBFE30B3 /* Check Pods Manifest.lock */,
 				B62D59CB189855E5001E46A4 /* Sources */,
@@ -175,14 +175,14 @@
 			);
 			dependencies = (
 			);
-			name = VENAppSwitchSample;
+			name = VenmoSDKSample;
 			productName = VENAppSwitchSample;
-			productReference = B62D59CF189855E5001E46A4 /* VENAppSwitchSample.app */;
+			productReference = B62D59CF189855E5001E46A4 /* VenmoSDKSample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B62D59EF189855E5001E46A4 /* VENAppSwitchSampleTests */ = {
+		B62D59EF189855E5001E46A4 /* VenmoSDKSampleTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VENAppSwitchSampleTests" */;
+			buildConfigurationList = B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSampleTests" */;
 			buildPhases = (
 				B62D59EC189855E5001E46A4 /* Sources */,
 				B62D59ED189855E5001E46A4 /* Frameworks */,
@@ -193,9 +193,9 @@
 			dependencies = (
 				B62D59F6189855E5001E46A4 /* PBXTargetDependency */,
 			);
-			name = VENAppSwitchSampleTests;
+			name = VenmoSDKSampleTests;
 			productName = VENAppSwitchSampleTests;
-			productReference = B62D59F0189855E5001E46A4 /* VENAppSwitchSampleTests.xctest */;
+			productReference = B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -213,7 +213,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "VENAppSwitchSample" */;
+			buildConfigurationList = B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "VenmoSDKSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -226,8 +226,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B62D59CE189855E5001E46A4 /* VENAppSwitchSample */,
-				B62D59EF189855E5001E46A4 /* VENAppSwitchSampleTests */,
+				B62D59CE189855E5001E46A4 /* VenmoSDKSample */,
+				B62D59EF189855E5001E46A4 /* VenmoSDKSampleTests */,
 			);
 		};
 /* End PBXProject section */
@@ -281,7 +281,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-VENAppSwitchSample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-VenmoSDKSample-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -310,7 +310,7 @@
 /* Begin PBXTargetDependency section */
 		B62D59F6189855E5001E46A4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B62D59CE189855E5001E46A4 /* VENAppSwitchSample */;
+			target = B62D59CE189855E5001E46A4 /* VenmoSDKSample */;
 			targetProxy = B62D59F5189855E5001E46A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -417,28 +417,28 @@
 		};
 		B62D5A02189855E5001E46A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 566D8C0B3550416584B813B2 /* Pods-VENAppSwitchSample.xcconfig */;
+			baseConfigurationReference = 9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VENAppSwitchSample/VENAppSwitchSample-Prefix.pch";
-				INFOPLIST_FILE = "VENAppSwitchSample/VENAppSwitchSample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
+				INFOPLIST_FILE = "VenmoSDKSample/VenmoSDKSample-Info.plist";
+				PRODUCT_NAME = VenmoSDKSample;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		B62D5A03189855E5001E46A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 566D8C0B3550416584B813B2 /* Pods-VENAppSwitchSample.xcconfig */;
+			baseConfigurationReference = 9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VENAppSwitchSample/VENAppSwitchSample-Prefix.pch";
-				INFOPLIST_FILE = "VENAppSwitchSample/VENAppSwitchSample-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
+				INFOPLIST_FILE = "VenmoSDKSample/VenmoSDKSample-Info.plist";
+				PRODUCT_NAME = VenmoSDKSample;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -454,13 +454,13 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VENAppSwitchSample/VENAppSwitchSample-Prefix.pch";
+				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "VENAppSwitchSampleTests/VENAppSwitchSampleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				INFOPLIST_FILE = "VENAppSwitchSampleTests/VenmoSDKSampleTests-Info.plist";
+				PRODUCT_NAME = VenmoSDKSampleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -477,9 +477,9 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VENAppSwitchSample/VENAppSwitchSample-Prefix.pch";
-				INFOPLIST_FILE = "VENAppSwitchSampleTests/VENAppSwitchSampleTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
+				INFOPLIST_FILE = "VENAppSwitchSampleTests/VenmoSDKSampleTests-Info.plist";
+				PRODUCT_NAME = VenmoSDKSampleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -488,7 +488,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "VENAppSwitchSample" */ = {
+		B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "VenmoSDKSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62D59FF189855E5001E46A4 /* Debug */,
@@ -497,7 +497,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VENAppSwitchSample" */ = {
+		B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62D5A02189855E5001E46A4 /* Debug */,
@@ -506,7 +506,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VENAppSwitchSampleTests" */ = {
+		B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSampleTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62D5A05189855E5001E46A4 /* Debug */,

@@ -1,0 +1,17 @@
+PODS:
+  - SVProgressHUD (1.0)
+  - Venmo-iOS-SDK (1.0.0)
+
+DEPENDENCIES:
+  - SVProgressHUD (~> 1.0)
+  - Venmo-iOS-SDK (from `../Venmo-iOS-SDK.podspec`)
+
+EXTERNAL SOURCES:
+  Venmo-iOS-SDK:
+    :path: ../Venmo-iOS-SDK.podspec
+
+SPEC CHECKSUMS:
+  SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
+  Venmo-iOS-SDK: 972e58613259ecf33d7c65cda5f8661e4c464b1e
+
+COCOAPODS: 0.32.1
