@@ -5,7 +5,7 @@ typedef NS_ENUM(NSUInteger, VENTransactionType) {
     VENTransactionTypeCharge
 };
 
-@interface VENTransaction : NSObject
+@interface VENTransactionSDK : NSObject
 
 @property (assign, nonatomic) VENTransactionType type;
 @property (assign, nonatomic) NSUInteger amount;

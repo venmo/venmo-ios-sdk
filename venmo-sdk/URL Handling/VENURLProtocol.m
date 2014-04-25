@@ -59,7 +59,7 @@
         }
         NSError *jsonError;
         id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
-        VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
+        VENUserSDK *currentUser = [[VENUserSDK alloc] initWithDictionary:json[@"user"]];
         VENSession *currentSession = [[VENSession alloc] initWithAccessToken:json[@"access_token"]
                                                                 refreshToken:json[@"refresh_token"]
                                                                    expiresIn:[json[@"expires_in"] integerValue]];
@@ -75,7 +75,7 @@
         });
     }
     else {
-        VENTransaction *transaction = [VENTransaction transactionWithURL:[self.request URL]];
+        VENTransactionSDK *transaction = [VENTransactionSDK transactionWithURL:[self.request URL]];
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
             if (transaction && !transaction.success) {

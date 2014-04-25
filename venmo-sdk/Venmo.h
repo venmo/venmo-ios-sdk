@@ -1,16 +1,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "VENUser.h"
+#import "VENUserSDK.h"
 #import "VENErrors.h"
-#import "VENTransaction.h"
+#import "VENTransactionSDK.h"
 #import "VENSession.h"
 #import "VENPermissionConstants.h"
 
-@class VENTransaction;
-@class VENUser;
+@class VENTransactionSDK;
+@class VENUserSDK;
 @class VENSession;
 
-typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
+typedef void (^VENTransactionCompletionHandler)(VENTransactionSDK *transaction, BOOL success, NSError *error);
 typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 #define VEN_CURRENT_SDK_VERSION @"1.0.0"
@@ -24,7 +24,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * The user who is currently authenticated.
  */
-@property (strong, nonatomic) VENUser *currentUser;
+@property (strong, nonatomic) VENUserSDK *currentUser;
 
 /**
  * The current session. It contains access token, refresh token, and expiration information.
@@ -66,6 +66,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param transaction The transaction to send
  * @param completionHandler Completion handler to call after sending transaction
  */
-- (void)sendTransaction:(VENTransaction *)transaction withCompletionHandler:(VENTransactionCompletionHandler)completionHandler;
+- (void)sendTransaction:(VENTransactionSDK *)transaction withCompletionHandler:(VENTransactionCompletionHandler)completionHandler;
 
 @end

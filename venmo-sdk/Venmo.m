@@ -7,10 +7,10 @@
 #import "Venmo.h"
 #import "VENErrors.h"
 #import "VENHMAC_SHA256_Internal.h"
-#import "VENTransaction.h"
+#import "VENTransactionSDK.h"
 #import "VENURLProtocol.h"
 #import "VENSession.h"
-#import "VENUser.h"
+#import "VENUserSDK.h"
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
@@ -72,7 +72,7 @@ static Venmo *sharedVenmoClient = nil;
 
 #pragma mark - Sending a Transaction
 
-- (void)sendTransaction:(VENTransaction *)transaction
+- (void)sendTransaction:(VENTransactionSDK *)transaction
   withCompletionHandler:(VENTransactionCompletionHandler)completionHandler {
 
     self.currentTransactionCompletionHandler = completionHandler;
@@ -114,7 +114,7 @@ static Venmo *sharedVenmoClient = nil;
 
 #pragma mark - Sending a Transaction @private
 
-- (NSString *)URLPathWithTransaction:(VENTransaction *)transaction {
+- (NSString *)URLPathWithTransaction:(VENTransactionSDK *)transaction {
 
     NSString *identifier = [self currentDeviceIdentifier];
 

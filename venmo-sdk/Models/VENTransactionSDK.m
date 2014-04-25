@@ -5,17 +5,17 @@
 #import "NSURL+VenmoSDK.h"
 #import "VENRequestDecoder.h"
 
-@interface VENTransaction ()
+@interface VENTransactionSDK ()
 @property (strong, nonatomic) NSNumberFormatter *amountNumberFormatter;
 @end
 
-@implementation VENTransaction
+@implementation VENTransactionSDK
 
 + (instancetype)transactionWithType:(VENTransactionType)type
                              amount:(NSUInteger)amount
                                note:(NSString *)note
                           recipient:(NSString *)recipient {
-    VENTransaction *transaction = [[VENTransaction alloc] init];
+    VENTransactionSDK *transaction = [[VENTransactionSDK alloc] init];
     transaction.type = type;
     transaction.amount = amount;
     transaction.note = note;
@@ -30,7 +30,7 @@
 
         NSArray *decodedSignedRequest = [VENRequestDecoder decodeSignedRequest:signedRequest withClientSecret:[[Venmo sharedClient] appSecret]];
         DLog(@"decodedSignedRequest: %@", decodedSignedRequest);
-        return [VENTransaction transactionWithDictionary:decodedSignedRequest[0]];
+        return [VENTransactionSDK transactionWithDictionary:decodedSignedRequest[0]];
     }
     @catch (NSException *exception) {
         DLog(@"Exception! %@: %@. %@", exception.name, exception.reason, exception.userInfo);
@@ -79,9 +79,9 @@
 + (instancetype)transactionWithDictionary:(NSDictionary *)dictionary {
     DLog(@"transaction Dictionary: %@", dictionary);
     if (!dictionary) return nil;
-    VENTransaction *transaction = [[VENTransaction alloc] init];
+    VENTransactionSDK *transaction = [[VENTransactionSDK alloc] init];
     transaction.transactionID = [dictionary stringForKey:@"payment_id"];
-    transaction.type          = [VENTransaction typeWithString:dictionary[@"verb"]];
+    transaction.type          = [VENTransactionSDK typeWithString:dictionary[@"verb"]];
     transaction.fromUserID    = [dictionary stringForKey:@"actor_user_id"];
     transaction.toUserID      = [dictionary stringForKey:@"target_user_id"];
     transaction.amount        = [[dictionary stringForKey:@"amount"] floatValue] * 100;

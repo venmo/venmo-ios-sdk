@@ -1,6 +1,6 @@
-#import "VENUser.h"
+#import "VENUserSDK.h"
 
-@interface VENUser ()
+@interface VENUserSDK ()
 @property (copy, nonatomic, readwrite) NSString *username;
 @property (copy, nonatomic, readwrite) NSString *firstName;
 @property (copy, nonatomic, readwrite) NSString *lastName;
@@ -13,7 +13,7 @@
 @property (assign, nonatomic, readwrite) NSInteger friendsCount;
 @end
 
-@implementation VENUser
+@implementation VENUserSDK
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
     self = [super init];
