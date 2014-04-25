@@ -24,15 +24,15 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * The user who is currently authenticated.
  */
-@property (strong, nonatomic) VDKUser *currentUser;
+@property (strong, nonatomic) VENUser *currentUser;
 
 /**
  * The current session. It contains access token, refresh token, and expiration information.
  */
-@property (strong, nonatomic) VDKSession *currentSession;
+@property (strong, nonatomic) VENSession *currentSession;
 
-@property (copy, nonatomic, readonly) VDKTransactionCompletionHandler currentTransactionCompletionHandler;
-@property (copy, nonatomic, readonly) VDKOAuthCompletionHandler currentOAuthCompletionHandler;
+@property (copy, nonatomic, readonly) VENTransactionCompletionHandler currentTransactionCompletionHandler;
+@property (copy, nonatomic, readonly) VENOAuthCompletionHandler currentOAuthCompletionHandler;
 
 /**
  * Returns the current shared Venmo client.
@@ -48,7 +48,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param permissions List of permissions.
  * @param completionHandler Completion handler to call upon returning from OAuth session.
  */
-- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VDKOAuthCompletionHandler)completionHandler;
+- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)completionHandler;
 
 /**
  * Starts a Venmo SDK session.

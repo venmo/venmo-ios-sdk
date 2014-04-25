@@ -66,6 +66,7 @@
 		B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VENSession.m */; };
 		B6F5046818E38C2600BDACF7 /* VENTransaction.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046318E38C2600BDACF7 /* VENTransaction.m */; };
 		B6F5046918E38C2600BDACF7 /* VENUser.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046518E38C2600BDACF7 /* VENUser.m */; };
+		EB8D9AEE190AAF78005051C4 /* Venmo_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +151,7 @@
 		B6F5046418E38C2600BDACF7 /* VENUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENUser.h; sourceTree = "<group>"; };
 		B6F5046518E38C2600BDACF7 /* VENUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENUser.m; sourceTree = "<group>"; };
 		C33235A92FC244DBAA105D7C /* libPods-venmo-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venmo_Internal.h; path = "venmo-sdk/Venmo_Internal.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 			children = (
 				2D5EF54717EF41B100DDD15A /* venmo-sdk */,
 				B6570AB0189711FD00351EDF /* Venmo.h */,
+				EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */,
 				B6570AB1189711FD00351EDF /* Venmo.m */,
 				2D5EF55B17EF41B100DDD15A /* venmo-sdk-tests */,
 				2D5EF54417EF41B100DDD15A /* Frameworks */,
@@ -330,6 +333,7 @@
 				B63E190618EB2C610006BD3E /* NSBundle+VenmoSDK.h in Headers */,
 				B62D59BC18973D71001E46A4 /* VENURLProtocol.h in Headers */,
 				B63E191218EB2C6E0006BD3E /* NSURL+VenmoSDK.h in Headers */,
+				EB8D9AEE190AAF78005051C4 /* Venmo_Internal.h in Headers */,
 				B63E190A18EB2C610006BD3E /* NSError+VenmoSDK.h in Headers */,
 				B6570B0E1897194200351EDF /* venmo-sdk-Prefix.pch in Headers */,
 				B63E190818EB2C610006BD3E /* NSDictionary+VenmoSDK.h in Headers */,
