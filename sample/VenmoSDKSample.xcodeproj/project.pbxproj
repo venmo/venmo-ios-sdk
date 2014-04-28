@@ -447,7 +447,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VENAppSwitchSample.app/VENAppSwitchSample";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VenmoSDKSample.app/VenmoSDKSample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -459,7 +459,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "VENAppSwitchSampleTests/VenmoSDKSampleTests-Info.plist";
+				INFOPLIST_FILE = "VenmoSDKSampleTests/VenmoSDKSampleTests-Info.plist";
 				PRODUCT_NAME = VenmoSDKSampleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -470,7 +470,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VENAppSwitchSample.app/VENAppSwitchSample";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VenmoSDKSample.app/VenmoSDKSample";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -478,7 +478,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
-				INFOPLIST_FILE = "VENAppSwitchSampleTests/VenmoSDKSampleTests-Info.plist";
+				INFOPLIST_FILE = "VenmoSDKSampleTests/VenmoSDKSampleTests-Info.plist";
 				PRODUCT_NAME = VenmoSDKSampleTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;

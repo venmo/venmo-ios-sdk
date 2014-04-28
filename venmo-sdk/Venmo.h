@@ -66,6 +66,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 - (void)sendAppSwitchTransactionWithType:(VENTransactionType)type
                                   amount:(NSUInteger)amount
                                     note:(NSString *)note
-                               recipient:(NSString *)recipientHandle;
+                               recipient:(NSString *)recipientHandle
+                       completionHandler:(VENTransactionCompletionHandler)completionHandler;
 
 @end

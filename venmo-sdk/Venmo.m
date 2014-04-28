@@ -75,7 +75,7 @@ static Venmo *sharedVenmoClient = nil;
                                   amount:(NSUInteger)amount
                                     note:(NSString *)note
                                recipient:(NSString *)recipientHandle
-                       completionHanlder:(VENTransactionCompletionHandler)completionHandler {
+                       completionHandler:(VENTransactionCompletionHandler)completionHandler {
     self.currentTransactionCompletionHandler = completionHandler;
     NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
     NSURL *transactionURL = [self venmoURLWithPath:URLPath];

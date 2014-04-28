@@ -19,21 +19,17 @@
     NSString *recipient = self.toTextField.text;
     NSUInteger amount = [self.amountTextField.text floatValue] * 100;
     NSString *note = self.noteTextField.text;
-//    VENTransaction *transaction = [VENTransaction transactionWithType:VENTransactionTypePay amount:amount note:note recipient:recipient];
-//    [[Venmo sharedClient] sendTransaction:transaction withCompletionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
-//        if (success) {
-//            NSLog(@"Transaction succeeded!");
-//            [SVProgressHUD showSuccessWithStatus:@"Transaction succeeded!"];
-//        } else {
-//            NSString *errorMessage = [NSString stringWithFormat:@"Transaction failed with error: %@", [error localizedDescription]];
-//            NSLog(@"%@", errorMessage);
-//            [SVProgressHUD showErrorWithStatus:errorMessage];
-//        }
-//    }];
+    [[Venmo sharedInstance] sendAppSwitchTransactionWithType:VENTransactionTypePay
+                                                      amount:amount
+                                                        note:note
+                                                   recipient:recipient
+                                           completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
+                                                [SVProgressHUD showSuccessWithStatus:@"hi!"];
+                                                    }];
 }
 
 - (IBAction)userDidTapAuthorize:(id)sender {
-    [[Venmo sharedClient] requestPermissions:@[VENPermissionAccessProfile] withCompletionHandler:^(BOOL success, NSError *error) {
+    [[Venmo sharedInstance] requestPermissions:@[VENPermissionAccessProfile] withCompletionHandler:^(BOOL success, NSError *error) {
         [SVProgressHUD showSuccessWithStatus:@"oauth succeeded!"];
     }];
 }
