@@ -71,13 +71,14 @@ static Venmo *sharedVenmoClient = nil;
 
 #pragma mark - Sending a Transaction
 
-- (void)sendTransaction:(VENTransaction *)transaction
-  withCompletionHandler:(VENTransactionCompletionHandler)completionHandler {
-
+- (void)sendAppSwitchTransactionWithType:(VENTransactionType)type
+                                  amount:(NSUInteger)amount
+                                    note:(NSString *)note
+                               recipient:(NSString *)recipientHandle
+                       completionHanlder:(VENTransactionCompletionHandler)completionHandler {
     self.currentTransactionCompletionHandler = completionHandler;
-    NSString *URLPath = [self URLPathWithTransaction:transaction];
-    NSURL *transactionURL;
-    transactionURL = [self venmoURLWithPath:URLPath];
+    NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
+    NSURL *transactionURL = [self venmoURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
 
     if ([self hasVenmoApp]) {
@@ -87,10 +88,10 @@ static Venmo *sharedVenmoClient = nil;
                                              code:VENTransactionFailedError
                                       description:@"Could not find Venmo app."
                                recoverySuggestion:@"Please install Venmo."];
-        completionHandler(transaction, NO, error);
+        completionHandler(nil, NO, error);
     }
-}
 
+}
 
 #pragma mark - OAuth
 
@@ -113,8 +114,10 @@ static Venmo *sharedVenmoClient = nil;
 
 #pragma mark - Sending a Transaction @private
 
-- (NSString *)URLPathWithTransaction:(VENTransaction *)transaction {
-
+- (NSString *)URLPathWithType:(VENTransactionType)type
+                       amount:(NSUInteger)amount
+                         note:(NSString *)note
+                    recipient:(NSString *)recipientHandle {
     NSString *identifier = [self currentDeviceIdentifier];
 
     NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
@@ -122,18 +125,10 @@ static Venmo *sharedVenmoClient = nil;
                               self.appName,
                               self.appId,
                               identifier];
-    if (transaction.target.amount) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, [transaction amountString]];
-    }
-    if ([transaction typeString]) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&txn=%@", pathAndQuery, [transaction typeString]];
-    }
-    if (transaction.target.handle) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&recipients=%@", pathAndQuery, transaction.target.handle];
-    }
-    if (transaction.note) {
-        pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, transaction.note];
-    }
+    pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, [VENTransaction amountString:amount]];
+    pathAndQuery = [NSString stringWithFormat:@"%@&txn=%@", pathAndQuery, [VENTransaction typeString:amount]];
+    pathAndQuery = [NSString stringWithFormat:@"%@&recipients=%@", pathAndQuery, recipientHandle];
+    pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, note];
     pathAndQuery = [NSString stringWithFormat:@"%@&app_version=%@", pathAndQuery, VEN_CURRENT_SDK_VERSION];
 
     return pathAndQuery;

@@ -61,10 +61,11 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
                   name:(NSString *)appName;
 
 /**
- * Sends Venmo transaction.
- * @param transaction The transaction to send
- * @param completionHandler Completion handler to call after sending transaction
+ * Sends a transaction by switching to the Venmo app.
  */
-- (void)sendTransaction:(VENTransaction *)transaction withCompletionHandler:(VENTransactionCompletionHandler)completionHandler;
+- (void)sendAppSwitchTransactionWithType:(VENTransactionType)type
+                                  amount:(NSUInteger)amount
+                                    note:(NSString *)note
+                               recipient:(NSString *)recipientHandle;
 
 @end

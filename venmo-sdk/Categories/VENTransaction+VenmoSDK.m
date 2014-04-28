@@ -43,18 +43,18 @@
 }
 
 
-- (NSString *)amountString {
-    if (self.target.amount < 1) {
++ (NSString *)amountString:(NSUInteger)amount {
+    if (amount < 1) {
         return @"";
     }
-    CGFloat amount = self.target.amount / 100.0f;
-    NSString *amountStr = [NSString stringWithFormat:@"%.2f", amount];
+    CGFloat dollarAmount = amount / 100.0f;
+    NSString *amountStr = [NSString stringWithFormat:@"%.2f", dollarAmount];
     return amountStr;
 }
 
 
-- (NSString *)typeString {
-    if (self.transactionType == VENTransactionTypePay) {
++ (NSString *)typeString:(VENTransactionType)type {
+    if (type == VENTransactionTypePay) {
         return VENTransactionTypeStrings[VENTransactionTypePay];
     }
     else {
