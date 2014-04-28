@@ -15,7 +15,7 @@
 #import "UIDevice+IdentifierAddition.h"
 #endif
 
-static Venmo *sharedVenmoClient = nil;
+static Venmo *sharedInstance = nil;
 
 @interface Venmo ()
 
@@ -37,18 +37,18 @@ static Venmo *sharedVenmoClient = nil;
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
                   name:(NSString *)appName {
-    if (sharedVenmoClient) {
+    if (sharedInstance) {
         return NO;
     }
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedVenmoClient = [[self alloc] initWithAppId:appId secret:appSecret name:appName];
+        sharedInstance = [[self alloc] initWithAppId:appId secret:appSecret name:appName];
     });
     return YES;
 }
 
 + (instancetype)sharedInstance {
-    return sharedVenmoClient;
+    return sharedInstance;
 }
 
 - (BOOL)isConnected {
