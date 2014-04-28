@@ -35,15 +35,16 @@
                                                       code:VENTransactionFailedError
                                                description:oAuthErrorMessage
                                         recoverySuggestion:@"Please try again."];
-            if ([Venmo sharedClient].currentOAuthCompletionHandler) {
-                [Venmo sharedClient].currentOAuthCompletionHandler(NO, oAuthError);
+            if ([Venmo sharedInstance].currentOAuthCompletionHandler) {
+                [Venmo sharedInstance].currentOAuthCompletionHandler(NO, oAuthError);
             }
 
             return;
         }
 
         NSString *code = [queryDictionary valueForKey:@"code"];
-        NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@", [Venmo sharedClient].appId, [Venmo sharedClient].appSecret, code];
+        NSString *postString = [NSString stringWithFormat:@"client_id=%@&client_secret=%@&code=%@",
+                                [Venmo sharedInstance].appId, [Venmo sharedInstance].appSecret, code];
 
         NSString *accessTokenURLString = [NSString stringWithFormat:@"%@oauth/access_token", [[Venmo sharedInstance] baseURLPath]];
         NSURL *accessTokenURL = [NSURL URLWithString:accessTokenURLString];
@@ -68,9 +69,9 @@
         client.currentSession = currentSession;
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([Venmo sharedClient].currentOAuthCompletionHandler) {
+            if ([Venmo sharedInstance].currentOAuthCompletionHandler) {
                 BOOL success = (error == nil);
-                [Venmo sharedClient].currentOAuthCompletionHandler(success, error);
+                [Venmo sharedInstance].currentOAuthCompletionHandler(success, error);
             }
         });
     }
@@ -90,8 +91,8 @@
                                recoverySuggestion:@"Please contact us."];
             }
 
-            if ([Venmo sharedClient].currentTransactionCompletionHandler) {
-                [Venmo sharedClient].currentTransactionCompletionHandler(transaction, transaction.status, error);
+            if ([Venmo sharedInstance].currentTransactionCompletionHandler) {
+                [Venmo sharedInstance].currentTransactionCompletionHandler(transaction, transaction.status, error);
             }
         });
     }

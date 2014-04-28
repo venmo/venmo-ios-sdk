@@ -44,17 +44,11 @@ describe(@"transactionWithSignedRequestDictionary:", ^{
 describe(@"amountString", ^{
 
     it(@"should return the correct type string for pay", ^{
-        VENTransaction *transaction = [[VENTransaction alloc] init];
-        transaction.transactionType = VENTransactionTypePay;
-
-        expect([transaction typeString]).to.equal(@"pay");
+        expect([VENTransaction typeString:VENTransactionTypePay]).to.equal(@"pay");
     });
 
     it(@"should return the correct type string for charge", ^{
-        VENTransaction *transaction = [[VENTransaction alloc] init];
-        transaction.transactionType = VENTransactionTypeCharge;
-
-        expect([transaction typeString]).to.equal(@"charge");
+        expect([VENTransaction typeString:VENTransactionTypeCharge]).to.equal(@"charge");
     });
 
 });
@@ -62,32 +56,20 @@ describe(@"amountString", ^{
 
 describe(@"typeString", ^{
 
-    VENTransaction *(^mockAmountTransaction)(NSUInteger) = ^(NSUInteger amount) {
-        VENTransaction *transaction = [[VENTransaction alloc] init];
-        id mockTarget = [OCMockObject mockForClass:[VENTransactionTarget class]];
-        [[[mockTarget stub] andReturnValue:OCMOCK_VALUE(amount)] amount];
-        transaction.target = mockTarget;
-        return transaction;
-    };
-
     it(@"should return the correct amount string for 0 pennies", ^{
-        VENTransaction *mockTransaction = mockAmountTransaction(0);
-        expect([mockTransaction amountString]).to.equal(@"");
+        expect([VENTransaction amountString:0]).to.equal(@"");
     });
 
     it(@"should return the correct amount string for 1 penny", ^{
-        VENTransaction *mockTransaction = mockAmountTransaction(1);
-        expect([mockTransaction amountString]).to.equal(@"0.01");
+        expect([VENTransaction amountString:1]).to.equal(@"0.01");
     });
 
     it(@"should return the correct amount string for 99 pennies", ^{
-        VENTransaction *mockTransaction = mockAmountTransaction(99);
-        expect([mockTransaction amountString]).to.equal(@"0.99");
+        expect([VENTransaction amountString:99]).to.equal(@"0.99");
    });
 
     it(@"should return the correct amount string for 199 pennies", ^{
-        VENTransaction *mockTransaction = mockAmountTransaction(199);
-        expect([mockTransaction amountString]).to.equal(@"1.99");
+        expect([VENTransaction amountString:199]).to.equal(@"1.99");
     });
 
 });
