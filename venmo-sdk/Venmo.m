@@ -157,7 +157,7 @@ static Venmo *sharedInstance = nil;
 
 - (NSString *)baseURLPath {
     if (self.internalDevelopment) {
-        return @"http://api.devvenmo.com/v1/";
+        return @"http://api.dev.venmo.com/v1/";
     }
     return @"http://api.venmo.com/v1/";
 }
