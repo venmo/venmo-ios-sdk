@@ -39,25 +39,26 @@ static Venmo *sharedInstance = nil;
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
                   name:(NSString *)appName {
-    if (sharedInstance) {
-        return NO;
+    if (!sharedInstance) {
+        static dispatch_once_t onceToken;
+        dispatch_once(&onceToken, ^{
+            sharedInstance = [[self alloc] initWithAppId:appId secret:appSecret name:appName];
+        });
     }
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedInstance = [[self alloc] initWithAppId:appId secret:appSecret name:appName];
-    });
-    return YES;
+    VENSession *cachedSession = [VENSession cachedSessionWithAppId:appId];
+
+    // If we find a cached session that hasn't expired, set the current session.
+    NSDate *now = [NSDate date];
+    if (cachedSession &&
+        [[cachedSession.expirationDate laterDate:now] isEqualToDate:now]) {
+        sharedInstance.currentSession = cachedSession;
+        return YES;
+    }
+    return NO;
 }
 
 + (instancetype)sharedInstance {
     return sharedInstance;
-}
-
-- (BOOL)isConnected {
-    if (!self.currentSession) {
-        return NO;
-    }
-    return YES;
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url {
@@ -72,8 +73,14 @@ static Venmo *sharedInstance = nil;
 
 #pragma mark - Custom setters
 
+/** 
+ * This setter assumes the given session is valid and has two side effects:
+ * 1. It saves (or updates) the session in the keychain
+ * 2. It initializes a VENCore instance with the session's access token and sets the defaultCore
+ */
 - (void)setCurrentSession:(VENSession *)currentSession {
     _currentSession = currentSession;
+    [_currentSession saveWithAppId:self.appId];
     VENCore *core = [[VENCore alloc] init];
     [core setAccessToken:_currentSession.accessToken];
     [VENCore setDefaultCore:core];
@@ -153,6 +160,9 @@ static Venmo *sharedInstance = nil;
         self.appId = appId;
         self.appSecret = appSecret;
         self.appName = appName ?: [[NSBundle mainBundle] name];
+        // Don't use the setter because we don't want its side effects.
+        // Instead, set the current session to a new (closed) session.
+        _currentSession = [[VENSession alloc] init];
     }
     return self;
 }

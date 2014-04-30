@@ -2,10 +2,11 @@
 @import UIKit;
 
 #import <VENCore/VENCore.h>
-#import "VENTransaction+VenmoSDK.h"
+
 #import "VENErrors.h"
-#import "VENSession.h"
 #import "VENPermissionConstants.h"
+#import "VENSession.h"
+#import "VENTransaction+VenmoSDK.h"
 
 @class VENUserSDK;
 @class VENSession;
@@ -21,7 +22,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic, readonly) NSString *appName;
 
-- (BOOL)isConnected;
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
@@ -56,11 +56,12 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 - (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)completionHandler;
 
 /**
- * Starts a Venmo SDK session.
+ * Starts the Venmo SDK.
  * @param appId Your app ID
  * @param appSecret Your app secret
  * @param appName Your app name (used in Venmo app to show "via [appName]"). Defaults to "Bundle name" in your Info.plist
- * @return YES if a new session started, NO if a session is already running.
+ * @return A boolean value indicating whether a cached session was found for the given app details.
+ * If this method returns NO, you will need to create a session by calling requestPermissions:withCompletionHandler.
  */
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret

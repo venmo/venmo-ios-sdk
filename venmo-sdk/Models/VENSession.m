@@ -10,10 +10,19 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
 @property (strong, nonatomic, readwrite) NSDate *expirationDate;
+@property (assign, nonatomic, readwrite) VENSessionState state;
 
 @end
 
 @implementation VENSession
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.state = VENSessionStateClosed;
+    }
+    return self;
+}
 
 - (id)initWithAccessToken:(NSString *)accessToken
              refreshToken:(NSString *)refreshToken
@@ -23,6 +32,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
         self.accessToken = accessToken;
         self.refreshToken = refreshToken;
         self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
+        self.state = VENSessionStateOpen;
     }
     return self;
 }

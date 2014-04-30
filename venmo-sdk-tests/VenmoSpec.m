@@ -24,13 +24,11 @@ SpecBegin(Venmo)
 describe(@"startWithAppId:secret:name: and sharedInstance", ^{
 
     it(@"should create a singleton instance", ^{
-        BOOL started = [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
-        expect(started).to.equal(YES);
+        [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
         Venmo *sharedVenmo = [Venmo sharedInstance];
         expect(sharedVenmo).toNot.beNil();
 
-        started = [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
-        expect(started).to.equal(NO);
+        [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
         expect([Venmo sharedInstance]).to.equal(sharedVenmo);
     });
 
@@ -124,6 +122,10 @@ describe(@"initWithAppId:secret:name:", ^{
         expect(venmo.appId).to.equal(@"foo");
         expect(venmo.appSecret).to.equal(@"bar");
         expect(venmo.appName).to.equal(@"Foo Bar App");
+    });
+
+    it(@"should correctly set the current session to a closed session", ^{
+        expect(venmo.currentSession.state).to.equal(VENSessionStateClosed);
     });
 });
 

@@ -1,10 +1,22 @@
 @import Foundation;
 
+typedef NS_ENUM(NSUInteger, VENSessionState) {
+    /// Indicates that the session is closed.
+    VENSessionStateClosed,
+    /// Indicates that the session is open and ready for use.
+    VENSessionStateOpen,
+    /// Indicates that an attempt to open the session is underway.
+    VENSessionStateOpening,
+    /// Indicates that the session is being refreshed.
+    VENSessionStateRefreshing
+};
+
 @interface VENSession : NSObject <NSCoding>
 
 @property (strong, nonatomic, readonly) NSString *accessToken;
 @property (strong, nonatomic, readonly) NSString *refreshToken;
 @property (strong, nonatomic, readonly) NSDate *expirationDate;
+@property (assign, nonatomic, readonly) VENSessionState state;
 
 /**
  * Creates a VENSession instance with access token, refresh token, and time until expiration.
