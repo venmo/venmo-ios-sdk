@@ -1,5 +1,16 @@
 #import "VENSession.h"
 
+#import <SSKeychain/SSKeychainQuery.h>
+
+extern NSString *const kVENKeychainServiceName;
+extern NSString *const kVENKeychainAccountNamePrefix;
+
+@interface VENSession ()
+
++ (SSKeychainQuery *)keychainQueryWithAppId:(NSString *)appId;
+
+@end
+
 SpecBegin(VENSession)
 
 describe(@"Initialization", ^{
@@ -23,6 +34,20 @@ describe(@"Initialization", ^{
         expect(session.expirationDate).to.equal(expectedDate);
 
         [mockNSDate stopMocking];
+    });
+});
+
+describe(@"keychainQueryWithAppId", ^{
+
+    it(@"should return a query with the correct service name", ^{
+        SSKeychainQuery *query = [VENSession keychainQueryWithAppId:@"123"];
+        expect(query.service).to.equal(kVENKeychainServiceName);
+    });
+
+    it(@"should return a query with the correct account name", ^{
+        SSKeychainQuery *query = [VENSession keychainQueryWithAppId:@"123"];
+        NSString *expectedAccountName = [NSString stringWithFormat:@"%@123", kVENKeychainAccountNamePrefix];
+        expect(query.account).to.equal(expectedAccountName);
     });
 
 });

@@ -1,11 +1,16 @@
 #import "VENSession.h"
 
-@import Security;
+#import <SSKeychain/SSKeychainQuery.h>
+
+NSString *const kVENKeychainServiceName = @"venmo-ios-sdk";
+NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 
 @interface VENSession ()
+
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
 @property (strong, nonatomic, readwrite) NSDate *expirationDate;
+
 @end
 
 @implementation VENSession
@@ -22,9 +27,32 @@
     return self;
 }
 
+
+- (BOOL)saveWithAppId:(NSString *)appId {
+    SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
+    NSError *error;
+    return [query save:&error];
+}
+
+
 + (instancetype)cachedSessionForAppId:(NSString *)appId {
+    SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
+    NSError *error;
+    [query fetch:&error];
+    if (!error) {
+        return (VENSession *)query.passwordObject;
+    }
     return nil;
 }
+
+
++ (SSKeychainQuery *)keychainQueryWithAppId:(NSString *)appId {
+    SSKeychainQuery *query = [[SSKeychainQuery alloc] init];
+    query.service = kVENKeychainServiceName;
+    query.account = [NSString stringWithFormat:@"%@%@", kVENKeychainAccountNamePrefix, appId];
+    return query;
+}
+
 
 #pragma mark - NSCoding
 
@@ -37,6 +65,7 @@
     }
     return self;
 }
+
 
 - (void)encodeWithCoder:(NSCoder *)coder {
     [coder encodeObject:self.accessToken forKey:@"accessToken"];

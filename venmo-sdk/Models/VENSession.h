@@ -17,9 +17,17 @@
                        refreshToken:(NSString *)refreshToken
                           expiresIn:(NSUInteger)expiresIn;
 
+
 /**
  * Returns the cached session for the given app id, or nil if no cached session was found.
  */
 + (instancetype)cachedSessionForAppId:(NSString *)appId;
+
+
+/**
+ * Saves the session in the keychain with the given app id.
+ * @return Returns a Boolean value indicating whether or not the save succeeded.
+ */
+- (BOOL)saveWithAppId:(NSString *)appId;
 
 @end
