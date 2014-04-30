@@ -19,9 +19,9 @@
 
 
 /**
- * Returns the cached session for the given app id, or nil if no cached session was found.
+ * Returns the cached session with the given app id, or nil if no cached session was found.
  */
-+ (instancetype)cachedSessionForAppId:(NSString *)appId;
++ (instancetype)cachedSessionWithAppId:(NSString *)appId;
 
 
 /**
@@ -29,5 +29,12 @@
  * @return Returns a Boolean value indicating whether or not the save succeeded.
  */
 - (BOOL)saveWithAppId:(NSString *)appId;
+
+
+/**
+ * Deletes the session with the given app id.
+ * @return Returns a Boolean value indicating whether or not the save succeeded.
+ */
++ (BOOL)deleteSessionWithAppId:(NSString *)appId;
 
 @end

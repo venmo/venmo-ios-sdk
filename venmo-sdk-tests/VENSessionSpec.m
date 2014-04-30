@@ -26,9 +26,12 @@ describe(@"Initialization", ^{
 
     it(@"should initialize with the correct expiration date", ^{
         NSUInteger expiresIn = 1234;
+
+        // Stub dateWithTimeIntervalSinceNow
         NSDate *expectedDate = [NSDate date];
         id mockNSDate = [OCMockObject mockForClass:[NSDate class]];
         [[[mockNSDate stub] andReturn:expectedDate] dateWithTimeIntervalSinceNow:expiresIn];
+
         VENSession *session = [[VENSession alloc] initWithAccessToken:@"1234" refreshToken:@"3456" expiresIn:expiresIn];
 
         expect(session.expirationDate).to.equal(expectedDate);
@@ -48,6 +51,43 @@ describe(@"keychainQueryWithAppId", ^{
         SSKeychainQuery *query = [VENSession keychainQueryWithAppId:@"123"];
         NSString *expectedAccountName = [NSString stringWithFormat:@"%@123", kVENKeychainAccountNamePrefix];
         expect(query.account).to.equal(expectedAccountName);
+    });
+
+});
+
+
+// This is more of an integration test.
+describe(@"Saving, fetching, and deleting a VENSession", ^{
+
+    it(@"should successfully save, fetch, and delete a session", ^{
+        NSString *accessToken = @"octocat1234foobar";
+        NSString *refreshToken = @"new1234octocatplz";
+        NSUInteger expiresIn = 1234;
+
+        // Stub dateWithTimeIntervalSinceNow
+        NSDate *expectedDate = [NSDate date];
+        id mockNSDate = [OCMockObject mockForClass:[NSDate class]];
+        [[[mockNSDate stub] andReturn:expectedDate] dateWithTimeIntervalSinceNow:expiresIn];
+
+        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+
+        // save the session
+        BOOL saved = [session saveWithAppId:@"123"];
+        expect(saved).to.equal(YES);
+
+        // fetch the session
+        VENSession *cachedSession = [VENSession cachedSessionWithAppId:@"123"];
+        expect(cachedSession.accessToken).to.equal(accessToken);
+        expect(cachedSession.refreshToken).to.equal(refreshToken);
+        expect(cachedSession.expirationDate).to.equal(expectedDate);
+
+        // delete the session
+        BOOL deleted = [VENSession deleteSessionWithAppId:@"123"];
+        expect(deleted).to.equal(YES);
+
+        // try to fetch the session
+        VENSession *deletedSession = [VENSession cachedSessionWithAppId:@"123"];
+        expect(deletedSession).to.beNil();
     });
 
 });

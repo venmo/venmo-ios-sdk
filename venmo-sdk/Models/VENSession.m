@@ -30,12 +30,14 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 
 - (BOOL)saveWithAppId:(NSString *)appId {
     SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
+    query.passwordObject = self;
     NSError *error;
-    return [query save:&error];
+    BOOL saved = [query save:&error];
+    return saved;
 }
 
 
-+ (instancetype)cachedSessionForAppId:(NSString *)appId {
++ (instancetype)cachedSessionWithAppId:(NSString *)appId {
     SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
     NSError *error;
     [query fetch:&error];
@@ -43,6 +45,13 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
         return (VENSession *)query.passwordObject;
     }
     return nil;
+}
+
+
++ (BOOL)deleteSessionWithAppId:(NSString *)appId {
+    SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
+    NSError *error;
+    return [query deleteItem:&error];
 }
 
 
