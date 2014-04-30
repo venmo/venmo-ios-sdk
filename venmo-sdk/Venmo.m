@@ -81,7 +81,7 @@ static Venmo *sharedInstance = nil;
     NSURL *transactionURL = [self venmoURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
 
-    if ([self hasVenmoApp]) {
+    if ([self venmoAppInstalled]) {
         [[UIApplication sharedApplication] openURL:transactionURL];
     } else if (completionHandler) {
         NSError *error = [NSError errorWithDomain:VENErrorDomain
@@ -101,7 +101,7 @@ static Venmo *sharedInstance = nil;
     self.currentOAuthCompletionHandler = completionHandler;
 
     NSString *baseURL;
-    if ([self hasVenmoApp]) {
+    if ([self venmoAppInstalled]) {
         baseURL = @"venmo://";
     } else {
         baseURL = [self baseURLPath];
@@ -162,7 +162,7 @@ static Venmo *sharedInstance = nil;
     return @"http://api.venmo.com/v1/";
 }
 
-- (BOOL)hasVenmoApp {
+- (BOOL)venmoAppInstalled {
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
 }
 

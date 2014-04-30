@@ -21,7 +21,79 @@
 
 SpecBegin(Venmo)
 
-describe(@"Initialization", ^{
+describe(@"startWithAppId:secret:name: and sharedInstance", ^{
+
+    it(@"should create a singleton instance", ^{
+        BOOL started = [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
+        expect(started).to.equal(YES);
+        Venmo *sharedVenmo = [Venmo sharedInstance];
+        expect(sharedVenmo).toNot.beNil();
+
+        started = [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
+        expect(started).to.equal(NO);
+        expect([Venmo sharedInstance]).to.equal(sharedVenmo);
+    });
+
+});
+
+fdescribe(@"requestPermissions:withCompletionHandler", ^{
+
+    __block id mockApplication;
+    __block id mockSharedApplication;
+    __block id mockVenmo;
+    __block NSString *appId;
+    __block NSString *appSecret;
+    __block NSString *appName;
+
+    beforeAll(^{
+        // Turn [UIApplication sharedApplication] into a partial mock.
+        mockApplication = [OCMockObject niceMockForClass:[UIApplication class]];
+        mockSharedApplication = [OCMockObject niceMockForClass:[UIApplication class]];
+        [[[mockApplication stub] andReturn:mockSharedApplication] sharedApplication];
+
+        // Create a partial mock for Venmo
+        appId = @"foo";
+        appSecret = @"bar";
+        appName = @"AppName";       
+        Venmo *venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:appName];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+    });
+
+    afterAll(^{
+        [mockApplication stopMocking];
+    });
+
+    afterEach(^{
+        [mockVenmo stopMocking];
+    });
+
+    it(@"should use venmo:// if venmoAppInstalled is true", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(YES)] venmoAppInstalled];
+        [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+            expect([url scheme]).to.equal(@"venmo");
+            return YES;
+        }]];
+        [mockVenmo requestPermissions:@[] withCompletionHandler:^(BOOL success, NSError *error) {
+        }];
+    });
+
+    it(@"should use baseURLPath if venmoAppInstalled is false", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] venmoAppInstalled];
+        [[[mockVenmo stub] andReturn:@"foobaseurl"] baseURLPath];
+        [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+            expect([url absoluteString]).to.contain(@"foobaseurl");
+            return YES;
+        }]];
+        [mockVenmo requestPermissions:@[] withCompletionHandler:^(BOOL success, NSError *error) {
+        }];
+    });
+
+});
+
+
+#pragma mark - Internal methods
+
+describe(@"initWithAppId:secret:name:", ^{
 
     __block Venmo *venmo;
 
@@ -56,22 +128,6 @@ describe(@"baseURLPath", ^{
         expect([venmo baseURLPath]).to.equal(@"http://api.dev.venmo.com/v1/");
     });   
 });
-
-describe(@"startWithAppId:secret:name:", ^{
-
-    it(@"should create a singleton instance", ^{
-        BOOL started = [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
-        expect(started).to.equal(YES);
-        Venmo *sharedVenmo = [Venmo sharedInstance];
-        expect(sharedVenmo).toNot.beNil();
-
-        started = [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
-        expect(started).to.equal(NO);
-        expect([Venmo sharedInstance]).to.equal(sharedVenmo);
-    });
-
-});
-
 
 describe(@"URLPathWithType:amount:note:recipient:", ^{
 

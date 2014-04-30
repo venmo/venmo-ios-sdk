@@ -18,7 +18,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;
-@property (copy, nonatomic, readonly) NSString *appName; // Defaults to "Bundle name" in Info.plist
+@property (copy, nonatomic, readonly) NSString *appName;
 
 /**
  * The user who is currently authenticated.
@@ -43,6 +43,11 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
+ * Returns YES if the current device has the Venmo app installed
+ */
+- (BOOL)venmoAppInstalled;
+
+/**
  * Initiates Venmo OAuth request.
  * @param permissions List of permissions.
  * @param completionHandler Completion handler to call upon returning from OAuth session.
@@ -53,7 +58,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * Starts a Venmo SDK session.
  * @param appId Your app ID
  * @param appSecret Your app secret
- * @param appName Your app name (used in Venmo app to show "via [appName]")
+ * @param appName Your app name (used in Venmo app to show "via [appName]"). Defaults to "Bundle name" in your Info.plist
  * @return YES if a new session started, NO if a session is already running.
  */
 + (BOOL)startWithAppId:(NSString *)appId
