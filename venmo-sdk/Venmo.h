@@ -20,6 +20,9 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic, readonly) NSString *appName;
 
+- (BOOL)isConnected;
+- (BOOL)handleOpenURL:(NSURL *)url;
+
 /**
  * The user who is currently authenticated.
  */
@@ -38,9 +41,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @return The current Venmo instance
  */
 + (instancetype)sharedInstance;
-
-- (BOOL)isConnected;
-- (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
  * Returns YES if the current device has the Venmo app installed

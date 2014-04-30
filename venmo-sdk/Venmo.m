@@ -62,7 +62,6 @@ static Venmo *sharedInstance = nil;
 
 - (BOOL)handleOpenURL:(NSURL *)url {
     if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
-
         VENURLProtocol *urlProtocol = [[VENURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
         [urlProtocol startLoading];
         return YES;

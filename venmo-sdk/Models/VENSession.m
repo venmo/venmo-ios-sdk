@@ -3,7 +3,7 @@
 @interface VENSession ()
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
-@property (assign, nonatomic, readwrite) NSUInteger expiresIn;
+@property (strong, nonatomic, readwrite) NSDate *expirationDate;
 @end
 
 @implementation VENSession
@@ -15,7 +15,7 @@
     if (self) {
         self.accessToken = accessToken;
         self.refreshToken = refreshToken;
-        self.expiresIn = expiresIn;
+        self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
     }
     return self;
 }
