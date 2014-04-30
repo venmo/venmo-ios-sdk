@@ -1,4 +1,4 @@
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 @interface VENSession : NSObject <NSCoding>
 
@@ -16,5 +16,10 @@
 - (instancetype)initWithAccessToken:(NSString *)accessToken
                        refreshToken:(NSString *)refreshToken
                           expiresIn:(NSUInteger)expiresIn;
+
+/**
+ * Returns the cached session for the given app id, or nil if no cached session was found.
+ */
++ (instancetype)cachedSessionForAppId:(NSString *)appId;
 
 @end

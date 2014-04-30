@@ -1,5 +1,6 @@
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+@import Foundation;
+@import UIKit;
+
 #import <VENCore/VENCore.h>
 #import "VENTransaction+VenmoSDK.h"
 #import "VENErrors.h"

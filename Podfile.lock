@@ -18,9 +18,10 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - Expecta (0.2.4)
+  - Expecta (0.3.0)
   - OCMock (2.2.4)
   - Specta (0.2.1)
+  - SSKeychain (1.2.2)
   - VENCore (1.0.0):
     - AFNetworking
 
@@ -28,13 +29,15 @@ DEPENDENCIES:
   - Expecta
   - OCMock
   - Specta
+  - SSKeychain
   - VENCore
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
-  Expecta: 5c147dedfea5fbcf773995f7e65020abcc936ce5
+  Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
   OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+  SSKeychain: 3d0b76c87e7b062a7ad1631a825fddec84367d44
   VENCore: 0547812ee8af7555b8621c2c6cc3bc8f4d69d413
 
 COCOAPODS: 0.32.1

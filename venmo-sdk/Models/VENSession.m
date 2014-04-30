@@ -1,5 +1,7 @@
 #import "VENSession.h"
 
+@import Security;
+
 @interface VENSession ()
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
@@ -19,6 +21,12 @@
     }
     return self;
 }
+
++ (instancetype)cachedSessionForAppId:(NSString *)appId {
+    return nil;
+}
+
+#pragma mark - NSCoding
 
 - (id)initWithCoder:(NSCoder *)decoder {
     self = [super init];
