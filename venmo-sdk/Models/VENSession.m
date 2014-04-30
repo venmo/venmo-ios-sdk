@@ -20,4 +20,20 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)decoder {
+    self = [super init];
+    if (self) {
+        self.accessToken = [decoder decodeObjectForKey:@"accessToken"];
+        self.refreshToken = [decoder decodeObjectForKey:@"refreshToken"];
+        self.expirationDate = [decoder decodeObjectForKey:@"expirationDate"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)coder {
+    [coder encodeObject:self.accessToken forKey:@"accessToken"];
+    [coder encodeObject:self.refreshToken forKey:@"refreshToken"];
+    [coder encodeObject:self.expirationDate forKey:@"expirationDate"];
+}
+
 @end
