@@ -7,7 +7,7 @@
 @property (assign, nonatomic, readonly) NSUInteger expiresIn;
 
 /**
- Creates a VENSession instance with access token, refresh token, and time til expiration.
+ Creates a VENSession instance with access token, refresh token, and time until expiration.
  @param accessToken Access token
  @param refreshToken Refresh token
  @param expiresIn Time (seconds) til session expiration

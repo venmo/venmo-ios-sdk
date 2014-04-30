@@ -36,7 +36,7 @@ describe(@"startWithAppId:secret:name: and sharedInstance", ^{
 
 });
 
-fdescribe(@"requestPermissions:withCompletionHandler", ^{
+describe(@"requestPermissions:withCompletionHandler", ^{
 
     __block id mockApplication;
     __block id mockSharedApplication;
@@ -90,6 +90,19 @@ fdescribe(@"requestPermissions:withCompletionHandler", ^{
 
 });
 
+describe(@"setCurrentSession:", ^{
+    __block Venmo *venmo;
+    __block NSString *accessToken;
+    
+    it(@"should set [VENCore defaultCore] to an instance with the correct access token", ^{
+        accessToken = @"12345678";
+        venmo = [[Venmo alloc] initWithAppId:@"123" secret:@"456" name:@"blah"];
+        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:@"" expiresIn:123];
+        venmo.currentSession = session;
+        VENCore *defaultCore = [VENCore defaultCore];
+        expect(defaultCore.accessToken).to.equal(accessToken);
+    });
+});
 
 #pragma mark - Internal methods
 

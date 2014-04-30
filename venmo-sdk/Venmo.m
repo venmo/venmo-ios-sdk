@@ -11,6 +11,8 @@
 #import "VENSession.h"
 #import "VENUser.h"
 
+#import <VENCore/VENCore.h>
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
 #endif
@@ -69,6 +71,15 @@ static Venmo *sharedInstance = nil;
 }
 
 
+#pragma mark - Custom setters
+
+- (void)setCurrentSession:(VENSession *)currentSession {
+    _currentSession = currentSession;
+    VENCore *core = [[VENCore alloc] init];
+    [core setAccessToken:_currentSession.accessToken];
+    [VENCore setDefaultCore:core];
+}
+
 #pragma mark - Sending a Transaction
 
 - (void)sendAppSwitchTransactionWithType:(VENTransactionType)type
@@ -78,7 +89,7 @@ static Venmo *sharedInstance = nil;
                        completionHandler:(VENTransactionCompletionHandler)completionHandler {
     self.currentTransactionCompletionHandler = completionHandler;
     NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
-    NSURL *transactionURL = [self venmoURLWithPath:URLPath];
+    NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
 
     if ([self venmoAppInstalled]) {
@@ -90,7 +101,6 @@ static Venmo *sharedInstance = nil;
                                recoverySuggestion:@"Please install Venmo."];
         completionHandler(nil, NO, error);
     }
-
 }
 
 #pragma mark - OAuth
@@ -133,13 +143,6 @@ static Venmo *sharedInstance = nil;
 
     return pathAndQuery;
 }
-
-
-- (NSURL *)venmoURLWithPath:(NSString *)path {
-    NSString *newPath = [NSString stringWithFormat:@"venmosdk://venmo.com%@", path];
-    return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-}
-
 
 #pragma mark - Private
 

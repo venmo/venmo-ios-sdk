@@ -3,9 +3,13 @@
 
 @implementation NSURL (VenmoSDK)
 
-// Ref: https://github.com/samsoffes/sstoolkit/blob/master/SSToolkit/NSURL+SSToolkitAdditions.m
 - (NSDictionary *)queryDictionary {
     return [NSDictionary dictionaryWithFormURLEncodedString:[self query]];
+}
+
++ (NSURL *)venmoAppURLWithPath:(NSString *)path {
+    NSString *newPath = [NSString stringWithFormat:@"venmosdk://venmo.com%@", path];
+    return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
 }
 
 @end
