@@ -15,6 +15,7 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
     __block NSString *clientId;
     __block NSString *clientSecret;
     __block NSString *responseString;
+    __block NSString *bodyString;
 
     beforeAll(^{
         [[LSNocilla sharedInstance] start];
@@ -25,6 +26,7 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
         newRefreshToken = @"bazbuzz342";
         clientId = @"12345678";
         clientSecret = @"clientsecret";
+        bodyString = @"{\"refresh_token\":\"currenttoken\",\"client_secret\":\"clientsecret\",\"client_id\":\"12345678\"}";
 
         // stubbed response
         NSDictionary *responseDict = @{@"access_token" : newAccessToken,
@@ -44,9 +46,9 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
         [[LSNocilla sharedInstance] clearStubs];
     });   
 
-    it(@"should refresh the access token when the request succeeds", ^AsyncBlock{
+    it(@"should save a new access token when the request succeeds", ^AsyncBlock{
         stubRequest(@"POST", path).
-        withBody(@"{\"refresh_token\":\"currenttoken\",\"client_secret\":\"clientsecret\",\"client_id\":\"12345678\"}").
+        withBody(bodyString).
         andReturn(200).
         withHeader(@"Content-Type", @"application/json").
         withBody(responseString);
@@ -59,6 +61,27 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
                 completionHandler:^(BOOL success, NSError *error) {
                     expect(success).to.equal(YES);
                     expect(error).to.beNil();
+
+                    // TODO: check that the cached session has the new access token
+                    done();
+        }];
+    });
+
+    it(@"should return an error when the request fails", ^AsyncBlock{
+        stubRequest(@"POST", path).
+        withBody(bodyString).
+        andReturn(400);
+
+        VENSession *session = [[VENSession alloc] init];
+        VENUser *user = [[VENUser alloc] init];
+        [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
+        [session refreshWithAppId:clientId
+                           secret:clientSecret
+                completionHandler:^(BOOL success, NSError *error) {
+                    expect(success).to.equal(NO);
+
+                    // TODO: check that the error is the right type
+                    expect(error).toNot.beNil();
                     done();
         }];
     });
