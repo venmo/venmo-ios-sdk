@@ -25,21 +25,16 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 /**
- * The user who is currently authenticated.
+ * The current session.
  */
-@property (strong, nonatomic) VENUser *currentUser;
-
-/**
- * The current session. It contains access token, refresh token, and expiration information.
- */
-@property (strong, nonatomic) VENSession *currentSession;
+@property (strong, nonatomic) VENSession *session;
 
 @property (copy, nonatomic, readonly) VENTransactionCompletionHandler currentTransactionCompletionHandler;
 @property (copy, nonatomic, readonly) VENOAuthCompletionHandler currentOAuthCompletionHandler;
 
 /**
- * Returns the current shared Venmo instance.
- * @return The current Venmo instance
+ * Returns the shared Venmo instance.
+ * @return The shared Venmo instance
  */
 + (instancetype)sharedInstance;
 

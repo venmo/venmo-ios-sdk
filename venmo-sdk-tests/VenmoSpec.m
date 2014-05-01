@@ -61,10 +61,10 @@ describe(@"startWithAppId:secret:name: and sharedInstance", ^{
 
         // we should get the formerly saved session
         expect(cachedSessionFound).to.equal(YES);
-        expect(sharedVenmo.currentSession.accessToken).to.equal(accessToken);
-        expect(sharedVenmo.currentSession.refreshToken).to.equal(refreshToken);
-        expect(sharedVenmo.currentSession.user).to.equal(user);
-        expect(sharedVenmo.currentSession.state).to.equal(VENSessionStateOpen);
+        expect(sharedVenmo.session.accessToken).to.equal(accessToken);
+        expect(sharedVenmo.session.refreshToken).to.equal(refreshToken);
+        expect(sharedVenmo.session.user).to.equal(user);
+        expect(sharedVenmo.session.state).to.equal(VENSessionStateOpen);
     });
 
 });
@@ -150,14 +150,14 @@ describe(@"logout", ^{
 
         [Venmo startWithAppId:appId secret:@"bar" name:@"Foo Bar App"];
         Venmo *venmo = [Venmo sharedInstance];
-        expect(venmo.currentSession.state).to.equal(VENSessionStateOpen);
+        expect(venmo.session.state).to.equal(VENSessionStateOpen);
         [venmo logout];
 
-        expect(venmo.currentSession.state).to.equal(VENSessionStateClosed);
-        expect(venmo.currentSession.accessToken).to.beNil();
-        expect(venmo.currentSession.refreshToken).to.beNil();
-        expect(venmo.currentSession.refreshToken).to.beNil();
-        expect(venmo.currentSession.user).to.beNil();
+        expect(venmo.session.state).to.equal(VENSessionStateClosed);
+        expect(venmo.session.accessToken).to.beNil();
+        expect(venmo.session.refreshToken).to.beNil();
+        expect(venmo.session.refreshToken).to.beNil();
+        expect(venmo.session.user).to.beNil();
 
         [mockVENSession verify];
     });
@@ -187,7 +187,7 @@ describe(@"initWithAppId:secret:name:", ^{
     });
 
     it(@"should correctly set the current session to a closed session", ^{
-        expect(venmo.currentSession.state).to.equal(VENSessionStateClosed);
+        expect(venmo.session.state).to.equal(VENSessionStateClosed);
     });
 });
 

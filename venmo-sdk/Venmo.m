@@ -51,7 +51,7 @@ static Venmo *sharedInstance = nil;
     NSDate *now = [NSDate date];
     if (cachedSession &&
         [[cachedSession.expirationDate earlierDate:now] isEqualToDate:now]) {
-        sharedInstance.currentSession = cachedSession;
+        sharedInstance.session = cachedSession;
         return YES;
     }
     return NO;
@@ -116,7 +116,7 @@ static Venmo *sharedInstance = nil;
 
 
 - (void)logout {
-    [self.currentSession close];
+    [self.session close];
     [VENSession deleteSessionWithAppId:self.appId];
 }
 
@@ -153,7 +153,7 @@ static Venmo *sharedInstance = nil;
         self.appId = appId;
         self.appSecret = appSecret;
         self.appName = appName ?: [[NSBundle mainBundle] name];
-        self.currentSession = [[VENSession alloc] init];
+        self.session = [[VENSession alloc] init];
     }
     return self;
 }

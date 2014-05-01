@@ -49,7 +49,6 @@
 		B6F5046618E38C2600BDACF7 /* VENPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5045F18E38C2600BDACF7 /* VENPermission.m */; };
 		B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VENSession.m */; };
 		EB3499BA190AF8D400C74EAA /* VENTransaction+VenmoSDKSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpec.m */; };
-		EB8D9AEE190AAF78005051C4 /* Venmo_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */; };
 		EBC005BC1912E129009E12C0 /* VENUser+VenmoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = EBC005BA1912E129009E12C0 /* VENUser+VenmoSDK.h */; };
 		EBC005BD1912E129009E12C0 /* VENUser+VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC005BB1912E129009E12C0 /* VENUser+VenmoSDK.m */; };
 		EBDCA6DE1911859900FDD5ED /* NSURL+VenmoSDKSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDCA6DD1911859900FDD5ED /* NSURL+VenmoSDKSpec.m */; };
@@ -130,7 +129,6 @@
 		B6F5046118E38C2600BDACF7 /* VENSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENSession.m; sourceTree = "<group>"; };
 		C33235A92FC244DBAA105D7C /* libPods-venmo-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3499BB190AF91500C74EAA /* venmo-sdk-tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "venmo-sdk-tests-Prefix.pch"; path = "Supporting Files/venmo-sdk-tests-Prefix.pch"; sourceTree = "<group>"; };
-		EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venmo_Internal.h; path = "venmo-sdk/Venmo_Internal.h"; sourceTree = "<group>"; };
 		EBC005BA1912E129009E12C0 /* VENUser+VenmoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENUser+VenmoSDK.h"; sourceTree = "<group>"; };
 		EBC005BB1912E129009E12C0 /* VENUser+VenmoSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VENUser+VenmoSDK.m"; sourceTree = "<group>"; };
 		EBDCA6DD1911859900FDD5ED /* NSURL+VenmoSDKSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+VenmoSDKSpec.m"; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			children = (
 				2D5EF54717EF41B100DDD15A /* venmo-sdk */,
 				B6570AB0189711FD00351EDF /* Venmo.h */,
-				EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */,
 				B6570AB1189711FD00351EDF /* Venmo.m */,
 				2D5EF55B17EF41B100DDD15A /* venmo-sdk-tests */,
 				2D5EF54417EF41B100DDD15A /* Frameworks */,
@@ -322,7 +319,6 @@
 				B63E190618EB2C610006BD3E /* NSBundle+VenmoSDK.h in Headers */,
 				B62D59BC18973D71001E46A4 /* VENURLProtocol.h in Headers */,
 				B63E191218EB2C6E0006BD3E /* NSURL+VenmoSDK.h in Headers */,
-				EB8D9AEE190AAF78005051C4 /* Venmo_Internal.h in Headers */,
 				B63E190A18EB2C610006BD3E /* NSError+VenmoSDK.h in Headers */,
 				B6570B0E1897194200351EDF /* venmo-sdk-Prefix.pch in Headers */,
 				B63E190818EB2C610006BD3E /* NSDictionary+VenmoSDK.h in Headers */,

@@ -1,8 +1,14 @@
 #import "VENURLProtocol.h"
-#import "Venmo_Internal.h"
 #import "VENErrors.h"
 #import "NSError+VenmoSDK.h"
 #import "NSURL+VenmoSDK.h"
+#import "Venmo.h"
+
+@interface Venmo (VENURLProtocol)
+
+- (NSString *)baseURLPath;
+
+@end
 
 @implementation VENURLProtocol
 
@@ -63,19 +69,19 @@
         Venmo *client = [Venmo sharedInstance];
 
         // Set the current user
-        VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
+        VENUser *user = [[VENUser alloc] initWithDictionary:json[@"user"]];
 
         // Open the current session
         NSString *accessToken = json[@"access_token"];
         NSString *refreshToken = json[@"refresh_token"];
         NSUInteger expiresIn = [json[@"expires_in"] integerValue];
-        [client.currentSession openWithAccessToken:accessToken
+        [client.session openWithAccessToken:accessToken
                                       refreshToken:refreshToken
                                          expiresIn:expiresIn
-                                              user:currentUser];
+                                              user:user];
 
         // Save the session
-        [client.currentSession saveWithAppId:client.appId];
+        [client.session saveWithAppId:client.appId];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([Venmo sharedInstance].currentOAuthCompletionHandler) {
