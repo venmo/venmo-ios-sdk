@@ -39,9 +39,14 @@ typedef void (^VENRefreshTokenCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
- * Refreshes the session's token.
+ * Refreshes the session's access token.
+ * @param appId Your app ID
+ * @param appSecret Your app secret
+ * @param completionHandler The handler block to execute
  */
-- (void)refreshWithCompletionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
+- (void)refreshWithAppId:(NSString *)appId
+                  secret:(NSString *)appSecret
+       completionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
 
 
 /**

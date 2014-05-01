@@ -6,6 +6,12 @@
 NSString *const kVENKeychainServiceName = @"venmo-ios-sdk";
 NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 
+@interface Venmo ()
+
+- (NSString *)baseURLPath;
+
+@end
+
 @interface VENSession ()
 
 @property (strong, nonatomic, readwrite) NSString *accessToken;
@@ -44,25 +50,39 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 }
 
 
-- (void)refreshWithCompletionHandler:(VENRefreshTokenCompletionHandler)completionHandler {
-    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+- (void)refreshWithAppId:(NSString *)appId
+                  secret:(NSString *)appSecret
+       completionHandler:(VENRefreshTokenCompletionHandler)completionHandler {
+    // configure the url
+    Venmo *venmo = [Venmo sharedInstance];
+    NSString *baseURL = venmo ? [venmo baseURLPath] : @"http://api.venmo.com/v1";
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/access_token", baseURL]];
+
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+
+    // add parameters
+    NSDictionary *parameters = @{@"client_id": appId,
+                                 @"client_secret": appSecret,
+                                 @"refresh_token": self.refreshToken};
+    NSError *error;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
+    [request setHTTPBody:jsonData];
+
     [NSURLConnection sendAsynchronousRequest:request
-                                       queue:queue
+                                       queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                NSDictionary *json = nil;
                                NSError *error = nil;
                                if (!connectionError){
                                    json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                }
-                               dispatch_async(dispatch_get_main_queue(), ^{
-                                   if (json) {
-                                       completionHandler(YES, nil);
-                                   }
-                                   else {
-                                       completionHandler(NO, error);
-                                   }
-                               });
+                               if (json) {
+                                   completionHandler(YES, nil);
+                               }
+                               else {
+                                   completionHandler(NO, error);
+                               }
                            }];
 }
 
