@@ -60,13 +60,22 @@
         }
         NSError *jsonError;
         id json = [NSJSONSerialization JSONObjectWithData:responseData options:kNilOptions error:&jsonError];
-        VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
-        VENSession *currentSession = [[VENSession alloc] initWithAccessToken:json[@"access_token"]
-                                                                refreshToken:json[@"refresh_token"]
-                                                                   expiresIn:[json[@"expires_in"] integerValue]];
         Venmo *client = [Venmo sharedInstance];
+
+        // Set the current user
+        VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
         client.currentUser = currentUser;
-        client.currentSession = currentSession;
+
+        // Open the current session
+        NSString *accessToken = json[@"access_token"];
+        NSString *refreshToken = json[@"refresh_token"];
+        NSUInteger expiresIn = [json[@"expires_in"] integerValue];
+        [client.currentSession openWithAccessToken:accessToken
+                                      refreshToken:refreshToken
+                                         expiresIn:expiresIn];
+
+        // Save the session
+        [client.currentSession saveWithAppId:client.appId];
 
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([Venmo sharedInstance].currentOAuthCompletionHandler) {

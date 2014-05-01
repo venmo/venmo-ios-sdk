@@ -19,15 +19,21 @@ typedef NS_ENUM(NSUInteger, VENSessionState) {
 @property (assign, nonatomic, readonly) VENSessionState state;
 
 /**
- * Creates a VENSession instance with access token, refresh token, and time until expiration.
+ * Opens the session with an access token, refresh token, and time until expiration.
  * @param accessToken Access token
  * @param refreshToken Refresh token
  * @param expiresIn Time (seconds) til session expiration
  * @return The initialized session
  */
-- (instancetype)initWithAccessToken:(NSString *)accessToken
-                       refreshToken:(NSString *)refreshToken
-                          expiresIn:(NSUInteger)expiresIn;
+- (void)openWithAccessToken:(NSString *)accessToken
+               refreshToken:(NSString *)refreshToken
+                  expiresIn:(NSUInteger)expiresIn;
+
+
+/**
+ * Closes the session.
+ */
+- (void)close;
 
 
 /**

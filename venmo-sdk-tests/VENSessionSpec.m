@@ -1,6 +1,7 @@
 #import "VENSession.h"
 
 #import <SSKeychain/SSKeychainQuery.h>
+#import <VENCore/VENCore.h>
 
 extern NSString *const kVENKeychainServiceName;
 extern NSString *const kVENKeychainAccountNamePrefix;
@@ -13,18 +14,34 @@ extern NSString *const kVENKeychainAccountNamePrefix;
 
 SpecBegin(VENSession)
 
-describe(@"Initialization", ^{
+describe(@"init", ^{
+    it(@"should initialize in a closed state", ^{
+        VENSession *session = [[VENSession alloc] init];
+        expect(session.state).to.equal(VENSessionStateClosed);
+    });
+});
 
-    it(@"should initialize with the correct access token and refresh token", ^{
+describe(@"openWithAccessToken:refreshToken:expiresIn:", ^{
+
+    it(@"should set the session state to open", ^{
+        VENSession *session = [[VENSession alloc] init];
+        expect(session.state).to.equal(VENSessionStateClosed);
+
+        [session openWithAccessToken:@"foo" refreshToken:@"bar" expiresIn:123];
+        expect(session.state).to.equal(VENSessionStateOpen);
+    });
+
+    it(@"should set the correct access token and refresh token", ^{
         NSString *accessToken = @"octocat1234foobar";
         NSString *refreshToken = @"new1234octocatplz";
-        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:refreshToken expiresIn:1234];
+        VENSession *session = [[VENSession alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:123];
 
         expect(session.accessToken).to.equal(accessToken);
         expect(session.refreshToken).to.equal(refreshToken);
     });
 
-    it(@"should initialize with the correct expiration date", ^{
+    it(@"should set the correct expiration date", ^{
         NSUInteger expiresIn = 1234;
 
         // Stub dateWithTimeIntervalSinceNow
@@ -32,11 +49,43 @@ describe(@"Initialization", ^{
         id mockNSDate = [OCMockObject mockForClass:[NSDate class]];
         [[[mockNSDate stub] andReturn:expectedDate] dateWithTimeIntervalSinceNow:expiresIn];
 
-        VENSession *session = [[VENSession alloc] initWithAccessToken:@"1234" refreshToken:@"3456" expiresIn:expiresIn];
+        VENSession *session = [[VENSession alloc] init];
+        [session openWithAccessToken:@"1234" refreshToken:@"3456" expiresIn:expiresIn];
 
         expect(session.expirationDate).to.equal(expectedDate);
 
         [mockNSDate stopMocking];
+    });
+
+    it(@"should set the default VENCore instance", ^{
+        VENSession *session = [[VENSession alloc] init];
+        NSString *accessToken = @"foobarbaz";
+        [session openWithAccessToken:accessToken refreshToken:@"3456" expiresIn:123];
+        VENCore *core = [VENCore defaultCore];
+        expect(core.accessToken).to.equal(accessToken);
+    });
+});
+
+describe(@"close", ^{
+
+    __block VENSession *session;
+
+    beforeEach(^{
+        // open and close a session
+        session = [[VENSession alloc] init];
+        [session openWithAccessToken:@"foo" refreshToken:@"bar" expiresIn:123];
+        expect(session.state).to.equal(VENSessionStateOpen);
+        [session close];
+    });
+
+    it(@"should delete session state", ^{
+        expect(session.accessToken).to.beNil();
+        expect(session.refreshToken).to.beNil();
+        expect(session.expirationDate).to.beNil();
+    });
+
+    it(@"should set the session to closed", ^{
+        expect(session.state).to.equal(VENSessionStateClosed);
     });
 });
 
@@ -67,7 +116,8 @@ describe(@"Saving, fetching, and deleting a VENSession", ^{
         id mockNSDate = [OCMockObject mockForClass:[NSDate class]];
         [[[mockNSDate stub] andReturn:expectedDate] dateWithTimeIntervalSinceNow:expiresIn];
 
-        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        VENSession *session = [[VENSession alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
 
         // save the session
         BOOL saved = [session saveWithAppId:@"123"];
