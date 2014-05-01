@@ -50,7 +50,7 @@ static Venmo *sharedInstance = nil;
     // If we find a cached session that hasn't expired, set the current session.
     NSDate *now = [NSDate date];
     if (cachedSession &&
-        [[cachedSession.expirationDate laterDate:now] isEqualToDate:now]) {
+        [[cachedSession.expirationDate earlierDate:now] isEqualToDate:now]) {
         sharedInstance.currentSession = cachedSession;
         return YES;
     }

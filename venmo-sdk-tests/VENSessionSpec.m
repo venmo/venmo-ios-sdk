@@ -55,8 +55,6 @@ describe(@"keychainQueryWithAppId", ^{
 
 });
 
-
-// This is more of an integration test.
 describe(@"Saving, fetching, and deleting a VENSession", ^{
 
     it(@"should successfully save, fetch, and delete a session", ^{
