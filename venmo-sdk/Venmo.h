@@ -29,8 +29,8 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  */
 @property (strong, nonatomic) VENSession *session;
 
-@property (copy, nonatomic, readonly) VENTransactionCompletionHandler currentTransactionCompletionHandler;
-@property (copy, nonatomic, readonly) VENOAuthCompletionHandler currentOAuthCompletionHandler;
+@property (copy, nonatomic, readonly) VENTransactionCompletionHandler transactionCompletionHandler;
+@property (copy, nonatomic, readonly) VENOAuthCompletionHandler OAuthCompletionHandler;
 
 /**
  * Returns the shared Venmo instance.

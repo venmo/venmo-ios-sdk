@@ -44,6 +44,29 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 }
 
 
+- (void)refreshWithCompletionHandler:(VENRefreshTokenCompletionHandler)completionHandler {
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:queue
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               NSDictionary *json = nil;
+                               NSError *error = nil;
+                               if (!connectionError){
+                                   json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                               }
+                               dispatch_async(dispatch_get_main_queue(), ^{
+                                   if (json) {
+                                       completionHandler(YES, nil);
+                                   }
+                                   else {
+                                       completionHandler(NO, error);
+                                   }
+                               });
+                           }];
+}
+
+
 - (void)close {
     self.accessToken = nil;
     self.refreshToken = nil;

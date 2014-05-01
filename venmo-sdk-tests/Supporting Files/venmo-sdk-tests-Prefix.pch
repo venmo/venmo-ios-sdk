@@ -8,3 +8,5 @@
 #import <Expecta/Expecta.h>
 
 #import <OCMock/OCMock.h>
+
+#import <Nocilla/Nocilla.h>

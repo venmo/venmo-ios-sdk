@@ -25,8 +25,8 @@ static Venmo *sharedInstance = nil;
 @property (copy, nonatomic, readwrite) NSString *appSecret;
 @property (copy, nonatomic, readwrite) NSString *appName;
 
-@property (copy, nonatomic, readwrite) VENTransactionCompletionHandler currentTransactionCompletionHandler;
-@property (copy, nonatomic, readwrite) VENOAuthCompletionHandler currentOAuthCompletionHandler;
+@property (copy, nonatomic, readwrite) VENTransactionCompletionHandler transactionCompletionHandler;
+@property (copy, nonatomic, readwrite) VENOAuthCompletionHandler OAuthCompletionHandler;
 
 @property (nonatomic) BOOL internalDevelopment;
 
@@ -80,7 +80,7 @@ static Venmo *sharedInstance = nil;
                                     note:(NSString *)note
                                recipient:(NSString *)recipientHandle
                        completionHandler:(VENTransactionCompletionHandler)completionHandler {
-    self.currentTransactionCompletionHandler = completionHandler;
+    self.transactionCompletionHandler = completionHandler;
     NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
     NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
@@ -101,7 +101,7 @@ static Venmo *sharedInstance = nil;
 - (void)requestPermissions:(NSArray *)permissions
      withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
-    self.currentOAuthCompletionHandler = completionHandler;
+    self.OAuthCompletionHandler = completionHandler;
 
     NSString *baseURL;
     if ([self venmoAppInstalled]) {

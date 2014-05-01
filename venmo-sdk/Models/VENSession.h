@@ -1,4 +1,6 @@
 @import Foundation;
+
+#import "Venmo.h"
 #import "VENUser+VenmoSDK.h"
 
 typedef NS_ENUM(NSUInteger, VENSessionState) {
@@ -11,6 +13,8 @@ typedef NS_ENUM(NSUInteger, VENSessionState) {
     /// Indicates that the session is being refreshed.
     VENSessionStateRefreshing
 };
+
+typedef void (^VENRefreshTokenCompletionHandler)(BOOL success, NSError *error);
 
 @interface VENSession : NSObject <NSCoding>
 
@@ -32,6 +36,12 @@ typedef NS_ENUM(NSUInteger, VENSessionState) {
                refreshToken:(NSString *)refreshToken
                   expiresIn:(NSUInteger)expiresIn
                        user:(VENUser *)user;
+
+
+/**
+ * Refreshes the session's token.
+ */
+- (void)refreshWithCompletionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
 
 
 /**

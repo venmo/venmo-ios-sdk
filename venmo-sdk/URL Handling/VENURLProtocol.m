@@ -41,8 +41,8 @@
                                                       code:VENTransactionFailedError
                                                description:oAuthErrorMessage
                                         recoverySuggestion:@"Please try again."];
-            if ([Venmo sharedInstance].currentOAuthCompletionHandler) {
-                [Venmo sharedInstance].currentOAuthCompletionHandler(NO, oAuthError);
+            if ([Venmo sharedInstance].OAuthCompletionHandler) {
+                [Venmo sharedInstance].OAuthCompletionHandler(NO, oAuthError);
             }
 
             return;
@@ -84,9 +84,9 @@
         [client.session saveWithAppId:client.appId];
 
         dispatch_async(dispatch_get_main_queue(), ^{
-            if ([Venmo sharedInstance].currentOAuthCompletionHandler) {
+            if ([Venmo sharedInstance].OAuthCompletionHandler) {
                 BOOL success = (error == nil);
-                [Venmo sharedInstance].currentOAuthCompletionHandler(success, error);
+                [Venmo sharedInstance].OAuthCompletionHandler(success, error);
             }
         });
     }
@@ -106,8 +106,8 @@
                                recoverySuggestion:@"Please contact us."];
             }
 
-            if ([Venmo sharedInstance].currentTransactionCompletionHandler) {
-                [Venmo sharedInstance].currentTransactionCompletionHandler(transaction, transaction.status, error);
+            if ([Venmo sharedInstance].transactionCompletionHandler) {
+                [Venmo sharedInstance].transactionCompletionHandler(transaction, transaction.status, error);
             }
         });
     }

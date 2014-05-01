@@ -9,4 +9,5 @@ target 'venmo-sdk-tests', :exclusive => true do
   pod 'Specta'
   pod 'Expecta'
   pod 'OCMock'
+  pod 'Nocilla'
 end
