@@ -1,6 +1,7 @@
 #import "VENSession.h"
 
 #import <SSKeychain/SSKeychainQuery.h>
+#import <VENCore/VENCore.h>
 
 NSString *const kVENKeychainServiceName = @"venmo-ios-sdk";
 NSString *const kVENKeychainAccountNamePrefix = @"venmo";
@@ -24,17 +25,27 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     return self;
 }
 
-- (id)initWithAccessToken:(NSString *)accessToken
-             refreshToken:(NSString *)refreshToken
-                expiresIn:(NSUInteger)expiresIn {
-    self = [super init];
-    if (self) {
-        self.accessToken = accessToken;
-        self.refreshToken = refreshToken;
-        self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
-        self.state = VENSessionStateOpen;
-    }
-    return self;
+
+- (void)openWithAccessToken:(NSString *)accessToken
+               refreshToken:(NSString *)refreshToken
+                  expiresIn:(NSUInteger)expiresIn {
+    self.accessToken = accessToken;
+    self.refreshToken = refreshToken;
+    self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
+    self.state = VENSessionStateOpen;
+
+    // Set default core to an instance with this access token.
+    VENCore *core = [[VENCore alloc] init];
+    [core setAccessToken:accessToken];
+    [VENCore setDefaultCore:core];
+}
+
+
+- (void)close {
+    self.accessToken = nil;
+    self.refreshToken = nil;
+    self.expirationDate = nil;
+    self.state = VENSessionStateClosed;
 }
 
 
@@ -81,6 +92,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
         self.accessToken = [decoder decodeObjectForKey:@"accessToken"];
         self.refreshToken = [decoder decodeObjectForKey:@"refreshToken"];
         self.expirationDate = [decoder decodeObjectForKey:@"expirationDate"];
+        self.state = [decoder decodeIntegerForKey:@"state"];
     }
     return self;
 }
@@ -90,6 +102,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     [coder encodeObject:self.accessToken forKey:@"accessToken"];
     [coder encodeObject:self.refreshToken forKey:@"refreshToken"];
     [coder encodeObject:self.expirationDate forKey:@"expirationDate"];
+    [coder encodeInteger:self.state forKey:@"state"];
 }
 
 @end

@@ -56,6 +56,14 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 - (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)completionHandler;
 
 /**
+ * Invalidates the current user session.
+ *
+ * Not that this method doesn't unauthorize the app.
+ * To unauthorize an app, go to "Password & Authorizations" at https://venmo.com/account/settings/account
+ */
+- (void)logout;
+
+/**
  * Starts the Venmo SDK.
  * @param appId Your app ID
  * @param appSecret Your app secret

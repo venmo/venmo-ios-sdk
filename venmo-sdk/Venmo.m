@@ -57,9 +57,11 @@ static Venmo *sharedInstance = nil;
     return NO;
 }
 
+
 + (instancetype)sharedInstance {
     return sharedInstance;
 }
+
 
 - (BOOL)handleOpenURL:(NSURL *)url {
     if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
@@ -70,21 +72,6 @@ static Venmo *sharedInstance = nil;
     return NO;
 }
 
-
-#pragma mark - Custom setters
-
-/** 
- * This setter assumes the given session is valid and has two side effects:
- * 1. It saves (or updates) the session in the keychain
- * 2. It initializes a VENCore instance with the session's access token and sets the defaultCore
- */
-- (void)setCurrentSession:(VENSession *)currentSession {
-    _currentSession = currentSession;
-    [_currentSession saveWithAppId:self.appId];
-    VENCore *core = [[VENCore alloc] init];
-    [core setAccessToken:_currentSession.accessToken];
-    [VENCore setDefaultCore:core];
-}
 
 #pragma mark - Sending a Transaction
 
@@ -109,7 +96,7 @@ static Venmo *sharedInstance = nil;
     }
 }
 
-#pragma mark - OAuth
+#pragma mark - Sessions
 
 - (void)requestPermissions:(NSArray *)permissions
      withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
@@ -125,6 +112,12 @@ static Venmo *sharedInstance = nil;
     NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
 
     [[UIApplication sharedApplication] openURL:authURL];
+}
+
+
+- (void)logout {
+    [self.currentSession close];
+    [VENSession deleteSessionWithAppId:self.appId];
 }
 
 
@@ -160,9 +153,7 @@ static Venmo *sharedInstance = nil;
         self.appId = appId;
         self.appSecret = appSecret;
         self.appName = appName ?: [[NSBundle mainBundle] name];
-        // Don't use the setter because we don't want its side effects.
-        // Instead, set the current session to a new (closed) session.
-        _currentSession = [[VENSession alloc] init];
+        self.currentSession = [[VENSession alloc] init];
     }
     return self;
 }

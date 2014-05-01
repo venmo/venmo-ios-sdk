@@ -23,22 +23,29 @@ SpecBegin(Venmo)
 
 describe(@"startWithAppId:secret:name: and sharedInstance", ^{
 
+    __block NSString *appId = @"foobarbaz";
+
+    afterAll(^{
+        [VENSession deleteSessionWithAppId:appId];
+    });
+
     it(@"should create a singleton instance", ^{
-        [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
+        [Venmo startWithAppId:appId secret:@"bar" name:@"Foo Bar App"];
         Venmo *sharedVenmo = [Venmo sharedInstance];
         expect(sharedVenmo).toNot.beNil();
 
-        [Venmo startWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
+        [Venmo startWithAppId:appId secret:@"bar" name:@"Foo Bar App"];
         expect([Venmo sharedInstance]).to.equal(sharedVenmo);
     });
 
     it(@"should create an instance with a cached session", ^{
         NSString *accessToken = @"octocat1234foobar";
         NSString *refreshToken = @"new1234octocatplz";
-        NSString *appId = @"12345678";
         NSUInteger expiresIn = 1234;
 
-        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        VENSession *session = [[VENSession alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        expect(session.state).to.equal(VENSessionStateOpen);
 
         // save the session
         BOOL saved = [session saveWithAppId:appId];
@@ -51,6 +58,7 @@ describe(@"startWithAppId:secret:name: and sharedInstance", ^{
         expect(cachedSessionFound).to.equal(YES);
         expect(sharedVenmo.currentSession.accessToken).to.equal(accessToken);
         expect(sharedVenmo.currentSession.refreshToken).to.equal(refreshToken);
+        expect(sharedVenmo.currentSession.state).to.equal(VENSessionStateOpen);
     });
 
 });
@@ -80,6 +88,9 @@ describe(@"requestPermissions:withCompletionHandler", ^{
 
     afterAll(^{
         [mockApplication stopMocking];
+        [mockSharedApplication stopMocking];
+        [mockVenmo stopMocking];
+        [VENSession deleteSessionWithAppId:appId];
     });
 
     afterEach(^{
@@ -109,18 +120,38 @@ describe(@"requestPermissions:withCompletionHandler", ^{
 
 });
 
-describe(@"setCurrentSession:", ^{
-    __block Venmo *venmo;
-    __block NSString *accessToken;
-    
-    it(@"should set [VENCore defaultCore] to an instance with the correct access token", ^{
-        accessToken = @"12345678";
-        venmo = [[Venmo alloc] initWithAppId:@"123" secret:@"456" name:@"blah"];
-        VENSession *session = [[VENSession alloc] initWithAccessToken:accessToken refreshToken:@"" expiresIn:123];
-        venmo.currentSession = session;
-        VENCore *defaultCore = [VENCore defaultCore];
-        expect(defaultCore.accessToken).to.equal(accessToken);
+
+describe(@"logout", ^{
+
+    __block NSString *appId;
+
+    it(@"should close the current session and delete the cached session", ^{
+        NSString *accessToken = @"octocat1234foobar";
+        NSString *refreshToken = @"new1234octocatplz";
+        appId = @"12345678";
+        NSUInteger expiresIn = 1234;
+
+        id mockVENSession = [OCMockObject niceMockForClass:[VENSession class]];
+        [[mockVENSession expect] deleteSessionWithAppId:OCMOCK_ANY];
+
+        VENSession *session = [[VENSession alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+
+        // save the session
+        BOOL saved = [session saveWithAppId:appId];
+        expect(saved).to.equal(YES);
+
+        [Venmo startWithAppId:appId secret:@"bar" name:@"Foo Bar App"];
+        Venmo *venmo = [Venmo sharedInstance];
+        expect(venmo.currentSession.state).to.equal(VENSessionStateOpen);
+        [venmo logout];
+
+        expect(venmo.currentSession.state).to.equal(VENSessionStateClosed);
+        expect(venmo.currentSession.accessToken).to.beNil();
+
+        [mockVENSession verify];
     });
+
 });
 
 #pragma mark - Internal methods
