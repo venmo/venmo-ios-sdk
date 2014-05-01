@@ -2,6 +2,7 @@
 
 #import <SSKeychain/SSKeychainQuery.h>
 #import <VENCore/VENCore.h>
+#import <VENCore/VENUserPayloadKeys.h>
 
 extern NSString *const kVENKeychainServiceName;
 extern NSString *const kVENKeychainAccountNamePrefix;
@@ -21,24 +22,27 @@ describe(@"init", ^{
     });
 });
 
-describe(@"openWithAccessToken:refreshToken:expiresIn:", ^{
+describe(@"openWithAccessToken:refreshToken:expiresIn:user:", ^{
 
     it(@"should set the session state to open", ^{
         VENSession *session = [[VENSession alloc] init];
         expect(session.state).to.equal(VENSessionStateClosed);
+        VENUser *user = [[VENUser alloc] init];
 
-        [session openWithAccessToken:@"foo" refreshToken:@"bar" expiresIn:123];
+        [session openWithAccessToken:@"foo" refreshToken:@"bar" expiresIn:123 user:user];
         expect(session.state).to.equal(VENSessionStateOpen);
     });
 
-    it(@"should set the correct access token and refresh token", ^{
+    it(@"should set the correct access token, refresh token, and user", ^{
         NSString *accessToken = @"octocat1234foobar";
         NSString *refreshToken = @"new1234octocatplz";
         VENSession *session = [[VENSession alloc] init];
-        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:123];
+        VENUser *user = [[VENUser alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:123 user:user];
 
         expect(session.accessToken).to.equal(accessToken);
         expect(session.refreshToken).to.equal(refreshToken);
+        expect(session.user).to.equal(user);
     });
 
     it(@"should set the correct expiration date", ^{
@@ -50,7 +54,8 @@ describe(@"openWithAccessToken:refreshToken:expiresIn:", ^{
         [[[mockNSDate stub] andReturn:expectedDate] dateWithTimeIntervalSinceNow:expiresIn];
 
         VENSession *session = [[VENSession alloc] init];
-        [session openWithAccessToken:@"1234" refreshToken:@"3456" expiresIn:expiresIn];
+        VENUser *user = [[VENUser alloc] init];
+        [session openWithAccessToken:@"1234" refreshToken:@"3456" expiresIn:expiresIn user:user];
 
         expect(session.expirationDate).to.equal(expectedDate);
 
@@ -60,7 +65,8 @@ describe(@"openWithAccessToken:refreshToken:expiresIn:", ^{
     it(@"should set the default VENCore instance", ^{
         VENSession *session = [[VENSession alloc] init];
         NSString *accessToken = @"foobarbaz";
-        [session openWithAccessToken:accessToken refreshToken:@"3456" expiresIn:123];
+        VENUser *user = [[VENUser alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:@"3456" expiresIn:123 user:user];
         VENCore *core = [VENCore defaultCore];
         expect(core.accessToken).to.equal(accessToken);
     });
@@ -73,7 +79,8 @@ describe(@"close", ^{
     beforeEach(^{
         // open and close a session
         session = [[VENSession alloc] init];
-        [session openWithAccessToken:@"foo" refreshToken:@"bar" expiresIn:123];
+        VENUser *user = [[VENUser alloc] init];
+        [session openWithAccessToken:@"foo" refreshToken:@"bar" expiresIn:123 user:user];
         expect(session.state).to.equal(VENSessionStateOpen);
         [session close];
     });
@@ -82,6 +89,7 @@ describe(@"close", ^{
         expect(session.accessToken).to.beNil();
         expect(session.refreshToken).to.beNil();
         expect(session.expirationDate).to.beNil();
+        expect(session.user).to.beNil();
     });
 
     it(@"should set the session to closed", ^{
@@ -117,7 +125,19 @@ describe(@"Saving, fetching, and deleting a VENSession", ^{
         [[[mockNSDate stub] andReturn:expectedDate] dateWithTimeIntervalSinceNow:expiresIn];
 
         VENSession *session = [[VENSession alloc] init];
-        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        NSDictionary *userDictionary = @{VENUserKeyUsername: @"benguo123",
+                                         VENUserKeyFirstName: @"Ben",
+                                         VENUserKeyLastName: @"Guo",
+                                         VENUserKeyDisplayName: @"Ben Guo",
+                                         VENUserKeyAbout: @"continuous disintegration",
+                                         VENUserKeyPhone: @"4105555555",
+                                         VENUserKeyExternalId: @"12345678",
+                                         VENUserKeyDateJoined: [NSDate date],
+                                         VENUserKeyEmail: @"test@example.com",
+                                         VENUserKeyProfileImageUrl: @"http://placekitten.com/300/300"};
+
+        VENUser *user = [[VENUser alloc] initWithDictionary:userDictionary];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn user:user];
 
         // save the session
         BOOL saved = [session saveWithAppId:@"123"];
@@ -128,6 +148,7 @@ describe(@"Saving, fetching, and deleting a VENSession", ^{
         expect(cachedSession.accessToken).to.equal(accessToken);
         expect(cachedSession.refreshToken).to.equal(refreshToken);
         expect(cachedSession.expirationDate).to.equal(expectedDate);
+        expect(cachedSession.user).to.equal(user);
 
         // delete the session
         BOOL deleted = [VENSession deleteSessionWithAppId:@"123"];

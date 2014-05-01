@@ -1,5 +1,5 @@
 #import "VENUser.h"
 
-@interface VENUser (VenmoSDK)
+@interface VENUser (VenmoSDK) <NSCoding>
 
 @end

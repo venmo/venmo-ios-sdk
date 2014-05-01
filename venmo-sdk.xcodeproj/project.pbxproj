@@ -50,6 +50,8 @@
 		B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VENSession.m */; };
 		EB3499BA190AF8D400C74EAA /* VENTransaction+VenmoSDKSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpec.m */; };
 		EB8D9AEE190AAF78005051C4 /* Venmo_Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */; };
+		EBC005BC1912E129009E12C0 /* VENUser+VenmoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = EBC005BA1912E129009E12C0 /* VENUser+VenmoSDK.h */; };
+		EBC005BD1912E129009E12C0 /* VENUser+VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = EBC005BB1912E129009E12C0 /* VENUser+VenmoSDK.m */; };
 		EBDCA6DE1911859900FDD5ED /* NSURL+VenmoSDKSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = EBDCA6DD1911859900FDD5ED /* NSURL+VenmoSDKSpec.m */; };
 		EBEAB6A6190ACA4700BA6322 /* VENTransaction+VenmoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = EBEAB6A4190ACA4700BA6322 /* VENTransaction+VenmoSDK.h */; };
 		EBEAB6A7190ACA4700BA6322 /* VENTransaction+VenmoSDK.m in Sources */ = {isa = PBXBuildFile; fileRef = EBEAB6A5190ACA4700BA6322 /* VENTransaction+VenmoSDK.m */; };
@@ -129,6 +131,8 @@
 		C33235A92FC244DBAA105D7C /* libPods-venmo-sdk-tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB3499BB190AF91500C74EAA /* venmo-sdk-tests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "venmo-sdk-tests-Prefix.pch"; path = "Supporting Files/venmo-sdk-tests-Prefix.pch"; sourceTree = "<group>"; };
 		EB8D9AED190AAF78005051C4 /* Venmo_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venmo_Internal.h; path = "venmo-sdk/Venmo_Internal.h"; sourceTree = "<group>"; };
+		EBC005BA1912E129009E12C0 /* VENUser+VenmoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENUser+VenmoSDK.h"; sourceTree = "<group>"; };
+		EBC005BB1912E129009E12C0 /* VENUser+VenmoSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VENUser+VenmoSDK.m"; sourceTree = "<group>"; };
 		EBDCA6DD1911859900FDD5ED /* NSURL+VenmoSDKSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+VenmoSDKSpec.m"; sourceTree = "<group>"; };
 		EBEAB6A4190ACA4700BA6322 /* VENTransaction+VenmoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VENTransaction+VenmoSDK.h"; sourceTree = "<group>"; };
 		EBEAB6A5190ACA4700BA6322 /* VENTransaction+VenmoSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VENTransaction+VenmoSDK.m"; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				B657432D1897390200AFB89D /* UIDevice+IdentifierAddition.m */,
 				EBEAB6A4190ACA4700BA6322 /* VENTransaction+VenmoSDK.h */,
 				EBEAB6A5190ACA4700BA6322 /* VENTransaction+VenmoSDK.m */,
+				EBC005BA1912E129009E12C0 /* VENUser+VenmoSDK.h */,
+				EBC005BB1912E129009E12C0 /* VENUser+VenmoSDK.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -304,6 +310,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBC005BC1912E129009E12C0 /* VENUser+VenmoSDK.h in Headers */,
 				B6570AD11897181E00351EDF /* Venmo.h in Headers */,
 				B611893A18A188AE0041AF50 /* VENPermissionConstants.h in Headers */,
 				B657433A1897390200AFB89D /* UIDevice+IdentifierAddition.h in Headers */,
@@ -490,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B63E18F318EB2AB30006BD3E /* VENBase64.m in Sources */,
+				EBC005BD1912E129009E12C0 /* VENUser+VenmoSDK.m in Sources */,
 				B63E18FB18EB2B900006BD3E /* VENHMAC_SHA256.m in Sources */,
 				B62D59C118973F2C001E46A4 /* VENRequestDecoder.m in Sources */,
 				B63E190B18EB2C610006BD3E /* NSError+VenmoSDK.m in Sources */,

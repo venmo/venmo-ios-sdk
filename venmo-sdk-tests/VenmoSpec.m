@@ -1,4 +1,5 @@
 #import "Venmo.h"
+#import <VENCore/VENUserPayloadKeys.h>
 
 @interface Venmo (Private)
 
@@ -44,7 +45,11 @@ describe(@"startWithAppId:secret:name: and sharedInstance", ^{
         NSUInteger expiresIn = 1234;
 
         VENSession *session = [[VENSession alloc] init];
-        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        NSDictionary *userDictionary = @{VENUserKeyExternalId: @"12345678"};
+
+        VENUser *user = [[VENUser alloc] initWithDictionary:userDictionary];
+
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn user:user];
         expect(session.state).to.equal(VENSessionStateOpen);
 
         // save the session
@@ -58,6 +63,7 @@ describe(@"startWithAppId:secret:name: and sharedInstance", ^{
         expect(cachedSessionFound).to.equal(YES);
         expect(sharedVenmo.currentSession.accessToken).to.equal(accessToken);
         expect(sharedVenmo.currentSession.refreshToken).to.equal(refreshToken);
+        expect(sharedVenmo.currentSession.user).to.equal(user);
         expect(sharedVenmo.currentSession.state).to.equal(VENSessionStateOpen);
     });
 
@@ -81,7 +87,7 @@ describe(@"requestPermissions:withCompletionHandler", ^{
         // Create a partial mock for Venmo
         appId = @"foo";
         appSecret = @"bar";
-        appName = @"AppName";       
+        appName = @"AppName";
         Venmo *venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:appName];
         mockVenmo = [OCMockObject partialMockForObject:venmo];
     });
@@ -135,7 +141,8 @@ describe(@"logout", ^{
         [[mockVENSession expect] deleteSessionWithAppId:OCMOCK_ANY];
 
         VENSession *session = [[VENSession alloc] init];
-        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn];
+        VENUser *user = [[VENUser alloc] init];
+        [session openWithAccessToken:accessToken refreshToken:refreshToken expiresIn:expiresIn user:user];
 
         // save the session
         BOOL saved = [session saveWithAppId:appId];
@@ -148,6 +155,9 @@ describe(@"logout", ^{
 
         expect(venmo.currentSession.state).to.equal(VENSessionStateClosed);
         expect(venmo.currentSession.accessToken).to.beNil();
+        expect(venmo.currentSession.refreshToken).to.beNil();
+        expect(venmo.currentSession.refreshToken).to.beNil();
+        expect(venmo.currentSession.user).to.beNil();
 
         [mockVENSession verify];
     });
@@ -193,7 +203,7 @@ describe(@"baseURLPath", ^{
         expect([venmo baseURLPath]).to.equal(@"http://api.venmo.com/v1/");
         venmo.internalDevelopment = YES;
         expect([venmo baseURLPath]).to.equal(@"http://api.dev.venmo.com/v1/");
-    });   
+    });
 });
 
 describe(@"URLPathWithType:amount:note:recipient:", ^{
@@ -231,7 +241,7 @@ describe(@"URLPathWithType:amount:note:recipient:", ^{
         NSString *path = [mockVenmo URLPathWithType:VENTransactionTypeCharge amount:9999 note:@"testnote" recipient:@"cookie@venmo.com"];
         expect([path rangeOfString:@"txn=charge"].location).toNot.equal(NSNotFound);
     });
-
+    
 });
 
 SpecEnd

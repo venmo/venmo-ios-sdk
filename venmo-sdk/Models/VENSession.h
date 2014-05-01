@@ -1,4 +1,5 @@
 @import Foundation;
+#import "VENUser+VenmoSDK.h"
 
 typedef NS_ENUM(NSUInteger, VENSessionState) {
     /// Indicates that the session is closed.
@@ -16,18 +17,21 @@ typedef NS_ENUM(NSUInteger, VENSessionState) {
 @property (strong, nonatomic, readonly) NSString *accessToken;
 @property (strong, nonatomic, readonly) NSString *refreshToken;
 @property (strong, nonatomic, readonly) NSDate *expirationDate;
+@property (strong, nonatomic, readonly) VENUser *user;
 @property (assign, nonatomic, readonly) VENSessionState state;
 
 /**
- * Opens the session with an access token, refresh token, and time until expiration.
+ * Opens the session with an access token, refresh token, time until expiration, and a user.
  * @param accessToken Access token
  * @param refreshToken Refresh token
- * @param expiresIn Time (seconds) til session expiration
+ * @param expiresIn Time (seconds) until the token expires
+ * @param user The user associated with the token
  * @return The initialized session
  */
 - (void)openWithAccessToken:(NSString *)accessToken
                refreshToken:(NSString *)refreshToken
-                  expiresIn:(NSUInteger)expiresIn;
+                  expiresIn:(NSUInteger)expiresIn
+                       user:(VENUser *)user;
 
 
 /**

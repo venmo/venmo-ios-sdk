@@ -64,7 +64,6 @@
 
         // Set the current user
         VENUser *currentUser = [[VENUser alloc] initWithDictionary:json[@"user"]];
-        client.currentUser = currentUser;
 
         // Open the current session
         NSString *accessToken = json[@"access_token"];
@@ -72,7 +71,8 @@
         NSUInteger expiresIn = [json[@"expires_in"] integerValue];
         [client.currentSession openWithAccessToken:accessToken
                                       refreshToken:refreshToken
-                                         expiresIn:expiresIn];
+                                         expiresIn:expiresIn
+                                              user:currentUser];
 
         // Save the session
         [client.currentSession saveWithAppId:client.appId];

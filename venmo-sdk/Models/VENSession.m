@@ -11,6 +11,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 @property (strong, nonatomic, readwrite) NSString *accessToken;
 @property (strong, nonatomic, readwrite) NSString *refreshToken;
 @property (strong, nonatomic, readwrite) NSDate *expirationDate;
+@property (strong, nonatomic, readwrite) VENUser *user;
 @property (assign, nonatomic, readwrite) VENSessionState state;
 
 @end
@@ -28,11 +29,13 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 
 - (void)openWithAccessToken:(NSString *)accessToken
                refreshToken:(NSString *)refreshToken
-                  expiresIn:(NSUInteger)expiresIn {
+                  expiresIn:(NSUInteger)expiresIn
+                       user:(VENUser *)user {
     self.accessToken = accessToken;
     self.refreshToken = refreshToken;
     self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
     self.state = VENSessionStateOpen;
+    self.user = user;
 
     // Set default core to an instance with this access token.
     VENCore *core = [[VENCore alloc] init];
@@ -45,6 +48,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     self.accessToken = nil;
     self.refreshToken = nil;
     self.expirationDate = nil;
+    self.user = nil;
     self.state = VENSessionStateClosed;
 }
 
@@ -92,6 +96,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
         self.accessToken = [decoder decodeObjectForKey:@"accessToken"];
         self.refreshToken = [decoder decodeObjectForKey:@"refreshToken"];
         self.expirationDate = [decoder decodeObjectForKey:@"expirationDate"];
+        self.user = [decoder decodeObjectForKey:@"user"];
         self.state = [decoder decodeIntegerForKey:@"state"];
     }
     return self;
@@ -102,6 +107,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     [coder encodeObject:self.accessToken forKey:@"accessToken"];
     [coder encodeObject:self.refreshToken forKey:@"refreshToken"];
     [coder encodeObject:self.expirationDate forKey:@"expirationDate"];
+    [coder encodeObject:self.user forKey:@"user"];
     [coder encodeInteger:self.state forKey:@"state"];
 }
 
