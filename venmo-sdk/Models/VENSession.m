@@ -69,20 +69,50 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     NSData *jsonData = [NSJSONSerialization dataWithJSONObject:parameters options:0 error:&error];
     [request setHTTPBody:jsonData];
 
+    VENSessionState originalState = self.state;
+    self.state = VENSessionStateRefreshing;
+
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
                                NSDictionary *json = nil;
-                               NSError *error = nil;
-                               if (!connectionError){
-                                   json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
-                               }
-                               if (json) {
-                                   completionHandler(YES, nil);
-                               }
-                               else {
+                               NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+                               if (connectionError ||
+                                   (httpResponse && httpResponse.statusCode > 299)) {
+                                   NSError *error = [NSError errorWithDomain:VenmoSDKDomain
+                                                                        code:VENErrorCodeSDKHTTPError
+                                                                    userInfo:nil];
                                    completionHandler(NO, error);
+                                   self.state = originalState;
+                                   return;
                                }
+                               NSError *error = nil;
+                               json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
+                               if (error) {
+                                   NSError *error = [NSError errorWithDomain:VenmoSDKDomain
+                                                                        code:VENErrorCodeSDKSystemApi
+                                                                    userInfo:nil];                                  
+                                   completionHandler(NO, error);
+                                   self.state = originalState;
+                                   return;
+                               }
+                               NSString *accessToken = json[@"access_token"];
+                               NSString *refreshToken = json[@"refresh_token"];
+                               NSUInteger expiresIn = [json[@"expires_in"] integerValue];
+
+                               // Update and save
+                               self.accessToken = accessToken;
+                               self.refreshToken = refreshToken;
+                               self.expirationDate = [NSDate dateWithTimeIntervalSinceNow:expiresIn];
+                               self.state = VENSessionStateOpen;
+                               [self saveWithAppId:appId];
+
+                               // Set default core
+                               VENCore *core = [[VENCore alloc] init];
+                               [core setAccessToken:self.accessToken];
+                               [VENCore setDefaultCore:core];
+
+                               completionHandler(YES, nil);
                            }];
 }
 

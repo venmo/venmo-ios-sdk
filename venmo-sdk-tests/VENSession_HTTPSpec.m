@@ -46,7 +46,7 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
         [[LSNocilla sharedInstance] clearStubs];
     });   
 
-    it(@"should save a new access token when the request succeeds", ^AsyncBlock{
+    xit(@"should save a new access token when the request succeeds", ^AsyncBlock{
         stubRequest(@"POST", path).
         withBody(bodyString).
         andReturn(200).
@@ -61,6 +61,7 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
                 completionHandler:^(BOOL success, NSError *error) {
                     expect(success).to.equal(YES);
                     expect(error).to.beNil();
+                    expect(session.state).to.equal(VENSessionStateOpen);
 
                     // TODO: check that the cached session has the new access token
                     done();
@@ -79,9 +80,11 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
                            secret:clientSecret
                 completionHandler:^(BOOL success, NSError *error) {
                     expect(success).to.equal(NO);
+                     // TODO: check that the error is the right type
+                    expect(error).toNot.beNil();                   
+                    expect(session.state).to.equal(VENSessionStateOpen);
 
-                    // TODO: check that the error is the right type
-                    expect(error).toNot.beNil();
+
                     done();
         }];
     });

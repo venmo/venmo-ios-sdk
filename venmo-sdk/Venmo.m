@@ -19,6 +19,12 @@
 
 static Venmo *sharedInstance = nil;
 
+@interface VENSession ()
+
+@property (assign, nonatomic, readwrite) VENSessionState state;
+
+@end
+
 @interface Venmo ()
 
 @property (copy, nonatomic, readwrite) NSString *appId;
@@ -102,6 +108,7 @@ static Venmo *sharedInstance = nil;
      withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
     self.OAuthCompletionHandler = completionHandler;
+    self.session.state = VENSessionStateOpening;
 
     NSString *baseURL;
     if ([self venmoAppInstalled]) {

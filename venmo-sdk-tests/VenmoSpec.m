@@ -109,8 +109,7 @@ describe(@"requestPermissions:withCompletionHandler", ^{
             expect([url scheme]).to.equal(@"venmo");
             return YES;
         }]];
-        [mockVenmo requestPermissions:@[] withCompletionHandler:^(BOOL success, NSError *error) {
-        }];
+        [mockVenmo requestPermissions:@[] withCompletionHandler:nil];
     });
 
     it(@"should use baseURLPath if venmoAppInstalled is false", ^{
@@ -120,8 +119,21 @@ describe(@"requestPermissions:withCompletionHandler", ^{
             expect([url absoluteString]).to.contain(@"foobaseurl");
             return YES;
         }]];
-        [mockVenmo requestPermissions:@[] withCompletionHandler:^(BOOL success, NSError *error) {
-        }];
+        [mockVenmo requestPermissions:@[] withCompletionHandler:nil];
+    });
+
+    it(@"should set the session state to opening", ^{
+        [mockVenmo requestPermissions:@[] withCompletionHandler:nil];
+        expect(((Venmo *)mockVenmo).session.state).to.equal(VENSessionStateOpening);
+    });
+
+    it(@"should set the completion handler to the given handler", ^{
+        VENOAuthCompletionHandler handler = ^(BOOL success, NSError *error) {
+            NSString *foo;
+            foo = @"foo";
+        };
+        [mockVenmo requestPermissions:@[] withCompletionHandler:handler];
+        expect(((Venmo *)mockVenmo).OAuthCompletionHandler).to.equal(handler);
     });
 
 });
