@@ -6,7 +6,7 @@
 
 SpecBegin(VENSession_HTTP)
 
-describe(@"refreshWithCompletionHandler:", ^{
+describe(@"refreshTokenWithAppId:secret:completionHandler:", ^{
 
     __block NSString *path;
     __block NSString *newAccessToken;
@@ -58,8 +58,8 @@ describe(@"refreshWithCompletionHandler:", ^{
         [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
         NSDate *oldExpirationDate = session.expirationDate;
         [session refreshTokenWithAppId:clientId
-                           secret:clientSecret
-                completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                                secret:clientSecret
+                     completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
                     expect(accessToken).to.equal(newAccessToken);
                     expect(success).to.equal(YES);
                     expect(error).to.beNil();

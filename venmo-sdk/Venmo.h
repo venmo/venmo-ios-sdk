@@ -49,12 +49,14 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param permissions List of permissions.
  * @param completionHandler Completion handler to call upon returning from OAuth flow.
  */
-- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)completionHandler;
+- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)handler;
 
 /**
- * Attempts to extend the access token.
+ * Attempts to refresh the session's access token.
+ * @param completionHandler The handler block to execute.
+ *
  */
-- (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
+- (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)handler;
 
 /**
  * Invalidates the current user session.
@@ -83,6 +85,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
                                   amount:(NSUInteger)amount
                                     note:(NSString *)note
                                recipient:(NSString *)recipientHandle
-                       completionHandler:(VENTransactionCompletionHandler)completionHandler;
+                       completionHandler:(VENTransactionCompletionHandler)handler;
 
 @end

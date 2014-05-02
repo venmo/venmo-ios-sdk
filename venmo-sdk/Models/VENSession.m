@@ -84,7 +84,9 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                                                         code:VENSDKErrorHTTPError
                                                                     userInfo:nil];
                                    self.state = originalState;
-                                   completionHandler(nil, NO, error);
+                                   if (completionHandler) {
+                                       completionHandler(nil, NO, error);
+                                   }
                                    return;
                                }
                                NSError *error = nil;
@@ -94,7 +96,9 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                                                         code:VENSDKErrorSystemApi
                                                                     userInfo:nil];
                                    self.state = originalState;
-                                   completionHandler(nil, NO, error);
+                                   if (completionHandler) {
+                                       completionHandler(nil, NO, error);
+                                   }
                                    return;
                                }
                                NSString *accessToken = json[@"access_token"];
@@ -113,7 +117,9 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                [core setAccessToken:self.accessToken];
                                [VENCore setDefaultCore:core];
 
-                               completionHandler(accessToken, YES, nil);
+                               if (completionHandler) {
+                                   completionHandler(accessToken, YES, nil);
+                               }
                            }];
 }
 

@@ -10,5 +10,7 @@ typedef enum VENSDKErrorCode {
     // Non-success HTTP status code was returned
     VENSDKErrorHTTPError,
     // An error occurred related to an iOS API call
-    VENSDKErrorSystemApi
+    VENSDKErrorSystemApi,
+    // The session is not open
+    VENSDKErrorSessionNotOpen
 } VENSDKErrorCode;

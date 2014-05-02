@@ -122,6 +122,25 @@ static Venmo *sharedInstance = nil;
 }
 
 
+- (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)handler {
+    if (self.session.state != VENSessionStateOpen) {
+        DLog(@"The session is not open. Call requestPermissions:withCompletionHandler to open a session.");
+        NSError *error = [NSError errorWithDomain:VenmoSDKDomain code:VENSDKErrorSessionNotOpen userInfo:nil];
+        if (handler) {
+            handler(nil, NO, error);
+        }
+        return;
+    }
+    [self.session refreshTokenWithAppId:self.appId
+                                 secret:self.appSecret
+                      completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                          if (handler) {
+                              handler(accessToken, success, error);
+                          }
+                      }];
+}
+
+
 - (void)logout {
     [self.session close];
     [VENSession deleteSessionWithAppId:self.appId];

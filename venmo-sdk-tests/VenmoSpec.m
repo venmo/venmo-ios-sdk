@@ -1,6 +1,12 @@
 #import "Venmo.h"
 #import <VENCore/VENUserPayloadKeys.h>
 
+@interface VENSession ()
+
+@property (assign, nonatomic, readwrite) VENSessionState state;
+
+@end
+
 @interface Venmo (Private)
 
 @property (assign, nonatomic) BOOL internalDevelopment;
@@ -139,6 +145,47 @@ describe(@"requestPermissions:withCompletionHandler", ^{
 
 });
 
+describe(@"refreshTokenWithCompletionHandler:", ^{
+    __block Venmo *venmo;
+    __block NSString *appId;
+    __block NSString *appSecret;
+
+    before(^{
+        appId = @"12345";
+        appSecret = @"abcdefg";
+        venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:@"fooapp"];
+    });
+
+    it(@"should return an error if the session is closed", ^AsyncBlock{
+        expect(venmo.session.state).to.equal(VENSessionStateClosed);
+        [venmo refreshTokenWithCompletionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+            expect(accessToken).to.beNil();
+            expect(success).to.beFalsy();
+            expect(error.code).to.equal(VENSDKErrorSessionNotOpen);
+            done();
+        }];
+    });
+
+    it(@"should call refreshTokenWithAppId:secret:completionHandler: if the session is open", ^AsyncBlock{
+        NSString *newAccessToken = @"accesstokenbla";
+        id mockVENSession = [OCMockObject mockForClass:[VENSession class]];
+        [[[mockVENSession stub] andReturn:newAccessToken] accessToken];
+        [[[mockVENSession stub] andReturnValue:OCMOCK_VALUE(VENSessionStateOpen)] state];
+        [[[mockVENSession stub] andDo:^(NSInvocation *invocation) {
+            void(^handler)(NSString *, BOOL, NSError *);
+            [invocation getArgument:&handler atIndex:4];
+            handler(newAccessToken, YES, nil);
+        }] refreshTokenWithAppId:appId secret:appSecret completionHandler:OCMOCK_ANY];
+
+        venmo.session = mockVENSession;
+        [venmo refreshTokenWithCompletionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+            expect(accessToken).to.equal(newAccessToken);
+            expect(success).to.beTruthy();
+            expect(error).to.beNil();
+            done();
+        }];
+    });
+});
 
 describe(@"logout", ^{
 
