@@ -82,8 +82,8 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                    NSError *error = [NSError errorWithDomain:VenmoSDKDomain
                                                                         code:VENSDKErrorHTTPError
                                                                     userInfo:nil];
-                                   completionHandler(NO, error);
                                    self.state = originalState;
+                                   completionHandler(NO, error);
                                    return;
                                }
                                NSError *error = nil;
@@ -91,9 +91,9 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                if (error) {
                                    NSError *error = [NSError errorWithDomain:VenmoSDKDomain
                                                                         code:VENSDKErrorSystemApi
-                                                                    userInfo:nil];                                  
-                                   completionHandler(NO, error);
+                                                                    userInfo:nil];
                                    self.state = originalState;
+                                   completionHandler(NO, error);
                                    return;
                                }
                                NSString *accessToken = json[@"access_token"];

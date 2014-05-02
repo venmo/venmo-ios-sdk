@@ -6,7 +6,7 @@
 
 SpecBegin(VENSession_HTTP)
 
-fdescribe(@"refreshWithCompletionHandler:", ^{
+describe(@"refreshWithCompletionHandler:", ^{
 
     __block NSString *path;
     __block NSString *newAccessToken;
@@ -46,7 +46,7 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
         [[LSNocilla sharedInstance] clearStubs];
     });   
 
-    xit(@"should save a new access token when the request succeeds", ^AsyncBlock{
+    it(@"should save a new access token when the request succeeds", ^AsyncBlock{
         stubRequest(@"POST", path).
         withBody(bodyString).
         andReturn(200).
@@ -56,14 +56,23 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
         VENSession *session = [[VENSession alloc] init];
         VENUser *user = [[VENUser alloc] init];
         [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
+        NSDate *oldExpirationDate = session.expirationDate;
         [session refreshWithAppId:clientId
                            secret:clientSecret
                 completionHandler:^(BOOL success, NSError *error) {
                     expect(success).to.equal(YES);
                     expect(error).to.beNil();
                     expect(session.state).to.equal(VENSessionStateOpen);
+                    expect(session.accessToken).to.equal(newAccessToken);
+                    expect(session.refreshToken).to.equal(newRefreshToken);
+                    expect([session.expirationDate earlierDate:oldExpirationDate]).to.equal(oldExpirationDate);
 
-                    // TODO: check that the cached session has the new access token
+                    // The cached session should also be refreshed
+                    VENSession *cachedSession = [VENSession cachedSessionWithAppId:clientId];
+                    expect(cachedSession.accessToken).to.equal(session.accessToken);
+                    expect(cachedSession.refreshToken).to.equal(session.refreshToken);
+                    expect(cachedSession.expirationDate).to.equal(session.expirationDate);
+                    expect(cachedSession.state).to.equal(session.state);
                     done();
         }];
     });
@@ -80,11 +89,9 @@ fdescribe(@"refreshWithCompletionHandler:", ^{
                            secret:clientSecret
                 completionHandler:^(BOOL success, NSError *error) {
                     expect(success).to.equal(NO);
-                     // TODO: check that the error is the right type
-                    expect(error).toNot.beNil();                   
+                    expect(error.domain).to.equal(VenmoSDKDomain);
+                    expect(error.code).to.equal(VENSDKErrorHTTPError);
                     expect(session.state).to.equal(VENSessionStateOpen);
-
-
                     done();
         }];
     });

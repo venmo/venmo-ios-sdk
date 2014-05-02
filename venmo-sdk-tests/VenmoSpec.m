@@ -74,6 +74,7 @@ describe(@"requestPermissions:withCompletionHandler", ^{
     __block id mockApplication;
     __block id mockSharedApplication;
     __block id mockVenmo;
+    __block Venmo *venmo;
     __block NSString *appId;
     __block NSString *appSecret;
     __block NSString *appName;
@@ -88,7 +89,7 @@ describe(@"requestPermissions:withCompletionHandler", ^{
         appId = @"foo";
         appSecret = @"bar";
         appName = @"AppName";
-        Venmo *venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:appName];
+        venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:appName];
         mockVenmo = [OCMockObject partialMockForObject:venmo];
     });
 
@@ -114,17 +115,17 @@ describe(@"requestPermissions:withCompletionHandler", ^{
 
     it(@"should use baseURLPath if venmoAppInstalled is false", ^{
         [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] venmoAppInstalled];
-        [[[mockVenmo stub] andReturn:@"foobaseurl"] baseURLPath];
+        NSString *baseURLPath = [venmo baseURLPath];
         [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
-            expect([url absoluteString]).to.contain(@"foobaseurl");
+            expect([url absoluteString]).to.contain(baseURLPath);
             return YES;
         }]];
         [mockVenmo requestPermissions:@[] withCompletionHandler:nil];
     });
 
     it(@"should set the session state to opening", ^{
-        [mockVenmo requestPermissions:@[] withCompletionHandler:nil];
-        expect(((Venmo *)mockVenmo).session.state).to.equal(VENSessionStateOpening);
+        [venmo requestPermissions:@[] withCompletionHandler:nil];
+        expect(venmo.session.state).to.equal(VENSessionStateOpening);
     });
 
     it(@"should set the completion handler to the given handler", ^{
@@ -132,8 +133,8 @@ describe(@"requestPermissions:withCompletionHandler", ^{
             NSString *foo;
             foo = @"foo";
         };
-        [mockVenmo requestPermissions:@[] withCompletionHandler:handler];
-        expect(((Venmo *)mockVenmo).OAuthCompletionHandler).to.equal(handler);
+        [venmo requestPermissions:@[] withCompletionHandler:handler];
+        expect(venmo.OAuthCompletionHandler).to.equal(handler);
     });
 
 });
