@@ -12,6 +12,7 @@
 @class VENSession;
 
 typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
+typedef void (^VENRefreshTokenCompletionHandler)(NSString *accessToken, BOOL success, NSError *error);
 typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 #define VEN_CURRENT_SDK_VERSION @"1.0.0"
@@ -46,9 +47,14 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * Initiates Venmo OAuth request.
  * @param permissions List of permissions.
- * @param completionHandler Completion handler to call upon returning from OAuth session.
+ * @param completionHandler Completion handler to call upon returning from OAuth flow.
  */
 - (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)completionHandler;
+
+/**
+ * Attempts to extend the access token.
+ */
+- (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
 
 /**
  * Invalidates the current user session.

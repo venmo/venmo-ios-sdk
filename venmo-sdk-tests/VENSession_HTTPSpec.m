@@ -57,9 +57,10 @@ describe(@"refreshWithCompletionHandler:", ^{
         VENUser *user = [[VENUser alloc] init];
         [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
         NSDate *oldExpirationDate = session.expirationDate;
-        [session refreshWithAppId:clientId
+        [session refreshTokenWithAppId:clientId
                            secret:clientSecret
-                completionHandler:^(BOOL success, NSError *error) {
+                completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                    expect(accessToken).to.equal(newAccessToken);
                     expect(success).to.equal(YES);
                     expect(error).to.beNil();
                     expect(session.state).to.equal(VENSessionStateOpen);
@@ -85,9 +86,10 @@ describe(@"refreshWithCompletionHandler:", ^{
         VENSession *session = [[VENSession alloc] init];
         VENUser *user = [[VENUser alloc] init];
         [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
-        [session refreshWithAppId:clientId
+        [session refreshTokenWithAppId:clientId
                            secret:clientSecret
-                completionHandler:^(BOOL success, NSError *error) {
+                completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                    expect(accessToken).to.beNil();
                     expect(success).to.equal(NO);
                     expect(error.domain).to.equal(VenmoSDKDomain);
                     expect(error.code).to.equal(VENSDKErrorHTTPError);

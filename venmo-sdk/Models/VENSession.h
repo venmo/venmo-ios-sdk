@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger, VENSessionState) {
     VENSessionStateRefreshing
 };
 
-typedef void (^VENRefreshTokenCompletionHandler)(BOOL success, NSError *error);
+typedef void (^VENRefreshTokenCompletionHandler)(NSString *accessToken, BOOL success, NSError *error);
 
 @interface VENSession : NSObject <NSCoding>
 
@@ -44,9 +44,9 @@ typedef void (^VENRefreshTokenCompletionHandler)(BOOL success, NSError *error);
  * @param appSecret Your app secret
  * @param completionHandler The handler block to execute
  */
-- (void)refreshWithAppId:(NSString *)appId
-                  secret:(NSString *)appSecret
-       completionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
+- (void)refreshTokenWithAppId:(NSString *)appId
+                       secret:(NSString *)appSecret
+            completionHandler:(VENRefreshTokenCompletionHandler)completionHandler;
 
 
 /**

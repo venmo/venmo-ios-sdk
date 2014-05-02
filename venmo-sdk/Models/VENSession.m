@@ -50,15 +50,16 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 }
 
 
-- (void)refreshWithAppId:(NSString *)appId
-                  secret:(NSString *)appSecret
-       completionHandler:(VENRefreshTokenCompletionHandler)completionHandler {
+- (void)refreshTokenWithAppId:(NSString *)appId
+                       secret:(NSString *)appSecret
+            completionHandler:(VENRefreshTokenCompletionHandler)completionHandler {
     // configure the url
     Venmo *venmo = [Venmo sharedInstance];
     NSString *baseURL = venmo ? [venmo baseURLPath] : @"http://api.venmo.com/v1";
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/access_token", baseURL]];
 
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setTimeoutInterval:10];
     [request setHTTPMethod:@"POST"];
 
     // add parameters
@@ -83,7 +84,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                                                         code:VENSDKErrorHTTPError
                                                                     userInfo:nil];
                                    self.state = originalState;
-                                   completionHandler(NO, error);
+                                   completionHandler(nil, NO, error);
                                    return;
                                }
                                NSError *error = nil;
@@ -93,7 +94,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                                                         code:VENSDKErrorSystemApi
                                                                     userInfo:nil];
                                    self.state = originalState;
-                                   completionHandler(NO, error);
+                                   completionHandler(nil, NO, error);
                                    return;
                                }
                                NSString *accessToken = json[@"access_token"];
@@ -112,7 +113,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                [core setAccessToken:self.accessToken];
                                [VENCore setDefaultCore:core];
 
-                               completionHandler(YES, nil);
+                               completionHandler(accessToken, YES, nil);
                            }];
 }
 
