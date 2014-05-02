@@ -80,7 +80,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                if (connectionError ||
                                    (httpResponse && httpResponse.statusCode > 299)) {
                                    NSError *error = [NSError errorWithDomain:VenmoSDKDomain
-                                                                        code:VENErrorCodeSDKHTTPError
+                                                                        code:VENSDKErrorHTTPError
                                                                     userInfo:nil];
                                    completionHandler(NO, error);
                                    self.state = originalState;
@@ -90,7 +90,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
                                json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
                                if (error) {
                                    NSError *error = [NSError errorWithDomain:VenmoSDKDomain
-                                                                        code:VENErrorCodeSDKSystemApi
+                                                                        code:VENSDKErrorSystemApi
                                                                     userInfo:nil];                                  
                                    completionHandler(NO, error);
                                    self.state = originalState;

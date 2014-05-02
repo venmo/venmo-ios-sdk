@@ -37,8 +37,8 @@
 
         if (oAuthErrorCode) {
             NSString *oAuthErrorMessage = queryDictionary[@"message"];
-            NSError *oAuthError = [NSError errorWithDomain:VENErrorDomain
-                                                      code:VENTransactionFailedError
+            NSError *oAuthError = [NSError errorWithDomain:VenmoSDKDomain
+                                                      code:VENSDKErrorTransactionFailed
                                                description:oAuthErrorMessage
                                         recoverySuggestion:@"Please try again."];
             if ([Venmo sharedInstance].OAuthCompletionHandler) {
@@ -95,13 +95,13 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             NSError *error;
             if (transaction && transaction.status == VENTransactionStatusFailed) {
-                error = [NSError errorWithDomain:VENErrorDomain
-                                            code:VENTransactionFailedError
+                error = [NSError errorWithDomain:VenmoSDKDomain
+                                            code:VENSDKErrorTransactionFailed
                                      description:@"Venmo failed to complete the transaction."
                               recoverySuggestion:@"Please try again."];
             } else if (transaction.status == VENTransactionStatusFailed) {
-                error  = [NSError errorWithDomain:VENErrorDomain
-                                             code:VENTransactionValidationError
+                error  = [NSError errorWithDomain:VenmoSDKDomain
+                                             code:VENSDKErrorTransactionValidationError
                                       description:@"Failed to validate the transaction."
                                recoverySuggestion:@"Please contact us."];
             }
