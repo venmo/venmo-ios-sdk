@@ -25,6 +25,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 - (BOOL)handleOpenURL:(NSURL *)url;
 
+
 /**
  * The current session.
  */
@@ -33,16 +34,19 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) VENTransactionCompletionHandler transactionCompletionHandler;
 @property (copy, nonatomic, readonly) VENOAuthCompletionHandler OAuthCompletionHandler;
 
+
 /**
  * Returns the shared Venmo instance.
  * @return The shared Venmo instance
  */
 + (instancetype)sharedInstance;
 
+
 /**
  * Returns YES if the current device has the Venmo app installed
  */
 - (BOOL)venmoAppInstalled;
+
 
 /**
  * Initiates Venmo OAuth request.
@@ -51,12 +55,26 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  */
 - (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)handler;
 
+
 /**
  * Attempts to refresh the session's access token.
- * @param completionHandler The handler block to execute.
  *
+ * Access tokens expire after ~60 days, and can only be refreshed after they expire.
+ * We recommend checking shouldRefreshToken in your application's
+ * applicationDidBecomeActive: UIApplicationDelegate method. If shouldRefreshToken
+ * returns YES, you should call refreshTokenWithCompletionHandler: to get a new token.
+ *
+ * @param completionHandler The handler block to execute.
  */
 - (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)handler;
+
+
+/**
+ * Returns a value indicating whether the access token should be refreshed.
+ * @return YES if the current date is later than the token's expiration date, else NO.
+ */
+- (BOOL)shouldRefreshToken;
+
 
 /**
  * Invalidates the current user session.
@@ -65,6 +83,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * To unauthorize an app, go to "Password & Authorizations" at https://venmo.com/account/settings/account
  */
 - (void)logout;
+
 
 /**
  * Starts the Venmo SDK.
@@ -77,6 +96,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
                   name:(NSString *)appName;
+
 
 /**
  * Sends a transaction by switching to the Venmo app.
