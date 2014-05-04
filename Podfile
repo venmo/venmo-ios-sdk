@@ -1,7 +1,7 @@
 platform :ios, '7.0'
 
 target 'venmo-sdk', :exclusive => true do
-  pod 'VENCore'
+  pod 'VENCore', :git => 'git@github.com:venmo/VENCore.git'
   pod 'SSKeychain'
 end
 
