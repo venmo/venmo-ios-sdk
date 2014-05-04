@@ -122,6 +122,16 @@ static Venmo *sharedInstance = nil;
 }
 
 
+- (BOOL)shouldRefreshToken {
+    NSDate *now = [NSDate date];
+    if (self.session.state == VENSessionStateOpen &&
+        [[self.session.expirationDate laterDate:now] isEqualToDate:now]) {
+        return YES;
+    }
+    return NO;
+}
+
+
 - (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)handler {
     if (self.session.state != VENSessionStateOpen) {
         DLog(@"The session is not open. Call requestPermissions:withCompletionHandler to open a session.");

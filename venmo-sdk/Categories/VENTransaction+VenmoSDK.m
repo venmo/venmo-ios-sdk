@@ -7,8 +7,12 @@
 #import "VENTransaction+VenmoSDK.h"
 #import "VENRequestDecoder.h"
 
-@interface VENTransaction ()
+@interface VENUser (VENTransaction_VenmoSDK)
+@property (copy, nonatomic, readwrite) NSString *externalId;
+@end
 
+
+@interface VENTransaction ()
 @property (copy, nonatomic, readwrite) NSString *transactionID;
 @property (strong, nonatomic, readwrite) VENTransactionTarget *target;
 @property (copy, nonatomic, readwrite) NSString *note;
@@ -16,14 +20,8 @@
 @property (assign, nonatomic, readwrite) VENTransactionType transactionType;
 @property (assign, nonatomic, readwrite) VENTransactionStatus status;
 @property (assign, nonatomic, readwrite) VENTransactionAudience audience;
-
 @end
 
-@interface VENUser ()
-
-@property (copy, nonatomic, readwrite) NSString *externalId;
-
-@end
 
 @implementation VENTransaction (VenmoSDK)
 

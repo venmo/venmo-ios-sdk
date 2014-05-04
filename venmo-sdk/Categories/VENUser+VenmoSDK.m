@@ -1,6 +1,6 @@
 #import "VENUser+VenmoSDK.h"
 
-@interface VENUser ()
+@interface VENUser (VENUser_VenmoSDK)
 
 @property (copy, nonatomic, readwrite) NSString *internalId;
 @property (copy, nonatomic, readwrite) NSString *externalId;

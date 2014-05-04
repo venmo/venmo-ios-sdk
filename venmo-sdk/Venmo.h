@@ -26,9 +26,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 
-/**
- * The current session.
- */
+/// The current session.
 @property (strong, nonatomic) VENSession *session;
 
 @property (copy, nonatomic, readonly) VENTransactionCompletionHandler transactionCompletionHandler;
@@ -57,6 +55,14 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
+ * Returns a value indicating whether the access token should be refreshed.
+ * @return YES if the session is open and the current date is later than the token's 
+ * expiration date.
+ */
+- (BOOL)shouldRefreshToken;
+
+
+/**
  * Attempts to refresh the session's access token.
  *
  * Access tokens expire after ~60 days, and can only be refreshed after they expire.
@@ -67,13 +73,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param completionHandler The handler block to execute.
  */
 - (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)handler;
-
-
-/**
- * Returns a value indicating whether the access token should be refreshed.
- * @return YES if the current date is later than the token's expiration date, else NO.
- */
-- (BOOL)shouldRefreshToken;
 
 
 /**

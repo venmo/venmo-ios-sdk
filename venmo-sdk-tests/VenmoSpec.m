@@ -1,13 +1,14 @@
 #import "Venmo.h"
 #import <VENCore/VENUserPayloadKeys.h>
 
-@interface VENSession ()
+@interface VENSession (VenmoSpec)
 
 @property (assign, nonatomic, readwrite) VENSessionState state;
+@property (strong, nonatomic, readwrite) NSDate *expirationDate;
 
 @end
 
-@interface Venmo (Private)
+@interface Venmo (VenmoSpec)
 
 @property (assign, nonatomic) BOOL internalDevelopment;
 
@@ -144,6 +145,41 @@ describe(@"requestPermissions:withCompletionHandler", ^{
     });
 
 });
+
+
+describe(@"shouldRefreshToken", ^{
+    
+    __block id mockVenmo;
+    __block VENSession *session;
+    
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"abcd" secret:@"12345" name:@"fooApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        session = [[VENSession alloc] init];
+    });
+   
+    it(@"should return NO if the session is closed", ^{
+        session.state = VENSessionStateClosed;
+        [[[mockVenmo stub] andReturn:session] session];
+        expect([mockVenmo shouldRefreshToken]).to.beFalsy();
+    });
+    
+    it(@"should return YES if session is open and the token is expired", ^{
+        session.state = VENSessionStateOpen;
+        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-1000];
+        [[[mockVenmo stub] andReturn:session] session];
+        expect([mockVenmo shouldRefreshToken]).to.beTruthy();
+    });
+    
+    it(@"should return NO if the session is open and the token is not expired", ^{
+        session.state = VENSessionStateOpen;
+        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:10];
+        [[[mockVenmo stub] andReturn:session] session];
+        expect([mockVenmo shouldRefreshToken]).to.beFalsy();
+    });
+    
+});
+
 
 describe(@"refreshTokenWithCompletionHandler:", ^{
     __block Venmo *venmo;
