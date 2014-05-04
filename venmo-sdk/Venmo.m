@@ -81,11 +81,11 @@ static Venmo *sharedInstance = nil;
 
 #pragma mark - Sending a Transaction
 
-- (void)sendAppSwitchTransactionWithType:(VENTransactionType)type
-                                  amount:(NSUInteger)amount
-                                    note:(NSString *)note
-                               recipient:(NSString *)recipientHandle
-                       completionHandler:(VENTransactionCompletionHandler)completionHandler {
+- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
+                   transactionType:(VENTransactionType)type
+                            amount:(NSUInteger)amount
+                              note:(NSString *)note
+                 completionHandler:(VENTransactionCompletionHandler)completionHandler {
     self.transactionCompletionHandler = completionHandler;
     NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
     NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
@@ -99,7 +99,7 @@ static Venmo *sharedInstance = nil;
                                       description:@"Could not find Venmo app."
                                recoverySuggestion:@"Please install Venmo."];
         completionHandler(nil, NO, error);
-    }
+    }   
 }
 
 #pragma mark - Sessions
