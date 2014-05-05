@@ -114,8 +114,8 @@
 		B63E190D18EB2C6E0006BD3E /* NSString+VenmoSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+VenmoSDK.m"; sourceTree = "<group>"; };
 		B63E190E18EB2C6E0006BD3E /* NSURL+VenmoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+VenmoSDK.h"; sourceTree = "<group>"; };
 		B63E190F18EB2C6E0006BD3E /* NSURL+VenmoSDK.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+VenmoSDK.m"; sourceTree = "<group>"; };
-		B6570AB0189711FD00351EDF /* Venmo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Venmo.h; path = "venmo-sdk/Venmo.h"; sourceTree = "<group>"; };
-		B6570AB1189711FD00351EDF /* Venmo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Venmo.m; path = "venmo-sdk/Venmo.m"; sourceTree = "<group>"; };
+		B6570AB0189711FD00351EDF /* Venmo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Venmo.h; sourceTree = "<group>"; };
+		B6570AB1189711FD00351EDF /* Venmo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Venmo.m; sourceTree = "<group>"; };
 		B6570B0D1897194200351EDF /* venmo-sdk-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "venmo-sdk-Prefix.pch"; sourceTree = "<group>"; };
 		B65743261897390200AFB89D /* NSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5Addition.h"; sourceTree = "<group>"; };
 		B65743271897390200AFB89D /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5Addition.m"; sourceTree = "<group>"; };
@@ -166,8 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				2D5EF54717EF41B100DDD15A /* venmo-sdk */,
-				B6570AB0189711FD00351EDF /* Venmo.h */,
-				B6570AB1189711FD00351EDF /* Venmo.m */,
 				2D5EF55B17EF41B100DDD15A /* venmo-sdk-tests */,
 				2D5EF54417EF41B100DDD15A /* Frameworks */,
 				2D5EF54317EF41B100DDD15A /* Products */,
@@ -200,6 +198,8 @@
 		2D5EF54717EF41B100DDD15A /* venmo-sdk */ = {
 			isa = PBXGroup;
 			children = (
+				B6570AB0189711FD00351EDF /* Venmo.h */,
+				B6570AB1189711FD00351EDF /* Venmo.m */,
 				B657431F1897390200AFB89D /* Categories */,
 				B657433F1897394E00AFB89D /* Encryption */,
 				B6F5045D18E38C2600BDACF7 /* Models */,

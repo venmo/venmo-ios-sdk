@@ -118,4 +118,23 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
                               note:(NSString *)note
                  completionHandler:(VENTransactionCompletionHandler)completionHandler;
 
+
+/**
+ * Send an in-app transaction through the Venmo API.
+ * @param recipientHandle The recipient's phone number, email, or Venmo username
+ * @param transactionType VENTransactionTypePay or VENTransactionTypeCharge
+ * @param amount The transaction amount
+ * @param note A note for the transaction
+ * @param audience The sharing setting for the transaction
+ * @param The handler block to execute
+ */
+- (void)sendInAppTransactionTo:(NSString *)recipientHandle
+               transactionType:(VENTransactionType)type
+                        amount:(NSUInteger)amount
+                          note:(NSString *)note
+                      audience:(VENTransactionAudience)audience
+             completionHandler:(VENTransactionCompletionHandler)completionHandler;
+
+
+
 @end

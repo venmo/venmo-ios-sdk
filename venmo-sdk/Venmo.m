@@ -69,38 +69,19 @@ static Venmo *sharedInstance = nil;
 }
 
 
-- (BOOL)handleOpenURL:(NSURL *)url {
-    if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
-        VENURLProtocol *urlProtocol = [[VENURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
-        [urlProtocol startLoading];
-        return YES;
+- (instancetype)initWithAppId:(NSString *)appId
+                       secret:(NSString *)appSecret
+                         name:(NSString *)appName {
+    self = [super init];
+    if (self) {
+        self.appId = appId;
+        self.appSecret = appSecret;
+        self.appName = appName ?: [[NSBundle mainBundle] name];
+        self.session = [[VENSession alloc] init];
     }
-    return NO;
+    return self;
 }
 
-
-#pragma mark - Sending a Transaction
-
-- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
-                   transactionType:(VENTransactionType)type
-                            amount:(NSUInteger)amount
-                              note:(NSString *)note
-                 completionHandler:(VENTransactionCompletionHandler)completionHandler {
-    self.transactionCompletionHandler = completionHandler;
-    NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
-    NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
-    DLog(@"transactionURL: %@", transactionURL);
-
-    if ([self venmoAppInstalled]) {
-        [[UIApplication sharedApplication] openURL:transactionURL];
-    } else if (completionHandler) {
-        NSError *error = [NSError errorWithDomain:VenmoSDKDomain
-                                             code:VENSDKErrorTransactionFailed
-                                      description:@"Could not find Venmo app."
-                               recoverySuggestion:@"Please install Venmo."];
-        completionHandler(nil, NO, error);
-    }   
-}
 
 #pragma mark - Sessions
 
@@ -167,7 +148,50 @@ static Venmo *sharedInstance = nil;
 }
 
 
-#pragma mark - Sending a Transaction @private
+#pragma mark - Sending a Transaction
+
+- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
+                   transactionType:(VENTransactionType)type
+                            amount:(NSUInteger)amount
+                              note:(NSString *)note
+                 completionHandler:(VENTransactionCompletionHandler)completionHandler {
+    self.transactionCompletionHandler = completionHandler;
+    NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
+    NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
+    DLog(@"transactionURL: %@", transactionURL);
+
+    if ([self venmoAppInstalled]) {
+        [[UIApplication sharedApplication] openURL:transactionURL];
+    } else if (completionHandler) {
+        NSError *error = [NSError errorWithDomain:VenmoSDKDomain
+                                             code:VENSDKErrorTransactionFailed
+                                      description:@"Could not find Venmo app."
+                               recoverySuggestion:@"Please install Venmo."];
+        completionHandler(nil, NO, error);
+    }   
+}
+
+- (void)sendInAppTransactionTo:(NSString *)recipientHandle
+               transactionType:(VENTransactionType)type
+                        amount:(NSUInteger)amount
+                          note:(NSString *)note
+                      audience:(VENTransactionAudience)audience
+             completionHandler:(VENTransactionCompletionHandler)completionHandler {
+
+}
+
+
+#pragma mark - URLs
+
+- (BOOL)handleOpenURL:(NSURL *)url {
+    if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
+        VENURLProtocol *urlProtocol = [[VENURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
+        [urlProtocol startLoading];
+        return YES;
+    }
+    return NO;
+}
+
 
 - (NSString *)URLPathWithType:(VENTransactionType)type
                        amount:(NSUInteger)amount
@@ -189,20 +213,6 @@ static Venmo *sharedInstance = nil;
     return pathAndQuery;
 }
 
-#pragma mark - Private
-
-- (instancetype)initWithAppId:(NSString *)appId
-                       secret:(NSString *)appSecret
-                         name:(NSString *)appName {
-    self = [super init];
-    if (self) {
-        self.appId = appId;
-        self.appSecret = appSecret;
-        self.appName = appName ?: [[NSBundle mainBundle] name];
-        self.session = [[VENSession alloc] init];
-    }
-    return self;
-}
 
 - (NSString *)baseURLPath {
     if (self.internalDevelopment) {
@@ -211,9 +221,11 @@ static Venmo *sharedInstance = nil;
     return @"http://api.venmo.com/v1/";
 }
 
+
 - (BOOL)venmoAppInstalled {
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
 }
+
 
 - (NSString *)currentDeviceIdentifier {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
