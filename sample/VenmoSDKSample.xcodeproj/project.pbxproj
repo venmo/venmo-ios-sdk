@@ -15,13 +15,15 @@
 		B62D59DF189855E5001E46A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59DE189855E5001E46A4 /* main.m */; };
 		B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */; };
 		B62D59E6189855E5001E46A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62D59E4189855E5001E46A4 /* Main.storyboard */; };
-		B62D59E9189855E5001E46A4 /* VDKSampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E8189855E5001E46A4 /* VDKSampleViewController.m */; };
+		B62D59E9189855E5001E46A4 /* VDKPaymentViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E8189855E5001E46A4 /* VDKPaymentViewcontroller.m */; };
 		B62D59EB189855E5001E46A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B62D59EA189855E5001E46A4 /* Images.xcassets */; };
 		B62D59F2189855E5001E46A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59F1189855E5001E46A4 /* XCTest.framework */; };
 		B62D59F3189855E5001E46A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D2189855E5001E46A4 /* Foundation.framework */; };
 		B62D59F4189855E5001E46A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D6189855E5001E46A4 /* UIKit.framework */; };
 		B62D59FC189855E5001E46A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B62D59FA189855E5001E46A4 /* InfoPlist.strings */; };
 		B62D59FE189855E5001E46A4 /* VENAppSwitchSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */; };
+		EB8556C219182D3C002243FA /* VDKLoggedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */; };
+		EB8EBFC519182BA100E45B38 /* VDKLoggedOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,14 +50,18 @@
 		B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKAppDelegate.h; sourceTree = "<group>"; };
 		B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKAppDelegate.m; sourceTree = "<group>"; };
 		B62D59E5189855E5001E46A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B62D59E7189855E5001E46A4 /* VDKSampleViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKSampleViewController.h; sourceTree = "<group>"; };
-		B62D59E8189855E5001E46A4 /* VDKSampleViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKSampleViewController.m; sourceTree = "<group>"; };
+		B62D59E7189855E5001E46A4 /* VDKPaymentViewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKPaymentViewcontroller.h; sourceTree = "<group>"; };
+		B62D59E8189855E5001E46A4 /* VDKPaymentViewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKPaymentViewcontroller.m; sourceTree = "<group>"; };
 		B62D59EA189855E5001E46A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoSDKSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59F1189855E5001E46A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B62D59F9189855E5001E46A4 /* VenmoSDKSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoSDKSampleTests-Info.plist"; sourceTree = "<group>"; };
 		B62D59FB189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VENAppSwitchSampleTests.m; sourceTree = "<group>"; };
+		EB8556C019182D3C002243FA /* VDKLoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKLoggedInViewController.h; sourceTree = "<group>"; };
+		EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKLoggedInViewController.m; sourceTree = "<group>"; };
+		EB8EBFC319182BA100E45B38 /* VDKLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKLoggedOutViewController.h; sourceTree = "<group>"; };
+		EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKLoggedOutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +127,12 @@
 				B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */,
 				B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */,
 				B62D59E4189855E5001E46A4 /* Main.storyboard */,
-				B62D59E7189855E5001E46A4 /* VDKSampleViewController.h */,
-				B62D59E8189855E5001E46A4 /* VDKSampleViewController.m */,
+				EB8556C019182D3C002243FA /* VDKLoggedInViewController.h */,
+				EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */,
+				EB8EBFC319182BA100E45B38 /* VDKLoggedOutViewController.h */,
+				EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */,
+				B62D59E7189855E5001E46A4 /* VDKPaymentViewcontroller.h */,
+				B62D59E8189855E5001E46A4 /* VDKPaymentViewcontroller.m */,
 				B62D59EA189855E5001E46A4 /* Images.xcassets */,
 				B62D59D9189855E5001E46A4 /* Supporting Files */,
 			);
@@ -291,7 +301,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B62D59E9189855E5001E46A4 /* VDKSampleViewController.m in Sources */,
+				EB8EBFC519182BA100E45B38 /* VDKLoggedOutViewController.m in Sources */,
+				EB8556C219182D3C002243FA /* VDKLoggedInViewController.m in Sources */,
+				B62D59E9189855E5001E46A4 /* VDKPaymentViewcontroller.m in Sources */,
 				B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */,
 				B62D59DF189855E5001E46A4 /* main.m in Sources */,
 			);

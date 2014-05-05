@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface VDKSampleViewController : UIViewController
+@interface VDKPaymentViewcontroller : UIViewController
 
 - (IBAction)userDidTapTransaction:(id)sender;
 

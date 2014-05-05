@@ -18,10 +18,12 @@ PODS:
   - AFNetworking/UIKit (2.2.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - SSKeychain (1.2.2)
   - SVProgressHUD (1.0)
   - VENCore (1.0.0):
     - AFNetworking
   - Venmo-iOS-SDK (1.0.0):
+    - SSKeychain
     - VENCore
 
 DEPENDENCIES:
@@ -34,8 +36,9 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  SSKeychain: 3d0b76c87e7b062a7ad1631a825fddec84367d44
   SVProgressHUD: 5e10939a296debf5fe5a5895eda9539b8b2114f1
-  VENCore: 0547812ee8af7555b8621c2c6cc3bc8f4d69d413
-  Venmo-iOS-SDK: 97d252cc3927bc045f006c2975e2c7aec03482a8
+  VENCore: 3e9a91e043a5042081d388e310a6746eb6f2b226
+  Venmo-iOS-SDK: f570c53b0daeef861247b02cc51800b7963a6f0e
 
 COCOAPODS: 0.32.1
