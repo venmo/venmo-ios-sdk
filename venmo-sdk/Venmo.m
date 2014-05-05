@@ -12,6 +12,7 @@
 #import "VENUser.h"
 
 #import <VENCore/VENCore.h>
+#import <VENCore/VENCreateTransactionRequest.h>
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
@@ -178,7 +179,22 @@ static Venmo *sharedInstance = nil;
                           note:(NSString *)note
                       audience:(VENTransactionAudience)audience
              completionHandler:(VENTransactionCompletionHandler)completionHandler {
+    [self validateAPIRequestWithCompletionHandler:completionHandler];
 
+    VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:recipientHandle amount:amount];
+
+    VENCreateTransactionRequest *request = [[VENCreateTransactionRequest alloc] init];
+    request.transactionType = type;
+    request.audience = audience;
+    request.note = note;
+    [request addTransactionTarget:target];
+
+    [request sendWithSuccess:^(NSArray *sentTransactions, VENHTTPResponse *response) {
+        VENTransaction *transaction = (VENTransaction *)[sentTransactions firstObject];
+        completionHandler(transaction, YES, nil);
+    } failure:^(NSArray *sentTransactions, VENHTTPResponse *response, NSError *error) {
+        completionHandler(nil, NO, error);
+    }];
 
 }
 

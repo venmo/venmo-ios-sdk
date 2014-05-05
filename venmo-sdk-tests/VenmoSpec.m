@@ -400,6 +400,35 @@ describe(@"sendAppSwitchTransactionTo:", ^{
 });
 
 
+
+// Note: This method is just a wrapper around methods in VENCreateTransactionRequest,
+// which has good test coverage in VENCore.
+describe(@"sendInAppTransactionTo:", ^{
+
+    __block id mockVenmo;
+    __block VENSession *session;
+
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"abcd" secret:@"12345" name:@"fooApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        session = [[VENSession alloc] init];
+    });
+
+    it(@"should call validateAPIRequestWithCompletionHandler", ^{
+        [[mockVenmo expect] validateAPIRequestWithCompletionHandler:OCMOCK_ANY];
+        [mockVenmo sendInAppTransactionTo:@"foonumber"
+                          transactionType:VENTransactionTypePay
+                                   amount:100
+                                     note:@"note"
+                                 audience:VENTransactionAudienceFriends
+                        completionHandler:nil];
+        [session openWithAccessToken:@"token" refreshToken:@"refresh" expiresIn:100 user:nil];
+        [mockVenmo verify];
+    });
+
+});
+
+
 describe(@"validateAPIRequestWithCompletionHandler:", ^{
 
     __block id mockVenmo;
