@@ -76,6 +76,13 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
+ * Returns a value indicating whether the current session is valid.
+ * @return YES if the session is open and has a non-expired token.
+ */
+- (BOOL)isSessionValid;
+
+
+/**
  * Invalidates the current user session.
  *
  * Not that this method doesn't unauthorize the app.

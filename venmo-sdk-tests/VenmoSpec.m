@@ -147,6 +147,42 @@ describe(@"requestPermissions:withCompletionHandler", ^{
 });
 
 
+
+describe(@"isSessionValid", ^{
+    
+    __block id mockVenmo;
+    __block VENSession *session;
+    
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"abcd" secret:@"12345" name:@"fooApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        session = [[VENSession alloc] init];
+    });   
+    
+    it(@"should return YES if the session is open and has a non-expired token", ^{
+        session.state = VENSessionStateOpen;
+        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:100];
+        [[[mockVenmo stub] andReturn:session] session];
+        expect([mockVenmo isSessionValid]).to.beTruthy();
+    });
+    
+    it(@"should return NO if the sesion is open and has an expired token", ^{
+        session.state = VENSessionStateOpen;
+        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-10];
+        [[[mockVenmo stub] andReturn:session] session];
+        expect([mockVenmo isSessionValid]).to.beFalsy();
+    });
+    
+    it(@"should return NO if the session is closed", ^{
+        session.state = VENSessionStateClosed;
+        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:100];
+        [[[mockVenmo stub] andReturn:session] session];
+        expect([mockVenmo isSessionValid]).to.beFalsy();       
+    });
+    
+});
+
+
 describe(@"shouldRefreshToken", ^{
     
     __block id mockVenmo;
@@ -222,6 +258,7 @@ describe(@"refreshTokenWithCompletionHandler:", ^{
         }];
     });
 });
+
 
 describe(@"logout", ^{
 

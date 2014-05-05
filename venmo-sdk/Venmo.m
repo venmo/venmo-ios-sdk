@@ -122,6 +122,16 @@ static Venmo *sharedInstance = nil;
 }
 
 
+- (BOOL)isSessionValid {
+    NSDate *now = [NSDate date];
+    if (self.session.state == VENSessionStateOpen &&
+        [[self.session.expirationDate earlierDate:now] isEqualToDate:now]) {
+        return YES;
+    }
+    return NO;
+}
+
+
 - (BOOL)shouldRefreshToken {
     NSDate *now = [NSDate date];
     if (self.session.state == VENSessionStateOpen &&
