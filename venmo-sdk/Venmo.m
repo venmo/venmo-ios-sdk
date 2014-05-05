@@ -234,6 +234,7 @@ static Venmo *sharedInstance = nil;
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler {
 
+    [self sendPaymentTo:recipientHandle amount:amount note:note audience:VENTransactionAudienceUserDefault completionHandler:handler];
 }
 
 
@@ -252,6 +253,7 @@ static Venmo *sharedInstance = nil;
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler {
 
+    [self sendRequestTo:recipientHandle amount:amount note:note audience:VENTransactionAudienceUserDefault completionHandler:handler];
 }
 
 

@@ -562,7 +562,74 @@ describe(@"sendRequestTo:amount:note:audience:completionHandler:", ^{
                             completionHandler:handler];
 
         [mockVenmo sendRequestTo:recipient amount:amount note:note audience:audience completionHandler:handler];
+        [mockVenmo verify];
+    });
+});
 
+
+describe(@"sendPaymentTo:amount:note:completionHandler:", ^{
+
+    __block id mockVenmo;
+    __block NSString *recipient;
+    __block NSString *note;
+    __block NSUInteger amount;
+    __block VENTransactionAudience audience;
+    __block VENTransactionCompletionHandler handler;
+
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"1234" secret:@"12345" name:@"foobarApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        recipient = @"foo@venmo.com";
+        note = @"notenote";
+        amount = 100;
+        audience = VENTransactionAudienceFriends;
+        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+            int i = 1; i++;
+        };
+    });
+
+    it(@"should call sendPaymentTo: with audience set to UserDefault", ^{
+        [[mockVenmo expect] sendPaymentTo:recipient
+                                   amount:amount
+                                     note:note
+                                 audience:VENTransactionAudienceUserDefault
+                        completionHandler:handler];
+
+        [mockVenmo sendPaymentTo:recipient amount:amount note:note completionHandler:handler];
+        [mockVenmo verify];
+    });
+});
+
+
+describe(@"sendRequestTo:amount:note:completionHandler:", ^{
+
+    __block id mockVenmo;
+    __block NSString *recipient;
+    __block NSString *note;
+    __block NSUInteger amount;
+    __block VENTransactionAudience audience;
+    __block VENTransactionCompletionHandler handler;
+
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"1234" secret:@"12345" name:@"foobarApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        recipient = @"foo@venmo.com";
+        note = @"notenote";
+        amount = 100;
+        audience = VENTransactionAudienceFriends;
+        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+            int i = 1; i++;
+        };
+    });
+
+    it(@"should call sendRequestTo: with audience set to UserDefault", ^{
+        [[mockVenmo expect] sendRequestTo:recipient
+                                   amount:amount
+                                     note:note
+                                 audience:VENTransactionAudienceUserDefault
+                        completionHandler:handler];
+
+        [mockVenmo sendRequestTo:recipient amount:amount note:note completionHandler:handler];
         [mockVenmo verify];
     });
 });
