@@ -80,6 +80,7 @@ static Venmo *sharedInstance = nil;
         self.appSecret = appSecret;
         self.appName = appName ?: [[NSBundle mainBundle] name];
         self.session = [[VENSession alloc] init];
+        self.defaultTransactionMethod = VENTransactionMethodAppSwitch;
     }
     return self;
 }
@@ -192,9 +193,13 @@ static Venmo *sharedInstance = nil;
 
     [request sendWithSuccess:^(NSArray *sentTransactions, VENHTTPResponse *response) {
         VENTransaction *transaction = (VENTransaction *)[sentTransactions firstObject];
-        completionHandler(transaction, YES, nil);
+        if (completionHandler) {
+            completionHandler(transaction, YES, nil);
+        }
     } failure:^(NSArray *sentTransactions, VENHTTPResponse *response, NSError *error) {
-        completionHandler(nil, NO, error);
+        if (completionHandler) {
+            completionHandler(nil, NO, error);
+        }
     }];
 
 }

@@ -9,8 +9,11 @@
 #import "VENTransaction+VenmoSDK.h"
 
 typedef NS_ENUM(NSUInteger, VENTransactionMethod) {
+    // Indicates that the SDK should send transactions by switching to the Venmo app.
     VENTransactionMethodAppSwitch,
-    VENTransactionMethodInApp
+    // Indicates that the SDK should send transactions via the Venmo API.
+    // If there is no open session, the SDK will fall back to sending transactions via app switch.
+    VENTransactionMethodAPI
 };
 
 @class VENUserSDK, VENSession;
@@ -27,15 +30,15 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 @property (copy, nonatomic, readonly) NSString *appId;
 @property (copy, nonatomic, readonly) NSString *appSecret;
 @property (copy, nonatomic, readonly) NSString *appName;
+@property (strong, nonatomic) VENSession *session;
+@property (copy, nonatomic, readonly) VENTransactionCompletionHandler transactionCompletionHandler;
+@property (copy, nonatomic, readonly) VENOAuthCompletionHandler OAuthCompletionHandler;
 
 - (BOOL)handleOpenURL:(NSURL *)url;
 
 
-/// The current session.
-@property (strong, nonatomic) VENSession *session;
-
-@property (copy, nonatomic, readonly) VENTransactionCompletionHandler transactionCompletionHandler;
-@property (copy, nonatomic, readonly) VENOAuthCompletionHandler OAuthCompletionHandler;
+/// The SDK's default transaction method. Default is VENTransactionMethodAppSwitch.
+@property (assign, nonatomic, readwrite) VENTransactionMethod defaultTransactionMethod;
 
 
 /**

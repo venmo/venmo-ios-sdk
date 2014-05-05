@@ -106,6 +106,10 @@ describe(@"initWithAppId:secret:name:", ^{
     it(@"should correctly set the current session to a closed session", ^{
         expect(venmo.session.state).to.equal(VENSessionStateClosed);
     });
+
+    it(@"should set the default transaction method to app switch", ^{
+        expect(venmo.defaultTransactionMethod).to.equal(VENTransactionMethodAppSwitch);
+    });
 });
 
 
