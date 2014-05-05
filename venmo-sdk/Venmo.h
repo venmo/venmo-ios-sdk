@@ -8,8 +8,12 @@
 #import "VENSession.h"
 #import "VENTransaction+VenmoSDK.h"
 
-@class VENUserSDK;
-@class VENSession;
+typedef NS_ENUM(NSUInteger, VENTransactionMethod) {
+    VENTransactionMethodAppSwitch,
+    VENTransactionMethodInApp
+};
+
+@class VENUserSDK, VENSession;
 
 typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
 typedef void (^VENRefreshTokenCompletionHandler)(NSString *accessToken, BOOL success, NSError *error);
