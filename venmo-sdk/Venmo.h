@@ -43,7 +43,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * Returns YES if the current device has the Venmo app installed
  */
-- (BOOL)venmoAppInstalled;
+- (BOOL)isVenmoAppInstalled;
 
 
 /**

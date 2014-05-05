@@ -92,7 +92,7 @@ static Venmo *sharedInstance = nil;
     self.session.state = VENSessionStateOpening;
 
     NSString *baseURL;
-    if ([self venmoAppInstalled]) {
+    if ([self isVenmoAppInstalled]) {
         baseURL = @"venmo://";
     } else {
         baseURL = [self baseURLPath];
@@ -126,7 +126,7 @@ static Venmo *sharedInstance = nil;
 - (void)refreshTokenWithCompletionHandler:(VENRefreshTokenCompletionHandler)handler {
     if (self.session.state != VENSessionStateOpen) {
         DLog(@"The session is not open. Call requestPermissions:withCompletionHandler to open a session.");
-        NSError *error = [NSError errorWithDomain:VenmoSDKDomain code:VENSDKErrorSessionNotOpen userInfo:nil];
+        NSError *error = [NSError sessionNotOpenError];
         if (handler) {
             handler(nil, NO, error);
         }
@@ -160,7 +160,7 @@ static Venmo *sharedInstance = nil;
     NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
 
-    if ([self venmoAppInstalled]) {
+    if ([self isVenmoAppInstalled]) {
         [[UIApplication sharedApplication] openURL:transactionURL];
     } else if (completionHandler) {
         NSError *error = [NSError errorWithDomain:VenmoSDKDomain
@@ -222,7 +222,7 @@ static Venmo *sharedInstance = nil;
 }
 
 
-- (BOOL)venmoAppInstalled {
+- (BOOL)isVenmoAppInstalled {
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
 }
 

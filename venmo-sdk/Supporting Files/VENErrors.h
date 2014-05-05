@@ -12,5 +12,7 @@ typedef enum VENSDKErrorCode {
     // An error occurred related to an iOS API call
     VENSDKErrorSystemApi,
     // The session is not open
-    VENSDKErrorSessionNotOpen
+    VENSDKErrorSessionNotOpen,
+    // The session's access token has expired
+    VENSDKErrorAccessTokenExpired
 } VENSDKErrorCode;

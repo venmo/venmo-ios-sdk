@@ -1,4 +1,5 @@
 #import "Venmo.h"
+#import "NSURL+VenmoSDK.h"
 #import <VENCore/VENUserPayloadKeys.h>
 
 @interface VENSession (VenmoSpec)
@@ -28,6 +29,8 @@
 @end
 
 SpecBegin(Venmo)
+
+#pragma mark - Initialization
 
 describe(@"startWithAppId:secret:name: and sharedInstance", ^{
 
@@ -76,6 +79,35 @@ describe(@"startWithAppId:secret:name: and sharedInstance", ^{
 
 });
 
+
+describe(@"initWithAppId:secret:name:", ^{
+
+    __block Venmo *venmo;
+
+    beforeEach(^{
+        venmo = [[Venmo alloc] initWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
+    });
+
+    it(@"should have an internal development flag", ^{
+        expect(venmo.internalDevelopment).to.beFalsy();
+        venmo.internalDevelopment = YES;
+        expect(venmo.internalDevelopment).to.beTruthy();
+    });
+
+    it(@"should correctly set the app id, secret, and name", ^{
+        expect(venmo.appId).to.equal(@"foo");
+        expect(venmo.appSecret).to.equal(@"bar");
+        expect(venmo.appName).to.equal(@"Foo Bar App");
+    });
+
+    it(@"should correctly set the current session to a closed session", ^{
+        expect(venmo.session.state).to.equal(VENSessionStateClosed);
+    });
+});
+
+
+#pragma mark - Sessions
+
 describe(@"requestPermissions:withCompletionHandler", ^{
 
     __block id mockApplication;
@@ -112,7 +144,7 @@ describe(@"requestPermissions:withCompletionHandler", ^{
     });
 
     it(@"should use venmo:// if venmoAppInstalled is true", ^{
-        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(YES)] venmoAppInstalled];
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(YES)] isVenmoAppInstalled];
         [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
             expect([url scheme]).to.equal(@"venmo");
             return YES;
@@ -121,7 +153,7 @@ describe(@"requestPermissions:withCompletionHandler", ^{
     });
 
     it(@"should use baseURLPath if venmoAppInstalled is false", ^{
-        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] venmoAppInstalled];
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
         NSString *baseURLPath = [venmo baseURLPath];
         [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
             expect([url absoluteString]).to.contain(baseURLPath);
@@ -297,32 +329,85 @@ describe(@"logout", ^{
 
 });
 
-#pragma mark - Internal methods
 
-describe(@"initWithAppId:secret:name:", ^{
+#pragma mark - Transactions
 
-    __block Venmo *venmo;
+describe(@"sendAppSwitchTransactionTo:", ^{
 
-    beforeEach(^{
-        venmo = [[Venmo alloc] initWithAppId:@"foo" secret:@"bar" name:@"Foo Bar App"];
+    __block id mockApplication;
+    __block id mockSharedApplication;
+    __block id mockVenmo;
+
+    before(^{
+        // Turn [UIApplication sharedApplication] into a partial mock.
+        mockApplication = [OCMockObject niceMockForClass:[UIApplication class]];
+        mockSharedApplication = [OCMockObject niceMockForClass:[UIApplication class]];
+        [[[mockApplication stub] andReturn:mockSharedApplication] sharedApplication];
+
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"abcd" secret:@"12345" name:@"fooApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];       
     });
 
-    it(@"should have an internal development flag", ^{
-        expect(venmo.internalDevelopment).to.beFalsy();
-        venmo.internalDevelopment = YES;
-        expect(venmo.internalDevelopment).to.beTruthy();
+
+    it(@"should set self.transactionCompletionHandler to the given completion handler", ^{
+        VENTransactionCompletionHandler handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+            NSUInteger a = 1;
+            a++;
+        };
+
+        [mockVenmo sendAppSwitchTransactionTo:@"foo"
+                              transactionType:VENTransactionTypePay
+                                       amount:10
+                                         note:@"1234"
+                            completionHandler:handler];
+        expect(((Venmo *)mockVenmo).transactionCompletionHandler).to.equal(handler);
     });
 
-    it(@"should correctly set the app id, secret, and name", ^{
-        expect(venmo.appId).to.equal(@"foo");
-        expect(venmo.appSecret).to.equal(@"bar");
-        expect(venmo.appName).to.equal(@"Foo Bar App");
+    it(@"should open the correct URL if isVenmoAppInstalled is true", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(YES)] isVenmoAppInstalled];
+
+        VENTransactionType type = VENTransactionTypePay;
+        NSUInteger amount = 10;
+        NSString *note = @"foobarbaz";
+        NSString *recipient = @"peter@example.com";
+        NSString *expectedPath = [mockVenmo URLPathWithType:type amount:amount note:note recipient:recipient];
+        NSURL *expectedURL = [NSURL venmoAppURLWithPath:expectedPath];
+        [[mockSharedApplication expect] openURL:expectedURL];
+        [mockVenmo sendAppSwitchTransactionTo:recipient
+                              transactionType:type
+                                       amount:amount
+                                         note:note
+                            completionHandler:nil];
+        [mockSharedApplication verify];
     });
 
-    it(@"should correctly set the current session to a closed session", ^{
-        expect(venmo.session.state).to.equal(VENSessionStateClosed);
+    it(@"should call the completion handler with an error if venmoAppInstalled is false", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
+        [mockVenmo sendAppSwitchTransactionTo:@"ben@example.com"
+                              transactionType:VENTransactionTypePay
+                                       amount:10
+                                         note:@"foonote"
+                            completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
+                                expect(transaction).to.beNil();
+                                expect(success).to.beFalsy();
+                                expect(error.code).to.equal(VENSDKErrorTransactionFailed);
+                            }];
     });
 });
+
+
+describe(@"sendInAppTransactionTo:", ^{
+    it(@"should call the completion handler with an error if the session is closed", ^{
+
+    });
+
+    it(@"should call the completion handler with an error if the session's token is expired", ^{
+
+    });
+
+});
+
+#pragma mark - URLs
 
 describe(@"baseURLPath", ^{
 
