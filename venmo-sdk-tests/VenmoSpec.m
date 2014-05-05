@@ -20,6 +20,26 @@
                        secret:(NSString *)appSecret
                          name:(NSString *)appName;
 
+- (void)sendAPITransactionTo:(NSString *)recipientHandle
+             transactionType:(VENTransactionType)type
+                      amount:(NSUInteger)amount
+                        note:(NSString *)note
+                    audience:(VENTransactionAudience)audience
+           completionHandler:(VENTransactionCompletionHandler)completionHandler;
+
+- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
+                   transactionType:(VENTransactionType)type
+                            amount:(NSUInteger)amount
+                              note:(NSString *)note
+                 completionHandler:(VENTransactionCompletionHandler)completionHandler;
+
+- (void)sendTransactionTo:(NSString *)recipientHandle
+          transactionType:(VENTransactionType)type
+                   amount:(NSUInteger)amount
+                     note:(NSString *)note
+                 audience:(VENTransactionAudience)audience
+        completionHandler:(VENTransactionCompletionHandler)completionHandler;
+
 - (void)validateAPIRequestWithCompletionHandler:(VENGenericRequestCompletionHandler)handler;
 
 - (NSString *)URLPathWithType:(VENTransactionType)type
@@ -184,7 +204,6 @@ describe(@"requestPermissions:withCompletionHandler", ^{
     });
 
 });
-
 
 
 describe(@"isSessionValid", ^{
@@ -404,7 +423,6 @@ describe(@"sendAppSwitchTransactionTo:", ^{
 });
 
 
-
 // Note: This method is just a wrapper around methods in VENCreateTransactionRequest,
 // which has good test coverage in VENCore.
 describe(@"sendInAppTransactionTo:", ^{
@@ -420,13 +438,50 @@ describe(@"sendInAppTransactionTo:", ^{
 
     it(@"should call validateAPIRequestWithCompletionHandler", ^{
         [[mockVenmo expect] validateAPIRequestWithCompletionHandler:OCMOCK_ANY];
-        [mockVenmo sendInAppTransactionTo:@"foonumber"
+        [mockVenmo sendAPITransactionTo:@"foonumber"
                           transactionType:VENTransactionTypePay
                                    amount:100
                                      note:@"note"
                                  audience:VENTransactionAudienceFriends
                         completionHandler:nil];
         [session openWithAccessToken:@"token" refreshToken:@"refresh" expiresIn:100 user:nil];
+        [mockVenmo verify];
+    });
+
+});
+
+
+// Note: This method decides whether to call sendAPITransactionTo: or sendAppSwitchTransactionTo:
+describe(@"sendTransactionTo:", ^{
+
+    __block id mockVenmo;
+    __block VENTransactionType type;
+    __block NSUInteger amount;
+    __block VENTransactionAudience audience;
+
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"1234" secret:@"12345" name:@"foobarApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        type = VENTransactionTypePay;
+        amount = 100;
+        audience = VENTransactionAudienceFriends;
+    });
+
+    it(@"should call sendAPITransaction if defaultTransactionMethod is API", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(VENTransactionMethodAPI)] defaultTransactionMethod];
+
+        [[mockVenmo expect] sendAPITransactionTo:OCMOCK_ANY transactionType:type amount:amount note:OCMOCK_ANY audience:audience completionHandler:OCMOCK_ANY];
+
+        [mockVenmo sendTransactionTo:@"foobar" transactionType:type amount:amount note:@"bar" audience:audience completionHandler:nil];
+        [mockVenmo verify];
+    });
+
+    it(@"should call sendAppSwitchTransaction if defaultTransactionMethod is app switch", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(VENTransactionMethodAppSwitch)] defaultTransactionMethod];
+
+        [[mockVenmo expect] sendAppSwitchTransactionTo:OCMOCK_ANY transactionType:type amount:amount note:OCMOCK_ANY completionHandler:OCMOCK_ANY];
+
+        [mockVenmo sendTransactionTo:@"foobar" transactionType:type amount:amount note:@"bar" audience:audience completionHandler:nil];
         [mockVenmo verify];
     });
 

@@ -175,16 +175,15 @@ static Venmo *sharedInstance = nil;
 }
 
 
-- (void)sendInAppTransactionTo:(NSString *)recipientHandle
-               transactionType:(VENTransactionType)type
-                        amount:(NSUInteger)amount
-                          note:(NSString *)note
-                      audience:(VENTransactionAudience)audience
-             completionHandler:(VENTransactionCompletionHandler)completionHandler {
+- (void)sendAPITransactionTo:(NSString *)recipientHandle
+             transactionType:(VENTransactionType)type
+                      amount:(NSUInteger)amount
+                        note:(NSString *)note
+                    audience:(VENTransactionAudience)audience
+           completionHandler:(VENTransactionCompletionHandler)completionHandler {
+
     [self validateAPIRequestWithCompletionHandler:completionHandler];
-
     VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:recipientHandle amount:amount];
-
     VENCreateTransactionRequest *request = [[VENCreateTransactionRequest alloc] init];
     request.transactionType = type;
     request.audience = audience;
@@ -201,6 +200,54 @@ static Venmo *sharedInstance = nil;
             completionHandler(nil, NO, error);
         }
     }];
+}
+
+
+- (void)sendTransactionTo:(NSString *)recipientHandle
+          transactionType:(VENTransactionType)type
+                   amount:(NSUInteger)amount
+                     note:(NSString *)note
+                 audience:(VENTransactionAudience)audience
+        completionHandler:(VENTransactionCompletionHandler)completionHandler {
+
+    if (self.defaultTransactionMethod == VENTransactionMethodAPI) {
+        [self sendAPITransactionTo:recipientHandle transactionType:type amount:amount note:note audience:audience completionHandler:completionHandler];
+    }
+    else {
+        [self sendAppSwitchTransactionTo:recipientHandle transactionType:type amount:amount note:note completionHandler:completionHandler];
+    }
+}
+
+- (void)sendPaymentTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+    completionHandler:(VENTransactionCompletionHandler)handler {
+
+}
+
+
+- (void)sendPaymentTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+             audience:(VENTransactionAudience)audience
+    completionHandler:(VENTransactionCompletionHandler)handler {
+
+}
+
+
+- (void)sendRequestTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+    completionHandler:(VENTransactionCompletionHandler)handler {
+
+}
+
+
+- (void)sendRequestTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+             audience:(VENTransactionAudience)audience
+    completionHandler:(VENTransactionCompletionHandler)handler {
 
 }
 

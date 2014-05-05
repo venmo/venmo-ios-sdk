@@ -113,36 +113,51 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
- * Sends a transaction by switching to the Venmo app.
+ * Sends a payment with the given parameters.
  * @param recipientHandle The recipient's phone number, email, or Venmo username
- * @param transactionType VENTransactionTypePay or VENTransactionTypeCharge
- * @param amount The transaction amount
- * @param note A note for the transaction
- * @param The handler block to execute
+ * @param amount The payment amount
+ * @param note A note for the payment
+ * @param handler The handler block to execute after the payment succeeds or fails
  */
-- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
-                   transactionType:(VENTransactionType)type
-                            amount:(NSUInteger)amount
-                              note:(NSString *)note
-                 completionHandler:(VENTransactionCompletionHandler)completionHandler;
+- (void)sendPaymentTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+    completionHandler:(VENTransactionCompletionHandler)handler;
 
 
 /**
- * Send an in-app transaction through the Venmo API.
- * @param recipientHandle The recipient's phone number, email, or Venmo username
- * @param transactionType VENTransactionTypePay or VENTransactionTypeCharge
- * @param amount The transaction amount
- * @param note A note for the transaction
- * @param audience The sharing setting for the transaction
- * @param The handler block to execute
+ * See sendPaymentTo:amount:note:completionHandler:
+ * @param audience The audience for the payment
  */
-- (void)sendInAppTransactionTo:(NSString *)recipientHandle
-               transactionType:(VENTransactionType)type
-                        amount:(NSUInteger)amount
-                          note:(NSString *)note
-                      audience:(VENTransactionAudience)audience
-             completionHandler:(VENTransactionCompletionHandler)completionHandler;
+- (void)sendPaymentTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+             audience:(VENTransactionAudience)audience
+    completionHandler:(VENTransactionCompletionHandler)handler;
 
+
+/**
+ * Sends a payment request with the given parameters.
+ * @param recipientHandle The recipient's phone number, email, or Venmo username
+ * @param amount The requested amount
+ * @param note A note for the request
+ * @param handler The handler block to execute after the request succeeds or fails
+ */
+- (void)sendRequestTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+    completionHandler:(VENTransactionCompletionHandler)handler;
+
+
+/**
+ * See sendRequestTo:amount:note:completionHandler:
+ * @param audience The audience for the payment
+ */
+- (void)sendRequestTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
+             audience:(VENTransactionAudience)audience
+    completionHandler:(VENTransactionCompletionHandler)handler;
 
 
 @end
