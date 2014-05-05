@@ -13,6 +13,7 @@
 
 typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
 typedef void (^VENRefreshTokenCompletionHandler)(NSString *accessToken, BOOL success, NSError *error);
+typedef void (^VENGenericRequestCompletionHandler)(id object, BOOL success, NSError *error);
 typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 #define VEN_CURRENT_SDK_VERSION @"1.0.0"

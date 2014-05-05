@@ -76,9 +76,9 @@
         NSString *refreshToken = json[@"refresh_token"];
         NSUInteger expiresIn = [json[@"expires_in"] integerValue];
         [client.session openWithAccessToken:accessToken
-                                      refreshToken:refreshToken
-                                         expiresIn:expiresIn
-                                              user:user];
+                               refreshToken:refreshToken
+                                  expiresIn:expiresIn
+                                       user:user];
 
         // Save the session
         [client.session saveWithAppId:client.appId];

@@ -171,24 +171,39 @@ static Venmo *sharedInstance = nil;
     }   
 }
 
+
 - (void)sendInAppTransactionTo:(NSString *)recipientHandle
                transactionType:(VENTransactionType)type
                         amount:(NSUInteger)amount
                           note:(NSString *)note
                       audience:(VENTransactionAudience)audience
              completionHandler:(VENTransactionCompletionHandler)completionHandler {
+
+
+}
+
+
+- (void)validateAPIRequestWithCompletionHandler:(VENGenericRequestCompletionHandler)handler {
+    // Session is not open
     if (self.session.state != VENSessionStateOpen) {
         NSError *error = [NSError sessionNotOpenError];
-        completionHandler(nil, NO, error);
+        handler(nil, NO, error);
         return;
     }
+    // Token has expired
     NSDate *now = [NSDate date];
     if ([[self.session.expirationDate laterDate:now] isEqualToDate:now]) {
         NSError *error = [NSError accessTokenExpiredError];
-        completionHandler(nil, NO, error);
+        handler(nil, NO, error);
         return;
     }
-
+    // VENCore has not been initialized
+    VENCore *core = [VENCore defaultCore];
+    if (!core || !core.accessToken) {
+        VENCore *core = [[VENCore alloc] init];
+        [core setAccessToken:self.session.accessToken];
+        [VENCore setDefaultCore:core];
+    }
 }
 
 
