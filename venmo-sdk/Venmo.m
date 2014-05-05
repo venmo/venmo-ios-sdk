@@ -218,13 +218,6 @@ static Venmo *sharedInstance = nil;
     }
 }
 
-- (void)sendPaymentTo:(NSString *)recipientHandle
-               amount:(NSUInteger)amount
-                 note:(NSString *)note
-    completionHandler:(VENTransactionCompletionHandler)handler {
-
-}
-
 
 - (void)sendPaymentTo:(NSString *)recipientHandle
                amount:(NSUInteger)amount
@@ -232,10 +225,11 @@ static Venmo *sharedInstance = nil;
              audience:(VENTransactionAudience)audience
     completionHandler:(VENTransactionCompletionHandler)handler {
 
+    [self sendTransactionTo:recipientHandle transactionType:VENTransactionTypePay amount:amount note:note audience:audience completionHandler:handler];
 }
 
 
-- (void)sendRequestTo:(NSString *)recipientHandle
+- (void)sendPaymentTo:(NSString *)recipientHandle
                amount:(NSUInteger)amount
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler {
@@ -247,6 +241,15 @@ static Venmo *sharedInstance = nil;
                amount:(NSUInteger)amount
                  note:(NSString *)note
              audience:(VENTransactionAudience)audience
+    completionHandler:(VENTransactionCompletionHandler)handler {
+
+    [self sendTransactionTo:recipientHandle transactionType:VENTransactionTypeCharge amount:amount note:note audience:audience completionHandler:handler];
+}
+
+
+- (void)sendRequestTo:(NSString *)recipientHandle
+               amount:(NSUInteger)amount
+                 note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler {
 
 }

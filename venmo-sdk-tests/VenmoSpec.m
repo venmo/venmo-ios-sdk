@@ -455,36 +455,116 @@ describe(@"sendInAppTransactionTo:", ^{
 describe(@"sendTransactionTo:", ^{
 
     __block id mockVenmo;
+    __block NSString *recipient;
+    __block NSString *note;   
     __block VENTransactionType type;
     __block NSUInteger amount;
     __block VENTransactionAudience audience;
+    __block VENTransactionCompletionHandler handler;
 
     before(^{
         Venmo *venmo = [[Venmo alloc] initWithAppId:@"1234" secret:@"12345" name:@"foobarApp"];
         mockVenmo = [OCMockObject partialMockForObject:venmo];
+        recipient = @"foo@venmo.com";
+        note = @"notenote";       
         type = VENTransactionTypePay;
         amount = 100;
         audience = VENTransactionAudienceFriends;
+        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+            int i = 1; i++;
+        };       
     });
 
     it(@"should call sendAPITransaction if defaultTransactionMethod is API", ^{
         [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(VENTransactionMethodAPI)] defaultTransactionMethod];
 
-        [[mockVenmo expect] sendAPITransactionTo:OCMOCK_ANY transactionType:type amount:amount note:OCMOCK_ANY audience:audience completionHandler:OCMOCK_ANY];
+        [[mockVenmo expect] sendAPITransactionTo:recipient transactionType:type amount:amount note:note audience:audience completionHandler:handler];
 
-        [mockVenmo sendTransactionTo:@"foobar" transactionType:type amount:amount note:@"bar" audience:audience completionHandler:nil];
+        [mockVenmo sendTransactionTo:recipient transactionType:type amount:amount note:note audience:audience completionHandler:handler];
         [mockVenmo verify];
     });
 
     it(@"should call sendAppSwitchTransaction if defaultTransactionMethod is app switch", ^{
         [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(VENTransactionMethodAppSwitch)] defaultTransactionMethod];
 
-        [[mockVenmo expect] sendAppSwitchTransactionTo:OCMOCK_ANY transactionType:type amount:amount note:OCMOCK_ANY completionHandler:OCMOCK_ANY];
+        [[mockVenmo expect] sendAppSwitchTransactionTo:recipient transactionType:type amount:amount note:note completionHandler:handler];
 
-        [mockVenmo sendTransactionTo:@"foobar" transactionType:type amount:amount note:@"bar" audience:audience completionHandler:nil];
+        [mockVenmo sendTransactionTo:recipient transactionType:type amount:amount note:note audience:audience completionHandler:handler];
         [mockVenmo verify];
     });
 
+});
+
+
+describe(@"sendPaymentTo:amount:note:audience:completionHandler:", ^{
+
+    __block id mockVenmo;
+    __block NSString *recipient;
+    __block NSString *note;
+    __block NSUInteger amount;
+    __block VENTransactionAudience audience;
+    __block VENTransactionCompletionHandler handler;
+
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"1234" secret:@"12345" name:@"foobarApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        recipient = @"foo@venmo.com";
+        note = @"notenote";
+        amount = 100;
+        audience = VENTransactionAudienceFriends;
+        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+            int i = 1; i++;
+        };
+    });
+
+    it(@"should call sendTransactionTo: with type Pay", ^{
+        [[mockVenmo expect] sendTransactionTo:recipient
+                              transactionType:VENTransactionTypePay
+                                       amount:amount
+                                         note:note
+                                     audience:audience
+                            completionHandler:handler];
+
+        [mockVenmo sendPaymentTo:recipient amount:amount note:note audience:audience completionHandler:handler];
+
+        [mockVenmo verify];
+    });
+});
+
+
+describe(@"sendRequestTo:amount:note:audience:completionHandler:", ^{
+
+    __block id mockVenmo;
+    __block NSString *recipient;
+    __block NSString *note;
+    __block NSUInteger amount;
+    __block VENTransactionAudience audience;
+    __block VENTransactionCompletionHandler handler;
+
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"1234" secret:@"12345" name:@"foobarApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        recipient = @"foo@venmo.com";
+        note = @"notenote";
+        amount = 100;
+        audience = VENTransactionAudienceFriends;
+        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+            int i = 1; i++;
+        };
+    });
+
+    it(@"should call sendTransactionTo: with type Charge", ^{
+        [[mockVenmo expect] sendTransactionTo:recipient
+                              transactionType:VENTransactionTypeCharge
+                                       amount:amount
+                                         note:note
+                                     audience:audience
+                            completionHandler:handler];
+
+        [mockVenmo sendRequestTo:recipient amount:amount note:note audience:audience completionHandler:handler];
+
+        [mockVenmo verify];
+    });
 });
 
 
