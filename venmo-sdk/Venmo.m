@@ -177,6 +177,17 @@ static Venmo *sharedInstance = nil;
                           note:(NSString *)note
                       audience:(VENTransactionAudience)audience
              completionHandler:(VENTransactionCompletionHandler)completionHandler {
+    if (self.session.state != VENSessionStateOpen) {
+        NSError *error = [NSError sessionNotOpenError];
+        completionHandler(nil, NO, error);
+        return;
+    }
+    NSDate *now = [NSDate date];
+    if ([[self.session.expirationDate laterDate:now] isEqualToDate:now]) {
+        NSError *error = [NSError accessTokenExpiredError];
+        completionHandler(nil, NO, error);
+        return;
+    }
 
 }
 

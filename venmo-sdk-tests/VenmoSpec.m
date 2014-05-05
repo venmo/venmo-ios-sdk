@@ -381,7 +381,7 @@ describe(@"sendAppSwitchTransactionTo:", ^{
         [mockSharedApplication verify];
     });
 
-    it(@"should call the completion handler with an error if venmoAppInstalled is false", ^{
+    it(@"should call the completion handler with an error if venmoAppInstalled is false", ^AsyncBlock{
         [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
         [mockVenmo sendAppSwitchTransactionTo:@"ben@example.com"
                               transactionType:VENTransactionTypePay
@@ -391,18 +391,54 @@ describe(@"sendAppSwitchTransactionTo:", ^{
                                 expect(transaction).to.beNil();
                                 expect(success).to.beFalsy();
                                 expect(error.code).to.equal(VENSDKErrorTransactionFailed);
+                                done();
                             }];
     });
 });
 
 
 describe(@"sendInAppTransactionTo:", ^{
-    it(@"should call the completion handler with an error if the session is closed", ^{
 
+    __block id mockVenmo;
+    __block VENSession *session;
+    
+    before(^{
+        Venmo *venmo = [[Venmo alloc] initWithAppId:@"abcd" secret:@"12345" name:@"fooApp"];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+        session = [[VENSession alloc] init];
     });
 
-    it(@"should call the completion handler with an error if the session's token is expired", ^{
+    it(@"should call the completion handler with an error if the session is closed", ^AsyncBlock{
+        session.state = VENSessionStateClosed;
+        [[[mockVenmo stub] andReturn:session] session];
+        [mockVenmo sendInAppTransactionTo:@"foo"
+                          transactionType:VENTransactionTypeCharge
+                                   amount:10
+                                     note:@"foo"
+                                 audience:VENTransactionAudienceFriends
+                        completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
+                                     expect(transaction).to.beNil();
+                                     expect(success).to.beFalsy();
+                                     expect(error.code).to.equal(VENSDKErrorSessionNotOpen);
+                                     done();
+                                 }];
+    });
 
+    it(@"should call the completion handler with an error if the session's token is expired", ^AsyncBlock{
+        session.state = VENSessionStateOpen;
+        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-10];
+        [[[mockVenmo stub] andReturn:session] session];
+        [mockVenmo sendInAppTransactionTo:@"foo"
+                          transactionType:VENTransactionTypeCharge
+                                   amount:10
+                                     note:@"foo"
+                                 audience:VENTransactionAudienceFriends
+                        completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
+                                     expect(transaction).to.beNil();
+                                     expect(success).to.beFalsy();
+                                     expect(error.code).to.equal(VENSDKErrorAccessTokenExpired);
+                                     done();
+                                 }];
     });
 
 });
