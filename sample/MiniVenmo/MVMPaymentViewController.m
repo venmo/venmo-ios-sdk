@@ -1,7 +1,7 @@
-#import "VDKPaymentViewController.h"
+#import "MVMPaymentViewController.h"
 #import <Venmo-iOS-SDK/Venmo.h>
 
-@interface VDKPaymentViewController () <UITextFieldDelegate>
+@interface MVMPaymentViewController () <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *amountTextField;
 @property (strong, nonatomic) IBOutlet UITextField *toTextField;
@@ -11,7 +11,7 @@
 
 @end
 
-@implementation VDKPaymentViewController
+@implementation MVMPaymentViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -7,7 +7,7 @@
         <!--Payment View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="VDKPaymentViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="MVMPaymentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2b2-mX-okt"/>
                         <viewControllerLayoutGuide type="bottom" id="2Dp-ZI-RMn"/>
@@ -103,7 +103,7 @@
         <!--Logged In View Controller-->
         <scene sceneID="tzK-no-QE9">
             <objects>
-                <viewController id="91d-CQ-igG" customClass="VDKLoggedInViewController" sceneMemberID="viewController">
+                <viewController id="91d-CQ-igG" customClass="MVMLoggedInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="PY5-Up-G7n"/>
                         <viewControllerLayoutGuide type="bottom" id="V00-E9-QN4"/>
@@ -169,7 +169,7 @@
         <!--Logged Out View Controller-->
         <scene sceneID="hq8-qZ-eqM">
             <objects>
-                <viewController id="NF6-x8-VjW" customClass="VDKLoggedOutViewController" sceneMemberID="viewController">
+                <viewController id="NF6-x8-VjW" customClass="MVMLoggedOutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hkS-sa-RNL"/>
                         <viewControllerLayoutGuide type="bottom" id="d3M-Wf-jkd"/>

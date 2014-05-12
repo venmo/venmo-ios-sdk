@@ -1,15 +1,15 @@
-#import "VDKLoggedInViewController.h"
+#import "MVMLoggedInViewController.h"
 #import <Venmo-iOS-SDK/Venmo.h>
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
-@interface VDKLoggedInViewController ()
+@interface MVMLoggedInViewController ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 @end
 
-@implementation VDKLoggedInViewController
+@implementation MVMLoggedInViewController
 
 - (void)viewDidLoad
 {

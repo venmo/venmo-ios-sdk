@@ -7,23 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		651B7992CC2E43C6B080EF8A /* libPods-VenmoSDKSample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0534BDE1E36941E4B5330689 /* libPods-VenmoSDKSample.a */; };
+		46361834C7284F979B66C4A2 /* libPods-MiniVenmo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B91B22922489429295156D45 /* libPods-MiniVenmo.a */; };
 		B62D59D3189855E5001E46A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D2189855E5001E46A4 /* Foundation.framework */; };
 		B62D59D5189855E5001E46A4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D4189855E5001E46A4 /* CoreGraphics.framework */; };
 		B62D59D7189855E5001E46A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D6189855E5001E46A4 /* UIKit.framework */; };
 		B62D59DD189855E5001E46A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B62D59DB189855E5001E46A4 /* InfoPlist.strings */; };
 		B62D59DF189855E5001E46A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59DE189855E5001E46A4 /* main.m */; };
-		B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */; };
+		B62D59E3189855E5001E46A4 /* MVMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E2189855E5001E46A4 /* MVMAppDelegate.m */; };
 		B62D59E6189855E5001E46A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62D59E4189855E5001E46A4 /* Main.storyboard */; };
-		B62D59E9189855E5001E46A4 /* VDKPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */; };
+		B62D59E9189855E5001E46A4 /* MVMPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E8189855E5001E46A4 /* MVMPaymentViewController.m */; };
 		B62D59EB189855E5001E46A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B62D59EA189855E5001E46A4 /* Images.xcassets */; };
 		B62D59F2189855E5001E46A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59F1189855E5001E46A4 /* XCTest.framework */; };
 		B62D59F3189855E5001E46A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D2189855E5001E46A4 /* Foundation.framework */; };
 		B62D59F4189855E5001E46A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D6189855E5001E46A4 /* UIKit.framework */; };
 		B62D59FC189855E5001E46A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B62D59FA189855E5001E46A4 /* InfoPlist.strings */; };
-		B62D59FE189855E5001E46A4 /* VENAppSwitchSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */; };
-		EB8556C219182D3C002243FA /* VDKLoggedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */; };
-		EB8EBFC519182BA100E45B38 /* VDKLoggedOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */; };
+		EB8556C219182D3C002243FA /* MVMLoggedInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8556C119182D3C002243FA /* MVMLoggedInViewController.m */; };
+		EB8EBFC519182BA100E45B38 /* MVMLoggedOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8EBFC419182BA100E45B38 /* MVMLoggedOutViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,31 +36,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0534BDE1E36941E4B5330689 /* libPods-VenmoSDKSample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VenmoSDKSample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VenmoSDKSample.xcconfig"; path = "Pods/Pods-VenmoSDKSample.xcconfig"; sourceTree = "<group>"; };
-		B62D59CF189855E5001E46A4 /* VenmoSDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VenmoSDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62D59CF189855E5001E46A4 /* MiniVenmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVenmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59D2189855E5001E46A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B62D59D4189855E5001E46A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		B62D59D6189855E5001E46A4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		B62D59DA189855E5001E46A4 /* VenmoSDKSample-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoSDKSample-Info.plist"; sourceTree = "<group>"; };
+		B62D59DA189855E5001E46A4 /* MiniVenmo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MiniVenmo-Info.plist"; sourceTree = "<group>"; };
 		B62D59DC189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B62D59DE189855E5001E46A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		B62D59E0189855E5001E46A4 /* VenmoSDKSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VenmoSDKSample-Prefix.pch"; sourceTree = "<group>"; };
-		B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKAppDelegate.h; sourceTree = "<group>"; };
-		B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKAppDelegate.m; sourceTree = "<group>"; };
+		B62D59E0189855E5001E46A4 /* MiniVenmo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MiniVenmo-Prefix.pch"; sourceTree = "<group>"; };
+		B62D59E1189855E5001E46A4 /* MVMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMAppDelegate.h; sourceTree = "<group>"; };
+		B62D59E2189855E5001E46A4 /* MVMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMAppDelegate.m; sourceTree = "<group>"; };
 		B62D59E5189855E5001E46A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B62D59E7189855E5001E46A4 /* VDKPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKPaymentViewController.h; sourceTree = "<group>"; };
-		B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKPaymentViewController.m; sourceTree = "<group>"; };
+		B62D59E7189855E5001E46A4 /* MVMPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MVMPaymentViewController.h; sourceTree = "<group>"; };
+		B62D59E8189855E5001E46A4 /* MVMPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MVMPaymentViewController.m; sourceTree = "<group>"; };
 		B62D59EA189855E5001E46A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoSDKSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62D59F0189855E5001E46A4 /* MiniVenmoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVenmoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59F1189855E5001E46A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B62D59F9189855E5001E46A4 /* VenmoSDKSampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VenmoSDKSampleTests-Info.plist"; sourceTree = "<group>"; };
+		B62D59F9189855E5001E46A4 /* MiniVenmoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MiniVenmoTests-Info.plist"; sourceTree = "<group>"; };
 		B62D59FB189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VENAppSwitchSampleTests.m; sourceTree = "<group>"; };
-		EB8556C019182D3C002243FA /* VDKLoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKLoggedInViewController.h; sourceTree = "<group>"; };
-		EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKLoggedInViewController.m; sourceTree = "<group>"; };
-		EB8EBFC319182BA100E45B38 /* VDKLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VDKLoggedOutViewController.h; sourceTree = "<group>"; };
-		EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VDKLoggedOutViewController.m; sourceTree = "<group>"; };
+		B91B22922489429295156D45 /* libPods-MiniVenmo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVenmo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVenmo.xcconfig"; path = "Pods/Pods-MiniVenmo.xcconfig"; sourceTree = "<group>"; };
+		EB8556C019182D3C002243FA /* MVMLoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMLoggedInViewController.h; sourceTree = "<group>"; };
+		EB8556C119182D3C002243FA /* MVMLoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMLoggedInViewController.m; sourceTree = "<group>"; };
+		EB8EBFC319182BA100E45B38 /* MVMLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMLoggedOutViewController.h; sourceTree = "<group>"; };
+		EB8EBFC419182BA100E45B38 /* MVMLoggedOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMLoggedOutViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +70,7 @@
 				B62D59D5189855E5001E46A4 /* CoreGraphics.framework in Frameworks */,
 				B62D59D7189855E5001E46A4 /* UIKit.framework in Frameworks */,
 				B62D59D3189855E5001E46A4 /* Foundation.framework in Frameworks */,
-				651B7992CC2E43C6B080EF8A /* libPods-VenmoSDKSample.a in Frameworks */,
+				46361834C7284F979B66C4A2 /* libPods-MiniVenmo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,19 +90,19 @@
 		B62D59C6189855E5001E46A4 = {
 			isa = PBXGroup;
 			children = (
-				B62D59D8189855E5001E46A4 /* VenmoSDKSample */,
-				B62D59F7189855E5001E46A4 /* VenmoSDKSampleTests */,
+				B62D59D8189855E5001E46A4 /* MiniVenmo */,
+				B62D59F7189855E5001E46A4 /* MiniVenmoTests */,
 				B62D59D1189855E5001E46A4 /* Frameworks */,
 				B62D59D0189855E5001E46A4 /* Products */,
-				9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */,
+				DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
 		B62D59D0189855E5001E46A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59CF189855E5001E46A4 /* VenmoSDKSample.app */,
-				B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */,
+				B62D59CF189855E5001E46A4 /* MiniVenmo.app */,
+				B62D59F0189855E5001E46A4 /* MiniVenmoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -116,53 +114,52 @@
 				B62D59D4189855E5001E46A4 /* CoreGraphics.framework */,
 				B62D59D6189855E5001E46A4 /* UIKit.framework */,
 				B62D59F1189855E5001E46A4 /* XCTest.framework */,
-				0534BDE1E36941E4B5330689 /* libPods-VenmoSDKSample.a */,
+				B91B22922489429295156D45 /* libPods-MiniVenmo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		B62D59D8189855E5001E46A4 /* VenmoSDKSample */ = {
+		B62D59D8189855E5001E46A4 /* MiniVenmo */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */,
-				B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */,
-				EB8556C019182D3C002243FA /* VDKLoggedInViewController.h */,
-				EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */,
-				EB8EBFC319182BA100E45B38 /* VDKLoggedOutViewController.h */,
-				EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */,
-				B62D59E7189855E5001E46A4 /* VDKPaymentViewController.h */,
-				B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */,
+				B62D59E1189855E5001E46A4 /* MVMAppDelegate.h */,
+				B62D59E2189855E5001E46A4 /* MVMAppDelegate.m */,
+				EB8556C019182D3C002243FA /* MVMLoggedInViewController.h */,
+				EB8556C119182D3C002243FA /* MVMLoggedInViewController.m */,
+				EB8EBFC319182BA100E45B38 /* MVMLoggedOutViewController.h */,
+				EB8EBFC419182BA100E45B38 /* MVMLoggedOutViewController.m */,
+				B62D59E7189855E5001E46A4 /* MVMPaymentViewController.h */,
+				B62D59E8189855E5001E46A4 /* MVMPaymentViewController.m */,
 				B62D59E4189855E5001E46A4 /* Main.storyboard */,
 				B62D59EA189855E5001E46A4 /* Images.xcassets */,
 				B62D59D9189855E5001E46A4 /* Supporting Files */,
 			);
-			path = VenmoSDKSample;
+			path = MiniVenmo;
 			sourceTree = "<group>";
 		};
 		B62D59D9189855E5001E46A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59DA189855E5001E46A4 /* VenmoSDKSample-Info.plist */,
+				B62D59DA189855E5001E46A4 /* MiniVenmo-Info.plist */,
 				B62D59DB189855E5001E46A4 /* InfoPlist.strings */,
 				B62D59DE189855E5001E46A4 /* main.m */,
-				B62D59E0189855E5001E46A4 /* VenmoSDKSample-Prefix.pch */,
+				B62D59E0189855E5001E46A4 /* MiniVenmo-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B62D59F7189855E5001E46A4 /* VenmoSDKSampleTests */ = {
+		B62D59F7189855E5001E46A4 /* MiniVenmoTests */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59FD189855E5001E46A4 /* VENAppSwitchSampleTests.m */,
 				B62D59F8189855E5001E46A4 /* Supporting Files */,
 			);
-			path = VenmoSDKSampleTests;
+			path = MiniVenmoTests;
 			sourceTree = "<group>";
 		};
 		B62D59F8189855E5001E46A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59F9189855E5001E46A4 /* VenmoSDKSampleTests-Info.plist */,
+				B62D59F9189855E5001E46A4 /* MiniVenmoTests-Info.plist */,
 				B62D59FA189855E5001E46A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
@@ -171,9 +168,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B62D59CE189855E5001E46A4 /* VenmoSDKSample */ = {
+		B62D59CE189855E5001E46A4 /* MiniVenmo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSample" */;
+			buildConfigurationList = B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "MiniVenmo" */;
 			buildPhases = (
 				27F4CF55F8364F6BBBFE30B3 /* Check Pods Manifest.lock */,
 				B62D59CB189855E5001E46A4 /* Sources */,
@@ -185,14 +182,14 @@
 			);
 			dependencies = (
 			);
-			name = VenmoSDKSample;
+			name = MiniVenmo;
 			productName = VENAppSwitchSample;
-			productReference = B62D59CF189855E5001E46A4 /* VenmoSDKSample.app */;
+			productReference = B62D59CF189855E5001E46A4 /* MiniVenmo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B62D59EF189855E5001E46A4 /* VenmoSDKSampleTests */ = {
+		B62D59EF189855E5001E46A4 /* MiniVenmoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSampleTests" */;
+			buildConfigurationList = B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "MiniVenmoTests" */;
 			buildPhases = (
 				B62D59EC189855E5001E46A4 /* Sources */,
 				B62D59ED189855E5001E46A4 /* Frameworks */,
@@ -203,9 +200,9 @@
 			dependencies = (
 				B62D59F6189855E5001E46A4 /* PBXTargetDependency */,
 			);
-			name = VenmoSDKSampleTests;
+			name = MiniVenmoTests;
 			productName = VENAppSwitchSampleTests;
-			productReference = B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */;
+			productReference = B62D59F0189855E5001E46A4 /* MiniVenmoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -223,7 +220,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "VenmoSDKSample" */;
+			buildConfigurationList = B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "MiniVenmo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -236,8 +233,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B62D59CE189855E5001E46A4 /* VenmoSDKSample */,
-				B62D59EF189855E5001E46A4 /* VenmoSDKSampleTests */,
+				B62D59CE189855E5001E46A4 /* MiniVenmo */,
+				B62D59EF189855E5001E46A4 /* MiniVenmoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -291,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-VenmoSDKSample-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Pods-MiniVenmo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -301,10 +298,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB8EBFC519182BA100E45B38 /* VDKLoggedOutViewController.m in Sources */,
-				EB8556C219182D3C002243FA /* VDKLoggedInViewController.m in Sources */,
-				B62D59E9189855E5001E46A4 /* VDKPaymentViewController.m in Sources */,
-				B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */,
+				EB8EBFC519182BA100E45B38 /* MVMLoggedOutViewController.m in Sources */,
+				EB8556C219182D3C002243FA /* MVMLoggedInViewController.m in Sources */,
+				B62D59E9189855E5001E46A4 /* MVMPaymentViewController.m in Sources */,
+				B62D59E3189855E5001E46A4 /* MVMAppDelegate.m in Sources */,
 				B62D59DF189855E5001E46A4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +310,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B62D59FE189855E5001E46A4 /* VENAppSwitchSampleTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +318,7 @@
 /* Begin PBXTargetDependency section */
 		B62D59F6189855E5001E46A4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B62D59CE189855E5001E46A4 /* VenmoSDKSample */;
+			target = B62D59CE189855E5001E46A4 /* MiniVenmo */;
 			targetProxy = B62D59F5189855E5001E46A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -427,28 +423,28 @@
 		};
 		B62D5A02189855E5001E46A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */;
+			baseConfigurationReference = DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
-				INFOPLIST_FILE = "VenmoSDKSample/VenmoSDKSample-Info.plist";
-				PRODUCT_NAME = VenmoSDKSample;
+				GCC_PREFIX_HEADER = "MiniVenmo/MiniVenmo-Prefix.pch";
+				INFOPLIST_FILE = "MiniVenmo/MiniVenmo-Info.plist";
+				PRODUCT_NAME = MiniVenmo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		B62D5A03189855E5001E46A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F50700661554515A2CE2ACA /* Pods-VenmoSDKSample.xcconfig */;
+			baseConfigurationReference = DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
-				INFOPLIST_FILE = "VenmoSDKSample/VenmoSDKSample-Info.plist";
-				PRODUCT_NAME = VenmoSDKSample;
+				GCC_PREFIX_HEADER = "MiniVenmo/MiniVenmo-Prefix.pch";
+				INFOPLIST_FILE = "MiniVenmo/MiniVenmo-Info.plist";
+				PRODUCT_NAME = MiniVenmo;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -456,7 +452,7 @@
 		B62D5A05189855E5001E46A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VenmoSDKSample.app/VenmoSDKSample";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MiniVenmo.app/MiniVenmo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -468,8 +464,8 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "VenmoSDKSampleTests/VenmoSDKSampleTests-Info.plist";
-				PRODUCT_NAME = VenmoSDKSampleTests;
+				INFOPLIST_FILE = "VenmoSDKSampleTests/MiniVenmoTests-Info.plist";
+				PRODUCT_NAME = MiniVenmoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -478,7 +474,7 @@
 		B62D5A06189855E5001E46A4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VenmoSDKSample.app/VenmoSDKSample";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MiniVenmo.app/MiniVenmo";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -486,8 +482,8 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
-				INFOPLIST_FILE = "VenmoSDKSampleTests/VenmoSDKSampleTests-Info.plist";
-				PRODUCT_NAME = VenmoSDKSampleTests;
+				INFOPLIST_FILE = "VenmoSDKSampleTests/MiniVenmoTests-Info.plist";
+				PRODUCT_NAME = MiniVenmoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -496,7 +492,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "VenmoSDKSample" */ = {
+		B62D59CA189855E5001E46A4 /* Build configuration list for PBXProject "MiniVenmo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62D59FF189855E5001E46A4 /* Debug */,
@@ -505,7 +501,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSample" */ = {
+		B62D5A01189855E5001E46A4 /* Build configuration list for PBXNativeTarget "MiniVenmo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62D5A02189855E5001E46A4 /* Debug */,
@@ -514,7 +510,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "VenmoSDKSampleTests" */ = {
+		B62D5A04189855E5001E46A4 /* Build configuration list for PBXNativeTarget "MiniVenmoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B62D5A05189855E5001E46A4 /* Debug */,

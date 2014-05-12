@@ -1,7 +1,7 @@
-#import "VDKAppDelegate.h"
+#import "MVMAppDelegate.h"
 #import <Venmo-iOS-SDK/Venmo.h>
 
-@implementation VDKAppDelegate
+@implementation MVMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [Venmo startWithAppId:@"1713" secret:@"fvY3AJTbvk7emZa3UGnMM7jAGqKyL2vR" name:@"Venmo iOS SDK Sample"];

@@ -1,13 +1,13 @@
-#import "VDKLoggedOutViewController.h"
+#import "MVMLoggedOutViewController.h"
 #import <Venmo-iOS-SDK/Venmo.h>
 
-@interface VDKLoggedOutViewController ()
+@interface MVMLoggedOutViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *logInButton;
 
 @end
 
-@implementation VDKLoggedOutViewController
+@implementation MVMLoggedOutViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

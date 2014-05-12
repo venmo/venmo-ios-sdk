@@ -1,6 +1,6 @@
 #import <UIKit/UIKit.h>
 
-@interface VDKAppDelegate : UIResponder <UIApplicationDelegate>
+@interface MVMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
