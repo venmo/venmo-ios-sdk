@@ -318,7 +318,7 @@ static Venmo *sharedInstance = nil;
     if (self.internalDevelopment) {
         return @"http://api.dev.venmo.com/v1/";
     }
-    return @"http://api.venmo.com/v1/";
+    return @"https://api.venmo.com/v1/";
 }
 
 

@@ -36,7 +36,7 @@
         NSString *oAuthErrorCode = [queryDictionary valueForKey:@"error"];
 
         if (oAuthErrorCode) {
-            NSString *oAuthErrorMessage = queryDictionary[@"message"];
+            NSString *oAuthErrorMessage = queryDictionary[@"message"] ?: @"";
             NSError *oAuthError = [NSError errorWithDomain:VenmoSDKDomain
                                                       code:VENSDKErrorTransactionFailed
                                                description:oAuthErrorMessage
@@ -72,16 +72,26 @@
         VENUser *user = [[VENUser alloc] initWithDictionary:json[@"user"]];
 
         // Open the current session
-        NSString *accessToken = json[@"access_token"];
-        NSString *refreshToken = json[@"refresh_token"];
-        NSUInteger expiresIn = [json[@"expires_in"] integerValue];
-        [client.session openWithAccessToken:accessToken
-                               refreshToken:refreshToken
-                                  expiresIn:expiresIn
-                                       user:user];
+        NSDictionary *errorDictionary = json[@"error"];
+        if (errorDictionary) {
+            NSString *errorMessage = errorDictionary[@"message"] ?: @"";
+            NSError *error = [NSError errorWithDomain:@"OAuth failed"
+                                                 code:VENSDKErrorOAuth
+                                          description:errorMessage
+                                   recoverySuggestion:@"Please try again."];
+        }
+        else {
+            NSString *accessToken = json[@"access_token"];
+            NSString *refreshToken = json[@"refresh_token"];
+            NSUInteger expiresIn = [json[@"expires_in"] integerValue];
+            [client.session openWithAccessToken:accessToken
+                                   refreshToken:refreshToken
+                                      expiresIn:expiresIn
+                                           user:user];
 
-        // Save the session
-        [client.session saveWithAppId:client.appId];
+            // Save the session
+            [client.session saveWithAppId:client.appId];
+        }
 
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([Venmo sharedInstance].OAuthCompletionHandler) {

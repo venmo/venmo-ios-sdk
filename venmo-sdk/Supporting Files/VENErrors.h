@@ -9,6 +9,8 @@ typedef enum VENSDKErrorCode {
     VENSDKErrorTransactionFailed,
     // Non-success HTTP status code was returned
     VENSDKErrorHTTPError,
+    // An error occurred relating to Venmo OAuth
+    VENSDKErrorOAuth,
     // An error occurred related to an iOS API call
     VENSDKErrorSystemApi,
     // The session is not open
