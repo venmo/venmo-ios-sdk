@@ -126,13 +126,13 @@
 			children = (
 				B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */,
 				B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */,
-				B62D59E4189855E5001E46A4 /* Main.storyboard */,
 				EB8556C019182D3C002243FA /* VDKLoggedInViewController.h */,
 				EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */,
 				EB8EBFC319182BA100E45B38 /* VDKLoggedOutViewController.h */,
 				EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */,
 				B62D59E7189855E5001E46A4 /* VDKPaymentViewController.h */,
 				B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */,
+				B62D59E4189855E5001E46A4 /* Main.storyboard */,
 				B62D59EA189855E5001E46A4 /* Images.xcassets */,
 				B62D59D9189855E5001E46A4 /* Supporting Files */,
 			);

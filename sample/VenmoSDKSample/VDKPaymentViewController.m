@@ -21,31 +21,35 @@
 
 
 - (IBAction)sendAction:(id)sender {
+    void(^handler)(VENTransaction *, BOOL, NSError *) = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        if (error) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:error.localizedDescription
+                                                                message:error.localizedRecoverySuggestion
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles:@"OK", nil];
+            alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+            };
+            [alertView show];
+        }
+        else {
+            [SVProgressHUD showSuccessWithStatus:@"Transaction succeeded!"];
+        }
+    };
     // Payment
     if (self.payRequestControl.selectedSegmentIndex == 0) {
         [[Venmo sharedInstance] sendPaymentTo:self.toTextField.text
                                        amount:self.amountTextField.text.floatValue*100
                                          note:self.noteTextField.text
-                            completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
-            if (error) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:error.localizedDescription
-                                                                    message:error.localizedRecoverySuggestion
-                                                                   delegate:self
-                                                          cancelButtonTitle:nil
-                                                          otherButtonTitles:@"OK", nil];
-                alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
-                    [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
-                };
-                [SVProgressHUD showErrorWithStatus:error.localizedDescription];
-            }
-            else {
-                [SVProgressHUD showSuccessWithStatus:@"Transaction succeeded!"];
-            }
-        }];
+                            completionHandler:handler];
     }
     // Request
     else {
-
+        [[Venmo sharedInstance] sendRequestTo:self.toTextField.text
+                                       amount:self.amountTextField.text.floatValue*100
+                                         note:self.noteTextField.text
+                            completionHandler:handler];
     }
 }
 

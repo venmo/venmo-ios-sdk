@@ -192,7 +192,7 @@ static Venmo *sharedInstance = nil;
     if (!addedTarget) {
         NSError *error = [NSError errorWithDomain:VenmoSDKDomain
                                              code:VENSDKErrorTransactionFailed
-                                      description:@"Invalid transaction target"
+                                      description:@"Invalid recipient"
                                recoverySuggestion:@"Please enter a valid phone, email, username, or Venmo user ID"];
         completionHandler(nil, NO, error);
         return;

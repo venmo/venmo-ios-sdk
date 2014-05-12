@@ -70,7 +70,7 @@
                                     <segment title="App Switch"/>
                                     <segment title="Venmo API"/>
                                 </segments>
-                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="tintColor" red="0.43137258291244507" green="0.47058826684951782" blue="0.49803924560546875" alpha="1" colorSpace="deviceRGB"/>
                                 <connections>
                                     <action selector="selectedTransactionMethod:" destination="vXZ-lx-hvc" eventType="valueChanged" id="IAE-dr-Abp"/>
                                 </connections>
@@ -83,10 +83,6 @@
                                     <segment title="Request"/>
                                 </segments>
                                 <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
-                                <connections>
-                                    <action selector="selectedPayOrRequest:" destination="vXZ-lx-hvc" eventType="valueChanged" id="J2p-1e-Gbg"/>
-                                    <action selector="selectedTransactionMethod:" destination="vXZ-lx-hvc" eventType="valueChanged" id="F7e-Ep-pTS"/>
-                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -183,10 +179,10 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugC-yx-ZMs">
-                                <rect key="frame" x="63" y="269" width="194" height="30"/>
+                                <rect key="frame" x="63" y="259" width="194" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="k3d-U2-Zn4"/>
+                                    <constraint firstAttribute="height" constant="50" id="k3d-U2-Zn4"/>
                                     <constraint firstAttribute="width" constant="194" id="vJj-Fj-zFp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
