@@ -16,59 +16,87 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dY5-cM-WLf">
-                                <rect key="frame" x="128" y="229" width="65" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Send">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="sendAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FKJ-Vg-NrA"/>
-                                    <action selector="userDidTapTransaction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J5v-87-4W2"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username, email, or phone number" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btd-Lc-O6q">
-                                <rect key="frame" x="20" y="97" width="280" height="30"/>
+                                <rect key="frame" x="20" y="118" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.15686275059999999" green="0.18823531269999999" blue="0.2117647231" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.00" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="A0I-6A-lS3">
-                                <rect key="frame" x="20" y="135" width="280" height="30"/>
+                                <rect key="frame" x="180" y="80" width="120" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.15686275059999999" green="0.18823531269999999" blue="0.2117647231" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="payment note" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uxx-1e-zqW">
-                                <rect key="frame" x="20" y="173" width="280" height="30"/>
+                                <rect key="frame" x="20" y="156" width="280" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="textColor" red="0.15686275059999999" green="0.18823531269999999" blue="0.2117647231" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="send"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYi-WO-wM7">
-                                <rect key="frame" x="137" y="273" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="GET-ib-PaF" kind="unwind" unwindAction="unwindFromPaymentVC:" id="XIo-LZ-a5c"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dg1-qh-JeX">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Compose" id="UlS-bA-cgF"/>
+                                    <navigationItem title="Compose" id="UlS-bA-cgF">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="FT3-e9-Rdc">
+                                            <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                            <connections>
+                                                <segue destination="GET-ib-PaF" kind="unwind" unwindAction="unwindFromPaymentVC:" id="gZY-qF-oGR"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Send" id="bOz-hY-gVZ">
+                                            <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                            <connections>
+                                                <action selector="sendAction:" destination="vXZ-lx-hvc" id="yah-Wl-ct8"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="dOn-E1-MVF">
+                                <rect key="frame" x="20" y="200" width="280" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="App Switch"/>
+                                    <segment title="Venmo API"/>
+                                </segments>
+                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="selectedTransactionMethod:" destination="vXZ-lx-hvc" eventType="valueChanged" id="IAE-dr-Abp"/>
+                                </connections>
+                            </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="s0b-1H-XWq">
+                                <rect key="frame" x="20" y="80" width="152" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Pay"/>
+                                    <segment title="Request"/>
+                                </segments>
+                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <connections>
+                                    <action selector="selectedPayOrRequest:" destination="vXZ-lx-hvc" eventType="valueChanged" id="J2p-1e-Gbg"/>
+                                    <action selector="selectedTransactionMethod:" destination="vXZ-lx-hvc" eventType="valueChanged" id="F7e-Ep-pTS"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="amountTextField" destination="A0I-6A-lS3" id="Z0D-9G-hDe"/>
                         <outlet property="noteTextField" destination="Uxx-1e-zqW" id="RSb-Fm-oRt"/>
+                        <outlet property="payRequestControl" destination="s0b-1H-XWq" id="Emf-ik-RL2"/>
                         <outlet property="toTextField" destination="btd-Lc-O6q" id="mbT-sL-78R"/>
+                        <outlet property="transactionMethodControl" destination="dOn-E1-MVF" id="dnW-O5-APL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -89,9 +117,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUl-I7-K0V">
-                                <rect key="frame" x="113" y="190" width="95" height="30"/>
+                                <rect key="frame" x="92" y="219" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="New payment">
+                                    <color key="titleColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -99,31 +129,41 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sua-wQ-GIg">
-                                <rect key="frame" x="125" y="97" width="70" height="70"/>
+                                <rect key="frame" x="125" y="85" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2RD-PC-0vH">
-                                <rect key="frame" x="134" y="237" width="53" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log out">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOutButtonAction:" destination="91d-CQ-igG" eventType="touchUpInside" id="wSz-pk-dxW"/>
-                                    <segue destination="B77-PY-u76" kind="unwind" unwindAction="unwindFromLoggedInVC:" id="5zx-oG-D20"/>
-                                </connections>
-                            </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jhb-cM-xNi">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Home" id="HdE-lM-wtv"/>
+                                    <navigationItem title="Home" id="HdE-lM-wtv">
+                                        <barButtonItem key="leftBarButtonItem" title="Log out" id="7K3-k0-5Sp">
+                                            <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                            <connections>
+                                                <segue destination="B77-PY-u76" kind="unwind" unwindAction="unwindFromLoggedInVC:" id="YAc-ps-bwa"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Logged in as " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcG-2u-jpQ">
+                                <rect key="frame" x="74" y="170" width="173" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.15686275064945221" green="0.18823531270027161" blue="0.21176472306251526" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="sua-wQ-GIg" id="Klw-Oz-SRH"/>
+                        <outlet property="infoLabel" destination="YcG-2u-jpQ" id="qaQ-Kf-dOi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pGo-oc-tjG" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="B77-PY-u76" userLabel="Exit" sceneMemberID="exit"/>
@@ -142,27 +182,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugC-yx-ZMs">
-                                <rect key="frame" x="88" y="269" width="145" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugC-yx-ZMs">
+                                <rect key="frame" x="63" y="269" width="194" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log in with Venmo">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="k3d-U2-Zn4"/>
+                                    <constraint firstAttribute="width" constant="194" id="vJj-Fj-zFp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="20"/>
+                                <color key="tintColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                <state key="normal" title="  Log in with Venmo  ">
+                                    <color key="titleColor" red="0.24705883860588074" green="0.58039218187332153" blue="0.81568634510040283" alpha="1" colorSpace="deviceRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="logInButtonAction:" destination="NF6-x8-VjW" eventType="touchUpInside" id="IZx-wo-WhQ"/>
                                 </connections>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-Sh-k5v">
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-Sh-k5v">
                                 <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="4qj-74-ucM"/>
+                                    <constraint firstAttribute="height" constant="44" id="eTw-4p-mUf"/>
+                                </constraints>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" red="0.2470588386" green="0.58039218189999997" blue="0.81568634510000004" alpha="1" colorSpace="deviceRGB"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="Login" id="rFY-ik-RaE"/>
                                 </items>
                             </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ugC-yx-ZMs" firstAttribute="centerY" secondItem="3l3-DD-b3s" secondAttribute="centerY" id="2r3-qg-eJA"/>
+                            <constraint firstAttribute="centerX" secondItem="ugC-yx-ZMs" secondAttribute="centerX" id="6kH-gA-Iaw"/>
+                            <constraint firstItem="7Rf-Sh-k5v" firstAttribute="top" secondItem="hkS-sa-RNL" secondAttribute="bottom" id="8Sy-yr-fom"/>
+                            <constraint firstAttribute="trailing" secondItem="7Rf-Sh-k5v" secondAttribute="trailing" id="9hC-kp-P41"/>
+                            <constraint firstItem="7Rf-Sh-k5v" firstAttribute="leading" secondItem="3l3-DD-b3s" secondAttribute="leading" id="wUi-ts-v7o"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="logInButton" destination="ugC-yx-ZMs" id="aau-P2-nOD"/>
                         <segue destination="91d-CQ-igG" kind="modal" identifier="presentLoggedInVC" id="RwC-v8-3ER"/>
                     </connections>
                 </viewController>

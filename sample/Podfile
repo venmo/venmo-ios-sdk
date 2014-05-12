@@ -5,4 +5,5 @@ target 'VenmoSDKSample', :exclusive => true do
   pod 'Venmo-iOS-SDK', :path => '../Venmo-iOS-SDK.podspec'
   pod 'SVProgressHUD'
   pod 'UIAlertView+Blocks'
+  pod 'AFNetworking/UIKit'
 end

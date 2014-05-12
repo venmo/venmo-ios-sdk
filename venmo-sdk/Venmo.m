@@ -188,14 +188,25 @@ static Venmo *sharedInstance = nil;
     request.transactionType = type;
     request.audience = audience;
     request.note = note;
-    [request addTransactionTarget:target];
+    BOOL addedTarget = [request addTransactionTarget:target];
+    if (!addedTarget) {
+        NSError *error = [NSError errorWithDomain:VenmoSDKDomain
+                                             code:VENSDKErrorTransactionFailed
+                                      description:@"Invalid transaction target"
+                               recoverySuggestion:@"Please enter a valid phone, email, username, or Venmo user ID"];
+        completionHandler(nil, NO, error);
+        return;
+    }
 
     [request sendWithSuccess:^(NSArray *sentTransactions, VENHTTPResponse *response) {
+
         VENTransaction *transaction = (VENTransaction *)[sentTransactions firstObject];
         if (completionHandler) {
             completionHandler(transaction, YES, nil);
         }
+
     } failure:^(NSArray *sentTransactions, VENHTTPResponse *response, NSError *error) {
+
         if (completionHandler) {
             completionHandler(nil, NO, error);
         }

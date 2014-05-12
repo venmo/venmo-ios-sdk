@@ -3,29 +3,29 @@
 
 @interface VDKLoggedOutViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *logInButton;
+
 @end
 
 @implementation VDKLoggedOutViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.logInButton.layer.borderColor = self.logInButton.tintColor.CGColor;
+    self.logInButton.layer.borderWidth = 1.0f;
+    self.logInButton.layer.cornerRadius = 4.0f;
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    if ([[Venmo sharedInstance] isSessionValid]) {
+        [self presentLoggedInVC];
+    }   
+}
+
+- (void)presentLoggedInVC {
+    [self performSegueWithIdentifier:@"presentLoggedInVC" sender:self];
 }
 
 - (IBAction)logInButtonAction:(id)sender {
@@ -33,7 +33,7 @@
                                                  VENPermissionAccessProfile]
                          withCompletionHandler:^(BOOL success, NSError *error) {
                              if (success) {
-                                [self performSegueWithIdentifier:@"presentLoggedInVC" sender:self];
+                                 [self presentLoggedInVC];
                              }
                              else {
                                  UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Authorization failed"
@@ -48,21 +48,9 @@
     }];
 }
 
-#pragma mark - Segues
-
+// Log out
 - (IBAction)unwindFromLoggedInVC:(UIStoryboardSegue *)segue {
-
+    [[Venmo sharedInstance] logout];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

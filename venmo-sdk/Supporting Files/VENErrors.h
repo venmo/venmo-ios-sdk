@@ -3,13 +3,13 @@
 extern NSString *const VenmoSDKDomain;
 
 typedef enum VENSDKErrorCode {
-    // error validating signed transaction
+    // Error validating a signed app switch transaction
     VENSDKErrorTransactionValidationError = 1,
     // Venmo server failed to complete transaction
     VENSDKErrorTransactionFailed,
     // Non-success HTTP status code was returned
     VENSDKErrorHTTPError,
-    // An error occurred relating to Venmo OAuth
+    // An error occurred related to Venmo OAuth
     VENSDKErrorOAuth,
     // An error occurred related to an iOS API call
     VENSDKErrorSystemApi,

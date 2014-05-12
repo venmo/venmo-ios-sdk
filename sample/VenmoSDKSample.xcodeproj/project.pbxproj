@@ -15,7 +15,7 @@
 		B62D59DF189855E5001E46A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59DE189855E5001E46A4 /* main.m */; };
 		B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */; };
 		B62D59E6189855E5001E46A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B62D59E4189855E5001E46A4 /* Main.storyboard */; };
-		B62D59E9189855E5001E46A4 /* VDKPaymentViewcontroller.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E8189855E5001E46A4 /* VDKPaymentViewcontroller.m */; };
+		B62D59E9189855E5001E46A4 /* VDKPaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */; };
 		B62D59EB189855E5001E46A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B62D59EA189855E5001E46A4 /* Images.xcassets */; };
 		B62D59F2189855E5001E46A4 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59F1189855E5001E46A4 /* XCTest.framework */; };
 		B62D59F3189855E5001E46A4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B62D59D2189855E5001E46A4 /* Foundation.framework */; };
@@ -50,8 +50,8 @@
 		B62D59E1189855E5001E46A4 /* VDKAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKAppDelegate.h; sourceTree = "<group>"; };
 		B62D59E2189855E5001E46A4 /* VDKAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKAppDelegate.m; sourceTree = "<group>"; };
 		B62D59E5189855E5001E46A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		B62D59E7189855E5001E46A4 /* VDKPaymentViewcontroller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKPaymentViewcontroller.h; sourceTree = "<group>"; };
-		B62D59E8189855E5001E46A4 /* VDKPaymentViewcontroller.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKPaymentViewcontroller.m; sourceTree = "<group>"; };
+		B62D59E7189855E5001E46A4 /* VDKPaymentViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VDKPaymentViewController.h; sourceTree = "<group>"; };
+		B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VDKPaymentViewController.m; sourceTree = "<group>"; };
 		B62D59EA189855E5001E46A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B62D59F0189855E5001E46A4 /* VenmoSDKSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VenmoSDKSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59F1189855E5001E46A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -131,8 +131,8 @@
 				EB8556C119182D3C002243FA /* VDKLoggedInViewController.m */,
 				EB8EBFC319182BA100E45B38 /* VDKLoggedOutViewController.h */,
 				EB8EBFC419182BA100E45B38 /* VDKLoggedOutViewController.m */,
-				B62D59E7189855E5001E46A4 /* VDKPaymentViewcontroller.h */,
-				B62D59E8189855E5001E46A4 /* VDKPaymentViewcontroller.m */,
+				B62D59E7189855E5001E46A4 /* VDKPaymentViewController.h */,
+				B62D59E8189855E5001E46A4 /* VDKPaymentViewController.m */,
 				B62D59EA189855E5001E46A4 /* Images.xcassets */,
 				B62D59D9189855E5001E46A4 /* Supporting Files */,
 			);
@@ -303,7 +303,7 @@
 			files = (
 				EB8EBFC519182BA100E45B38 /* VDKLoggedOutViewController.m in Sources */,
 				EB8556C219182D3C002243FA /* VDKLoggedInViewController.m in Sources */,
-				B62D59E9189855E5001E46A4 /* VDKPaymentViewcontroller.m in Sources */,
+				B62D59E9189855E5001E46A4 /* VDKPaymentViewController.m in Sources */,
 				B62D59E3189855E5001E46A4 /* VDKAppDelegate.m in Sources */,
 				B62D59DF189855E5001E46A4 /* main.m in Sources */,
 			);

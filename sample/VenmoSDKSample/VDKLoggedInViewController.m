@@ -1,6 +1,11 @@
 #import "VDKLoggedInViewController.h"
+#import <Venmo-iOS-SDK/Venmo.h>
+#import <AFNetworking/UIImageView+AFNetworking.h>
 
 @interface VDKLoggedInViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 
 @end
 
@@ -18,20 +23,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    VENUser *user = [[Venmo sharedInstance] session].user;
+    self.imageView.layer.borderColor = self.infoLabel.textColor.CGColor;
+    self.imageView.layer.borderWidth = 1.0f;
+    self.imageView.layer.cornerRadius = self.imageView.frame.size.width / 2.0f;
+    self.imageView.layer.masksToBounds = YES;
+    [self.imageView setImageWithURL:[NSURL URLWithString:user.profileImageUrl]];
+    self.infoLabel.text = [NSString stringWithFormat:@"Logged in as %@", user.displayName];
 }
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)logOutButtonAction:(id)sender {
-    
-}
-
-#pragma mark - Segues
 
 - (IBAction)unwindFromPaymentVC:(UIStoryboardSegue *)segue {
 
