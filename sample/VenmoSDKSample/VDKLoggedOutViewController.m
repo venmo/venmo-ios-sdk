@@ -1,4 +1,5 @@
 #import "VDKLoggedOutViewController.h"
+#import <Venmo-iOS-SDK/Venmo.h>
 
 @interface VDKLoggedOutViewController ()
 
@@ -25,6 +26,26 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)logInButtonAction:(id)sender {
+    [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
+                                                 VENPermissionAccessProfile]
+                         withCompletionHandler:^(BOOL success, NSError *error) {
+                             if (success) {
+                                [self performSegueWithIdentifier:@"presentLoggedInVC" sender:self];
+                             }
+                             else {
+                                 UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Authorization failed"
+                                                                                     message:error.localizedDescription
+                                                                                    delegate:self
+                                                                           cancelButtonTitle:nil
+                                                                           otherButtonTitles:@"OK", nil];
+                                 alertView.tapBlock = ^(UIAlertView *alertView, NSInteger buttonIndex) {
+                                     [alertView dismissWithClickedButtonIndex:buttonIndex animated:YES];
+                                 };
+                             }
+    }];
 }
 
 #pragma mark - Segues

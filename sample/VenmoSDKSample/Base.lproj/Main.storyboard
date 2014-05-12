@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <scenes>
-        <!--Payment Viewcontroller-->
+        <!--Payment View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="VDKPaymentViewcontroller" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="VDKPaymentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2b2-mX-okt"/>
                         <viewControllerLayoutGuide type="bottom" id="2Dp-ZI-RMn"/>
@@ -23,6 +23,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="sendAction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="FKJ-Vg-NrA"/>
                                     <action selector="userDidTapTransaction:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="J5v-87-4W2"/>
                                 </connections>
                             </button>
@@ -109,6 +110,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="logOutButtonAction:" destination="91d-CQ-igG" eventType="touchUpInside" id="wSz-pk-dxW"/>
                                     <segue destination="B77-PY-u76" kind="unwind" unwindAction="unwindFromLoggedInVC:" id="5zx-oG-D20"/>
                                 </connections>
                             </button>
@@ -141,13 +143,13 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ugC-yx-ZMs">
-                                <rect key="frame" x="76" y="269" width="145" height="30"/>
+                                <rect key="frame" x="88" y="269" width="145" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Log in with Venmo">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="91d-CQ-igG" kind="modal" id="muF-JL-XTJ"/>
+                                    <action selector="logInButtonAction:" destination="NF6-x8-VjW" eventType="touchUpInside" id="IZx-wo-WhQ"/>
                                 </connections>
                             </button>
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rf-Sh-k5v">
@@ -160,6 +162,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="91d-CQ-igG" kind="modal" identifier="presentLoggedInVC" id="RwC-v8-3ER"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GSK-fu-yIC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

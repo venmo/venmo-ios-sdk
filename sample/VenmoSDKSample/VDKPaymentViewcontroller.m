@@ -1,14 +1,15 @@
-#import "VDKPaymentViewcontroller.h"
-#import <SVProgressHUD/SVProgressHUD.h>
-#import <VenmoSDK/Venmo.h>
+#import "VDKPaymentViewController.h"
 
-@interface VDKPaymentViewcontroller ()
+@interface VDKPaymentViewController ()
 @property (strong, nonatomic) IBOutlet UITextField *toTextField;
 @property (strong, nonatomic) IBOutlet UITextField *amountTextField;
 @property (strong, nonatomic) IBOutlet UITextField *noteTextField;
 @end
 
-@implementation VDKPaymentViewcontroller
+@implementation VDKPaymentViewController
 
+- (IBAction)sendAction:(id)sender {
+    
+}
 
 @end

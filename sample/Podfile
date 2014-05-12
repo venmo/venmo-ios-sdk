@@ -3,5 +3,6 @@ inhibit_all_warnings!
 
 target 'VenmoSDKSample', :exclusive => true do
   pod 'Venmo-iOS-SDK', :path => '../Venmo-iOS-SDK.podspec'
-  pod 'SVProgressHUD', '~>1.0'
+  pod 'SVProgressHUD'
+  pod 'UIAlertView+Blocks'
 end
