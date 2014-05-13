@@ -89,7 +89,7 @@ else {
 
 You can send payments using `sendPaymentTo:amount:note:completionHandler:`. To send a payment request, use `sendRequestTo:amount:note:completionHandler:`.
 
-```
+```obj-c
 [[Venmo sharedInstance] sendPaymentTo:self.toTextField.text
                                amount:self.amountTextField.text.floatValue*100
                                  note:self.noteTextField.text
