@@ -1,6 +1,6 @@
 ## Venmo iOS SDK
 
-[![Build Status](https://travis-ci.org/venmo/VENAppSwitchSDK.svg?branch=master)](https://travis-ci.org/venmo/VENAppSwitchSDK)
+[![Build Status](https://travis-ci.org/venmo/venmo-ios-sdk.svg?branch=v2)](https://travis-ci.org/venmo/venmo-ios-sdk)
 
 The Venmo iOS SDK allows you to integrate Venmo into your iOS app.
 
