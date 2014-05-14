@@ -4,7 +4,7 @@
 
 The Venmo iOS SDK allows you to integrate Venmo into your iOS app.
 
-![alt text](http://i.imgur.com/tN7mYVy.gif "VENAppSwitchSDK demo")
+<img src="/venmo_ios_sdk.gif" width="320px">
 
 ### Installation
 
