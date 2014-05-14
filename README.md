@@ -16,7 +16,7 @@ pod 'venmo-ios-sdk', '~> 1.0.0'
 
 ### Usage
 
-Using the Venmo iOS SDK is as easy as `Venmo`ing a friend.
+Using the Venmo iOS SDK is as easy as Venmo-ing a friend!
 
 #### 1. Create your app on Venmo
 1. Create a new application on the [Venmo developer site](https://venmo.com/account/settings/developers).
