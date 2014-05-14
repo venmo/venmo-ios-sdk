@@ -438,7 +438,7 @@ describe(@"sendInAppTransactionTo:", ^{
 
     it(@"should call validateAPIRequestWithCompletionHandler", ^{
         [[mockVenmo expect] validateAPIRequestWithCompletionHandler:OCMOCK_ANY];
-        [mockVenmo sendAPITransactionTo:@"foonumber"
+        [mockVenmo sendAPITransactionTo:@"5555555555"
                           transactionType:VENTransactionTypePay
                                    amount:100
                                      note:@"note"
@@ -694,7 +694,7 @@ describe(@"baseURLPath", ^{
     });
 
     it(@"should return correct base URL path based on internal development flag.", ^{
-        expect([venmo baseURLPath]).to.equal(@"http://api.venmo.com/v1/");
+        expect([venmo baseURLPath]).to.equal(@"https://api.venmo.com/v1/");
         venmo.internalDevelopment = YES;
         expect([venmo baseURLPath]).to.equal(@"http://api.dev.venmo.com/v1/");
     });
