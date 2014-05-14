@@ -1,21 +1,21 @@
 PODS:
-  - AFNetworking (2.2.3):
+  - AFNetworking (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
     - AFNetworking/UIKit
-  - AFNetworking/NSURLConnection (2.2.3):
+  - AFNetworking/NSURLConnection (2.2.4):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.2.3):
+  - AFNetworking/NSURLSession (2.2.4):
     - AFNetworking/NSURLConnection
-  - AFNetworking/Reachability (2.2.3)
-  - AFNetworking/Security (2.2.3)
-  - AFNetworking/Serialization (2.2.3)
-  - AFNetworking/UIKit (2.2.3):
+  - AFNetworking/Reachability (2.2.4)
+  - AFNetworking/Security (2.2.4)
+  - AFNetworking/Serialization (2.2.4)
+  - AFNetworking/UIKit (2.2.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - Expecta (0.3.0)
@@ -23,7 +23,7 @@ PODS:
   - OCMock (2.2.4)
   - Specta (0.2.1)
   - SSKeychain (1.2.2)
-  - VENCore (0.0.1):
+  - VENCore (1.0.0):
     - AFNetworking
 
 DEPENDENCIES:
@@ -32,19 +32,15 @@ DEPENDENCIES:
   - OCMock
   - Specta
   - SSKeychain
-  - VENCore (from `git@github.com:venmo/VENCore.git`)
-
-EXTERNAL SOURCES:
-  VENCore:
-    :git: git@github.com:venmo/VENCore.git
+  - VENCore (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  AFNetworking: ae513199cca79e9d7af2708ccabe2ed075550c42
+  AFNetworking: 01aa7c3aa9a200b94943e54072a4373f14b3d219
   Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
   Nocilla: 0c8075046df476b1bc6482caa7f6a69db1a9b277
   OCMock: 5008fae4b4789b8fc3e48cd7660f2eb5ef8ce89e
   Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
   SSKeychain: 3d0b76c87e7b062a7ad1631a825fddec84367d44
-  VENCore: a04e391af5968cc9752e2b7da5865341a8ae4122
+  VENCore: 773d9cc1f07f56b0526138d5097305737e32c636
 
 COCOAPODS: 0.32.1
