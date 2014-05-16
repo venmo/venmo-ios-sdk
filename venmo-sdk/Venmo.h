@@ -114,7 +114,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends a payment with the given parameters.
- * @param recipientHandle The recipient's phone number, email, or Venmo username
+ * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
  * @param amount The payment amount
  * @param note A note for the payment
  * @param handler The handler block to execute after the payment succeeds or fails
@@ -138,7 +138,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends a payment request with the given parameters.
- * @param recipientHandle The recipient's phone number, email, or Venmo username
+ * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
  * @param amount The requested amount
  * @param note A note for the request
  * @param handler The handler block to execute after the request succeeds or fails

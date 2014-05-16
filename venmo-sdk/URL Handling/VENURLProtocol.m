@@ -75,10 +75,10 @@
         NSDictionary *errorDictionary = json[@"error"];
         if (errorDictionary) {
             NSString *errorMessage = errorDictionary[@"message"] ?: @"";
-            NSError *error = [NSError errorWithDomain:@"OAuth failed"
-                                                 code:VENSDKErrorOAuth
-                                          description:errorMessage
-                                   recoverySuggestion:@"Please try again."];
+            error = [NSError errorWithDomain:@"OAuth failed"
+                                        code:VENSDKErrorOAuth
+                                 description:errorMessage
+                          recoverySuggestion:@"Please try again."];
         }
         else {
             NSString *accessToken = json[@"access_token"];
