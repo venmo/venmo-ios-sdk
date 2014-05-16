@@ -38,16 +38,6 @@
                ReferencedContainer = "container:venmo-sdk.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "EB49E22919266E0D008EA5DC"
-               BuildableName = "venmo-sdk-integration-specs.xctest"
-               BlueprintName = "venmo-sdk-integration-specs"
-               ReferencedContainer = "container:venmo-sdk.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
