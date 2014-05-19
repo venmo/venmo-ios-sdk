@@ -73,8 +73,11 @@ To allow the Venmo iOS SDK to handle responses from the Venmo app, add the follo
 #### 4. Send a payment
 
 The Venmo iOS SDK lets you send a payment in two ways:
-1. Switching to the Venmo app 
+1. Switching to the Venmo app
+    * This method will switch the user to a pre-filled payment screen in the Venmo app. After the user sends or cancels the payment, they'll be switched back to your app.
+    * If the user doesn't have the Venmo app installed, the payment will fail with an appropriate error.
 2. Using the Venmo API
+    * This method won't switch the user to Venmo to make the payment, but _will_ prompt the user to give your app access to their Venmo account. See [5. Requesting permissions](####5.)
 
 Sending payments by switching to the Venmo app has the advantage of allowing your user to bypass the Venmo OAuth flow. If the user doesn't have the Venmo app installed, we recommend using the Venmo API.
 
@@ -100,6 +103,23 @@ You can send payments using `sendPaymentTo:amount:note:completionHandler:`. To s
     else {
         NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
     }
+}];
+```
+
+### 5. Request permissions
+
+You can request access to a user's Venmo account using `requestPermissions:withCompletionHandler:`. Permissions can be specified with [these scopes](https://developer.venmo.com/docs/authentication#scopes). 
+
+```obj-c
+[[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
+                                             VENPermissionAccessProfile]
+                     withCompletionHandler:^(BOOL success, NSError *error) {
+                         if (success) {
+                            // :)
+                         }
+                         else {
+                            // :(
+                         }
 }];
 ```
 
