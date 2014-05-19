@@ -2,6 +2,6 @@ language: objective-c
 before_install:
 - gem i cocoapods --no-ri --no-rdoc
 - brew uninstall xctool; brew install xctool --HEAD;
-xcode_workspace: VENAppSwitchSDK.xcworkspace
-xcode_scheme: VENAppSwitchSDK
+xcode_workspace: venmo-sdk.xcworkspace
+xcode_scheme: venmo-sdk-ci
 xcode_sdk: iphonesimulator
