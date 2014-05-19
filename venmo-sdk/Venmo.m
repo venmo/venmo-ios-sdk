@@ -47,6 +47,8 @@ static Venmo *sharedInstance = nil;
 + (BOOL)startWithAppId:(NSString *)appId
                 secret:(NSString *)appSecret
                   name:(NSString *)appName {
+    [NSURLProtocol registerClass:[VENURLProtocol class]];
+
     if (!sharedInstance) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
@@ -293,16 +295,6 @@ static Venmo *sharedInstance = nil;
 
 
 #pragma mark - URLs
-
-- (BOOL)handleOpenURL:(NSURL *)url {
-    if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
-        VENURLProtocol *urlProtocol = [[VENURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
-        [urlProtocol startLoading];
-        return YES;
-    }
-    return NO;
-}
-
 
 - (NSString *)URLPathWithType:(VENTransactionType)type
                        amount:(NSUInteger)amount
