@@ -68,11 +68,6 @@ static Venmo *sharedInstance = nil;
 }
 
 
-+ (instancetype)sharedInstance {
-    return sharedInstance;
-}
-
-
 - (instancetype)initWithAppId:(NSString *)appId
                        secret:(NSString *)appSecret
                          name:(NSString *)appName {
@@ -88,6 +83,16 @@ static Venmo *sharedInstance = nil;
 }
 
 
++ (instancetype)sharedInstance {
+    return sharedInstance;
+}
+
+
++ (BOOL)isVenmoAppInstalled {
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
+}
+
+
 #pragma mark - Sessions
 
 - (void)requestPermissions:(NSArray *)permissions
@@ -97,7 +102,7 @@ static Venmo *sharedInstance = nil;
     self.session.state = VENSessionStateOpening;
 
     NSString *baseURL;
-    if ([self isVenmoAppInstalled]) {
+    if ([Venmo isVenmoAppInstalled]) {
         baseURL = @"venmo://";
     } else {
         baseURL = [self baseURLPath];
@@ -165,7 +170,7 @@ static Venmo *sharedInstance = nil;
     NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
 
-    if ([self isVenmoAppInstalled]) {
+    if ([Venmo isVenmoAppInstalled]) {
         [[UIApplication sharedApplication] openURL:transactionURL];
     } else if (completionHandler) {
         NSError *error = [NSError errorWithDomain:VenmoSDKDomain
@@ -322,11 +327,6 @@ static Venmo *sharedInstance = nil;
         return @"http://api.dev.venmo.com/v1/";
     }
     return @"https://api.venmo.com/v1/";
-}
-
-
-- (BOOL)isVenmoAppInstalled {
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"venmo://"]];
 }
 
 

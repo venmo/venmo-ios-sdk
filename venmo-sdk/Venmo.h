@@ -42,6 +42,19 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
+ * Starts the Venmo SDK.
+ * @param appId Your app ID
+ * @param appSecret Your app secret
+ * @param appName Your app name (used in Venmo app to show "via [appName]"). Defaults to "Bundle name" in your Info.plist
+ * @return A boolean value indicating whether a cached session was found for the given app details.
+ * If this method returns NO, you will need to create a session by calling requestPermissions:withCompletionHandler.
+ */
++ (BOOL)startWithAppId:(NSString *)appId
+                secret:(NSString *)appSecret
+                  name:(NSString *)appName;
+
+
+/**
  * Returns the shared Venmo instance.
  * @return The shared Venmo instance
  */
@@ -51,7 +64,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * Returns YES if the current device has the Venmo app installed
  */
-- (BOOL)isVenmoAppInstalled;
++ (BOOL)isVenmoAppInstalled;
 
 
 /**
@@ -97,19 +110,6 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * To unauthorize an app, go to "Password & Authorizations" at https://venmo.com/account/settings/account
  */
 - (void)logout;
-
-
-/**
- * Starts the Venmo SDK.
- * @param appId Your app ID
- * @param appSecret Your app secret
- * @param appName Your app name (used in Venmo app to show "via [appName]"). Defaults to "Bundle name" in your Info.plist
- * @return A boolean value indicating whether a cached session was found for the given app details.
- * If this method returns NO, you will need to create a session by calling requestPermissions:withCompletionHandler.
- */
-+ (BOOL)startWithAppId:(NSString *)appId
-                secret:(NSString *)appSecret
-                  name:(NSString *)appName;
 
 
 /**

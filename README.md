@@ -79,7 +79,7 @@ The Venmo iOS SDK lets you send a payment in two ways:
 Sending payments by switching to the Venmo app has the advantage of allowing your user to bypass the Venmo OAuth flow. If the user doesn't have the Venmo app installed, we recommend using the Venmo API.
 
 ```objc
-if (![[Venmo sharedInstance] isVenmoAppInstalled]) {
+if (![Venmo isVenmoAppInstalled]) {
     [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
 }
 else {
