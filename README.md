@@ -106,7 +106,7 @@ You can send payments using `sendPaymentTo:amount:note:completionHandler:`. To s
 }];
 ```
 
-### 5. Request permissions
+#### 5. Request permissions
 
 You can request access to a user's Venmo account using `requestPermissions:withCompletionHandler:`. Permissions can be specified with [these scopes](https://developer.venmo.com/docs/authentication#scopes). If the user has the Venmo app installed, this method will switch the user to an authorization page in the Venmo app. Otherwise, the user will be directed to an authorization page in Safari. After granting or denying permissions, the user will be redirected back to your app.
 
