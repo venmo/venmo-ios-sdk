@@ -18,7 +18,7 @@
     [self.amountTextField becomeFirstResponder];
     self.amountTextField.delegate = self.toTextField.delegate = self.noteTextField.delegate = self;
     
-    if (![[Venmo sharedInstance] isVenmoAppInstalled]) {
+    if (![Venmo isVenmoAppInstalled]) {
         [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
         self.transactionMethodControl.selectedSegmentIndex = 1;
     }

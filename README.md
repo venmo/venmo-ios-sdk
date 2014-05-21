@@ -66,20 +66,24 @@ To allow the Venmo iOS SDK to handle responses from the Venmo app, add the follo
     if ([[Venmo sharedInstance] handleOpenURL:url]) {
         return YES;
     }
+    // You can add your app-specific url handling code here if needed
     return NO;
 }
 ```
 
-#### 4. Send a payment
+#### 4. Choose a transaction method
 
 The Venmo iOS SDK lets you send a payment in two ways:
 1. Switching to the Venmo app
-    * This method will switch the user to a pre-filled payment screen in the Venmo app. After the user sends or cancels the payment, they'll be switched back to your app.
+    * `[[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];`
+    * This transaction method will switch the user to a pre-filled payment screen in the Venmo app. After the user sends or cancels the payment, they'll be switched back to your app.
     * If the user doesn't have the Venmo app installed, the payment will fail with an appropriate error.
+    * N.B. You'll need to run your app on a device with the Venmo app installed in order to test switching to the Venmo app. Support for testing a Venmo app switch on the simulator is in the works.
 2. Using the Venmo API
-    * This method won't switch the user to Venmo to make the payment, but _will_ prompt the user to give your app access to their Venmo account. See **[5. Request permissions](#5-request-permissions)**.
+    * `[[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];`
+    * This transaction method won't switch the user to Venmo to make the payment, but _will_ prompt the user to give your app access to their Venmo account. If you want to use this transaction method, you will need to **[request permissions from the user](#5-request-permissions)** _before_ attempting to send a transaction.
 
-Sending payments by switching to the Venmo app has the advantage of allowing your user to bypass the Venmo OAuth flow. If the user doesn't have the Venmo app installed, we recommend using the Venmo API.
+If the user doesn't have the Venmo app installed, we recommend sending transactions via the Venmo API.
 
 ```objc
 if (![Venmo isVenmoAppInstalled]) {
@@ -90,7 +94,26 @@ else {
 }
 ```
 
-You can send payments using `sendPaymentTo:amount:note:completionHandler:`. To send a payment request, use `sendRequestTo:amount:note:completionHandler:`.
+#### 5. Request permissions
+
+You can request access to a user's Venmo account using `requestPermissions:withCompletionHandler:`. Permissions can be specified with [these scopes](https://developer.venmo.com/docs/authentication#scopes). If the user has the Venmo app installed, `requestPermissions:withCompletionHandler` will switch the user to an authorization page in the Venmo app. Otherwise, the user will be directed to an authorization page in Safari. After granting or denying permissions, the user will be redirected back to your app.
+
+```obj-c
+[[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
+                                             VENPermissionAccessProfile]
+                     withCompletionHandler:^(BOOL success, NSError *error) {
+    if (success) {
+        // :)
+    }
+    else {
+        // :(
+    }
+}];
+```
+
+#### 6. Send a payment
+
+After setting the desired transaction method and requesting permissions (if you want to use the Venmo API), you can send payments using `sendPaymentTo:amount:note:completionHandler:`. To send a _payment request_ (a.k.a. charge), use `sendRequestTo:amount:note:completionHandler:`.
 
 ```obj-c
 [[Venmo sharedInstance] sendPaymentTo:self.toTextField.text
@@ -102,23 +125,6 @@ You can send payments using `sendPaymentTo:amount:note:completionHandler:`. To s
     }
     else {
         NSLog(@"Transaction failed with error: %@", [error localizedDescription]);
-    }
-}];
-```
-
-#### 5. Request permissions
-
-You can request access to a user's Venmo account using `requestPermissions:withCompletionHandler:`. Permissions can be specified with [these scopes](https://developer.venmo.com/docs/authentication#scopes). If the user has the Venmo app installed, this method will switch the user to an authorization page in the Venmo app. Otherwise, the user will be directed to an authorization page in Safari. After granting or denying permissions, the user will be redirected back to your app.
-
-```obj-c
-[[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
-                                             VENPermissionAccessProfile]
-                     withCompletionHandler:^(BOOL success, NSError *error) {
-    if (success) {
-        // :)
-    }
-    else {
-        // :(
     }
 }];
 ```
