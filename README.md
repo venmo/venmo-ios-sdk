@@ -79,7 +79,7 @@ The Venmo iOS SDK lets you send a payment in two ways:
     * `[[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];`
     * This transaction method will switch the user to a pre-filled payment screen in the Venmo app. After the user sends or cancels the payment, they'll be switched back to your app.
     * If the user doesn't have the Venmo app installed, the payment will fail with an appropriate error.
-    * N.B. _You'll need to run your app on a device with the Venmo app installed in order to test switching to the Venmo app._ Support for testing a Venmo app switch on the simulator is in the works.
+    * N.B. You should run your app **on a device with the Venmo app installed** to test switching to the Venmo app. Support for testing a Venmo app switch on the simulator is in the works.
 
 2. Using the Venmo API
     * `[[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];`
