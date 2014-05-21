@@ -11,7 +11,7 @@ The Venmo iOS SDK allows you to integrate Venmo into your iOS app.
 The easiest way to get started is with [CocoaPods](http://cocoapods.org/). Just add the following line to your Podfile:
 
 ```ruby
-pod 'venmo-ios-sdk', :git => 'https://github.com/venmo/venmo-ios-sdk'
+pod 'Venmo-iOS-sdk', :git => 'https://github.com/venmo/venmo-ios-sdk'
 ```
 
 ### Usage
