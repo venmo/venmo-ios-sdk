@@ -2,13 +2,13 @@
 
 [![Build Status](https://travis-ci.org/venmo/venmo-ios-sdk.svg?branch=v2)](https://travis-ci.org/venmo/venmo-ios-sdk)
 
-The Venmo iOS SDK allows you to integrate Venmo into your iOS app.
+The Venmo iOS SDK lets you to make and accept payments in your app using Venmo.
 
 <img src="/venmo_ios_sdk.gif" width="320px">
 
 ### Installation
 
-The easiest way to get started is with [CocoaPods](http://cocoapods.org/). Just add the following line to your Podfile:
+If you're using [CocoaPods](http://cocoapods.org/), just add the following line to your Podfile:
 
 ```ruby
 pod 'Venmo-iOS-SDK', '~>1.0.0'
