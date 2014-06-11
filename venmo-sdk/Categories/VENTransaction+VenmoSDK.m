@@ -109,7 +109,7 @@
 
     BOOL success = [cleanDictionary[@"success"] boolValue];
     if (success) {
-        transaction.status = VENTransactionStatusUnknown;
+        transaction.status = VENTransactionStatusSettled;
     }
     else {
         transaction.status = VENTransactionStatusFailed;
