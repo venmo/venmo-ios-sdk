@@ -1,5 +1,3 @@
-@import Foundation;
-
 typedef NS_ENUM(NSUInteger, VENPermissionType) {
     VENPermissionTypeUnknown,
     VENPermissionTypeAccessFriends,
