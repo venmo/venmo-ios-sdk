@@ -26,7 +26,7 @@ describe(@"refreshTokenWithAppId:secret:completionHandler:", ^{
         newRefreshToken = @"bazbuzz342";
         clientId = @"12345678";
         clientSecret = @"clientsecret";
-        bodyString = @"{\"refresh_token\":\"currenttoken\",\"client_secret\":\"clientsecret\",\"client_id\":\"12345678\"}";
+        bodyString = @"{\"client_id\":\"12345678\",\"client_secret\":\"clientsecret\",\"refresh_token\":\"currenttoken\"}";
 
         // stubbed response
         NSDictionary *responseDict = @{@"access_token" : newAccessToken,

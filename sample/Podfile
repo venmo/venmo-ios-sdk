@@ -2,8 +2,7 @@ platform :ios, '6.0'
 inhibit_all_warnings!
 
 target 'MiniVenmo', :exclusive => true do
-  pod 'Venmo-iOS-SDK', :git => 'https://github.com/venmo/venmo-ios-sdk'
+  pod 'Venmo-iOS-SDK', '~>1.0.1'
   pod 'SVProgressHUD'
   pod 'UIAlertView+Blocks'
-  pod 'AFNetworking/UIKit'
 end
