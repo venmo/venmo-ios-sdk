@@ -13,9 +13,9 @@ The Venmo iOS SDK lets you to make and accept payments in your app using Venmo.
  1. If you don't have a Podfile, run `pod init`
  2. Add the following line to your Podfile:
 
-			```ruby
-				pod 'Venmo-iOS-SDK', '~>1.0.0'
-			```
+```ruby
+pod 'Venmo-iOS-SDK', '~>1.0.0'
+```
 
 *If you don't use CocoaPods:*
 
