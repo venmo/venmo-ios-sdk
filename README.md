@@ -8,11 +8,19 @@ The Venmo iOS SDK lets you to make and accept payments in your app using Venmo.
 
 ### Installation
 
-If you're using [CocoaPods](http://cocoapods.org/), just add the following line to your Podfile:
+*If you're using [CocoaPods](http://cocoapods.org/):*
+
+ 1. If you don't have a Podfile, run `pod init`
+ 2. Add the following line to your Podfile:
 
 ```ruby
 pod 'Venmo-iOS-SDK', '~>1.0.0'
 ```
+
+*If you don't use CocoaPods:*
+
+Clone this repository and add it to your project (this is a multi-step process, but it is possible).
+We recommend working with CocoaPods for now.
 
 ### Usage
 
@@ -27,9 +35,9 @@ Using the Venmo iOS SDK is as easy as Venmo-ing a friend!
 1. In your app target's `Info` section, scroll down to `URL Types`.
 2. Add a new URL Type with the following properties:
 
-	`Identifier` ==> `venmo<<YOUR_APP_ID>>`
+	*Identifier:* `venmo<<YOUR_APP_ID>>`
 
-	`URL Schemes` ==> `venmo<<YOUR_APP_ID>>`
+	*URL Schemes:* `venmo<<YOUR_APP_ID>>`
 
 For example, if your app ID is `1234`, put `venmo1234`.
 
@@ -38,7 +46,7 @@ For example, if your app ID is `1234`, put `venmo1234`.
 
 #### 3. Initialize the Venmo iOS SDK
 
-Add the Venmo SDK header file to your app delegate. You can use the SDK from any of your implementation files by importing this header.
+Add the Venmo SDK header file to your app delegate. Import this header in any of your implementation files to use the SDK.
 
 ```obj-c
 #import <Venmo-iOS-SDK/Venmo.h>
