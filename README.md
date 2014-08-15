@@ -43,7 +43,7 @@ For example, if your app ID is `1234`, put `venmo1234`.
 
 ![Set URL Types](http://i.imgur.com/8rUXlFB.png)
 
-**Note** If you are using the [Parse SDK](https://parse.com/docs/downloads), and have issues, [this gist](https://gist.github.com/diogeneshamilton/6c1585280da8de16560d) should help you.
+**Note:** If you are using the [Parse SDK](https://parse.com/docs/downloads), and have issues, [this gist](https://gist.github.com/diogeneshamilton/6c1585280da8de16560d) should help you.
 
 
 #### 3. Initialize the Venmo iOS SDK
