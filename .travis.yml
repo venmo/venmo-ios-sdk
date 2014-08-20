@@ -1,6 +1,7 @@
 language: objective-c
 before_install:
 - gem i cocoapods --no-ri --no-rdoc
-- gem i xcpretty --no-ri --no-rdoc
-script:
-- xcodebuild -workspace venmo-sdk.xcworkspace -scheme venmo-sdk-ci -sdk iphonesimulator test | xcpretty -c
+- brew uninstall xctool; brew install xctool --HEAD;
+xcode_workspace: venmo-sdk.xcworkspace
+xcode_scheme: venmo-sdk-ci
+xcode_sdk: iphonesimulator
