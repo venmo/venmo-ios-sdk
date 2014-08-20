@@ -14,6 +14,7 @@
 
 #import <VENCore/VENCore.h>
 #import <VENCore/VENCreateTransactionRequest.h>
+#import <CMDQueryStringSerialization/CMDQueryStringSerialization.h>
 
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
@@ -315,18 +316,25 @@ static Venmo *sharedInstance = nil;
                     recipient:(NSString *)recipientHandle {
     NSString *identifier = [self currentDeviceIdentifier];
 
-    NSString *pathAndQuery = [NSString stringWithFormat:@"/?client=ios&"
-                              "app_name=%@&app_id=%@&device_id=%@",
-                              self.appName,
-                              self.appId,
-                              identifier];
-    pathAndQuery = [NSString stringWithFormat:@"%@&amount=%@", pathAndQuery, [VENTransaction amountString:amount]];
-    pathAndQuery = [NSString stringWithFormat:@"%@&txn=%@", pathAndQuery, [VENTransaction typeString:type]];
-    pathAndQuery = [NSString stringWithFormat:@"%@&recipients=%@", pathAndQuery, recipientHandle];
-    pathAndQuery = [NSString stringWithFormat:@"%@&note=%@", pathAndQuery, note];
-    pathAndQuery = [NSString stringWithFormat:@"%@&app_version=%@", pathAndQuery, VEN_CURRENT_SDK_VERSION];
+    NSMutableDictionary *queryDictionary = [NSMutableDictionary dictionary];
+    queryDictionary[@"client"] = @"ios";
+    queryDictionary[@"app_name"] = self.appName ?: @"";
+    queryDictionary[@"app_id"] = self.appId ?: @"";
+    queryDictionary[@"device_id"] = identifier;
+    queryDictionary[@"txn"] = [VENTransaction typeString:type];
+    queryDictionary[@"note"] = note;
+    queryDictionary[@"app_version"] = VEN_CURRENT_SDK_VERSION;
 
-    return pathAndQuery;
+    if (amount) {
+        queryDictionary[@"amount"] = [VENTransaction amountString:amount];
+    }
+
+    if (recipientHandle && ![recipientHandle isEqualToString:@""]) {
+        queryDictionary[@"recipients"] = recipientHandle;
+    }
+
+    NSString *queryString = [CMDQueryStringSerialization queryStringWithDictionary:queryDictionary];
+    return [NSString stringWithFormat:@"/?%@", queryString];
 }
 
 

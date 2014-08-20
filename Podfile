@@ -3,6 +3,7 @@ platform :ios, '7.0'
 target 'venmo-sdk', :exclusive => true do
   pod 'VENCore', '~> 3.0.0'
   pod 'SSKeychain', '~> 1.2'
+  pod 'CMDQueryStringSerialization', '~> 0.2.0'
 end
 
 target 'venmo-sdk-specs', :exclusive => true do

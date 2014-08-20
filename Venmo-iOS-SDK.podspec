@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.source_files = 'venmo-sdk/**/*.{h,m}'
   s.dependency 'VENCore', '~>3.0.0'
   s.dependency 'SSKeychain', '~>1.2.2'
+  s.dependency 'CMDQueryStringSerialization', '~> 0.2.0'
   s.requires_arc = true
   s.social_media_url = 'https://twitter.com/venmo'
   s.screenshot  = "http://i.imgur.com/tN7mYVy.gif"
