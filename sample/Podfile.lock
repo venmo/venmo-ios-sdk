@@ -32,9 +32,9 @@ PODS:
     - VENCore (~> 3.0.0)
 
 DEPENDENCIES:
-  - AFNetworking
-  - SVProgressHUD
-  - UIAlertView+Blocks
+  - AFNetworking (~> 2.3)
+  - SVProgressHUD (~> 1.0)
+  - UIAlertView+Blocks (~> 0.8)
   - Venmo-iOS-SDK (from `..`)
 
 EXTERNAL SOURCES:
