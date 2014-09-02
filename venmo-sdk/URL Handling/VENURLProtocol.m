@@ -115,6 +115,12 @@
                                       description:@"Failed to validate the transaction."
                                recoverySuggestion:@"Please contact us."];
             }
+            else if (!transaction) {
+                error  = [NSError errorWithDomain:VenmoSDKDomain
+                                             code:VENSDKErrorTransactionIncomplete
+                                      description:@"The transaction was incomplete."
+                               recoverySuggestion:@"Please try again."];
+            }
 
             if ([Venmo sharedInstance].transactionCompletionHandler) {
                 [Venmo sharedInstance].transactionCompletionHandler(transaction, transaction.status, error);
