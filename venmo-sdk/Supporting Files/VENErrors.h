@@ -7,6 +7,8 @@ typedef enum VENSDKErrorCode {
     VENSDKErrorTransactionValidationError = 1,
     // Venmo server failed to complete transaction
     VENSDKErrorTransactionFailed,
+    // Client did not return a signed request
+    VENSDKErrorTransactionIncomplete,
     // Non-success HTTP status code was returned
     VENSDKErrorHTTPError,
     // An error occurred related to Venmo OAuth
