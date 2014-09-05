@@ -18,11 +18,9 @@
     return [requestScheme isEqualToString:currentAppScheme];
 }
 
-
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request {
     return request;
 }
-
 
 + (BOOL)requestIsCacheEquivalent:(NSURLRequest *)a toRequest:(NSURLRequest *)b {
     return [[[a URL] resourceSpecifier] isEqualToString:[[b URL] resourceSpecifier]];
@@ -130,10 +128,8 @@
     [self.client URLProtocolDidFinishLoading:self];
 }
 
-
 - (void)stopLoading {
 
 }
-
 
 @end
