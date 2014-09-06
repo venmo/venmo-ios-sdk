@@ -17,6 +17,8 @@ The Venmo iOS SDK lets you to make and accept payments in your app using Venmo.
 pod 'Venmo-iOS-SDK', '~>1.3'
 ```
 
+Make sure you run `pod install` to install all of your dependencies, and open your `.xcworkspace` file, not your `.xcodeproj` files!
+
 *If you don't use CocoaPods:*
 
 Clone this repository and add it to your project (this is a multi-step process, but it is possible).
