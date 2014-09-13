@@ -131,7 +131,7 @@ After setting the desired transaction method and requesting permissions (if you 
 
 ```obj-c
 [[Venmo sharedInstance] sendPaymentTo:self.toTextField.text
-                               amount:self.amountTextField.text.floatValue*100
+                               amount:self.amountTextField.text.floatValue*100 // this is in cents!
                                  note:self.noteTextField.text
                     completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
     if (success) {
