@@ -115,7 +115,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * Sends a payment with the given parameters.
  * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
- * @param amount The payment amount
+ * @param amount The payment amount in cents
  * @param note A note for the payment
  * @param handler The handler block to execute after the payment succeeds or fails
  */
@@ -126,8 +126,12 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
- * See sendPaymentTo:amount:note:completionHandler:
+ * Sends a payment with the given parameters.
+ * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
+ * @param amount The payment amount in cents
+ * @param note A note for the payment
  * @param audience The audience for the payment
+ * @param handler The handler block to execute after the payment succeeds or fails
  */
 - (void)sendPaymentTo:(NSString *)recipientHandle
                amount:(NSUInteger)amount
@@ -139,7 +143,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * Sends a payment request with the given parameters.
  * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
- * @param amount The requested amount
+ * @param amount The requested amount in cents
  * @param note A note for the request
  * @param handler The handler block to execute after the request succeeds or fails
  */
@@ -150,8 +154,12 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
- * See sendRequestTo:amount:note:completionHandler:
+ * Sends a payment request with the given parameters.
+ * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
+ * @param amount The requested amount in cents
+ * @param note A note for the request
  * @param audience The audience for the payment
+ * @param handler The handler block to execute after the request succeeds or fails
  */
 - (void)sendRequestTo:(NSString *)recipientHandle
                amount:(NSUInteger)amount
