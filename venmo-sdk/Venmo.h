@@ -76,6 +76,14 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 
 /**
+ * Initiates Venmo OAuth request.
+ * @param permissions List of permissions.
+ * @param forceWebFlow Force webflow even with the venmo app installed in the user's phone
+ * @param completionHandler Completion handler to call upon returning from OAuth flow.
+ */
+- (void)requestPermissions:(NSArray *)permissions forcingWebFlow:(BOOL)forceWebFlow withCompletionHandler:(VENOAuthCompletionHandler)handler;
+
+/**
  * Returns a value indicating whether the access token should be refreshed.
  * @return YES if the session is open and the current date is later than the token's 
  * expiration date.

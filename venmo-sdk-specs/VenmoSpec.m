@@ -177,6 +177,77 @@ describe(@"requestPermissions:withCompletionHandler", ^{
 
 });
 
+describe(@"requestPermissions:forcingWebflow:withCompletionHandler", ^{
+    
+    __block id mockApplication;
+    __block id mockSharedApplication;
+    __block id mockVenmo;
+    __block Venmo *venmo;
+    __block NSString *appId;
+    __block NSString *appSecret;
+    __block NSString *appName;
+    
+    beforeAll(^{
+        // Turn [UIApplication sharedApplication] into a partial mock.
+        mockApplication = [OCMockObject niceMockForClass:[UIApplication class]];
+        mockSharedApplication = [OCMockObject niceMockForClass:[UIApplication class]];
+        [[[mockApplication stub] andReturn:mockSharedApplication] sharedApplication];
+        
+        // Create a partial mock for Venmo
+        appId = @"foo";
+        appSecret = @"bar";
+        appName = @"AppName";
+        venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:appName];
+        mockVenmo = [OCMockObject partialMockForObject:venmo];
+    });
+    
+    afterAll(^{
+        [mockApplication stopMocking];
+        [mockSharedApplication stopMocking];
+        [mockVenmo stopMocking];
+        [VENSession deleteSessionWithAppId:appId];
+    });
+    
+    it(@"should use venmo:// if venmoAppInstalled is true and forcingWebflow is false", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(YES)] isVenmoAppInstalled];
+        [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+            expect([url scheme]).to.equal(@"venmo");
+            return YES;
+        }]];
+        [mockVenmo requestPermissions:@[] forcingWebFlow:NO withCompletionHandler:nil];
+    });
+    
+    it(@"should use baseURLPath if venmoAppInstalled is false and forcingWebflow is false", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
+        NSString *baseURLPath = [venmo baseURLPath];
+        [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+            expect([url absoluteString]).to.contain(baseURLPath);
+            return YES;
+        }]];
+        [mockVenmo requestPermissions:@[] forcingWebFlow:NO withCompletionHandler:nil];
+    });
+
+    it(@"should use baseURLPath if venmoAppInstalled is true and forcingWebflow is true", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(YES)] isVenmoAppInstalled];
+        NSString *baseURLPath = [venmo baseURLPath];
+        [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+            expect([url absoluteString]).to.contain(baseURLPath);
+            return YES;
+        }]];
+        [mockVenmo requestPermissions:@[] forcingWebFlow:YES withCompletionHandler:nil];
+    });
+    
+    it(@"should use baseURLPath if venmoAppInstalled is false and forcingWebflow is true", ^{
+        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
+        NSString *baseURLPath = [venmo baseURLPath];
+        [[mockSharedApplication expect] openURL:[OCMArg checkWithBlock:^BOOL(NSURL *url) {
+            expect([url absoluteString]).to.contain(baseURLPath);
+            return YES;
+        }]];
+        [mockVenmo requestPermissions:@[] forcingWebFlow:YES withCompletionHandler:nil];
+    });
+
+});
 
 describe(@"isSessionValid", ^{
 

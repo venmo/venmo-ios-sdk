@@ -96,21 +96,26 @@ static Venmo *sharedInstance = nil;
 
 - (void)requestPermissions:(NSArray *)permissions
      withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
+    [self requestPermissions:permissions forcingWebFlow:NO withCompletionHandler:completionHandler];
+}
+
+
+- (void)requestPermissions:(NSArray *)permissions forcingWebFlow:(BOOL)forceWebFlow withCompletionHandler:(VENOAuthCompletionHandler)completionHandler
+{
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
     self.OAuthCompletionHandler = completionHandler;
     self.session.state = VENSessionStateOpening;
-
+    
     NSString *baseURL;
-    if ([Venmo isVenmoAppInstalled]) {
+    if ([Venmo isVenmoAppInstalled] && !forceWebFlow) {
         baseURL = @"venmo://";
     } else {
         baseURL = [self baseURLPath];
     }
     NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
-
+    
     [[UIApplication sharedApplication] openURL:authURL];
 }
-
 
 - (BOOL)isSessionValid {
     NSDate *now = [NSDate date];
