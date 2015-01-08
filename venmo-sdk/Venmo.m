@@ -298,6 +298,21 @@ static Venmo *sharedInstance = nil;
 }
 
 
+#pragma mark - Friends
+
+
+- (void) getFriendsWithCompletionHandler:(VENGenericRequestCompletionHandler)completionHandler {
+    [self validateAPIRequestWithCompletionHandler:completionHandler];
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"access_token": self.session.accessToken}];
+    [[VENCore defaultCore].httpClient GET:[NSString stringWithFormat:@"users/%@/friends", self.session.user.externalId] parameters:parameters success:^(VENHTTPResponse *response) {
+        NSArray *data = [response.object objectOrNilForKey:@"data"];
+        completionHandler(data, YES, nil);
+    } failure:^(VENHTTPResponse *response, NSError *error) {
+        completionHandler(response, NO, error);
+    }];
+}
+
 #pragma mark - URLs
 
 - (BOOL)handleOpenURL:(NSURL *)url {
