@@ -301,13 +301,19 @@ static Venmo *sharedInstance = nil;
 #pragma mark - Friends
 
 - (void) getFriendsWithLimit:(NSNumber *)limit beforeUserID:(NSString *)beforeUserID afterUserID:(NSString *)afterUserID completionHandler:(VENGenericRequestCompletionHandler)handler {
-    
+        
     [self validateAPIRequestWithCompletionHandler:handler];
+
+    NSMutableDictionary *parameters = [[NSMutableDictionary alloc] init];
+    if (limit)
+        parameters[@"limit"] = [limit stringValue];
+    if (beforeUserID)
+        parameters[@"before"] = beforeUserID;
+    if (afterUserID)
+        parameters[@"after"] = afterUserID;
     
-    NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"access_token": self.session.accessToken, @"before": beforeUserID, @"after": afterUserID, @"limit": limit}];
     [[VENCore defaultCore].httpClient GET:[NSString stringWithFormat:@"users/%@/friends", self.session.user.externalId] parameters:parameters success:^(VENHTTPResponse *response) {
-        NSArray *data = [response.object objectOrNilForKey:@"data"];
-        handler(data, YES, nil);
+        handler(response.object, YES, nil); 
     } failure:^(VENHTTPResponse *response, NSError *error) {
         handler(response, NO, error);
     }];
