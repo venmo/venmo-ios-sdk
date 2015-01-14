@@ -300,18 +300,19 @@ static Venmo *sharedInstance = nil;
 
 #pragma mark - Friends
 
-
-- (void) getFriendsWithCompletionHandler:(VENGenericRequestCompletionHandler)completionHandler {
-    [self validateAPIRequestWithCompletionHandler:completionHandler];
+- (void) getFriendsWithLimit:(NSNumber *)limit beforeUserID:(NSString *)beforeUserID afterUserID:(NSString *)afterUserID completionHandler:(VENGenericRequestCompletionHandler)handler {
     
-    NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"access_token": self.session.accessToken}];
+    [self validateAPIRequestWithCompletionHandler:handler];
+    
+    NSMutableDictionary* parameters = [NSMutableDictionary dictionaryWithDictionary:@{@"access_token": self.session.accessToken, @"before": beforeUserID, @"after": afterUserID, @"limit": limit}];
     [[VENCore defaultCore].httpClient GET:[NSString stringWithFormat:@"users/%@/friends", self.session.user.externalId] parameters:parameters success:^(VENHTTPResponse *response) {
         NSArray *data = [response.object objectOrNilForKey:@"data"];
-        completionHandler(data, YES, nil);
+        handler(data, YES, nil);
     } failure:^(VENHTTPResponse *response, NSError *error) {
-        completionHandler(response, NO, error);
+        handler(response, NO, error);
     }];
 }
+
 
 #pragma mark - URLs
 

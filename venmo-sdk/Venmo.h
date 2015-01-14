@@ -171,7 +171,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * get the complete list of all friends
  */
-- (void) getFriendsWithCompletionHandler:(VENGenericRequestCompletionHandler)handler;
+- (void)getFriendsWithLimit:(NSNumber *)limit beforeUserID:(NSString *)beforeUserID afterUserID:(NSString *)afterUserID completionHandler:(VENGenericRequestCompletionHandler) handler;
 
 
 @end
