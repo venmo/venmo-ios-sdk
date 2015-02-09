@@ -36,6 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A4DD8C204AA10C8BF5DBF01 /* Pods-MiniVenmo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVenmo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MiniVenmo/Pods-MiniVenmo.release.xcconfig"; sourceTree = "<group>"; };
+		2F972B431A8846B700491C59 /* MiniVenmoTests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "MiniVenmoTests-Info.plist"; sourceTree = "<group>"; };
+		565AB2987723F285859B7586 /* Pods-MiniVenmo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVenmo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MiniVenmo/Pods-MiniVenmo.debug.xcconfig"; sourceTree = "<group>"; };
 		B62D59CF189855E5001E46A4 /* MiniVenmo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVenmo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59D2189855E5001E46A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B62D59D4189855E5001E46A4 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -52,10 +55,8 @@
 		B62D59EA189855E5001E46A4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B62D59F0189855E5001E46A4 /* MiniVenmoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVenmoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B62D59F1189855E5001E46A4 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B62D59F9189855E5001E46A4 /* MiniVenmoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MiniVenmoTests-Info.plist"; sourceTree = "<group>"; };
 		B62D59FB189855E5001E46A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		B91B22922489429295156D45 /* libPods-MiniVenmo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVenmo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVenmo.xcconfig"; path = "Pods/Pods-MiniVenmo.xcconfig"; sourceTree = "<group>"; };
 		EB8556C019182D3C002243FA /* MVMLoggedInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMLoggedInViewController.h; sourceTree = "<group>"; };
 		EB8556C119182D3C002243FA /* MVMLoggedInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MVMLoggedInViewController.m; sourceTree = "<group>"; };
 		EB8EBFC319182BA100E45B38 /* MVMLoggedOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MVMLoggedOutViewController.h; sourceTree = "<group>"; };
@@ -94,7 +95,7 @@
 				B62D59F7189855E5001E46A4 /* MiniVenmoTests */,
 				B62D59D1189855E5001E46A4 /* Frameworks */,
 				B62D59D0189855E5001E46A4 /* Products */,
-				DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */,
+				D05C5DB35D4C48E0743ADB2A /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -159,10 +160,19 @@
 		B62D59F8189855E5001E46A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B62D59F9189855E5001E46A4 /* MiniVenmoTests-Info.plist */,
+				2F972B431A8846B700491C59 /* MiniVenmoTests-Info.plist */,
 				B62D59FA189855E5001E46A4 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D05C5DB35D4C48E0743ADB2A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				565AB2987723F285859B7586 /* Pods-MiniVenmo.debug.xcconfig */,
+				1A4DD8C204AA10C8BF5DBF01 /* Pods-MiniVenmo.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -288,7 +298,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-MiniVenmo-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniVenmo/Pods-MiniVenmo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -423,7 +433,7 @@
 		};
 		B62D5A02189855E5001E46A4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */;
+			baseConfigurationReference = 565AB2987723F285859B7586 /* Pods-MiniVenmo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -437,7 +447,7 @@
 		};
 		B62D5A03189855E5001E46A4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF84B4877D874A37AB6EC1C6 /* Pods-MiniVenmo.xcconfig */;
+			baseConfigurationReference = 1A4DD8C204AA10C8BF5DBF01 /* Pods-MiniVenmo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -464,7 +474,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "VenmoSDKSampleTests/MiniVenmoTests-Info.plist";
+				INFOPLIST_FILE = "MiniVenmoTests/MiniVenmoTests-Info.plist";
 				PRODUCT_NAME = MiniVenmoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -482,7 +492,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VenmoSDKSample/VenmoSDKSample-Prefix.pch";
-				INFOPLIST_FILE = "VenmoSDKSampleTests/MiniVenmoTests-Info.plist";
+				INFOPLIST_FILE = "MiniVenmoTests/MiniVenmoTests-Info.plist";
 				PRODUCT_NAME = MiniVenmoTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
