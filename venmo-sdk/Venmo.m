@@ -159,13 +159,13 @@ static Venmo *sharedInstance = nil;
 
 #pragma mark - Sending a Transaction
 
-- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
+- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandles
                    transactionType:(VENTransactionType)type
                             amount:(NSUInteger)amount
                               note:(NSString *)note
                  completionHandler:(VENTransactionCompletionHandler)completionHandler {
     self.transactionCompletionHandler = completionHandler;
-    NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipient:recipientHandle];
+    NSString *URLPath = [self URLPathWithType:type amount:amount note:note recipients:recipientHandles];
     NSURL *transactionURL = [NSURL venmoAppURLWithPath:URLPath];
     DLog(@"transactionURL: %@", transactionURL);
 
@@ -181,7 +181,7 @@ static Venmo *sharedInstance = nil;
 }
 
 
-- (void)sendAPITransactionTo:(NSString *)recipientHandle
+- (void)sendAPITransactionTo:(NSString *)recipientHandles
              transactionType:(VENTransactionType)type
                       amount:(NSUInteger)amount
                         note:(NSString *)note
@@ -189,19 +189,26 @@ static Venmo *sharedInstance = nil;
            completionHandler:(VENTransactionCompletionHandler)completionHandler {
 
     [self validateAPIRequestWithCompletionHandler:completionHandler];
-    VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:recipientHandle amount:amount];
+
     VENCreateTransactionRequest *request = [[VENCreateTransactionRequest alloc] init];
     request.transactionType = type;
     request.audience = audience;
     request.note = note;
-    BOOL addedTarget = [request addTransactionTarget:target];
-    if (!addedTarget) {
-        NSError *error = [NSError errorWithDomain:VenmoSDKDomain
-                                             code:VENSDKErrorTransactionFailed
-                                      description:@"Invalid recipient"
-                               recoverySuggestion:@"Please enter a valid phone, email, username, or Venmo user ID"];
-        completionHandler(nil, NO, error);
-        return;
+
+    NSArray *recipients = [recipientHandles componentsSeparatedByString:@","];
+
+    for (NSString *recipient in recipients) {
+        VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:recipient amount:amount];
+        BOOL addedTarget = [request addTransactionTarget:target];
+
+        if (!addedTarget) {
+            NSError *error = [NSError errorWithDomain:VenmoSDKDomain
+                                                 code:VENSDKErrorTransactionFailed
+                                          description:@"Invalid recipient"
+                                   recoverySuggestion:@"Please enter a valid phone, email, username, or Venmo user ID"];
+            completionHandler(nil, NO, error);
+            return;
+        }
     }
 
     [request sendWithSuccess:^(NSArray *sentTransactions, VENHTTPResponse *response) {
@@ -220,7 +227,7 @@ static Venmo *sharedInstance = nil;
 }
 
 
-- (void)sendTransactionTo:(NSString *)recipientHandle
+- (void)sendTransactionTo:(NSString *)recipientHandles
           transactionType:(VENTransactionType)type
                    amount:(NSUInteger)amount
                      note:(NSString *)note
@@ -228,49 +235,49 @@ static Venmo *sharedInstance = nil;
         completionHandler:(VENTransactionCompletionHandler)completionHandler {
 
     if (self.defaultTransactionMethod == VENTransactionMethodAPI) {
-        [self sendAPITransactionTo:recipientHandle transactionType:type amount:amount note:note audience:audience completionHandler:completionHandler];
+        [self sendAPITransactionTo:recipientHandles transactionType:type amount:amount note:note audience:audience completionHandler:completionHandler];
     }
     else {
-        [self sendAppSwitchTransactionTo:recipientHandle transactionType:type amount:amount note:note completionHandler:completionHandler];
+        [self sendAppSwitchTransactionTo:recipientHandles transactionType:type amount:amount note:note completionHandler:completionHandler];
     }
 }
 
 
-- (void)sendPaymentTo:(NSString *)recipientHandle
+- (void)sendPaymentTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
              audience:(VENTransactionAudience)audience
     completionHandler:(VENTransactionCompletionHandler)handler {
 
-    [self sendTransactionTo:recipientHandle transactionType:VENTransactionTypePay amount:amount note:note audience:audience completionHandler:handler];
+    [self sendTransactionTo:recipientHandles transactionType:VENTransactionTypePay amount:amount note:note audience:audience completionHandler:handler];
 }
 
 
-- (void)sendPaymentTo:(NSString *)recipientHandle
+- (void)sendPaymentTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler {
 
-    [self sendPaymentTo:recipientHandle amount:amount note:note audience:VENTransactionAudienceUserDefault completionHandler:handler];
+    [self sendPaymentTo:recipientHandles amount:amount note:note audience:VENTransactionAudienceUserDefault completionHandler:handler];
 }
 
 
-- (void)sendRequestTo:(NSString *)recipientHandle
+- (void)sendRequestTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
              audience:(VENTransactionAudience)audience
     completionHandler:(VENTransactionCompletionHandler)handler {
 
-    [self sendTransactionTo:recipientHandle transactionType:VENTransactionTypeCharge amount:amount note:note audience:audience completionHandler:handler];
+    [self sendTransactionTo:recipientHandles transactionType:VENTransactionTypeCharge amount:amount note:note audience:audience completionHandler:handler];
 }
 
 
-- (void)sendRequestTo:(NSString *)recipientHandle
+- (void)sendRequestTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler {
 
-    [self sendRequestTo:recipientHandle amount:amount note:note audience:VENTransactionAudienceUserDefault completionHandler:handler];
+    [self sendRequestTo:recipientHandles amount:amount note:note audience:VENTransactionAudienceUserDefault completionHandler:handler];
 }
 
 
@@ -313,7 +320,7 @@ static Venmo *sharedInstance = nil;
 - (NSString *)URLPathWithType:(VENTransactionType)type
                        amount:(NSUInteger)amount
                          note:(NSString *)note
-                    recipient:(NSString *)recipientHandle {
+                   recipients:(NSString *)recipientHandles {
     NSString *identifier = [self currentDeviceIdentifier];
 
     NSMutableDictionary *queryDictionary = [NSMutableDictionary dictionary];
@@ -329,8 +336,8 @@ static Venmo *sharedInstance = nil;
         queryDictionary[@"amount"] = [VENTransaction amountString:amount];
     }
 
-    if (recipientHandle && ![recipientHandle isEqualToString:@""]) {
-        queryDictionary[@"recipients"] = recipientHandle;
+    if (recipientHandles && ![recipientHandles isEqualToString:@""]) {
+        queryDictionary[@"recipients"] = recipientHandles;
     }
 
     NSString *queryString = [CMDQueryStringSerialization queryStringWithDictionary:queryDictionary];

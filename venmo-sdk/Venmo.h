@@ -114,12 +114,12 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends a payment with the given parameters.
- * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
+ * @param recipientHandles A comma-separated list of the recipients' phone number, email, Venmo username (app switch) or Venmo user ID (API)
  * @param amount The payment amount in cents
  * @param note A note for the payment
  * @param handler The handler block to execute after the payment succeeds or fails
  */
-- (void)sendPaymentTo:(NSString *)recipientHandle
+- (void)sendPaymentTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler;
@@ -127,13 +127,13 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends a payment with the given parameters.
- * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
+ * @param recipientHandles A comma-separated list of the recipients' phone number, email, Venmo username (app switch) or Venmo user ID (API)
  * @param amount The payment amount in cents
  * @param note A note for the payment
  * @param audience The audience for the payment
  * @param handler The handler block to execute after the payment succeeds or fails
  */
-- (void)sendPaymentTo:(NSString *)recipientHandle
+- (void)sendPaymentTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
              audience:(VENTransactionAudience)audience
@@ -142,12 +142,12 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends a payment request with the given parameters.
- * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
+ * @param recipientHandle A comma-separated list of the recipients' phone number, email, Venmo username (app switch) or Venmo user ID (API)
  * @param amount The requested amount in cents
  * @param note A note for the request
  * @param handler The handler block to execute after the request succeeds or fails
  */
-- (void)sendRequestTo:(NSString *)recipientHandle
+- (void)sendRequestTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
     completionHandler:(VENTransactionCompletionHandler)handler;
@@ -155,13 +155,13 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
 /**
  * Sends a payment request with the given parameters.
- * @param recipientHandle The recipient's phone number, email, Venmo username (app switch) or Venmo user ID (API)
+ * @param recipientHandle A comma-separated list of the recipients' phone number, email, Venmo username (app switch) or Venmo user ID (API)
  * @param amount The requested amount in cents
  * @param note A note for the request
  * @param audience The audience for the payment
  * @param handler The handler block to execute after the request succeeds or fails
  */
-- (void)sendRequestTo:(NSString *)recipientHandle
+- (void)sendRequestTo:(NSString *)recipientHandles
                amount:(NSUInteger)amount
                  note:(NSString *)note
              audience:(VENTransactionAudience)audience

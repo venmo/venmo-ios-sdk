@@ -45,7 +45,7 @@
 - (NSString *)URLPathWithType:(VENTransactionType)type
                        amount:(NSUInteger)amount
                          note:(NSString *)note
-                    recipient:(NSString *)recipientHandle;
+                    recipients:(NSString *)recipientHandle;
 
 - (NSString *)currentDeviceIdentifier;
 
@@ -329,7 +329,7 @@ describe(@"sendAppSwitchTransactionTo:", ^{
         NSUInteger amount = 10;
         NSString *note = @"foobarbaz";
         NSString *recipient = @"peter@example.com";
-        NSString *expectedPath = [mockVenmo URLPathWithType:type amount:amount note:note recipient:recipient];
+        NSString *expectedPath = [mockVenmo URLPathWithType:type amount:amount note:note recipients:recipient];
         NSURL *expectedURL = [NSURL venmoAppURLWithPath:expectedPath];
         [[mockSharedApplication expect] openURL:expectedURL];
         [mockVenmo sendAppSwitchTransactionTo:recipient
@@ -652,7 +652,7 @@ describe(@"URLPathWithType:amount:note:recipient:", ^{
     });
 
     it(@"should return the correct path for a charge", ^{
-        NSString *path = [mockVenmo URLPathWithType:VENTransactionTypePay amount:100 note:@"test" recipient:@"cookie"];
+        NSString *path = [mockVenmo URLPathWithType:VENTransactionTypePay amount:100 note:@"test" recipients:@"cookie"];
         expect([path rangeOfString:@"client=ios"].location).toNot.equal(NSNotFound);
         expect([path rangeOfString:@"app_name=AppName"].location).toNot.equal(NSNotFound);
         expect([path rangeOfString:@"device_id=deviceId"].location).toNot.equal(NSNotFound);
@@ -665,7 +665,7 @@ describe(@"URLPathWithType:amount:note:recipient:", ^{
     });
 
     it(@"should return the correct path for a payment", ^{
-        NSString *path = [mockVenmo URLPathWithType:VENTransactionTypeCharge amount:9999 note:@"testnote" recipient:@"cookie@venmo.com"];
+        NSString *path = [mockVenmo URLPathWithType:VENTransactionTypeCharge amount:9999 note:@"testnote" recipients:@"cookie@venmo.com"];
         expect([path rangeOfString:@"txn=charge"].location).toNot.equal(NSNotFound);
     });
     
