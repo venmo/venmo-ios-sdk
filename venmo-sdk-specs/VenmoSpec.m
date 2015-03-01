@@ -258,34 +258,38 @@ describe(@"refreshTokenWithCompletionHandler:", ^{
         venmo = [[Venmo alloc] initWithAppId:appId secret:appSecret name:@"fooapp"];
     });
 
-    it(@"should return an error if the session is closed", ^AsyncBlock{
-        expect(venmo.session.state).to.equal(VENSessionStateClosed);
-        [venmo refreshTokenWithCompletionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
-            expect(accessToken).to.beNil();
-            expect(success).to.beFalsy();
-            expect(error.code).to.equal(VENSDKErrorSessionNotOpen);
-            done();
-        }];
+    it(@"should return an error if the session is closed", ^{
+        waitUntil(^(DoneCallback done) {
+            expect(venmo.session.state).to.equal(VENSessionStateClosed);
+            [venmo refreshTokenWithCompletionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                expect(accessToken).to.beNil();
+                expect(success).to.beFalsy();
+                expect(error.code).to.equal(VENSDKErrorSessionNotOpen);
+                done();
+            }];
+        });
     });
 
-    it(@"should call refreshTokenWithAppId:secret:completionHandler: if the session is open", ^AsyncBlock{
-        NSString *newAccessToken = @"accesstokenbla";
-        id mockVENSession = [OCMockObject mockForClass:[VENSession class]];
-        [[[mockVENSession stub] andReturn:newAccessToken] accessToken];
-        [[[mockVENSession stub] andReturnValue:OCMOCK_VALUE(VENSessionStateOpen)] state];
-        [[[mockVENSession stub] andDo:^(NSInvocation *invocation) {
-            void(^handler)(NSString *, BOOL, NSError *);
-            [invocation getArgument:&handler atIndex:4];
-            handler(newAccessToken, YES, nil);
-        }] refreshTokenWithAppId:appId secret:appSecret completionHandler:OCMOCK_ANY];
+    it(@"should call refreshTokenWithAppId:secret:completionHandler: if the session is open", ^{
+        waitUntil(^(DoneCallback done) {
+            NSString *newAccessToken = @"accesstokenbla";
+            id mockVENSession = [OCMockObject mockForClass:[VENSession class]];
+            [[[mockVENSession stub] andReturn:newAccessToken] accessToken];
+            [[[mockVENSession stub] andReturnValue:OCMOCK_VALUE(VENSessionStateOpen)] state];
+            [[[mockVENSession stub] andDo:^(NSInvocation *invocation) {
+                void(^handler)(NSString *, BOOL, NSError *);
+                [invocation getArgument:&handler atIndex:4];
+                handler(newAccessToken, YES, nil);
+            }] refreshTokenWithAppId:appId secret:appSecret completionHandler:OCMOCK_ANY];
 
-        venmo.session = mockVENSession;
-        [venmo refreshTokenWithCompletionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
-            expect(accessToken).to.equal(newAccessToken);
-            expect(success).to.beTruthy();
-            expect(error).to.beNil();
-            done();
-        }];
+            venmo.session = mockVENSession;
+            [venmo refreshTokenWithCompletionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                expect(accessToken).to.equal(newAccessToken);
+                expect(success).to.beTruthy();
+                expect(error).to.beNil();
+                done();
+            }];
+        });
     });
 });
 
@@ -340,18 +344,20 @@ describe(@"sendAppSwitchTransactionTo:", ^{
         [mockSharedApplication verify];
     });
 
-    it(@"should call the completion handler with an error if venmoAppInstalled is false", ^AsyncBlock{
-        [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
-        [mockVenmo sendAppSwitchTransactionTo:@"ben@example.com"
-                              transactionType:VENTransactionTypePay
-                                       amount:10
-                                         note:@"foonote"
-                            completionHandler:^(NSArray *transactions, BOOL success, NSError *error) {
-                                expect(transactions).to.beNil();
-                                expect(success).to.beFalsy();
-                                expect(error.code).to.equal(VENSDKErrorTransactionFailed);
-                                done();
-                            }];
+    it(@"should call the completion handler with an error if venmoAppInstalled is false", ^{
+        waitUntil(^(DoneCallback done) {
+            [[[mockVenmo stub] andReturnValue:OCMOCK_VALUE(NO)] isVenmoAppInstalled];
+            [mockVenmo sendAppSwitchTransactionTo:@"ben@example.com"
+                                  transactionType:VENTransactionTypePay
+                                           amount:10
+                                             note:@"foonote"
+                                completionHandler:^(NSArray *transactions, BOOL success, NSError *error) {
+                                    expect(transactions).to.beNil();
+                                    expect(success).to.beFalsy();
+                                    expect(error.code).to.equal(VENSDKErrorTransactionFailed);
+                                    done();
+                                }];
+        });
     });
 });
 
@@ -579,27 +585,31 @@ describe(@"validateAPIRequestWithCompletionHandler:", ^{
         session = [[VENSession alloc] init];
     });
 
-    it(@"should call the completion handler with an error if the session is closed", ^AsyncBlock{
-        session.state = VENSessionStateClosed;
-        [[[mockVenmo stub] andReturn:session] session];
-        [mockVenmo validateAPIRequestWithCompletionHandler:^(id object, BOOL success, NSError *error) {
-            expect(object).to.beNil();
-            expect(success).to.beFalsy();
-            expect(error.code).to.equal(VENSDKErrorSessionNotOpen);
-            done();
-        }];
+    it(@"should call the completion handler with an error if the session is closed", ^{
+        waitUntil(^(DoneCallback done) {
+            session.state = VENSessionStateClosed;
+            [[[mockVenmo stub] andReturn:session] session];
+            [mockVenmo validateAPIRequestWithCompletionHandler:^(id object, BOOL success, NSError *error) {
+                expect(object).to.beNil();
+                expect(success).to.beFalsy();
+                expect(error.code).to.equal(VENSDKErrorSessionNotOpen);
+                done();
+            }];
+        });
     });
 
-    it(@"should call the completion handler with an error if the session's token is expired", ^AsyncBlock{
-        session.state = VENSessionStateOpen;
-        session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-10];
-        [[[mockVenmo stub] andReturn:session] session];
-        [mockVenmo validateAPIRequestWithCompletionHandler:^(id object, BOOL success, NSError *error) {
-            expect(object).to.beNil();
-            expect(success).to.beFalsy();
-            expect(error.code).to.equal(VENSDKErrorAccessTokenExpired);
-            done();
-        }];
+    it(@"should call the completion handler with an error if the session's token is expired", ^{
+        waitUntil(^(DoneCallback done) {
+            session.state = VENSessionStateOpen;
+            session.expirationDate = [NSDate dateWithTimeIntervalSinceNow:-10];
+            [[[mockVenmo stub] andReturn:session] session];
+            [mockVenmo validateAPIRequestWithCompletionHandler:^(id object, BOOL success, NSError *error) {
+                expect(object).to.beNil();
+                expect(success).to.beFalsy();
+                expect(error.code).to.equal(VENSDKErrorAccessTokenExpired);
+                done();
+            }];
+        });
     });
 
     it(@"should initalize and set VENCore if there is none", ^{
