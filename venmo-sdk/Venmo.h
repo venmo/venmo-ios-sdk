@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger, VENTransactionMethod) {
 
 @class VENUserSDK, VENSession;
 
-typedef void (^VENTransactionCompletionHandler)(VENTransaction *transaction, BOOL success, NSError *error);
+typedef void (^VENTransactionCompletionHandler)(NSArray *transactions, BOOL success, NSError *error);
 typedef void (^VENRefreshTokenCompletionHandler)(NSString *accessToken, BOOL success, NSError *error);
 typedef void (^VENGenericRequestCompletionHandler)(id object, BOOL success, NSError *error);
 typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);

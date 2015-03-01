@@ -212,10 +212,8 @@ static Venmo *sharedInstance = nil;
     }
 
     [request sendWithSuccess:^(NSArray *sentTransactions, VENHTTPResponse *response) {
-
-        VENTransaction *transaction = (VENTransaction *)[sentTransactions firstObject];
         if (completionHandler) {
-            completionHandler(transaction, YES, nil);
+            completionHandler(sentTransactions, YES, nil);
         }
 
     } failure:^(NSArray *sentTransactions, VENHTTPResponse *response, NSError *error) {

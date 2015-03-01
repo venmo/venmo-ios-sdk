@@ -20,20 +20,20 @@
                        secret:(NSString *)appSecret
                          name:(NSString *)appName;
 
-- (void)sendAPITransactionTo:(NSString *)recipientHandle
+- (void)sendAPITransactionTo:(NSString *)recipientHandles
              transactionType:(VENTransactionType)type
                       amount:(NSUInteger)amount
                         note:(NSString *)note
                     audience:(VENTransactionAudience)audience
            completionHandler:(VENTransactionCompletionHandler)completionHandler;
 
-- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandle
+- (void)sendAppSwitchTransactionTo:(NSString *)recipientHandles
                    transactionType:(VENTransactionType)type
                             amount:(NSUInteger)amount
                               note:(NSString *)note
                  completionHandler:(VENTransactionCompletionHandler)completionHandler;
 
-- (void)sendTransactionTo:(NSString *)recipientHandle
+- (void)sendTransactionTo:(NSString *)recipientHandles
           transactionType:(VENTransactionType)type
                    amount:(NSUInteger)amount
                      note:(NSString *)note
@@ -309,7 +309,7 @@ describe(@"sendAppSwitchTransactionTo:", ^{
 
 
     it(@"should set self.transactionCompletionHandler to the given completion handler", ^{
-        VENTransactionCompletionHandler handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        VENTransactionCompletionHandler handler = ^(NSArray *transactions, BOOL success, NSError *error) {
             NSUInteger a = 1;
             a++;
         };
@@ -346,8 +346,8 @@ describe(@"sendAppSwitchTransactionTo:", ^{
                               transactionType:VENTransactionTypePay
                                        amount:10
                                          note:@"foonote"
-                            completionHandler:^(VENTransaction *transaction, BOOL success, NSError *error) {
-                                expect(transaction).to.beNil();
+                            completionHandler:^(NSArray *transactions, BOOL success, NSError *error) {
+                                expect(transactions).to.beNil();
                                 expect(success).to.beFalsy();
                                 expect(error.code).to.equal(VENSDKErrorTransactionFailed);
                                 done();
@@ -403,7 +403,7 @@ describe(@"sendTransactionTo:", ^{
         type = VENTransactionTypePay;
         amount = 100;
         audience = VENTransactionAudienceFriends;
-        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        handler = ^(NSArray *transactions, BOOL success, NSError *error) {
             int i = 1; i++;
         };       
     });
@@ -445,7 +445,7 @@ describe(@"sendPaymentTo:amount:note:audience:completionHandler:", ^{
         note = @"notenote";
         amount = 100;
         audience = VENTransactionAudienceFriends;
-        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        handler = ^(NSArray *transactions, BOOL success, NSError *error) {
             int i = 1; i++;
         };
     });
@@ -481,7 +481,7 @@ describe(@"sendRequestTo:amount:note:audience:completionHandler:", ^{
         note = @"notenote";
         amount = 100;
         audience = VENTransactionAudienceFriends;
-        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        handler = ^(NSArray *transactions, BOOL success, NSError *error) {
             int i = 1; i++;
         };
     });
@@ -516,7 +516,7 @@ describe(@"sendPaymentTo:amount:note:completionHandler:", ^{
         note = @"notenote";
         amount = 100;
         audience = VENTransactionAudienceFriends;
-        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        handler = ^(NSArray *transactions, BOOL success, NSError *error) {
             int i = 1; i++;
         };
     });
@@ -550,7 +550,7 @@ describe(@"sendRequestTo:amount:note:completionHandler:", ^{
         note = @"notenote";
         amount = 100;
         audience = VENTransactionAudienceFriends;
-        handler = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+        handler = ^(NSArray *transactions, BOOL success, NSError *error) {
             int i = 1; i++;
         };
     });
