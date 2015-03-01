@@ -30,7 +30,7 @@
 
 
 - (IBAction)sendAction:(id)sender {
-    void(^handler)(VENTransaction *, BOOL, NSError *) = ^(VENTransaction *transaction, BOOL success, NSError *error) {
+    void(^handler)(NSArray *, BOOL, NSError *) = ^(NSArray *transactions, BOOL success, NSError *error) {
         if (error) {
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:error.localizedDescription
                                                                 message:error.localizedRecoverySuggestion
