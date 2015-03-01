@@ -198,7 +198,8 @@ static Venmo *sharedInstance = nil;
     NSArray *recipients = [recipientHandles componentsSeparatedByString:@","];
 
     for (NSString *recipient in recipients) {
-        VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:recipient amount:amount];
+        NSString *trimmedRecipient = [recipient stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:trimmedRecipient amount:amount];
         BOOL addedTarget = [request addTransactionTarget:target];
 
         if (!addedTarget) {
