@@ -46,56 +46,60 @@ describe(@"refreshTokenWithAppId:secret:completionHandler:", ^{
         [[LSNocilla sharedInstance] clearStubs];
     });   
 
-    it(@"should save a new access token when the request succeeds", ^AsyncBlock{
-        stubRequest(@"POST", path).
-        withBody(bodyString).
-        andReturn(200).
-        withHeader(@"Content-Type", @"application/json").
-        withBody(responseString);
+    it(@"should save a new access token when the request succeeds", ^{
+        waitUntil(^(DoneCallback done) {
+            stubRequest(@"POST", path).
+            withBody(bodyString).
+            andReturn(200).
+            withHeader(@"Content-Type", @"application/json").
+            withBody(responseString);
 
-        VENSession *session = [[VENSession alloc] init];
-        VENUser *user = [[VENUser alloc] init];
-        [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
-        NSDate *oldExpirationDate = session.expirationDate;
-        [session refreshTokenWithAppId:clientId
-                                secret:clientSecret
-                     completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
-                    expect(accessToken).to.equal(newAccessToken);
-                    expect(success).to.equal(YES);
-                    expect(error).to.beNil();
-                    expect(session.state).to.equal(VENSessionStateOpen);
-                    expect(session.accessToken).to.equal(newAccessToken);
-                    expect(session.refreshToken).to.equal(newRefreshToken);
-                    expect([session.expirationDate earlierDate:oldExpirationDate]).to.equal(oldExpirationDate);
+            VENSession *session = [[VENSession alloc] init];
+            VENUser *user = [[VENUser alloc] init];
+            [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
+            NSDate *oldExpirationDate = session.expirationDate;
+            [session refreshTokenWithAppId:clientId
+                                    secret:clientSecret
+                         completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                             expect(accessToken).to.equal(newAccessToken);
+                             expect(success).to.equal(YES);
+                             expect(error).to.beNil();
+                             expect(session.state).to.equal(VENSessionStateOpen);
+                             expect(session.accessToken).to.equal(newAccessToken);
+                             expect(session.refreshToken).to.equal(newRefreshToken);
+                             expect([session.expirationDate earlierDate:oldExpirationDate]).to.equal(oldExpirationDate);
 
-                    // The cached session should also be refreshed
-                    VENSession *cachedSession = [VENSession cachedSessionWithAppId:clientId];
-                    expect(cachedSession.accessToken).to.equal(session.accessToken);
-                    expect(cachedSession.refreshToken).to.equal(session.refreshToken);
-                    expect(cachedSession.expirationDate).to.equal(session.expirationDate);
-                    expect(cachedSession.state).to.equal(session.state);
-                    done();
-        }];
+                             // The cached session should also be refreshed
+                             VENSession *cachedSession = [VENSession cachedSessionWithAppId:clientId];
+                             expect(cachedSession.accessToken).to.equal(session.accessToken);
+                             expect(cachedSession.refreshToken).to.equal(session.refreshToken);
+                             expect(cachedSession.expirationDate).to.equal(session.expirationDate);
+                             expect(cachedSession.state).to.equal(session.state);
+                             done();
+                         }];
+        });
     });
 
-    it(@"should return an error when the request fails", ^AsyncBlock{
-        stubRequest(@"POST", path).
-        withBody(bodyString).
-        andReturn(400);
+    it(@"should return an error when the request fails", ^{
+        waitUntil(^(DoneCallback done) {
+            stubRequest(@"POST", path).
+            withBody(bodyString).
+            andReturn(400);
 
-        VENSession *session = [[VENSession alloc] init];
-        VENUser *user = [[VENUser alloc] init];
-        [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
-        [session refreshTokenWithAppId:clientId
-                           secret:clientSecret
-                completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
-                    expect(accessToken).to.beNil();
-                    expect(success).to.equal(NO);
-                    expect(error.domain).to.equal(VenmoSDKDomain);
-                    expect(error.code).to.equal(VENSDKErrorHTTPError);
-                    expect(session.state).to.equal(VENSessionStateOpen);
-                    done();
-        }];
+            VENSession *session = [[VENSession alloc] init];
+            VENUser *user = [[VENUser alloc] init];
+            [session openWithAccessToken:@"abcd" refreshToken:currentRefreshToken expiresIn:1234 user:user];
+            [session refreshTokenWithAppId:clientId
+                                    secret:clientSecret
+                         completionHandler:^(NSString *accessToken, BOOL success, NSError *error) {
+                             expect(accessToken).to.beNil();
+                             expect(success).to.equal(NO);
+                             expect(error.domain).to.equal(VenmoSDKDomain);
+                             expect(error.code).to.equal(VENSDKErrorHTTPError);
+                             expect(session.state).to.equal(VENSessionStateOpen);
+                             done();
+                         }];
+        });
     });
 
 });
