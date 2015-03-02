@@ -100,28 +100,30 @@
     }
     else {
         VENTransaction *transaction = [VENTransaction transactionWithURL:[self.request URL]];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSError *error;
-            if (transaction && transaction.status == VENTransactionStatusFailed) {
-                error = [NSError errorWithDomain:VenmoSDKDomain
-                                            code:VENSDKErrorTransactionFailed
-                                     description:@"Venmo failed to complete the transaction."
-                              recoverySuggestion:@"Please try again."];
-            } else if (transaction.status == VENTransactionStatusFailed) {
-                error  = [NSError errorWithDomain:VenmoSDKDomain
-                                             code:VENSDKErrorTransactionValidationError
-                                      description:@"Failed to validate the transaction."
-                               recoverySuggestion:@"Please contact us."];
-            }
-            else if (!transaction) {
-                error  = [NSError errorWithDomain:VenmoSDKDomain
-                                             code:VENSDKErrorTransactionIncomplete
-                                      description:@"The transaction was incomplete."
-                               recoverySuggestion:@"Please try again."];
-            }
+        NSArray *transactions = [NSArray arrayWithObjects:transaction, nil];
 
+        NSError *error;
+        if (transaction && transaction.status == VENTransactionStatusFailed) {
+            error = [NSError errorWithDomain:VenmoSDKDomain
+                                        code:VENSDKErrorTransactionFailed
+                                 description:@"Venmo failed to complete the transaction."
+                          recoverySuggestion:@"Please try again."];
+        } else if (transaction.status == VENTransactionStatusFailed) {
+            error  = [NSError errorWithDomain:VenmoSDKDomain
+                                         code:VENSDKErrorTransactionValidationError
+                                  description:@"Failed to validate the transaction."
+                           recoverySuggestion:@"Please contact us."];
+        }
+        else if (!transaction) {
+            error  = [NSError errorWithDomain:VenmoSDKDomain
+                                         code:VENSDKErrorTransactionIncomplete
+                                  description:@"The transaction was incomplete."
+                           recoverySuggestion:@"Please try again."];
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
             if ([Venmo sharedInstance].transactionCompletionHandler) {
-                [Venmo sharedInstance].transactionCompletionHandler(transaction, transaction.status, error);
+                [Venmo sharedInstance].transactionCompletionHandler(transactions, transaction.status, error);
             }
         });
     }
