@@ -23,7 +23,7 @@ typedef void (^VENRefreshTokenCompletionHandler)(NSString *accessToken, BOOL suc
 typedef void (^VENGenericRequestCompletionHandler)(id object, BOOL success, NSError *error);
 typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 
-#define VEN_CURRENT_SDK_VERSION @"1.2.0"
+#define VEN_CURRENT_SDK_VERSION @"1.3.0"
 
 @interface Venmo : NSObject
 
