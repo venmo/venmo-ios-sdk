@@ -1,7 +1,7 @@
 PODS:
   - CMDQueryStringSerialization (0.2.0)
   - Expecta (0.3.1)
-  - Nocilla (0.8.1)
+  - Nocilla (0.9.0)
   - OCMock (2.2.4)
   - Specta (0.2.1)
   - SSKeychain (1.2.2)
@@ -20,10 +20,10 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   CMDQueryStringSerialization: e53570ccbce6004acba30b1c1210e254644cdb92
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
-  Nocilla: e573c2bf9113c8d77782b695a2f9362b7bc44e72
+  Nocilla: 4d713c56e7357fd0cac0363854d4a58021ad3f41
   OCMock: 6db79185520e24f9f299548f2b8b07e41d881bd5
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
   SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
   VENCore: 944d7fc21a27670cf57342b35ce3d715ce514ca5
 
-COCOAPODS: 0.33.1
+COCOAPODS: 0.35.0
