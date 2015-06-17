@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		178903B88018851AE34A92A6 /* libPods-venmo-sdk-integration-specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EC62898F3A95FDA67595953 /* libPods-venmo-sdk-integration-specs.a */; };
 		2D5EF54617EF41B100DDD15A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
 		2D5EF55517EF41B100DDD15A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
 		2D5EF55A17EF41B100DDD15A /* libvenmo-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54217EF41B100DDD15A /* libvenmo-sdk.a */; };
 		2D5EF56017EF41B100DDD15A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2D5EF55E17EF41B100DDD15A /* InfoPlist.strings */; };
 		2D5EF5B517EF450E00DDD15A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF5B417EF450E00DDD15A /* UIKit.framework */; };
-		4B27FA6182D64675B46C14F9 /* libPods-venmo-sdk-integration-specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 020A57C6B0154594BF8419A0 /* libPods-venmo-sdk-integration-specs.a */; };
-		87A767D50D5E4EEEBE39F5F9 /* libPods-venmo-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 082371A92E1C47C78ECD9347 /* libPods-venmo-sdk.a */; };
-		921DC61111444CB8B90C8D6F /* libPods-venmo-sdk-specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7F84232DAE4570A88D6563 /* libPods-venmo-sdk-specs.a */; };
+		AB54A24207B8DF3B4A987885 /* libPods-venmo-sdk-specs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C41DB83550898B270C91642 /* libPods-venmo-sdk-specs.a */; };
 		B611893A18A188AE0041AF50 /* VENPermissionConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = B611893918A188AE0041AF50 /* VENPermissionConstants.h */; };
 		B62D59BC18973D71001E46A4 /* VENURLProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = B62D59BA18973D71001E46A4 /* VENURLProtocol.h */; };
 		B62D59BD18973D71001E46A4 /* VENURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = B62D59BB18973D71001E46A4 /* VENURLProtocol.m */; };
@@ -49,6 +48,7 @@
 		B6588AFA18A0554200A0C73B /* VenmoSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B6588AF918A0554200A0C73B /* VenmoSpec.m */; };
 		B6F5046618E38C2600BDACF7 /* VENPermission.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5045F18E38C2600BDACF7 /* VENPermission.m */; };
 		B6F5046718E38C2600BDACF7 /* VENSession.m in Sources */ = {isa = PBXBuildFile; fileRef = B6F5046118E38C2600BDACF7 /* VENSession.m */; };
+		E108B4B80883664C6CF9BE6A /* libPods-venmo-sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C2F52D889AAC62B05EFFEC /* libPods-venmo-sdk.a */; };
 		EB3499BA190AF8D400C74EAA /* VENTransaction+VenmoSDKSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = B6B810A918A1842B00FD8955 /* VENTransaction+VenmoSDKSpec.m */; };
 		EB49E22C19266E0D008EA5DC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
 		EB49E23319266E0D008EA5DC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB49E23119266E0D008EA5DC /* InfoPlist.strings */; };
@@ -95,9 +95,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		020A57C6B0154594BF8419A0 /* libPods-venmo-sdk-integration-specs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-integration-specs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		082371A92E1C47C78ECD9347 /* libPods-venmo-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C086BB66DF4690B7B80CE7 /* Pods-venmo-sdk-specs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk-specs.xcconfig"; path = "Pods/Pods-venmo-sdk-specs.xcconfig"; sourceTree = "<group>"; };
+		1EC62898F3A95FDA67595953 /* libPods-venmo-sdk-integration-specs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-integration-specs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5EF54217EF41B100DDD15A /* libvenmo-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libvenmo-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D5EF54517EF41B100DDD15A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2D5EF55217EF41B100DDD15A /* venmo-sdk-specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "venmo-sdk-specs.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +103,13 @@
 		2D5EF55D17EF41B100DDD15A /* venmo-sdk-specs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "venmo-sdk-specs-Info.plist"; path = "Supporting Files/venmo-sdk-specs-Info.plist"; sourceTree = "<group>"; };
 		2D5EF55F17EF41B100DDD15A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2D5EF5B417EF450E00DDD15A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9D67EE26EF23419C85A38F98 /* Pods-venmo-sdk.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk.xcconfig"; path = "Pods/Pods-venmo-sdk.xcconfig"; sourceTree = "<group>"; };
-		AFE3B5706BCC4C1487756280 /* Pods-venmo-sdk-integration-specs.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk-integration-specs.xcconfig"; path = "Pods/Pods-venmo-sdk-integration-specs.xcconfig"; sourceTree = "<group>"; };
+		3003853AD8A59F1850E09BCF /* Pods-venmo-sdk-integration-specs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk-integration-specs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-venmo-sdk-integration-specs/Pods-venmo-sdk-integration-specs.debug.xcconfig"; sourceTree = "<group>"; };
+		3C41DB83550898B270C91642 /* libPods-venmo-sdk-specs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-specs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		53C2F52D889AAC62B05EFFEC /* libPods-venmo-sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		59FB70042C861AAFBC7DC14A /* Pods-venmo-sdk-integration-specs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk-integration-specs.release.xcconfig"; path = "Pods/Target Support Files/Pods-venmo-sdk-integration-specs/Pods-venmo-sdk-integration-specs.release.xcconfig"; sourceTree = "<group>"; };
+		78DF2787C67E4B44B3B7CD8A /* Pods-venmo-sdk-specs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk-specs.release.xcconfig"; path = "Pods/Target Support Files/Pods-venmo-sdk-specs/Pods-venmo-sdk-specs.release.xcconfig"; sourceTree = "<group>"; };
+		96A1AF6C8E4C8CFEDD4DF4B4 /* Pods-venmo-sdk.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk.release.xcconfig"; path = "Pods/Target Support Files/Pods-venmo-sdk/Pods-venmo-sdk.release.xcconfig"; sourceTree = "<group>"; };
+		97836ED3BCA227A87043C1F4 /* Pods-venmo-sdk.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk.debug.xcconfig"; path = "Pods/Target Support Files/Pods-venmo-sdk/Pods-venmo-sdk.debug.xcconfig"; sourceTree = "<group>"; };
 		B611893918A188AE0041AF50 /* VENPermissionConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENPermissionConstants.h; sourceTree = "<group>"; };
 		B611893B18A189800041AF50 /* VENSessionSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENSessionSpec.m; sourceTree = "<group>"; };
 		B62D59BA18973D71001E46A4 /* VENURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENURLProtocol.h; sourceTree = "<group>"; };
@@ -144,7 +147,7 @@
 		B6F5045F18E38C2600BDACF7 /* VENPermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENPermission.m; sourceTree = "<group>"; };
 		B6F5046018E38C2600BDACF7 /* VENSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VENSession.h; sourceTree = "<group>"; };
 		B6F5046118E38C2600BDACF7 /* VENSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VENSession.m; sourceTree = "<group>"; };
-		BD7F84232DAE4570A88D6563 /* libPods-venmo-sdk-specs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-venmo-sdk-specs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2AAE4E354A2454A1828DEED /* Pods-venmo-sdk-specs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-venmo-sdk-specs.debug.xcconfig"; path = "Pods/Target Support Files/Pods-venmo-sdk-specs/Pods-venmo-sdk-specs.debug.xcconfig"; sourceTree = "<group>"; };
 		EB3499BB190AF91500C74EAA /* venmo-sdk-specs-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "venmo-sdk-specs-Prefix.pch"; path = "Supporting Files/venmo-sdk-specs-Prefix.pch"; sourceTree = "<group>"; };
 		EB49E22A19266E0D008EA5DC /* venmo-sdk-integration-specs.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "venmo-sdk-integration-specs.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB49E23019266E0D008EA5DC /* venmo-sdk-integration-specs-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "venmo-sdk-integration-specs-Info.plist"; sourceTree = "<group>"; };
@@ -167,7 +170,7 @@
 			files = (
 				2D5EF5B517EF450E00DDD15A /* UIKit.framework in Frameworks */,
 				2D5EF54617EF41B100DDD15A /* Foundation.framework in Frameworks */,
-				87A767D50D5E4EEEBE39F5F9 /* libPods-venmo-sdk.a in Frameworks */,
+				E108B4B80883664C6CF9BE6A /* libPods-venmo-sdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +180,7 @@
 			files = (
 				2D5EF55A17EF41B100DDD15A /* libvenmo-sdk.a in Frameworks */,
 				2D5EF55517EF41B100DDD15A /* Foundation.framework in Frameworks */,
-				921DC61111444CB8B90C8D6F /* libPods-venmo-sdk-specs.a in Frameworks */,
+				AB54A24207B8DF3B4A987885 /* libPods-venmo-sdk-specs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,7 +190,7 @@
 			files = (
 				EBC4E5D61926917000E24E33 /* libvenmo-sdk.a in Frameworks */,
 				EB49E22C19266E0D008EA5DC /* Foundation.framework in Frameworks */,
-				4B27FA6182D64675B46C14F9 /* libPods-venmo-sdk-integration-specs.a in Frameworks */,
+				178903B88018851AE34A92A6 /* libPods-venmo-sdk-integration-specs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,9 +205,7 @@
 				EB49E22E19266E0D008EA5DC /* venmo-sdk-integration-specs */,
 				2D5EF54417EF41B100DDD15A /* Frameworks */,
 				2D5EF54317EF41B100DDD15A /* Products */,
-				9D67EE26EF23419C85A38F98 /* Pods-venmo-sdk.xcconfig */,
-				AFE3B5706BCC4C1487756280 /* Pods-venmo-sdk-integration-specs.xcconfig */,
-				27C086BB66DF4690B7B80CE7 /* Pods-venmo-sdk-specs.xcconfig */,
+				E1503391841F4F7AC8B94B84 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -224,9 +225,9 @@
 				2D5EF5B417EF450E00DDD15A /* UIKit.framework */,
 				2D5EF54517EF41B100DDD15A /* Foundation.framework */,
 				2D5EF55317EF41B100DDD15A /* XCTest.framework */,
-				082371A92E1C47C78ECD9347 /* libPods-venmo-sdk.a */,
-				020A57C6B0154594BF8419A0 /* libPods-venmo-sdk-integration-specs.a */,
-				BD7F84232DAE4570A88D6563 /* libPods-venmo-sdk-specs.a */,
+				53C2F52D889AAC62B05EFFEC /* libPods-venmo-sdk.a */,
+				1EC62898F3A95FDA67595953 /* libPods-venmo-sdk-integration-specs.a */,
+				3C41DB83550898B270C91642 /* libPods-venmo-sdk-specs.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -338,6 +339,19 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E1503391841F4F7AC8B94B84 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				97836ED3BCA227A87043C1F4 /* Pods-venmo-sdk.debug.xcconfig */,
+				96A1AF6C8E4C8CFEDD4DF4B4 /* Pods-venmo-sdk.release.xcconfig */,
+				3003853AD8A59F1850E09BCF /* Pods-venmo-sdk-integration-specs.debug.xcconfig */,
+				59FB70042C861AAFBC7DC14A /* Pods-venmo-sdk-integration-specs.release.xcconfig */,
+				E2AAE4E354A2454A1828DEED /* Pods-venmo-sdk-specs.debug.xcconfig */,
+				78DF2787C67E4B44B3B7CD8A /* Pods-venmo-sdk-specs.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		EB49E22E19266E0D008EA5DC /* venmo-sdk-integration-specs */ = {
 			isa = PBXGroup;
 			children = (
@@ -394,13 +408,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D5EF56517EF41B100DDD15A /* Build configuration list for PBXNativeTarget "venmo-sdk" */;
 			buildPhases = (
-				23232A941FA24C3AA273F793 /* Check Pods Manifest.lock */,
+				E6F4AF0A56E5F63E70B39298 /* Check Pods Manifest.lock */,
 				2D5EF53E17EF41B100DDD15A /* Sources */,
 				2D5EF53F17EF41B100DDD15A /* Frameworks */,
 				2D5EF56C17EF42BE00DDD15A /* Headers */,
 				2D5EF54017EF41B100DDD15A /* Copy Files */,
 				2D5EF56E17EF43E900DDD15A /* ShellScript */,
-				DE6D91AACFAC48D88923B97F /* Copy Pods Resources */,
+				C34668A62208DD4B9113BB36 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -415,11 +429,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D5EF56817EF41B100DDD15A /* Build configuration list for PBXNativeTarget "venmo-sdk-specs" */;
 			buildPhases = (
-				02B9C8A7933940B9AA4B47C3 /* Check Pods Manifest.lock */,
+				D2F43659B449516DD06FBD61 /* Check Pods Manifest.lock */,
 				2D5EF54E17EF41B100DDD15A /* Sources */,
 				2D5EF54F17EF41B100DDD15A /* Frameworks */,
 				2D5EF55017EF41B100DDD15A /* Resources */,
-				7A82EA011A484C00981291B6 /* Copy Pods Resources */,
+				7374F45841F24BED1351194B /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -435,11 +449,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB49E23B19266E0D008EA5DC /* Build configuration list for PBXNativeTarget "venmo-sdk-integration-specs" */;
 			buildPhases = (
-				AE6218F3332046B89D23D2F6 /* Check Pods Manifest.lock */,
+				194AF32794C1483184C93024 /* Check Pods Manifest.lock */,
 				EB49E22619266E0D008EA5DC /* Sources */,
 				EB49E22719266E0D008EA5DC /* Frameworks */,
 				EB49E22819266E0D008EA5DC /* Resources */,
-				D7A2386B5BE24A84ACED3B9B /* Copy Pods Resources */,
+				2BF59B2DD4882A77B45CC6AD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -505,7 +519,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		02B9C8A7933940B9AA4B47C3 /* Check Pods Manifest.lock */ = {
+		194AF32794C1483184C93024 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -520,19 +534,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		23232A941FA24C3AA273F793 /* Check Pods Manifest.lock */ = {
+		2BF59B2DD4882A77B45CC6AD /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-integration-specs/Pods-venmo-sdk-integration-specs-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D5EF56E17EF43E900DDD15A /* ShellScript */ = {
@@ -548,7 +562,7 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
 		};
-		7A82EA011A484C00981291B6 /* Copy Pods Resources */ = {
+		7374F45841F24BED1351194B /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,10 +574,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-venmo-sdk-specs-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-specs/Pods-venmo-sdk-specs-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AE6218F3332046B89D23D2F6 /* Check Pods Manifest.lock */ = {
+		C34668A62208DD4B9113BB36 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk/Pods-venmo-sdk-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D2F43659B449516DD06FBD61 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -578,34 +607,19 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		D7A2386B5BE24A84ACED3B9B /* Copy Pods Resources */ = {
+		E6F4AF0A56E5F63E70B39298 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-venmo-sdk-integration-specs-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DE6D91AACFAC48D88923B97F /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-venmo-sdk-resources.sh\"\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -769,7 +783,7 @@
 		};
 		2D5EF56617EF41B100DDD15A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D67EE26EF23419C85A38F98 /* Pods-venmo-sdk.xcconfig */;
+			baseConfigurationReference = 97836ED3BCA227A87043C1F4 /* Pods-venmo-sdk.debug.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -788,7 +802,7 @@
 		};
 		2D5EF56717EF41B100DDD15A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D67EE26EF23419C85A38F98 /* Pods-venmo-sdk.xcconfig */;
+			baseConfigurationReference = 96A1AF6C8E4C8CFEDD4DF4B4 /* Pods-venmo-sdk.release.xcconfig */;
 			buildSettings = {
 				DSTROOT = /tmp/Venmo.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -807,7 +821,7 @@
 		};
 		2D5EF56917EF41B100DDD15A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C086BB66DF4690B7B80CE7 /* Pods-venmo-sdk-specs.xcconfig */;
+			baseConfigurationReference = E2AAE4E354A2454A1828DEED /* Pods-venmo-sdk-specs.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -828,7 +842,7 @@
 		};
 		2D5EF56A17EF41B100DDD15A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 27C086BB66DF4690B7B80CE7 /* Pods-venmo-sdk-specs.xcconfig */;
+			baseConfigurationReference = 78DF2787C67E4B44B3B7CD8A /* Pods-venmo-sdk-specs.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -845,7 +859,7 @@
 		};
 		EB49E23919266E0D008EA5DC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFE3B5706BCC4C1487756280 /* Pods-venmo-sdk-integration-specs.xcconfig */;
+			baseConfigurationReference = 3003853AD8A59F1850E09BCF /* Pods-venmo-sdk-integration-specs.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -868,7 +882,7 @@
 		};
 		EB49E23A19266E0D008EA5DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AFE3B5706BCC4C1487756280 /* Pods-venmo-sdk-integration-specs.xcconfig */;
+			baseConfigurationReference = 59FB70042C861AAFBC7DC14A /* Pods-venmo-sdk-integration-specs.release.xcconfig */;
 			buildSettings = {
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
