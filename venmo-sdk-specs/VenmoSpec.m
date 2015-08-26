@@ -1,6 +1,5 @@
 #import "Venmo.h"
 #import "NSURL+VenmoSDK.h"
-#import <VENCore/VENUserPayloadKeys.h>
 
 @interface VENSession (VenmoSpec)
 
