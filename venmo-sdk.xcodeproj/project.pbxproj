@@ -18,7 +18,7 @@
 		2D36011F1B8E421A0025196D /* libCMDQueryStringSerialization.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D36011E1B8E421A0025196D /* libCMDQueryStringSerialization.a */; };
 		2D3601211B8E42290025196D /* libSSKeychain.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D3601201B8E42290025196D /* libSSKeychain.a */; };
 		2D3601231B8E429E0025196D /* VENRequestDecoderSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3601221B8E429E0025196D /* VENRequestDecoderSpec.m */; };
-		2D3601261B8E55930025196D /* GTMStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3601241B8E55930025196D /* GTMStringEncoding.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2D3601261B8E55930025196D /* GTMStringEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D3601241B8E55930025196D /* GTMStringEncoding.m */; };
 		2D3601271B8E55930025196D /* GTMStringEncoding.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3601251B8E55930025196D /* GTMStringEncoding.h */; };
 		2D3601291B8E592E0025196D /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D3601281B8E592E0025196D /* GTMDefines.h */; };
 		2D5EF54617EF41B100DDD15A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D5EF54517EF41B100DDD15A /* Foundation.framework */; };
