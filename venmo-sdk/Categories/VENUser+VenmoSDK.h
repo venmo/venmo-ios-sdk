@@ -1,4 +1,4 @@
-#import "VENUser.h"
+#import "VENCore/VENUser.h"
 
 @interface VENUser (VenmoSDK) <NSCoding>
 
