@@ -38,6 +38,7 @@ static Venmo *sharedInstance = nil;
 
 @property (copy, nonatomic, readwrite) VENTransactionCompletionHandler transactionCompletionHandler;
 @property (copy, nonatomic, readwrite) VENOAuthCompletionHandler OAuthCompletionHandler;
+@property (nonatomic, readwrite) SFSafariViewController *safariViewController;
 
 @property (nonatomic) BOOL internalDevelopment;
 
@@ -114,9 +115,9 @@ static Venmo *sharedInstance = nil;
         NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
 
         if ([SFSafariViewController class] && currentViewController) {
-            SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:authURL entersReaderIfAvailable:NO];
+            self.safariViewController = [[SFSafariViewController alloc] initWithURL:authURL entersReaderIfAvailable:NO];
 
-            [currentViewController presentViewController:safari animated:NO completion:nil];
+            [currentViewController presentViewController:self.safariViewController animated:NO completion:nil];
         } else {
             [[UIApplication sharedApplication] openURL:authURL];
         }
@@ -314,6 +315,11 @@ static Venmo *sharedInstance = nil;
 
 - (BOOL)handleOpenURL:(NSURL *)url {
     if ([VENURLProtocol canInitWithRequest:[NSURLRequest requestWithURL:url]]) {
+        if (self.safariViewController) {
+            [self.safariViewController dismissViewControllerAnimated:YES completion:nil];
+            self.safariViewController = nil;
+        }
+
         VENURLProtocol *urlProtocol = [[VENURLProtocol alloc] initWithRequest:[NSURLRequest requestWithURL:url] cachedResponse:nil client:nil];
         [urlProtocol startLoading];
         return YES;
