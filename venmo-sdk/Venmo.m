@@ -16,6 +16,8 @@
 #import <VENCore/VENCreateTransactionRequest.h>
 #import <CMDQueryStringSerialization/CMDQueryStringSerialization.h>
 
+@import SafariServices;
+
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < __IPHONE_6_0
 #import "UIDevice+IdentifierAddition.h"
 #endif
@@ -95,7 +97,8 @@ static Venmo *sharedInstance = nil;
 #pragma mark - Sessions
 
 - (void)requestPermissions:(NSArray *)permissions
-     withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
+     withCurrentViewController:(nullable UIViewController*)currentViewController
+     withCompletionHandler:(nonnull VENOAuthCompletionHandler)completionHandler {
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
     self.OAuthCompletionHandler = completionHandler;
     self.session.state = VENSessionStateOpening;
@@ -103,12 +106,21 @@ static Venmo *sharedInstance = nil;
     NSString *baseURL;
     if ([Venmo isVenmoAppInstalled]) {
         baseURL = @"venmo://";
+        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
+
+        [[UIApplication sharedApplication] openURL:authURL];
     } else {
         baseURL = [self baseURLPath];
-    }
-    NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
+        NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
 
-    [[UIApplication sharedApplication] openURL:authURL];
+        if ([SFSafariViewController class] && currentViewController) {
+            SFSafariViewController *safari = [[SFSafariViewController alloc] initWithURL:authURL entersReaderIfAvailable:NO];
+
+            [currentViewController presentViewController:safari animated:NO completion:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:authURL];
+        }
+    }
 }
 
 
