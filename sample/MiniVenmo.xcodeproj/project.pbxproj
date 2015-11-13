@@ -187,6 +187,7 @@
 				B62D59CC189855E5001E46A4 /* Frameworks */,
 				B62D59CD189855E5001E46A4 /* Resources */,
 				A5FAE06903CE46D9BBD4689C /* Copy Pods Resources */,
+				D579E7E679198E86ED1FED79 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -299,6 +300,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniVenmo/Pods-MiniVenmo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D579E7E679198E86ED1FED79 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MiniVenmo/Pods-MiniVenmo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

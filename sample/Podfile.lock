@@ -21,15 +21,15 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - CMDQueryStringSerialization (0.2.0)
-  - SSKeychain (1.2.2)
+  - SSKeychain (1.2.3)
   - SVProgressHUD (1.0)
   - UIAlertView+Blocks (0.8.1)
-  - VENCore (3.0.1):
+  - VENCore (3.1.1):
     - CMDQueryStringSerialization (~> 0.2.0)
   - Venmo-iOS-SDK (1.3.0):
     - CMDQueryStringSerialization (~> 0.2.0)
-    - SSKeychain (~> 1.2.2)
-    - VENCore (~> 3.0.0)
+    - SSKeychain (~> 1.2.3)
+    - VENCore (~> 3.1.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3)
@@ -39,15 +39,15 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   Venmo-iOS-SDK:
-    :path: ..
+    :path: ".."
 
 SPEC CHECKSUMS:
-  AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  CMDQueryStringSerialization: e53570ccbce6004acba30b1c1210e254644cdb92
-  SSKeychain: cc48bd3ad24fcd9125adb9e0d23dd50b8bbd08b9
-  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
-  UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
-  VENCore: 944d7fc21a27670cf57342b35ce3d715ce514ca5
-  Venmo-iOS-SDK: 5c5aab6f3dc448bf2ee0c0fbb706a190bcccc115
+  AFNetworking: 05b9f6e3aa5ac45bc383b4bb108ef338080a26c7
+  CMDQueryStringSerialization: 15f9004212bbc72533bb533f63df79d90a00a7d8
+  SSKeychain: 3f42991739c6c60a9cf1bbd4dff6c0d3694bcf3d
+  SVProgressHUD: 46088807596a795cbcb4affd92cf3f13b6ab3dda
+  UIAlertView+Blocks: 45c3d3b7194906702d3e9a14c7ece5581505646d
+  VENCore: fb44651f466971a2f3585b7e4e5a13c1641da9bf
+  Venmo-iOS-SDK: 19b0cbdef45450ab433c9250a9097fb7ddd1f24d
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.39.0
