@@ -61,19 +61,6 @@
 }
 
 #pragma mark - Private
-// {
-//     "payments": [
-//         {
-//             "payment_id": "1234",
-//             "verb": "pay",
-//             "actor_user_id": "1",
-//             "target_user_id": "2",
-//             "amount": "1.00",
-//             "note": "Have a drink on me!",
-//             "success": 1
-//         }
-//     ]
-// }
 + (instancetype)transactionWithSignedRequestDictionary:(NSDictionary *)dictionary {
     DLog(@"transaction Dictionary: %@", dictionary);
     if (!dictionary || ![dictionary isKindOfClass:[NSDictionary class]]) {
@@ -83,8 +70,8 @@
     NSDictionary *cleanDictionary = [dictionary dictionaryByCleansingResponseDictionary];
 
     VENTransaction *transaction = [[VENTransaction alloc] init];
-    transaction.transactionID = cleanDictionary[@"payment_id"];
-    NSString *transactionType = cleanDictionary[@"verb"];
+    transaction.transactionID = cleanDictionary[@"id"];
+    NSString *transactionType = cleanDictionary[@"action"];
     // Set transaction type enumeration
     if ([transactionType isEqualToString:VENTransactionTypeStrings[VENTransactionTypeCharge]]) {
         transaction.transactionType = VENTransactionTypeCharge;
@@ -96,14 +83,22 @@
         transaction.transactionType = VENTransactionTypeUnknown;
     }
 
-    NSString *actorUserID = cleanDictionary[@"actor_user_id"];
+    NSString *actorUserID = cleanDictionary[@"actor"][@"id"];
     VENUser *actor = [[VENUser alloc] init];
     actor.externalId = actorUserID;
     transaction.actor = actor;
 
-    NSString *toUserID = cleanDictionary[@"target_user_id"];
+    NSDictionary *targetDictionary = cleanDictionary[@"target"];
+    NSString *targetHandle;
+    if (targetDictionary[@"user"]) {
+        targetHandle = targetDictionary[@"user"][@"id"];
+    } else if (targetDictionary[@"phone"]) {
+        targetHandle = targetDictionary[@"phone"];
+    } else if (targetDictionary[@"email"]) {
+        targetHandle = targetDictionary[@"email"];
+    }
     NSInteger amount = [[cleanDictionary stringForKey:@"amount"] floatValue] * 100;
-    VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:toUserID amount:amount];
+    VENTransactionTarget *target = [[VENTransactionTarget alloc] initWithHandle:targetHandle amount:amount];
     transaction.target = target;
     transaction.note = cleanDictionary[@"note"];
 
