@@ -70,10 +70,15 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
 /**
  * Initiates Venmo OAuth request.
  * @param permissions List of permissions.
+ * @param presentingViewController The view controller that present the SFSafariViewController if the Venmo app is not installed
  * @param completionHandler Completion handler to call upon returning from OAuth flow.
  */
-- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)handler;
+- (void)requestPermissions:(NSArray *)permissions
+  presentingViewController:(UIViewController *)presentingViewController
+     withCompletionHandler:(VENOAuthCompletionHandler)completionHandler;
 
+- (void)requestPermissions:(NSArray *)permissions
+     withCompletionHandler:(VENOAuthCompletionHandler)completionHandler __attribute__((deprecated));
 
 /**
  * Returns a value indicating whether the access token should be refreshed.

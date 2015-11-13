@@ -434,6 +434,7 @@
 				2D5EF54F17EF41B100DDD15A /* Frameworks */,
 				2D5EF55017EF41B100DDD15A /* Resources */,
 				7374F45841F24BED1351194B /* Copy Pods Resources */,
+				66C97EA230BFC90E1413ABF2 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -454,6 +455,7 @@
 				EB49E22719266E0D008EA5DC /* Frameworks */,
 				EB49E22819266E0D008EA5DC /* Resources */,
 				2BF59B2DD4882A77B45CC6AD /* Copy Pods Resources */,
+				62F32408A695684869E46056 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -561,6 +563,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n\n# Link the \"Current\" version to \"A\"\n/bin/ln -sfh A \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/Current\"\n/bin/ln -sfh Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Headers\"\n/bin/ln -sfh \"Versions/Current/${PRODUCT_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/${PRODUCT_NAME}\"\n\n# The -a ensures that the headers maintain the source modification date so that we don't constantly\n# cause propagating rebuilds of files that import these headers.\n/bin/cp -a \"${TARGET_BUILD_DIR}/${PUBLIC_HEADERS_FOLDER_PATH}/\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.framework/Versions/A/Headers\"\n";
+		};
+		62F32408A695684869E46056 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-integration-specs/Pods-venmo-sdk-integration-specs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		66C97EA230BFC90E1413ABF2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-specs/Pods-venmo-sdk-specs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		7374F45841F24BED1351194B /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
