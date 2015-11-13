@@ -434,6 +434,7 @@
 				2D5EF54F17EF41B100DDD15A /* Frameworks */,
 				2D5EF55017EF41B100DDD15A /* Resources */,
 				7374F45841F24BED1351194B /* Copy Pods Resources */,
+				90115976AE12911BB3FAE4A7 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -454,6 +455,7 @@
 				EB49E22719266E0D008EA5DC /* Frameworks */,
 				EB49E22819266E0D008EA5DC /* Resources */,
 				2BF59B2DD4882A77B45CC6AD /* Copy Pods Resources */,
+				011E708029575003C8D3B9EA /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -519,6 +521,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		011E708029575003C8D3B9EA /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-integration-specs/Pods-venmo-sdk-integration-specs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		194AF32794C1483184C93024 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -575,6 +592,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-specs/Pods-venmo-sdk-specs-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		90115976AE12911BB3FAE4A7 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-venmo-sdk-specs/Pods-venmo-sdk-specs-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C34668A62208DD4B9113BB36 /* Copy Pods Resources */ = {
