@@ -41,11 +41,22 @@ Using the Venmo iOS SDK is as easy as Venmo-ing a friend!
 
 	*URL Schemes:* `venmo<<YOUR_APP_ID>>`
 
-For example, if your app ID is `1234`, put `venmo1234`.
+  For example, if your app ID is `1234`, put `venmo1234`.
 
-![Set URL Types](http://i.imgur.com/8rUXlFB.png)
+  ![Set URL Types](http://i.imgur.com/8rUXlFB.png)
 
-**Note:** If you are using the [Parse SDK](https://parse.com/docs/downloads), and have issues, [this gist](https://gist.github.com/diogeneshamilton/6c1585280da8de16560d) should help you.
+  **Note:** If you are using the [Parse SDK](https://parse.com/docs/downloads), and have issues, [this gist](https://gist.github.com/diogeneshamilton/6c1585280da8de16560d) should help you.
+
+3. You will need to update your application's plist to handle the changes to canOpenURL described in https://developer.apple.com/videos/wwdc/2015/?id=703
+
+  If you're recompiling with iOS SDK 9.0, add the following to your application's plist
+
+  ```
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+      <string>venmo</string>
+  </array>
+  ```
 
 
 #### 3. Initialize the Venmo iOS SDK
