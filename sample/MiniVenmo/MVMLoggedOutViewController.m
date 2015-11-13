@@ -31,6 +31,7 @@
 - (IBAction)logInButtonAction:(id)sender {
     [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
                                                  VENPermissionAccessProfile]
+                      presentingViewController:self
                          withCompletionHandler:^(BOOL success, NSError *error) {
                              if (success) {
                                  [self presentLoggedInVC];

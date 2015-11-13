@@ -1,5 +1,7 @@
 #import "Venmo.h"
 
+@import SafariServices;
+
 #import "NSBundle+VenmoSDK.h"
 #import "NSDictionary+VenmoSDK.h"
 #import "NSError+VenmoSDK.h"
@@ -95,20 +97,39 @@ static Venmo *sharedInstance = nil;
 #pragma mark - Sessions
 
 - (void)requestPermissions:(NSArray *)permissions
+  presentingViewController:(__weak UIViewController *)presentingViewController
      withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
-    self.OAuthCompletionHandler = completionHandler;
+
+    VENOAuthCompletionHandler handler = ^(BOOL success, NSError *error) {
+        [presentingViewController dismissViewControllerAnimated:YES completion:nil];
+        if (completionHandler) {
+            completionHandler(success, error);
+        }
+    };
+
+    self.OAuthCompletionHandler = handler;
     self.session.state = VENSessionStateOpening;
 
-    NSString *baseURL;
-    if ([Venmo isVenmoAppInstalled]) {
-        baseURL = @"venmo://";
-    } else {
-        baseURL = [self baseURLPath];
-    }
-    NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
+    NSString *authURLString = [NSString stringWithFormat:@"oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", self.appId, scopeURLEncoded];
 
-    [[UIApplication sharedApplication] openURL:authURL];
+    if ([Venmo isVenmoAppInstalled]) {
+        NSURL *url = [[NSURL alloc] initWithString:[@"venmo://" stringByAppendingString:authURLString]];
+        [[UIApplication sharedApplication] openURL:url];
+    } else {
+        NSURL *url = [[NSURL alloc] initWithString:[[self baseURLPath] stringByAppendingString:authURLString]];
+        if(presentingViewController && NSClassFromString(@"SFSafariViewController")) {
+            SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:url];
+            [presentingViewController presentViewController:safariViewController animated:YES completion:nil];
+        } else {
+            [[UIApplication sharedApplication] openURL:url];
+        }
+    }
+}
+
+- (void)requestPermissions:(NSArray *)permissions
+     withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
+    [self requestPermissions:permissions presentingViewController:nil withCompletionHandler:completionHandler];
 }
 
 

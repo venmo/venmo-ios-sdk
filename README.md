@@ -121,11 +121,12 @@ else {
 
 #### 5. Request permissions
 
-You can request access to a user's Venmo account using `requestPermissions:withCompletionHandler:`. Permissions can be specified with [these scopes](https://developer.venmo.com/docs/authentication#scopes). If the user has the Venmo app installed, `requestPermissions:withCompletionHandler` will switch the user to an authorization page in the Venmo app. Otherwise, the user will be directed to an authorization page in Safari. After granting or denying permissions, the user will be redirected back to your app.
+You can request access to a user's Venmo account using `requestPermissions:presentingViewController:withCompletionHandler:`. Permissions can be specified with [these scopes](https://developer.venmo.com/docs/authentication#scopes). If the user has the Venmo app installed, `requestPermissions:presentingViewController:withCompletionHandler` will switch the user to an authorization page in the Venmo app. Otherwise, the user will be directed to an authorization page in SFSafariViewController. After granting or denying permissions, the user will be redirected back to your app.
 
 ```obj-c
 [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
                                              VENPermissionAccessProfile]
+                  presentingViewController:self // The view controller to present the SFSafariViewController
                      withCompletionHandler:^(BOOL success, NSError *error) {
     if (success) {
         // :)
