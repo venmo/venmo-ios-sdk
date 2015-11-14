@@ -16,13 +16,22 @@ describe(@"transactionWithSignedRequestDictionary:", ^{
 
     NSDictionary *paymentsDictionary =
     @{
-        @"payment_id": @"1234",
-        @"verb": @"pay",
+        @"id": @"1234",
+        @"action": @"pay",
         @"actor_user_id": @"1",
         @"target_user_id": @"2",
         @"amount": @"1.00",
         @"note": @"Have a drink on me!",
-        @"success": @(1)
+        @"success": @(1),
+        @"actor": @{
+            @"id": @"1",
+        },
+        @"target": @{
+            @"type": @"user",
+            @"user": @{
+                @"id": @"2"
+            }
+        }
     };
 
     it(@"should initialize with a payment dictionary.", ^{
