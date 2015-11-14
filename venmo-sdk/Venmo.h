@@ -72,7 +72,7 @@ typedef void (^VENOAuthCompletionHandler)(BOOL success, NSError *error);
  * @param permissions List of permissions.
  * @param completionHandler Completion handler to call upon returning from OAuth flow.
  */
-- (void)requestPermissions:(NSArray *)permissions withCompletionHandler:(VENOAuthCompletionHandler)handler;
+- (void)requestPermissions:(NSArray *)permissions withCurrentViewController:(nullable UIViewController*)currentViewController withCompletionHandler:(nonnull VENOAuthCompletionHandler)handler;
 
 
 /**
