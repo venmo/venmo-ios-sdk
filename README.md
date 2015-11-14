@@ -49,7 +49,7 @@ Using the Venmo iOS SDK is as easy as Venmo-ing a friend!
 
 3. You will need to update your application's plist to handle the changes to canOpenURL described in https://developer.apple.com/videos/wwdc/2015/?id=703
 
-  If you're recompiling with iOS SDK 9.0, add the following to your application's plist
+  If you’re recompiling with iOS SDK 9.0, add the following to your application’s `Info.plist`
 
   ```
   <key>LSApplicationQueriesSchemes</key>
@@ -57,6 +57,10 @@ Using the Venmo iOS SDK is as easy as Venmo-ing a friend!
       <string>venmo</string>
   </array>
   ```
+  
+  It should look like this:
+  
+  ![LSApplicationQueriesSchemes Example](http://i.imgur.com/8bA37uA.png)
 
 
 #### 3. Initialize the Venmo iOS SDK
