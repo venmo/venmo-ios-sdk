@@ -15,6 +15,5 @@ Pod::Spec.new do |s|
   s.source        =  { :git => "https://github.com/venmo/venmo-ios-sdk.git", :tag => "v#{s.version}" }
   s.source_files  = 'venmo-sdk/**/*.{h,m}'
   s.dependency 'VENCore', '~> 3.1'
-  s.dependency 'SSKeychain', '~> 1.2'
   s.dependency 'CMDQueryStringSerialization', '~> 0.2'
 end
