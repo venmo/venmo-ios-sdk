@@ -1,17 +1,10 @@
 #import "VENSession.h"
 
-#import <SSKeychain/SSKeychainQuery.h>
 #import <VENCore/VENCore.h>
 #import <VENCore/VENUserPayloadKeys.h>
 
 extern NSString *const kVENKeychainServiceName;
 extern NSString *const kVENKeychainAccountNamePrefix;
-
-@interface VENSession ()
-
-+ (SSKeychainQuery *)keychainQueryWithAppId:(NSString *)appId;
-
-@end
 
 SpecBegin(VENSession)
 
@@ -95,21 +88,6 @@ describe(@"close", ^{
     it(@"should set the session to closed", ^{
         expect(session.state).to.equal(VENSessionStateClosed);
     });
-});
-
-describe(@"keychainQueryWithAppId", ^{
-
-    it(@"should return a query with the correct service name", ^{
-        SSKeychainQuery *query = [VENSession keychainQueryWithAppId:@"123"];
-        expect(query.service).to.equal(kVENKeychainServiceName);
-    });
-
-    it(@"should return a query with the correct account name", ^{
-        SSKeychainQuery *query = [VENSession keychainQueryWithAppId:@"123"];
-        NSString *expectedAccountName = [NSString stringWithFormat:@"%@123", kVENKeychainAccountNamePrefix];
-        expect(query.account).to.equal(expectedAccountName);
-    });
-
 });
 
 SpecEnd
