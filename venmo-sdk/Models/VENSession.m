@@ -1,6 +1,6 @@
 #import "VENSession.h"
+#import "VENKeychain.h"
 
-#import <SSKeychain/SSKeychainQuery.h>
 #import <VENCore/VENCore.h>
 
 NSString *const kVENKeychainServiceName = @"venmo-ios-sdk";
@@ -19,6 +19,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
 @property (strong, nonatomic, readwrite) NSDate *expirationDate;
 @property (strong, nonatomic, readwrite) VENUser *user;
 @property (assign, nonatomic, readwrite) VENSessionState state;
+@property (strong, nonatomic) VENKeychain *keychain;
 
 @end
 
@@ -28,6 +29,7 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     self = [super init];
     if (self) {
         self.state = VENSessionStateClosed;
+        self.keychain = [[VENKeychain alloc] initWithService:kVENKeychainServiceName];
     }
     return self;
 }
@@ -132,39 +134,28 @@ NSString *const kVENKeychainAccountNamePrefix = @"venmo";
     self.state = VENSessionStateClosed;
 }
 
-
 - (BOOL)saveWithAppId:(NSString *)appId {
-    SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
-    query.passwordObject = self;
-    NSError *error;
-    BOOL saved = [query save:&error];
-    return saved;
+    VENKeychain *keychain = [[self class] keychain];
+    NSString *account = [[self class] keychainAccountForAppID:appId];
+    return [keychain setObject:self forAccount:account error:nil];
 }
-
 
 + (instancetype)cachedSessionWithAppId:(NSString *)appId {
-    SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
-    NSError *error;
-    [query fetch:&error];
-    if (!error) {
-        return (VENSession *)query.passwordObject;
-    }
-    return nil;
+    NSString *account = [self keychainAccountForAppID:appId];
+    return (VENSession *)[[self keychain] objectForAccount:account error:nil];
 }
-
 
 + (BOOL)deleteSessionWithAppId:(NSString *)appId {
-    SSKeychainQuery *query = [VENSession keychainQueryWithAppId:appId];
-    NSError *error;
-    return [query deleteItem:&error];
+    NSString *account = [self keychainAccountForAppID:appId];
+    return [[self keychain] removeObjectForAccount:account error:nil];
 }
 
++ (VENKeychain *)keychain {
+    return [[VENKeychain alloc] initWithService:kVENKeychainServiceName];
+}
 
-+ (SSKeychainQuery *)keychainQueryWithAppId:(NSString *)appId {
-    SSKeychainQuery *query = [[SSKeychainQuery alloc] init];
-    query.service = kVENKeychainServiceName;
-    query.account = [NSString stringWithFormat:@"%@%@", kVENKeychainAccountNamePrefix, appId];
-    return query;
++ (NSString *)keychainAccountForAppID:(NSString *)appID {
+    return [kVENKeychainAccountNamePrefix stringByAppendingString:appID];
 }
 
 
