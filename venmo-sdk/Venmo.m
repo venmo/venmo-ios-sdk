@@ -20,6 +20,8 @@
 #import "UIDevice+IdentifierAddition.h"
 #endif
 
+@import SafariServices;
+
 static Venmo *sharedInstance = nil;
 
 @interface VENSession ()
@@ -28,7 +30,7 @@ static Venmo *sharedInstance = nil;
 
 @end
 
-@interface Venmo ()
+@interface Venmo () <SFSafariViewControllerDelegate>
 
 @property (copy, nonatomic, readwrite) NSString *appId;
 @property (copy, nonatomic, readwrite) NSString *appSecret;
@@ -95,20 +97,29 @@ static Venmo *sharedInstance = nil;
 #pragma mark - Sessions
 
 - (void)requestPermissions:(NSArray *)permissions
+        fromViewController:(UIViewController<SFSafariViewControllerDelegate> *)viewController
      withCompletionHandler:(VENOAuthCompletionHandler)completionHandler {
+    
     NSString *scopeURLEncoded = [permissions componentsJoinedByString:@"%20"];
     self.OAuthCompletionHandler = completionHandler;
     self.session.state = VENSessionStateOpening;
-
+    
     NSString *baseURL;
     if ([Venmo isVenmoAppInstalled]) {
         baseURL = @"venmo://";
     } else {
         baseURL = [self baseURLPath];
     }
+    
     NSURL *authURL = [NSURL URLWithString:[NSString stringWithFormat:@"%@oauth/authorize?sdk=ios&client_id=%@&scope=%@&response_type=code", baseURL, self.appId, scopeURLEncoded]];
-
-    [[UIApplication sharedApplication] openURL:authURL];
+    
+    if ([Venmo isVenmoAppInstalled]) {
+        [[UIApplication sharedApplication] openURL:authURL];
+    } else {
+        SFSafariViewController *safariViewController = [[SFSafariViewController alloc]initWithURL:authURL];
+        safariViewController.delegate = viewController;
+        [viewController presentViewController:safariViewController animated:YES completion:nil];
+    }
 }
 
 
