@@ -64,7 +64,7 @@ Using the Venmo iOS SDK is as easy as Venmo-ing a friend!
 Add the Venmo SDK header file to your app delegate. Import this header in any of your implementation files to use the SDK.
 
 ```obj-c
-#import <Venmo-iOS-SDK/Venmo.h>
+# import <Venmo-iOS-SDK/Venmo.h>
 ```
 
 Add the following code to initialize the SDK in your app delegate's `application:didFinishLaunchingWithOptions:` method.
