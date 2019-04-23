@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name          = 'Unofficial-Venmo-iOS-SDK'
-  s.version       = '1.0.0'
+  s.version       = '1.3.1'
   s.summary       = 'Unofficial Venmo iOS SDK'
   s.description   = <<-DESC
                      Send payments & charges to any email, phone number or Venmo username from within your iOS app.
