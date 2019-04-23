@@ -1,8 +1,6 @@
-## Venmo iOS SDK
+## Unofficial Venmo iOS SDK
 
-[![Build Status](https://travis-ci.org/venmo/venmo-ios-sdk.svg?branch=v2)](https://travis-ci.org/venmo/venmo-ios-sdk)
-
-The Venmo iOS SDK lets you make and accept payments in your app using Venmo.
+The Unofficial Venmo iOS SDK lets you make and accept payments in your app using Venmo.
 
 <img src="/venmo_ios_sdk.gif" width="320px">
 
