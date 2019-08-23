@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.license       = { :type => 'MIT', :file => 'LICENSE' }
   s.author        = { "Random Access Software" => "random-access-software@null.net" }
   s.social_media_url = 'https://twitter.com/venmo'
-  s.platform      = :ios, '7.0'
+  s.platform      = :ios, '8.0'
   s.requires_arc  = true
   s.source        =  { :git => "https://github.com/No-Excuses/venmo-ios-sdk.git", :tag => "v#{s.version}" }
   s.source_files  = 'venmo-sdk/**/*.{h,m}'
