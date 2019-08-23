@@ -4,7 +4,7 @@
 
 - (NSString *)formURLDecodedString {
     NSString *deplussed = [self stringByReplacingOccurrencesOfString:@"+" withString:@" "];
-    return [deplussed stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    return [deplussed stringByRemovingPercentEncoding];
 }
 
 @end

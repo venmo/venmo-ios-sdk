@@ -45,8 +45,17 @@
     if (amount < 1) {
         return @"";
     }
-    CGFloat dollarAmount = amount / 100.0f;
-    NSString *amountStr = [NSString stringWithFormat:@"%.2f", dollarAmount];
+    NSDecimalNumber *dollarAmount = [NSDecimalNumber decimalNumberWithMantissa:amount
+                                                                      exponent:-2
+                                                                    isNegative:false];
+    
+    NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+    [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [formatter setNumberStyle:NSNumberFormatterDecimalStyle];
+    [formatter setMaximumFractionDigits:2];
+    [formatter setMinimumFractionDigits:2];
+    
+    NSString *amountStr = [formatter stringFromNumber:dollarAmount];
     return amountStr;
 }
 

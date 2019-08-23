@@ -16,13 +16,22 @@ describe(@"transactionWithSignedRequestDictionary:", ^{
 
     NSDictionary *paymentsDictionary =
     @{
-        @"payment_id": @"1234",
-        @"verb": @"pay",
+        @"id": @"1234",
+        @"action": @"pay",
         @"actor_user_id": @"1",
         @"target_user_id": @"2",
         @"amount": @"1.00",
         @"note": @"Have a drink on me!",
-        @"success": @(1)
+        @"success": @(1),
+        @"actor": @{
+            @"id": @"1",
+        },
+        @"target": @{
+            @"type": @"user",
+            @"user": @{
+                @"id": @"2"
+            }
+        }
     };
 
     it(@"should initialize with a payment dictionary.", ^{
@@ -41,7 +50,7 @@ describe(@"transactionWithSignedRequestDictionary:", ^{
 });
 
 
-describe(@"amountString", ^{
+describe(@"typeString", ^{
 
     it(@"should return the correct type string for pay", ^{
         expect([VENTransaction typeString:VENTransactionTypePay]).to.equal(@"pay");
@@ -54,7 +63,7 @@ describe(@"amountString", ^{
 });
 
 
-describe(@"typeString", ^{
+describe(@"amountString", ^{
 
     it(@"should return the correct amount string for 0 pennies", ^{
         expect([VENTransaction amountString:0]).to.equal(@"");
@@ -70,6 +79,10 @@ describe(@"typeString", ^{
 
     it(@"should return the correct amount string for 199 pennies", ^{
         expect([VENTransaction amountString:199]).to.equal(@"1.99");
+    });
+    
+    it(@"should return the correct amount string for 940 pennies", ^{
+        expect([VENTransaction amountString:940]).to.equal(@"9.40");
     });
 
 });

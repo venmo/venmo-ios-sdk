@@ -9,7 +9,7 @@
 
 + (NSURL *)venmoAppURLWithPath:(NSString *)path {
     NSString *newPath = [NSString stringWithFormat:@"venmosdk://venmo.com%@", path];
-    return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    return [[NSURL alloc] initWithString:[newPath stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
 }
 
 @end
